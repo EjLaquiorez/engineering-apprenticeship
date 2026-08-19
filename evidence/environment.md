@@ -76,3 +76,7 @@ operable program or batch file.
 ## Inspection Status
 
 Environment inspected on 2026-08-19.
+
+## Branch Exercise
+
+This change exists on the branch-basics branch.
