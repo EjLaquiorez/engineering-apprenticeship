@@ -80,3 +80,7 @@ Environment inspected on 2026-08-19.
 ## Branch Exercise
 
 This change exists on the branch-basics branch.
+
+## Feature Branch Update
+
+This change was made on the feature branch.
