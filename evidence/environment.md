@@ -81,3 +81,6 @@ Environment inspected on 2026-08-19.
 
 This change exists on the branch-basics branch.
 
+## Synchronization Exercise
+
+This change exists locally.
