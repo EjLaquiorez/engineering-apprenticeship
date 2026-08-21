@@ -1351,3 +1351,468 @@ Then answer:
 **Q3.** How many commits ahead is local `main`?
 
 This will reinforce the difference between **local history** and **remote history** before we move into branches.
+
+Good attempt. You're reading the output, but Q1–Q3 need a little correction. This is exactly why we're checking it.
+
+Your output:
+
+```text
+4b6a0fa (HEAD -> main) docs: record environment inspection status
+417bc4b (origin/main) docs: record development environment
+598dcc5 initial repo structure
+```
+
+## Q1. What commit is `HEAD` pointing to?
+
+You answered:
+
+> main
+
+❌ `main` is the **branch**.
+
+`HEAD` is pointing to:
+
+**`4b6a0fa`** ✅
+
+Think:
+
+```text
+HEAD
+ ↓
+main
+ ↓
+4b6a0fa
+```
+
+---
+
+## Q2. What commit is `origin/main` pointing to?
+
+You answered:
+
+> none
+
+❌ It is pointing to:
+
+**`417bc4b`** ✅
+
+Your output explicitly says:
+
+```text
+417bc4b (origin/main)
+```
+
+So:
+
+```text
+local main
+    ↓
+4b6a0fa
+
+origin/main
+    ↓
+417bc4b
+```
+
+---
+
+## Q3. How many commits ahead is local `main`?
+
+You said you didn't know where to look.
+
+That's fine. We can determine it from the history:
+
+```text
+4b6a0fa  ← local main
+   │
+417bc4b  ← origin/main
+   │
+598dcc5
+```
+
+There is **one commit** between `origin/main` and `main`:
+
+```text
+4b6a0fa
+```
+
+So local `main` is:
+
+**1 commit ahead of `origin/main`.** ✅
+
+Git also told you this directly earlier:
+
+```text
+Your branch is ahead of 'origin/main' by 1 commit.
+```
+
+---
+
+# The mental model
+
+This is what your repository looks like right now:
+
+```text
+                 LOCAL                    GITHUB
+                   │                         │
+                   ▼                         ▼
+                 main                  origin/main
+                   │                         │
+                   ▼                         ▼
+                4b6a0fa                    417bc4b
+                   │                         │
+                   └─────────┐   ┌───────────┘
+                             │   │
+                          1 commit
+                             │
+                             ▼
+                          598dcc5
+```
+
+You have:
+
+* `4b6a0fa` → local only
+* `417bc4b` → local + GitHub
+* `598dcc5` → local + GitHub
+
+---
+
+## Checkpoint
+
+Try answering the same three again:
+
+**Q1.** What commit is `HEAD` pointing to?
+
+**Q2.** What commit is `origin/main` pointing to?
+
+**Q3.** How many commits ahead is local `main`?
+
+Once you get these, we'll push `4b6a0fa` and then begin the next major Git topic: **branches**.
+
+1. 4b6a0fa
+2. 417bc4b 
+3. 1 only
+
+Exactly. **3/3 correct.** 🎯
+
+You now correctly understand the relationship:
+
+```text
+HEAD → main → 4b6a0fa
+origin/main → 417bc4b
+```
+
+And:
+
+```text
+main is 1 commit ahead of origin/main
+```
+
+That is the Git mental model we wanted.
+
+---
+
+# Before Branches: Publish Your Work
+
+Your latest commit is still local:
+
+```text
+4b6a0fa  ← local only
+```
+
+GitHub currently has:
+
+```text
+417bc4b
+```
+
+So let's synchronize them.
+
+Run:
+
+```bash
+git push
+```
+
+Then:
+
+```bash
+git status
+```
+
+We expect:
+
+```text
+Your branch is up to date with 'origin/main'.
+```
+
+After that, run:
+
+```bash
+git log --oneline --decorate -3
+```
+
+You should see something like:
+
+```text
+4b6a0fa (HEAD -> main, origin/main) docs: record environment inspection status
+417bc4b docs: record development environment
+598dcc5 initial repo structure
+```
+
+The important change is:
+
+```text
+Before:
+4b6a0fa (HEAD -> main)
+417bc4b (origin/main)
+
+After:
+4b6a0fa (HEAD -> main, origin/main)
+```
+
+Once you've run those commands, paste the output here.
+
+Then we'll officially close this Git fundamentals sequence and move into **Branches**.
+
+
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        docs/lessons/phase-00-engineering-environment/00-git-fundamentals.md
+        docs/lessons/phase-00-engineering-environment/PHASE-00-ENGINEERING-ENVIRONMENT.md
+        exercises/phase-00-engineering-environment/
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\ejlqr\Desktop\engineering-apprenticeship> git log --oneline --decorate -3
+4b6a0fa (HEAD -> main, origin/main) docs: record environment inspection status
+417bc4b docs: record development environment
+598dcc5 initial repo structure
+PS C:\Users\ejlqr\Desktop\engineering-apprenticeship> 
+
+Perfect. ✅ **Synchronization successful.**
+
+Your final history is:
+
+```text
+4b6a0fa (HEAD -> main, origin/main) docs: record environment inspection status
+417bc4b docs: record development environment
+598dcc5 initial repo structure
+```
+
+The important part is:
+
+```text
+(HEAD -> main, origin/main)
+```
+
+Both local `main` and `origin/main` now point to the same commit.
+
+```text
+             LOCAL                  GITHUB
+               │                       │
+               ▼                       ▼
+             main ─────────────── origin/main
+               │                       │
+               └────── 4b6a0fa ───────┘
+```
+
+So you've now completed the complete lifecycle:
+
+```text
+Working Tree
+     │
+     │ git add
+     ▼
+Staging Area
+     │
+     │ git commit
+     ▼
+Local Git History
+     │
+     │ git push
+     ▼
+GitHub
+```
+
+## 🎓 Phase 00 Git Fundamentals checkpoint
+
+You've demonstrated:
+
+* ✅ Working tree
+* ✅ Staging area
+* ✅ Git history
+* ✅ Tracked vs untracked
+* ✅ Selective staging
+* ✅ `git diff`
+* ✅ `git diff --cached`
+* ✅ Staged + unstaged changes in the same file
+* ✅ `git restore`
+* ✅ `git commit`
+* ✅ `git log`
+* ✅ `git show`
+* ✅ Local vs remote branches
+* ✅ `git push`
+
+And you corrected several concepts through actual evidence rather than memorization.
+
+### One thing still pending
+
+Your repository still has these untracked items:
+
+```text
+docs/lessons/phase-00-engineering-environment/00-git-fundamentals.md
+docs/lessons/phase-00-engineering-environment/PHASE-00-ENGINEERING-ENVIRONMENT.md
+exercises/phase-00-engineering-environment/
+```
+
+**We won't automatically add them.**
+
+We'll inspect them when the apprenticeship reaches the appropriate exercise.
+
+---
+
+# Next: Branches 🌿
+
+Branches are the next major Git concept:
+
+```text
+main
+  │
+  ├── commit A
+  ├── commit B
+  │
+  └── commit C
+        │
+        └── feature branch
+```
+
+Before we create one, I want to make sure the fundamentals are solid.
+
+### Quick final test
+
+Suppose you have:
+
+```text
+HEAD → main → A
+```
+
+You create a new branch called `feature/login`:
+
+```bash
+git switch -c feature/login
+```
+
+**Question:**
+
+Does this:
+
+**A.** Copy all the files into a completely separate folder?
+
+**B.** Create another line/reference in Git history that initially points to the same commit?
+
+**C.** Create a new Git repository?
+
+Choose **A, B, or C**, and explain why in your own words.
+
+Correct. ✅ **B**
+
+And your explanation is heading in the right direction.
+
+A branch is **not another copy of your project folder** and **not another Git repository**.
+
+A useful mental model is:
+
+```text
+              A
+              │
+              ▼
+            main
+              │
+              ▼
+            B
+              │
+              ▼
+            C
+           / \
+          /   \
+       main   feature/login
+```
+
+More precisely, when you run:
+
+```bash
+git switch -c feature/login
+```
+
+Git creates the branch name `feature/login` pointing at your **current commit**.
+
+Initially:
+
+```text
+main ───────────► C
+feature/login ──► C
+```
+
+Both branch names point to the same commit.
+
+Then if you make a new commit while on `feature/login`:
+
+```text
+main ───────────► C
+                   \
+                    D ◄── feature/login
+```
+
+`main` stays at `C`, while `feature/login` moves to `D`.
+
+### Key idea
+
+> **A branch is essentially a movable name/reference pointing to a commit.**
+
+That's the concept we're going to build on.
+
+---
+
+# Exercise 00.5 — Create Your First Branch
+
+Before creating the branch, verify where you are:
+
+```bash
+git branch --show-current
+```
+
+You should get:
+
+```text
+main
+```
+
+Then run:
+
+```bash
+git switch -c exercise/branch-basics
+```
+
+Git should report something similar to:
+
+```text
+Switched to a new branch 'exercise/branch-basics'
+```
+
+Then run:
+
+```bash
+git branch -vv
+```
+
+and:
+
+```bash
+git log --oneline --decorate -3
+```
+
+**Don't make any commits yet.**
+
+Paste both outputs here. We'll inspect exactly what changed—and what **didn't** change—when you created the branch.

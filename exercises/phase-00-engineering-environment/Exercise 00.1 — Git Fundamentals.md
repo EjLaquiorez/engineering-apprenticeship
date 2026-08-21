@@ -231,3 +231,19 @@ Then show me the results.
 
 I will inspect them with you and we'll determine whether your environment is actually ready before moving to **Exercise 00.2 — Create a Git Repository**.
 ```
+
+
+Exactly. ✅ **This is definitive evidence that `4483d9f` is a merge commit.**
+
+Your output contains:
+
+```text
+parent 409445e...
+parent c8abb6f...
+```
+
+There are **two parent commits**.
+
+That is the key technical distinction.
+
+---

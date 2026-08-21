@@ -217,3 +217,393 @@ main
 The key question we'll answer next is:
 
 > **What happens to `main` when you make a change on `exercise/branch-basics`?**
+
+Good. ✅ You're exactly where we expected.
+
+Your `git status` shows:
+
+```text
+On branch exercise/branch-basics
+
+Changes not staged for commit:
+    modified: evidence/environment.md
+```
+
+And `git diff` produced no visible output in your message, so let's focus on the important state.
+
+## Current state
+
+You are on:
+
+```text
+exercise/branch-basics
+```
+
+and you have modified:
+
+```text
+evidence/environment.md
+```
+
+But the change is **not committed** and **not staged**.
+
+So:
+
+```text
+main ───────────────────► 4b6a0fa
+                           ▲
+                           │
+exercise/branch-basics ───┘
+                           │
+                           ▼
+                     Working Tree
+                     modified file
+```
+
+### Important point
+
+**The branch itself hasn't diverged yet.**
+
+Why?
+
+Because branches diverge through **commits**, not merely through editing files.
+
+Right now both branch names still point to:
+
+```text
+4b6a0fa
+```
+
+The working-tree modification isn't part of either branch's history yet.
+
+---
+
+## Let's commit the branch change
+
+Now stage it:
+
+```bash
+git add evidence/environment.md
+```
+
+Then inspect:
+
+```bash
+git diff --cached
+```
+
+You should see your new section:
+
+```text
++## Branch Exercise
++
++This change exists on the branch-basics branch.
+```
+
+If that looks correct, commit it:
+
+```bash
+git commit -m "docs: demonstrate branch-specific change"
+```
+
+Then run:
+
+```bash
+git log --oneline --decorate --graph --all -4
+```
+
+This is the important command.
+
+It should show something conceptually like:
+
+```text
+* abc1234 (HEAD -> exercise/branch-basics) docs: demonstrate branch-specific change
+* 4b6a0fa (origin/main, main) docs: record environment inspection status
+* 417bc4b docs: record development environment
+* 598dcc5 initial repo structure
+```
+
+Notice what will happen:
+
+```text
+main
+  │
+  ▼
+4b6a0fa
+  │
+  ▼
+history
+
+exercise/branch-basics
+  │
+  ▼
+abc1234
+```
+
+**That's actual branch divergence.**
+
+Do those three steps:
+
+```bash
+git add evidence/environment.md
+git diff --cached
+git commit -m "docs: demonstrate branch-specific change"
+```
+
+Then:
+
+```bash
+git log --oneline --decorate --graph --all -4
+```
+
+Paste the output.
+
+PS C:\Users\ejlqr\Desktop\engineering-apprenticeship> git commit -m "docs: demonstrate branch-specific change"
+[exercise/branch-basics 02ce2f4] docs: demonstrate branch-specific change
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+PS C:\Users\ejlqr\Desktop\engineering-apprenticeship> git log --oneline --decorate --graph --all -4
+* 02ce2f4 (HEAD -> exercise/branch-basics) docs: demonstrate branch-specific change
+* 4b6a0fa (origin/main, main) docs: record environment inspection status
+* 417bc4b docs: record development environment
+* 598dcc5 initial repo structure
+PS C:\Users\ejlqr\Desktop\engineering-apprenticeship> 
+
+
+Excellent. 🎯 **This is your first real branch divergence.**
+
+Your graph proves it:
+
+```text
+* 02ce2f4 (HEAD -> exercise/branch-basics) docs: demonstrate branch-specific change
+* 4b6a0fa (origin/main, main) docs: record environment inspection status
+* 417bc4b docs: record development environment
+* 598dcc5 initial repo structure
+```
+
+## Read the graph from bottom to top
+
+Before the branch:
+
+```text
+598dcc5
+   │
+417bc4b
+   │
+4b6a0fa
+```
+
+At `4b6a0fa`, both branches were pointing to the same commit:
+
+```text
+main ───────────────► 4b6a0fa
+exercise/branch-basics ─► 4b6a0fa
+```
+
+Then you committed on `exercise/branch-basics`.
+
+Now:
+
+```text
+main ───────────────► 4b6a0fa
+                         │
+                         ▼
+                      02ce2f4 ◄── exercise/branch-basics
+```
+
+So the branches have diverged.
+
+### Your `HEAD`
+
+```text
+HEAD -> exercise/branch-basics
+```
+
+means you're currently working on:
+
+```text
+exercise/branch-basics
+```
+
+and it points to:
+
+```text
+02ce2f4
+```
+
+### `main`
+
+```text
+main -> 4b6a0fa
+```
+
+It **doesn't contain** your new branch commit.
+
+That's the key property of branches.
+
+---
+
+# Important observation
+
+Your branch commit is currently **local only**:
+
+```text
+02ce2f4
+```
+
+GitHub doesn't have this branch yet.
+
+Your remote currently has:
+
+```text
+origin/main -> 4b6a0fa
+```
+
+This is perfectly normal.
+
+---
+
+# Checkpoint — explain the situation
+
+Answer these in your own words:
+
+**Q1.** Which branch contains commit `02ce2f4`?
+
+**Q2.** Does `main` contain `02ce2f4`?
+
+**Q3.** What commit does `main` currently point to?
+
+**Q4.** What commit does `exercise/branch-basics` currently point to?
+
+**Q5.** If you switch to `main`, will the branch-specific change appear in the file?
+
+Take your time here. This is the foundation for understanding **merging** next.
+
+1. exercise/branch-basics
+2. no
+3. main -> 4b6a0fa
+4. 02ce2f4  
+5. No
+
+Perfect. **5/5 correct.** 🎯
+
+You now understand branch divergence.
+
+Your repository currently looks like this:
+
+```text
+                  02ce2f4
+                     ▲
+                     │
+exercise/branch-basics
+                     │
+                     │
+4b6a0fa ◄────────────┘
+   ▲
+   │
+ main
+   │
+ origin/main
+```
+
+More simply:
+
+```text
+main ─────────────────► 4b6a0fa
+
+exercise/branch-basics ─► 02ce2f4
+```
+
+And because `02ce2f4` exists only on `exercise/branch-basics`, the branch-specific change is not present when looking at `main`.
+
+---
+
+# Exercise 00.6 — Switching branches
+
+Now we're going to **prove** your answer to Q5 instead of merely trusting it.
+
+Run:
+
+```bash
+git switch main
+```
+
+Then:
+
+```bash
+git status
+```
+
+Then inspect the file:
+
+```bash
+Get-Content evidence/environment.md
+```
+
+You should find that the branch-specific section:
+
+```text
+## Branch Exercise
+
+This change exists on the branch-basics branch.
+```
+
+is **not present**.
+
+Then run:
+
+```bash
+git log --oneline --decorate -3
+```
+
+We want to see:
+
+```text
+4b6a0fa (HEAD -> main, origin/main)
+417bc4b
+598dcc5
+```
+
+### Important observation
+
+When you switch from:
+
+```text
+exercise/branch-basics
+```
+
+to:
+
+```text
+main
+```
+
+Git changes the **working tree** to match the commit that `main` points to.
+
+So:
+
+```text
+exercise/branch-basics
+        │
+        ▼
+    02ce2f4
+        │
+        └── contains branch change
+
+
+main
+        │
+        ▼
+    4b6a0fa
+        │
+        └── does NOT contain branch change
+```
+
+Run those commands and paste the output of:
+
+```bash
+git status
+Get-Content evidence/environment.md
+git log --oneline --decorate -3
+```
+
+Then we'll switch back to the feature branch and introduce **merging**.

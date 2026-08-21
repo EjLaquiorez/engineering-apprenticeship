@@ -1019,3 +1019,104 @@ We're going to verify that:
 3. `598dcc5` is still the previous commit.
 
 Then we'll mark **Exercise 00.2 complete** and move into the next Git concept.
+
+
+PS C:\Users\ejlqr\Desktop\engineering-apprenticeship> git show --stat --oneline HEAD
+417bc4b (HEAD -> main) docs: record development environment
+ evidence/environment.md | 74 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 74 insertions(+)
+PS C:\Users\ejlqr\Desktop\engineering-apprenticeship> git log --oneline -3
+417bc4b (HEAD -> main) docs: record development environment
+598dcc5 (origin/main) initial repo structure
+PS C:\Users\ejlqr\Desktop\engineering-apprenticeship> 
+
+Perfect. ✅ **Exercise 00.2 is complete.**
+
+You verified the commit from Git's own history rather than trusting the commit command's output.
+
+### What we proved
+
+Your latest commit is:
+
+```text
+417bc4b docs: record development environment
+```
+
+And Git shows exactly one file:
+
+```text
+evidence/environment.md | 74 ...
+```
+
+So the commit contains **only `environment/environment.md`**—actually, precisely:
+
+```text
+evidence/environment.md
+```
+
+No other untracked files were accidentally committed.
+
+Your history is now:
+
+```text
+417bc4b  docs: record development environment   ← HEAD
+   │
+   ▼
+598dcc5  initial repo structure                 ← origin/main
+```
+
+And this is an especially important relationship:
+
+```text
+                    GitHub
+                  origin/main
+                      │
+                      ▼
+598dcc5 ──────────── 417bc4b
+                     ↑
+                  local main
+```
+
+Your local `main` is now **one commit ahead** of `origin/main`.
+
+---
+
+# One thing we have NOT done
+
+We haven't run:
+
+```bash
+git push
+```
+
+That's intentional.
+
+Right now:
+
+```text
+Local Git history    ✅ has 417bc4b
+GitHub               ❌ doesn't have 417bc4b yet
+```
+
+That gives us a perfect opportunity to learn the difference between:
+
+* `commit`
+* `push`
+
+before we actually publish anything.
+
+---
+
+# Exercise 00.3 — Commit vs Push
+
+Before touching the terminal, answer these in your own words:
+
+**Q1.** Where does `git commit` create the new commit?
+
+**Q2.** Where does `git push` send commits?
+
+**Q3.** Based on your current `git status`, is `417bc4b` already on GitHub?
+
+**Q4.** If you deleted the `.git` folder right now, would the committed history still exist in your local project folder?
+
+Take your time. These four questions are more important than memorizing the commands.
