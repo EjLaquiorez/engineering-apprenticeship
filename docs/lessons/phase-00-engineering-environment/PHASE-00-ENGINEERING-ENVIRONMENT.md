@@ -74,7 +74,7 @@ Git allows developers to:
 
 ## Core concepts
 
-We will learn:
+We learned:
 
 - Repository
 - Working tree
@@ -89,8 +89,6 @@ We will learn:
 - Merge conflict
 
 ## Core commands
-
-Initial command set:
 
 ```bash
 git status
@@ -107,13 +105,13 @@ git pull
 git clone
 ```
 
-Do not memorize these mechanically.
-
-For every command, be able to explain:
+For every command, the goal is to be able to explain:
 
 1. What state is the repository currently in?
 2. What does the command change?
 3. Why would an engineer use it?
+
+**Status: COMPLETE**
 
 ---
 
@@ -125,10 +123,9 @@ Git is the version-control system.
 
 GitHub is a platform that hosts Git repositories and provides collaboration features.
 
-We will practice:
+We practiced:
 
-- Creating repositories.
-- Connecting local repositories to GitHub.
+- Connecting a local repository to GitHub.
 - Pushing changes.
 - Pulling changes.
 - Working with branches.
@@ -136,15 +133,17 @@ We will practice:
 - Reviewing changes.
 - Resolving merge conflicts.
 
+**Status: COMPLETE**
+
 ---
 
-# 4. Terminal
+# 4. Terminal Fundamentals
 
 The terminal gives us direct control over the development environment.
 
-You should become comfortable with:
+We practiced:
 
-```bash
+```text
 pwd
 ls
 cd
@@ -152,30 +151,98 @@ mkdir
 touch
 ```
 
-On Windows, equivalent commands and PowerShell behavior may differ. We will learn what each command actually does instead of blindly copying commands.
+We also practiced PowerShell equivalents and operations including:
+
+```text
+Get-Location
+Get-ChildItem
+New-Item
+Set-Content
+Add-Content
+Get-Content
+Copy-Item
+Move-Item
+Remove-Item
+```
+
+We learned:
+
+- Basic navigation.
+- Relative and absolute paths.
+- Creating, reading, copying, moving, and deleting files.
+- File redirection.
+- PowerShell aliases.
+- Basic process inspection.
+- The difference between terminal commands and IDE operations.
 
 The goal is not to become a terminal expert.
 
 The goal is to avoid depending on the IDE for basic project operations.
 
+**Status: COMPLETE**
+
 ---
 
-# 5. Linux
+# 5. Linux Fundamentals
 
 Linux is part of the apprenticeship because backend applications commonly run in Linux-based environments.
 
-We will learn the fundamentals needed to:
+We learned the fundamentals needed to:
 
 - Navigate files.
 - Understand directories.
-- Run programs.
-- Work with permissions at a basic level.
-- Understand processes at a basic level.
-- Use a shell.
+- Understand absolute and relative paths.
+- Work with files and directories.
+- Read files.
+- Use wildcards and pattern matching.
+- Use pipes and redirection.
+- Search using `grep`.
+- Understand `find`.
+- Understand basic permissions.
+- Understand users and groups.
+- Understand processes.
+- Understand environment variables.
+- Understand `PATH`.
+- Understand shell basics.
+- Understand basic troubleshooting concepts.
 
-We do not need to master Linux in Phase 00.
+Our practice environment was Git Bash on Windows rather than a full Linux installation.
 
-We need enough understanding to operate in a development/server environment without being lost.
+Important commands practiced included:
+
+```bash
+pwd
+ls
+cd
+mkdir
+cp
+mv
+rm
+rmdir
+cat
+head
+tail
+less
+grep
+find
+wc
+```
+
+We also practiced:
+
+```bash
+cat application.log | grep "ERROR"
+grep -i "error" application.log
+grep -v "ERROR" application.log
+grep -c "ERROR" application.log
+tail -f application.log
+```
+
+The objective was not to master Linux.
+
+The objective was to become capable of operating in a Linux-like development/server environment without being lost.
+
+**Status: COMPLETE**
 
 ---
 
@@ -195,7 +262,7 @@ We will learn:
 - Maven lifecycle.
 - Running a Java project through Maven.
 
-Example commands we will eventually use:
+Example commands:
 
 ```bash
 mvn compile
@@ -210,6 +277,10 @@ The important question is not:
 It is:
 
 > "What is Maven doing to my project?"
+
+**Status: NOT STARTED**
+
+**Next topic.**
 
 ---
 
@@ -230,6 +301,8 @@ We will learn:
 We will not attempt to master both Maven and Gradle simultaneously.
 
 The objective is to understand the role of build automation and become operational with both.
+
+**Status: NOT STARTED**
 
 ---
 
@@ -254,6 +327,8 @@ You should understand what the IDE is doing when it:
 The goal is:
 
 > **Use the IDE because it makes you faster, not because you cannot work without it.**
+
+**Status: NOT STARTED**
 
 ---
 
@@ -287,6 +362,10 @@ Update local repository
 
 Later, we will introduce more sophisticated workflows when they become necessary.
 
+**Status: COMPLETE**
+
+The workflow has been practiced through the Git, GitHub, branching, pull request, and merge-conflict exercises.
+
 ---
 
 # 10. Phase 00 Progress Tracker
@@ -297,35 +376,67 @@ Update it as evidence is completed.
 
 ## Topics
 
-- [ ] Git fundamentals
-- [ ] Git repository lifecycle
-- [ ] Branches
-- [ ] Merging
-- [ ] Merge conflicts
-- [ ] GitHub
-- [ ] Pull requests
-- [ ] Terminal fundamentals
-- [ ] Linux fundamentals
+- [x] Git fundamentals
+- [x] Git repository lifecycle
+- [x] Branches
+- [x] Merging
+- [x] Merge conflicts
+- [x] GitHub
+- [x] Pull requests
+- [x] Terminal fundamentals
+- [x] Linux fundamentals
 - [ ] Maven
 - [ ] Gradle
-- [ ] IDE workflow
+- [ ] IDE workflow — VS Code
 
 ## Required Evidence
 
-- [ ] Create and manage a Git repository.
-- [ ] Create and switch branches.
-- [ ] Make meaningful commits.
-- [ ] Push a branch to GitHub.
-- [ ] Open a pull request.
-- [ ] Merge a pull request.
-- [ ] Intentionally create and resolve a merge conflict.
-- [ ] Demonstrate basic terminal navigation.
+- [x] Create and manage a Git repository.
+- [x] Create and switch branches.
+- [x] Make meaningful commits.
+- [x] Push a branch to GitHub.
+- [x] Open a pull request.
+- [x] Merge a pull request.
+- [x] Intentionally create and resolve a merge conflict.
+- [x] Demonstrate basic terminal navigation.
 - [ ] Build a Java project with Maven.
 - [ ] Build a Java project with Gradle.
 
+## Current Progress
+
+**Completed topics:** 9 / 12
+
+**Progress:** **75%**
+
+```text
+Git fundamentals          ████████████████████ 100%
+Git repository lifecycle  ████████████████████ 100%
+Branches                  ████████████████████ 100%
+Merging                   ████████████████████ 100%
+Merge conflicts           ████████████████████ 100%
+GitHub                    ████████████████████ 100%
+Pull requests             ████████████████████ 100%
+Terminal fundamentals     ████████████████████ 100%
+Linux fundamentals        ████████████████████ 100%
+
+Maven                     ░░░░░░░░░░░░░░░░░░░░ 0%
+Gradle                    ░░░░░░░░░░░░░░░░░░░░ 0%
+VS Code workflow          ░░░░░░░░░░░░░░░░░░░░ 0%
+
+Overall: 75%
+```
+
 ## Phase Completion
 
-**Status:** Not started
+**Status:** In progress
+
+**Next topic:** Maven
+
+**Remaining topics:**
+
+1. Maven
+2. Gradle
+3. IDE workflow — VS Code
 
 **Advancement rule:** Do not advance to Phase 01 until the required evidence has been demonstrated.
 
@@ -339,20 +450,31 @@ Use this format:
 
 ```text
 Topic:
+
 Date:
+
 What I built/did:
+
 Commands/tools used:
+
 What happened:
+
 What I expected:
+
 What actually happened:
+
 Bug/problem encountered:
+
 How I diagnosed it:
+
 How I fixed it:
+
 What I learned:
+
 Evidence:
 ```
 
-The important section is **what actually happened** and **how you diagnosed it**.
+The important sections are **what actually happened** and **how you diagnosed it**.
 
 That is where engineering skill develops.
 
@@ -366,19 +488,27 @@ At the beginning of every new topic or exercise, the mentor will show:
 PHASE 00 — ENGINEERING ENVIRONMENT
 
 Topics
+
 [Current topic]
+
 [Completed topics]
+
 [Remaining topics]
 
 Exercises
+
 [Current exercise]
+
 [Completed exercises]
+
 [Remaining exercises]
 
 Phase progress
+
 [progress]
 
 Current objective
+
 [what we are trying to prove]
 ```
 
@@ -390,3 +520,14 @@ We will treat progress as:
 
 > **demonstrated capability.**
 
+---
+
+# Current Position
+
+**Phase 00 — 75% complete**
+
+**Completed:** Git, GitHub, Pull Requests, Terminal Fundamentals, Linux Fundamentals, and the associated workflow/evidence.
+
+**Next:** Maven
+
+**Goal of the next topic:** Understand what Maven does to a Java project and demonstrate that capability by building and working with a Maven project.
