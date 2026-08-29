@@ -1,31 +1,50 @@
 # Phase 0: Engineering Environment
 
-**Duration:** 2–3 weeks  
-**Goal:** Work like a developer.  
-**Status:** 🔴 Not started
+**Duration:** 2–3 weeks
+
+**Goal:** Work like a developer.
+
+**Status:** 🟢 In Progress
 
 ---
 
 ## Topics
 
-- Git
-- GitHub
-- Linux
-- Terminal
-- Maven
-- Gradle
-- IDE setup
+* Git
+* GitHub
+* Linux
+* Terminal
+* Maven
+* Gradle
+* IDE setup
+
+---
+
+## Progress
+
+* [x] Git fundamentals
+* [x] Git repository lifecycle
+* [x] Branching
+* [x] Merging
+* [x] Merge conflicts
+* [x] GitHub
+* [x] Pull requests
+* [x] Terminal fundamentals
+* [x] Linux fundamentals
+* [x] Maven
+* [x] Gradle
+* [ ] IDE setup
 
 ---
 
 ## Deliverables
 
-- [ ] Branching workflow demonstrated
-- [ ] Pull request created and merged
-- [ ] Merge conflict resolved
-- [ ] Maven project built from terminal
-- [ ] Gradle project built from terminal
-- [ ] IDE configured with Git integration
+* [x] Branching workflow demonstrated
+* [x] Pull request created and merged
+* [x] Merge conflict resolved
+* [x] Maven project built from terminal
+* [x] Gradle project built from terminal
+* [ ] IDE configured with Git integration
 
 ---
 
@@ -33,12 +52,28 @@
 
 Log in [progress/evidence-log.md](../../progress/evidence-log.md):
 
-- Screenshot or link to a merged PR
-- Terminal output of successful Maven/Gradle build
-- Explanation of your branching workflow
+* [x] Screenshot or link to a merged PR
+* [x] Terminal output of successful Maven/Gradle build
+* [x] Explanation of your branching workflow
+* [ ] Evidence of IDE Git integration
 
 ---
 
 ## Projects
 
-No application projects in this phase. Deliverables live in [projects/phase-00-engineering-environment/](../../projects/phase-00-engineering-environment/).
+No application projects in this phase.
+
+Deliverables live in [projects/phase-00-engineering-environment/](../../projects/phase-00-engineering-environment/).
+
+---
+
+## Completion Criteria
+
+Phase 00 is complete when:
+
+* All required topics have been studied.
+* Branching, merging, and pull-request workflows have been demonstrated.
+* A merge conflict has been resolved.
+* Maven and Gradle projects can be built from the terminal.
+* The development environment and IDE are configured for normal Git-based development.
+* Required evidence has been recorded in the evidence log.
