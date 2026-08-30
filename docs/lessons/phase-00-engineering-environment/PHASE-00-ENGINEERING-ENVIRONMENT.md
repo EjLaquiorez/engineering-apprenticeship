@@ -8,16 +8,16 @@ This phase is the foundation of the apprenticeship. Before focusing on Java prog
 
 By the end of Phase 00, I should be able to:
 
-- Work comfortably with Git.
-- Work with GitHub.
-- Use the terminal to navigate and operate on a project.
-- Understand the role of Linux in software development.
-- Understand how Maven and Gradle manage Java projects.
-- Use an IDE effectively without depending on it for basic operations.
-- Create branches.
-- Make commits with meaningful history.
-- Open pull requests.
-- Resolve merge conflicts.
+* Work comfortably with Git.
+* Work with GitHub.
+* Use the terminal to navigate and operate on a project.
+* Understand the role of Linux in software development.
+* Understand how Maven and Gradle manage Java projects.
+* Use an IDE effectively without depending on it for basic operations.
+* Create branches.
+* Make commits with meaningful history.
+* Open pull requests.
+* Resolve merge conflicts.
 
 The apprenticeship requires evidence before advancing to the next phase. Evidence may include working code, tests, documentation, deployments, architecture diagrams, and debugging explanations. For Phase 00 specifically, the required deliverables include branching, pull requests, and merge-conflict resolution.
 
@@ -31,20 +31,34 @@ A typical workflow involves:
 
 ```text
 Computer
+
    ↓
+
 Terminal / Shell
+
    ↓
+
 Project files
+
    ↓
+
 Git
+
    ↓
+
 GitHub
+
    ↓
+
 Build tool
 (Maven / Gradle)
+
    ↓
+
 IDE
+
    ↓
+
 Application
 ```
 
@@ -64,44 +78,55 @@ Its job is to track changes to a project over time.
 
 Git allows developers to:
 
-- Record changes.
-- Inspect project history.
-- Create branches.
-- Experiment without immediately changing the main line of development.
-- Merge changes.
-- Recover previous versions.
-- Collaborate with other developers.
+* Record changes.
+* Inspect project history.
+* Create branches.
+* Experiment without immediately changing the main line of development.
+* Merge changes.
+* Recover previous versions.
+* Collaborate with other developers.
 
 ## Core concepts
 
 We learned:
 
-- Repository
-- Working tree
-- Staging area
-- Commit
-- Branch
-- Merge
-- Remote
-- `origin`
-- `HEAD`
-- Pull request
-- Merge conflict
+* Repository
+* Working tree
+* Staging area
+* Commit
+* Branch
+* Merge
+* Remote
+* `origin`
+* `HEAD`
+* Pull request
+* Merge conflict
 
 ## Core commands
 
 ```bash
 git status
+
 git init
+
 git add
+
 git commit
+
 git log
+
 git branch
+
 git switch
+
 git merge
+
 git remote
+
 git push
+
 git pull
+
 git clone
 ```
 
@@ -125,13 +150,13 @@ GitHub is a platform that hosts Git repositories and provides collaboration feat
 
 We practiced:
 
-- Connecting a local repository to GitHub.
-- Pushing changes.
-- Pulling changes.
-- Working with branches.
-- Opening pull requests.
-- Reviewing changes.
-- Resolving merge conflicts.
+* Connecting a local repository to GitHub.
+* Pushing changes.
+* Pulling changes.
+* Working with branches.
+* Opening pull requests.
+* Reviewing changes.
+* Resolving merge conflicts.
 
 **Status: COMPLETE**
 
@@ -145,9 +170,13 @@ We practiced:
 
 ```text
 pwd
+
 ls
+
 cd
+
 mkdir
+
 touch
 ```
 
@@ -155,25 +184,33 @@ We also practiced PowerShell equivalents and operations including:
 
 ```text
 Get-Location
+
 Get-ChildItem
+
 New-Item
+
 Set-Content
+
 Add-Content
+
 Get-Content
+
 Copy-Item
+
 Move-Item
+
 Remove-Item
 ```
 
 We learned:
 
-- Basic navigation.
-- Relative and absolute paths.
-- Creating, reading, copying, moving, and deleting files.
-- File redirection.
-- PowerShell aliases.
-- Basic process inspection.
-- The difference between terminal commands and IDE operations.
+* Basic navigation.
+* Relative and absolute paths.
+* Creating, reading, copying, moving, and deleting files.
+* File redirection.
+* PowerShell aliases.
+* Basic process inspection.
+* The difference between terminal commands and IDE operations.
 
 The goal is not to become a terminal expert.
 
@@ -189,22 +226,22 @@ Linux is part of the apprenticeship because backend applications commonly run in
 
 We learned the fundamentals needed to:
 
-- Navigate files.
-- Understand directories.
-- Understand absolute and relative paths.
-- Work with files and directories.
-- Read files.
-- Use wildcards and pattern matching.
-- Use pipes and redirection.
-- Search using `grep`.
-- Understand `find`.
-- Understand basic permissions.
-- Understand users and groups.
-- Understand processes.
-- Understand environment variables.
-- Understand `PATH`.
-- Understand shell basics.
-- Understand basic troubleshooting concepts.
+* Navigate files.
+* Understand directories.
+* Understand absolute and relative paths.
+* Work with files and directories.
+* Read files.
+* Use wildcards and pattern matching.
+* Use pipes and redirection.
+* Search using `grep`.
+* Understand `find`.
+* Understand basic permissions.
+* Understand users and groups.
+* Understand processes.
+* Understand environment variables.
+* Understand `PATH`.
+* Understand shell basics.
+* Understand basic troubleshooting concepts.
 
 Our practice environment was Git Bash on Windows rather than a full Linux installation.
 
@@ -212,19 +249,33 @@ Important commands practiced included:
 
 ```bash
 pwd
+
 ls
+
 cd
+
 mkdir
+
 cp
+
 mv
+
 rm
+
 rmdir
+
 cat
+
 head
+
 tail
+
 less
+
 grep
+
 find
+
 wc
 ```
 
@@ -232,9 +283,13 @@ We also practiced:
 
 ```bash
 cat application.log | grep "ERROR"
+
 grep -i "error" application.log
+
 grep -v "ERROR" application.log
+
 grep -c "ERROR" application.log
+
 tail -f application.log
 ```
 
@@ -250,23 +305,26 @@ The objective was to become capable of operating in a Linux-like development/ser
 
 Maven is a Java build and project-management tool.
 
-We will learn:
+We learned:
 
-- What a build tool does.
-- Project structure.
-- Dependencies.
-- `pom.xml`.
-- Compile.
-- Test.
-- Package.
-- Maven lifecycle.
-- Running a Java project through Maven.
+* What a build tool does.
+* Maven project structure.
+* Dependencies.
+* `pom.xml`.
+* Compile.
+* Test.
+* Package.
+* Maven lifecycle.
+* Running a Java project through Maven.
+* The purpose of Maven's configuration and dependency management.
 
 Example commands:
 
 ```bash
 mvn compile
+
 mvn test
+
 mvn package
 ```
 
@@ -278,9 +336,9 @@ It is:
 
 > "What is Maven doing to my project?"
 
-**Status: NOT STARTED**
+A Maven project was created and built from the terminal as part of the Phase 00 exercises.
 
-**Next topic.**
+**Status: COMPLETE**
 
 ---
 
@@ -288,75 +346,151 @@ It is:
 
 Gradle is another build automation tool used in Java projects.
 
-We will learn:
+We learned:
 
-- Why build tools exist.
-- How Gradle differs conceptually from Maven.
-- Project structure.
-- Dependencies.
-- Build tasks.
-- Testing.
-- Packaging.
+* Why build tools exist.
+* How Gradle differs conceptually from Maven.
+* Gradle project structure.
+* Dependencies.
+* Build tasks.
+* Testing.
+* Packaging.
+* The Gradle Wrapper.
+* `settings.gradle.kts`.
+* `build.gradle.kts`.
+* Version catalogs.
+* Running Gradle projects from the terminal.
+* Running Gradle tasks through VS Code.
 
-We will not attempt to master both Maven and Gradle simultaneously.
+Example commands:
 
-The objective is to understand the role of build automation and become operational with both.
+```bash
+gradle --version
 
-**Status: NOT STARTED**
+.\gradlew.bat :app:test
+
+.\gradlew.bat :app:run
+
+.\gradlew.bat build
+```
+
+We also learned the importance of the Gradle Wrapper:
+
+```text
+Project
+   ↓
+Gradle Wrapper
+   ↓
+Specified Gradle version
+   ↓
+Build
+```
+
+A Gradle project was created and successfully built from the terminal.
+
+**Status: COMPLETE**
 
 ---
 
 # 8. IDE — VS Code
 
-You currently use VS Code.
+We use VS Code as the development environment.
 
-That is acceptable for our starting environment.
+The IDE is used as a productivity tool while maintaining the ability to perform important operations through the terminal and Git.
 
-We will use the IDE as a productivity tool, but we will deliberately perform important operations through the terminal and Git.
+We learned how VS Code:
 
-You should understand what the IDE is doing when it:
+* Runs Java.
+* Builds projects.
+* Runs tests.
+* Detects dependencies.
+* Integrates with Git.
+* Provides a graphical Source Control interface.
+* Provides an integrated terminal.
+* Integrates with Maven.
+* Integrates with Gradle.
+* Displays project files and project structure.
+* Provides a development workflow without replacing the underlying tools.
 
-- Runs Java.
-- Builds a project.
-- Runs tests.
-- Detects dependencies.
-- Uses Git.
-- Opens files.
-- Reports errors.
+We practiced the relationship between:
+
+```text
+VS Code
+   ↓
+Java
+Git
+Maven
+Gradle
+Terminal
+```
+
+We also practiced the Git workflow through VS Code:
+
+```text
+Changes
+   ↓
+Stage
+   ↓
+Review
+   ↓
+Commit
+   ↓
+Push
+```
 
 The goal is:
 
 > **Use the IDE because it makes you faster, not because you cannot work without it.**
 
-**Status: NOT STARTED**
+**Status: COMPLETE**
 
 ---
 
 # 9. Professional Git Workflow
 
-Our basic workflow will become:
+Our basic workflow is:
 
 ```text
 Update local repository
+
         ↓
+
 Create a branch
+
         ↓
+
 Make a change
+
         ↓
+
 Inspect the change
+
         ↓
+
 Stage the change
+
         ↓
+
 Commit
+
         ↓
+
 Push branch
+
         ↓
+
 Open Pull Request
+
         ↓
+
 Review
+
         ↓
+
 Merge
+
         ↓
+
 Update local repository
 ```
 
@@ -376,69 +510,76 @@ Update it as evidence is completed.
 
 ## Topics
 
-- [x] Git fundamentals
-- [x] Git repository lifecycle
-- [x] Branches
-- [x] Merging
-- [x] Merge conflicts
-- [x] GitHub
-- [x] Pull requests
-- [x] Terminal fundamentals
-- [x] Linux fundamentals
-- [ ] Maven
-- [ ] Gradle
-- [ ] IDE workflow — VS Code
+* [x] Git fundamentals
+* [x] Git repository lifecycle
+* [x] Branches
+* [x] Merging
+* [x] Merge conflicts
+* [x] GitHub
+* [x] Pull requests
+* [x] Terminal fundamentals
+* [x] Linux fundamentals
+* [x] Maven
+* [x] Gradle
+* [x] IDE workflow — VS Code
 
 ## Required Evidence
 
-- [x] Create and manage a Git repository.
-- [x] Create and switch branches.
-- [x] Make meaningful commits.
-- [x] Push a branch to GitHub.
-- [x] Open a pull request.
-- [x] Merge a pull request.
-- [x] Intentionally create and resolve a merge conflict.
-- [x] Demonstrate basic terminal navigation.
-- [ ] Build a Java project with Maven.
-- [ ] Build a Java project with Gradle.
+* [x] Create and manage a Git repository.
+* [x] Create and switch branches.
+* [x] Make meaningful commits.
+* [x] Push a branch to GitHub.
+* [x] Open a pull request.
+* [x] Merge a pull request.
+* [x] Intentionally create and resolve a merge conflict.
+* [x] Demonstrate basic terminal navigation.
+* [x] Build a Java project with Maven.
+* [x] Build a Java project with Gradle.
+* [x] Configure and use VS Code with Git integration.
 
 ## Current Progress
 
-**Completed topics:** 9 / 12
+**Completed topics:** 12 / 12
 
-**Progress:** **75%**
+**Progress:** **100%**
 
 ```text
 Git fundamentals          ████████████████████ 100%
+
 Git repository lifecycle  ████████████████████ 100%
+
 Branches                  ████████████████████ 100%
+
 Merging                   ████████████████████ 100%
+
 Merge conflicts           ████████████████████ 100%
+
 GitHub                    ████████████████████ 100%
+
 Pull requests             ████████████████████ 100%
+
 Terminal fundamentals     ████████████████████ 100%
+
 Linux fundamentals        ████████████████████ 100%
 
-Maven                     ░░░░░░░░░░░░░░░░░░░░ 0%
-Gradle                    ░░░░░░░░░░░░░░░░░░░░ 0%
-VS Code workflow          ░░░░░░░░░░░░░░░░░░░░ 0%
+Maven                     ████████████████████ 100%
 
-Overall: 75%
+Gradle                    ████████████████████ 100%
+
+VS Code workflow          ████████████████████ 100%
+
+Overall: 100%
 ```
 
 ## Phase Completion
 
-**Status:** In progress
+**Status:** Ready for evidence review
 
-**Next topic:** Maven
+**Next step:** Record and verify all required evidence in the evidence log.
 
-**Remaining topics:**
+**Remaining topics:** None
 
-1. Maven
-2. Gradle
-3. IDE workflow — VS Code
-
-**Advancement rule:** Do not advance to Phase 01 until the required evidence has been demonstrated.
+**Advancement rule:** Do not advance to Phase 01 until the required evidence has been demonstrated and recorded.
 
 ---
 
@@ -524,10 +665,12 @@ We will treat progress as:
 
 # Current Position
 
-**Phase 00 — 75% complete**
+**Phase 00 — 100% topic completion**
 
-**Completed:** Git, GitHub, Pull Requests, Terminal Fundamentals, Linux Fundamentals, and the associated workflow/evidence.
+**Completed:** Git, GitHub, Pull Requests, Terminal Fundamentals, Linux Fundamentals, Maven, Gradle, IDE Setup, and the associated workflow exercises.
 
-**Next:** Maven
+**Remaining topics:** None.
 
-**Goal of the next topic:** Understand what Maven does to a Java project and demonstrate that capability by building and working with a Maven project.
+**Current task:** Ensure all required evidence is recorded in `progress/evidence-log.md`.
+
+**Advancement goal:** Once the evidence requirements are satisfied, Phase 00 can be formally completed and the apprenticeship can advance to **Phase 01**.
