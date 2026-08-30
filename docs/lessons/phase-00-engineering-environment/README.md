@@ -33,7 +33,7 @@
 * [x] Linux fundamentals
 * [x] Maven
 * [x] Gradle
-* [ ] IDE setup
+* [x] IDE setup
 
 ---
 
@@ -44,7 +44,7 @@
 * [x] Merge conflict resolved
 * [x] Maven project built from terminal
 * [x] Gradle project built from terminal
-* [ ] IDE configured with Git integration
+* [x] IDE configured with Git integration
 
 ---
 
