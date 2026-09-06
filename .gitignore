@@ -2,6 +2,7 @@
 target/
 build/
 out/
+.java-out/
 dist/
 *.class
 *.jar
