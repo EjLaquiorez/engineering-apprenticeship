@@ -16,4 +16,5 @@ public class Lesson25Exercise {
 		System.out.println(prices);
 		System.out.println(students);
 		System.out.println(loggedIn);
+    }
 }
