@@ -64,6 +64,20 @@ public class Calculator {
 
         System.out.println("Calculator closed.");
     }
+    static int addition (int a, int b){
+        return a + b;
+    }
 
+    static int subtraction (int a, int b){
+        return a - b;
+    }
+
+    static double division (int a, int b){
+        return (double) a / b;
+    }
+
+    static int multiplication (int a, int b){
+        return a * b;
+    }
 
 }
