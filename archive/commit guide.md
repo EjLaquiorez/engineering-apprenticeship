@@ -2,6 +2,48 @@
 
 Use these commands after completing each lesson and its matching exercise. Run the lesson command for the lesson documentation, then the exercise command for the Java exercise.
 
+## Project Commit Message Samples
+
+Use the project name as the scope and describe one focused change per commit.
+
+### Calculator
+
+```bash
+git commit -m "feat(calculator): add addition and subtraction operations"
+git commit -m "feat(calculator): add multiplication and division operations"
+git commit -m "test(calculator): cover arithmetic operations"
+git commit -m "fix(calculator): reject division by zero"
+git commit -m "docs(calculator): document command-line usage"
+```
+
+### Expense Tracker
+
+```bash
+git commit -m "feat(expense-tracker): add income and expense entries"
+git commit -m "feat(expense-tracker): categorize transactions"
+git commit -m "feat(expense-tracker): calculate balance summary"
+git commit -m "test(expense-tracker): cover transaction totals"
+git commit -m "fix(expense-tracker): validate transaction amounts"
+```
+
+### Student Management System
+
+```bash
+git commit -m "feat(student-management-system): add student records"
+git commit -m "feat(student-management-system): add student search"
+git commit -m "feat(student-management-system): add update and delete operations"
+git commit -m "test(student-management-system): cover student record CRUD"
+git commit -m "fix(student-management-system): prevent duplicate student IDs"
+```
+
+### General Project Examples
+
+```bash
+git commit -m "refactor(project-name): extract input validation methods"
+git commit -m "chore(project-name): add project build configuration"
+git commit -m "docs(project-name): update project requirements"
+```
+
 ## Format
 
 ```bash
