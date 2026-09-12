@@ -6,6 +6,21 @@ public class Calculator {
         displayOperation();
     }
 
+    static int getNumber(Scanner scanner, String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                String input = scanner.nextLine().trim();
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter valid whole numbers.");
+            }
+        }
+    }
+
+
+
+    }
     static void displayOperation() {
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
