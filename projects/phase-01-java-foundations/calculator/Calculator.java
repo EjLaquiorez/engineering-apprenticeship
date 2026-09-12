@@ -18,9 +18,6 @@ public class Calculator {
         }
     }
 
-
-
-    }
     static void displayOperation() {
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
@@ -54,16 +51,8 @@ public class Calculator {
                 int secondNumber;
 
                 // Get and validate numbers
-                try {
-                    System.out.print("Enter the first number: ");
-                    firstNumber = Integer.parseInt(scanner.nextLine().trim());
-
-                    System.out.print("Enter the second number: ");
-                    secondNumber = Integer.parseInt(scanner.nextLine().trim());
-                } catch (NumberFormatException e) {
-                    System.out.println("Please enter valid whole numbers.");
-                    continue;
-                }
+                firstNumber = getNumber(scanner, "Enter first number: ");
+                secondNumber = getNumber(scanner, "Enter second number: ");
 
                 // Perform operation after we know
                 // both numbers are valid.
