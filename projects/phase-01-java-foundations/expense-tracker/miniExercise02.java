@@ -19,5 +19,9 @@ public class miniExercise02 {
         System.out.println(descriptions[1] + " - " + amounts[1]);
         System.out.println(descriptions[2] + " - " + amounts[2]);
         System.out.println(descriptions[3] + " - " + amounts[3]);
+
+        for (int i = 0; i < descriptions.length; i++) {
+            System.out.println(descriptions[i] + " - " + amounts[i]);
+        }
     }
 }
