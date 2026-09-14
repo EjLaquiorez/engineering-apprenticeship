@@ -14,5 +14,9 @@ public class miniExercise03 {
                 amounts[i] = Double.parseDouble(scanner.nextLine());
             }
         }
+
+        for(int i = 0; i < descriptions.length; i++){
+            System.out.println(descriptions[i] + " - " + amounts[i]);
+        }
     }
 }
