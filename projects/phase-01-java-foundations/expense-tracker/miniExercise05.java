@@ -14,12 +14,14 @@ public class miniExercise05 {
                 System.out.println("1. Add Expense");
                 System.out.println("2. View Expense");
                 System.out.println("3. View Total");
+                System.out.println("4. Search Expense");
+                System.out.println("5. Exit");
 
                 System.out.print("Choose an option: ");
                 option = scanner.nextLine().trim();
 
                 // Validate option
-                if (!option.matches("[1-3]")) {
+                if (!option.matches("[1-5]")) {
                     System.out.println("Invalid operation.\n");
                     continue;
                 }
@@ -55,8 +57,31 @@ public class miniExercise05 {
                         }
                         System.out.println("Total Expenses: " + totalExpenses);
                         break;
+
+                    case "4":
+                        System.out.print("Enter a search term: ");
+                        String search = scanner.nextLine();
+                        boolean foundSearch = false;
+
+                        for (int i = 0; i < expenseCount; i++) {
+                            if(descriptions[i].contains(search)){
+                                System.out.println(descriptions[i] + " - " + amounts[i]);
+                                System.out.println("Found!");
+                                foundSearch = true;
+                            }
+                        }
+
+                        if (!foundSearch) {
+                            System.out.println("No matching expenses found.");
+                        }
+                        break;
+
+                    case "5":
+                        System.out.println("Exiting...");
+                        break;
+                    
                 }
-            } while (!option.equals("3"));
+            } while (!option.equals("5"));
         }
         System.out.println("Goodbye!");
     }
