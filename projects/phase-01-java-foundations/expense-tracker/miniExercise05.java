@@ -66,7 +66,6 @@ public class miniExercise05 {
                         for (int i = 0; i < expenseCount; i++) {
                             if(descriptions[i].contains(search)){
                                 System.out.println(descriptions[i] + " - " + amounts[i]);
-                                System.out.println("Found!");
                                 foundSearch = true;
                             }
                         }
