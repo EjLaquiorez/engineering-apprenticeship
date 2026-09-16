@@ -4,29 +4,42 @@ public class miniExercise {
         String[] descriptions = new String[3];
         double[] amounts = new double[3];
         int expenseCount = 0;
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.println("Enter description");
-        while (true) {
-            descriptions[0] = scanner.nextLine().trim();
-            if (!descriptions[0].isEmpty()) {
-                break;
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter description");
+            while (true) {
+                descriptions[expenseCount] = scanner.nextLine().trim();
+                if (!descriptions[expenseCount].isEmpty()) {
+                    break;
+                }
+                System.out.println("Description cannot be empty. Try again.");
             }
-            System.out.println("Description cannot be empty. Try again.");
-        }
-        try {
+
             while (true) {
                 try {
                     System.out.println("Enter amount");
-                    amounts[0] = Double.parseDouble(scanner.nextLine());
+                    String amountInput = scanner.nextLine().trim();
+                    if (amountInput.isEmpty()) {
+                        System.out.println("Amount cannot be empty. Try again.");
+                        continue;
+                    }
+                    double amount = Double.parseDouble(amountInput);
+                    if (!Double.isFinite(amount)) {
+                        throw new NumberFormatException();
+                    }
+                    if (amount <= 0) {
+                        System.out.println("Amount must be greater than 0. Try again.");
+                        continue;
+                    }
+                    amounts[expenseCount] = amount;
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid amount. Try again.");
                 }
             }
+
+            expenseCount++;
+            System.out.println("Amount accepted: " + amounts[expenseCount - 1]);
+            System.out.println(expenseCount);
         }
-        expenseCount++;
-        System.out.println("Amount accepted: " + amounts[0]);        
-        System.out.println(expenseCount);
     }
 }
