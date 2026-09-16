@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class miniExercise05 {
+public class ExpenseTrackerPractice {
     public static void main(String[] args) {
         String[] descriptions = new String[3];
         double[] amounts = new double[3];
@@ -36,24 +36,30 @@ public class miniExercise05 {
                         System.out.print("Enter description: ");
                         descriptions[expenseCount] = scanner.nextLine();
 
-                        System.out.print("Enter amount: ");
-                        amounts[expenseCount] = Double.parseDouble(scanner.nextLine());
+                        while (true) {
+                            System.out.print("Enter amount: ");
+                            try {
+                                amounts[expenseCount] = Double.parseDouble(scanner.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid amount. Try again.");
+                            }
+                        }
 
                         expenseCount++;
                         break;
 
                     case "2":
-                        for(int i = 0; i < expenseCount; i++){
+                        for (int i = 0; i < expenseCount; i++) {
                             System.out.println((i + 1) + ". " + descriptions[i] + " - " + amounts[i]);
                         }
-
 
                         break;
 
                     case "3":
                         double totalExpenses = 0;
-                        for(int i = 0; i < expenseCount; i++){
-                            totalExpenses+= amounts[i];
+                        for (int i = 0; i < expenseCount; i++) {
+                            totalExpenses += amounts[i];
                         }
                         System.out.println("Total Expenses: " + totalExpenses);
                         break;
@@ -64,7 +70,7 @@ public class miniExercise05 {
                         boolean foundSearch = false;
 
                         for (int i = 0; i < expenseCount; i++) {
-                            if(descriptions[i].contains(search)){
+                            if (descriptions[i].contains(search)) {
                                 System.out.println(descriptions[i] + " - " + amounts[i]);
                                 foundSearch = true;
                             }
@@ -78,7 +84,7 @@ public class miniExercise05 {
                     case "5":
                         System.out.println("Exiting...");
                         break;
-                    
+
                 }
             } while (!option.equals("5"));
         }
