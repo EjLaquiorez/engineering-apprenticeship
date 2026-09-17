@@ -77,43 +77,7 @@ public class ExpenseTrackerPractice {
 
                 switch (option) {
                     case "1":
-                        if (expenseCount == descriptions.length) {
-                            System.out.println("Expense list is full.\n");
-                            continue;
-                        }
-                        while (true) {
-                            System.out.print("Enter description: ");
-                            descriptions[expenseCount] = scanner.nextLine().trim();
-                            if (!descriptions[expenseCount].isEmpty()) {
-                                break;
-                            }
-                            System.out.println("Description cannot be empty. Try again.");
-                        }
-                        while (true) {
-                            try {
-                                System.out.print("Enter amount: ");
-                                String amountInput = scanner.nextLine().trim();
-                                if (amountInput.isEmpty()) {
-                                    System.out.println("Amount cannot be empty. Try again.");
-                                    continue;
-                                }
-
-                                double amount = Double.parseDouble(amountInput);
-                                if (!Double.isFinite(amount)) {
-                                    throw new NumberFormatException();
-                                }
-                                if (amount <= 0) {
-                                    System.out.println("Amount must be greater than zero. Try again.");
-                                    continue;
-                                }
-
-                                amounts[expenseCount] = amount;
-                                expenseCount++;
-                                break;
-                            } catch (NumberFormatException e) {
-                                System.out.println("Invalid amount. Try again.");
-                            }
-                        }
+                        expenseCount = addExpense(scanner, descriptions, amounts, expenseCount);
                         break;
 
 
