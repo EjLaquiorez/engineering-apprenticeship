@@ -79,6 +79,8 @@ public class StudentManagementSystem {
         }
 
         displayStudents(names, ages, grades, studentCount);
+        double averageGrade = calculateAverageGrade(grades, studentCount);
+        System.out.println("Average grade: " + averageGrade);
 
     }
 }
