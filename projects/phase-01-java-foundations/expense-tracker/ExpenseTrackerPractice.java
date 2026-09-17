@@ -51,6 +51,20 @@ public class ExpenseTrackerPractice {
             }
         }
     }
+
+    static void viewExpenses(String[] descriptions, double[] amounts, int expenseCount) {
+        for (int i = 0; i < expenseCount; i++) {
+            System.out.println((i + 1) + ". " + descriptions[i] + " - " + amounts[i]);
+            }
+    }
+
+    static double calculateTotal(double[] amounts, int expenseCount) {
+        double totalExpenses = 0;
+        for (int i = 0; i < expenseCount; i++) {
+        totalExpenses += amounts[i];
+        }
+        return totalExpenses;
+    }
     
     public static void main(String[] args) {
         String[] descriptions = new String[3];
@@ -80,21 +94,12 @@ public class ExpenseTrackerPractice {
                         expenseCount = addExpense(scanner, descriptions, amounts, expenseCount);
                         break;
 
-
-
                     case "2":
-                        for (int i = 0; i < expenseCount; i++) {
-                            System.out.println((i + 1) + ". " + descriptions[i] + " - " + amounts[i]);
-                        }
-
+                        viewExpenses(descriptions, amounts, expenseCount);
                         break;
 
                     case "3":
-                        double totalExpenses = 0;
-                        for (int i = 0; i < expenseCount; i++) {
-                            totalExpenses += amounts[i];
-                        }
-                        System.out.println("Total Expenses: " + totalExpenses);
+                        calculateTotal(amounts, expenseCount);
                         break;
 
                     case "4":
