@@ -57,30 +57,51 @@ public class StudentManagementSystem {
         return sum / studentCount;
     }
 
+    static void displayMenu() {
+        System.out.println("\n1. Add Student");
+        System.out.println("2. Display Students");
+        System.out.println("3. Search Student");
+        System.out.println("4. Calculate Average");
+        System.out.println("5. Exit");
+        System.out.println("Choose an option: ");
+    }
+
     public static void main(String[] args) {
 
         String[] names = new String[5];
         int[] ages = new int[5];
         double[] grades = new double[5];
 
-        int studentCount = 2;
-
-        names[0] = "John";
-        ages[0] = 20;
-        grades[0] = 85.0;
-
-        names[1] = "Maria";
-        ages[1] = 21;
-        grades[1] = 92.5;
+        int studentCount = 0;
 
         try (Scanner scanner = new Scanner(System.in)) {
+            int choice;
+            do {
+                displayMenu();
+                choice = Integer.parseInt(scanner.nextLine());
 
-            studentCount = addStudent(scanner, names, ages, grades, studentCount);
+                switch (choice) {
+                    case 1:
+                        studentCount = addStudent(scanner, names, ages, grades, studentCount);
+                        break;
+                    case 2:
+                        displayStudents(names, ages, grades, studentCount);
+                        break;
+                    case 3:
+                        searchStudent(scanner, names, ages, grades, studentCount);
+                        break;
+                    case 4:
+                        double averageGrade = calculateAverageGrade(grades, studentCount);
+                        System.out.println("Average grade: " + averageGrade);
+                        break;
+                    case 5:
+                        System.out.println("Exiting...");
+                        break;
+                    default:
+                        System.out.println("Invalid option.");
+                }
+            } while (choice != 5);
         }
-
-        displayStudents(names, ages, grades, studentCount);
-        double averageGrade = calculateAverageGrade(grades, studentCount);
-        System.out.println("Average grade: " + averageGrade);
 
     }
 }
