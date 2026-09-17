@@ -46,6 +46,17 @@ public class StudentManagementSystem {
 
     }
 
+    static double calculateAverageGrade(double[] grades, int studentCount){
+        if (studentCount == 0) {
+            return 0.0;
+        }
+        double sum = 0;
+        for(int i = 0; i < studentCount; i++){
+            sum+= grades[i];
+        }
+        return sum / studentCount;
+    }
+
     public static void main(String[] args) {
 
         String[] names = new String[5];
