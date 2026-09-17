@@ -18,6 +18,9 @@ public class ExpenseTrackerPractice {
                 System.out.println("5. Exit");
 
                 System.out.print("Choose an option: ");
+                if(!scanner.hasNextLine()){
+                    break;
+                }
                 option = scanner.nextLine().trim();
 
                 // Validate option
@@ -32,22 +35,42 @@ public class ExpenseTrackerPractice {
                             System.out.println("Expense list is full.\n");
                             continue;
                         }
-
-                        System.out.print("Enter description: ");
-                        descriptions[expenseCount] = scanner.nextLine();
-
                         while (true) {
-                            System.out.print("Enter amount: ");
+                            System.out.print("Enter description: ");
+                            descriptions[expenseCount] = scanner.nextLine().trim();
+                            if (!descriptions[expenseCount].isEmpty()) {
+                                break;
+                            }
+                            System.out.println("Description cannot be empty. Try again.");
+                        }
+                        while (true) {
                             try {
-                                amounts[expenseCount] = Double.parseDouble(scanner.nextLine());
+                                System.out.print("Enter amount: ");
+                                String amountInput = scanner.nextLine().trim();
+                                if (amountInput.isEmpty()) {
+                                    System.out.println("Amount cannot be empty. Try again.");
+                                    continue;
+                                }
+
+                                double amount = Double.parseDouble(amountInput);
+                                if (!Double.isFinite(amount)) {
+                                    throw new NumberFormatException();
+                                }
+                                if (amount <= 0) {
+                                    System.out.println("Amount must be greater than zero. Try again.");
+                                    continue;
+                                }
+
+                                amounts[expenseCount] = amount;
+                                expenseCount++;
                                 break;
                             } catch (NumberFormatException e) {
                                 System.out.println("Invalid amount. Try again.");
                             }
                         }
-
-                        expenseCount++;
                         break;
+
+
 
                     case "2":
                         for (int i = 0; i < expenseCount; i++) {
