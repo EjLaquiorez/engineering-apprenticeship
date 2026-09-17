@@ -55,15 +55,32 @@ public class ExpenseTrackerPractice {
     static void viewExpenses(String[] descriptions, double[] amounts, int expenseCount) {
         for (int i = 0; i < expenseCount; i++) {
             System.out.println((i + 1) + ". " + descriptions[i] + " - " + amounts[i]);
-            }
+        }
     }
 
     static double calculateTotal(double[] amounts, int expenseCount) {
         double totalExpenses = 0;
         for (int i = 0; i < expenseCount; i++) {
-        totalExpenses += amounts[i];
+            totalExpenses += amounts[i];
         }
         return totalExpenses;
+    }
+
+    static void searchExpenses(Scanner scanner, String[] descriptions, double[] amounts, int expenseCount){
+        System.out.print("Enter a search term: ");
+        String search = scanner.nextLine().trim();
+        boolean foundSearch = false;
+
+        for (int i = 0; i < expenseCount; i++) {
+            if (descriptions[i].contains(search)) {
+                System.out.println(descriptions[i] + " - " + amounts[i]);
+                foundSearch = true;
+            }
+        }
+
+        if (!foundSearch) {
+            System.out.println("No matching expenses found.");
+        }
     }
     
     public static void main(String[] args) {
@@ -99,24 +116,12 @@ public class ExpenseTrackerPractice {
                         break;
 
                     case "3":
-                        calculateTotal(amounts, expenseCount);
+                        double totalExpenses = calculateTotal(amounts, expenseCount);
+                        System.out.println("Total Expenses: " + totalExpenses);
                         break;
 
                     case "4":
-                        System.out.print("Enter a search term: ");
-                        String search = scanner.nextLine();
-                        boolean foundSearch = false;
-
-                        for (int i = 0; i < expenseCount; i++) {
-                            if (descriptions[i].contains(search)) {
-                                System.out.println(descriptions[i] + " - " + amounts[i]);
-                                foundSearch = true;
-                            }
-                        }
-
-                        if (!foundSearch) {
-                            System.out.println("No matching expenses found.");
-                        }
+                        searchExpenses(scanner, descriptions, amounts, expenseCount);
                         break;
 
                     case "5":
