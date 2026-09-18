@@ -28,6 +28,7 @@ public class StudentManagementSystem {
     static void searchStudent(Scanner scanner, String[] names, int[] ages, double[] grades, int studentCount) {
         System.out.println("Enter student name to search: ");
         String searchInput = scanner.nextLine();
+        boolean found = false;
 
         for (int i = 0; i < studentCount; i++) {
             if (searchInput.equalsIgnoreCase(names[i])) {
@@ -35,7 +36,12 @@ public class StudentManagementSystem {
                 System.out.println("Name: " + names[i]);
                 System.out.println("Age: " + ages[i]);
                 System.out.println("Grade: " + grades[i]);
+                found = true;
+
             }
+        }
+        if (!found) {
+            System.out.println("Student not found.");
         }
 
     }
