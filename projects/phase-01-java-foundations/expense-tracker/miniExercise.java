@@ -5,13 +5,15 @@ public class miniExercise {
         double[] amounts = new double[3];
         int expenseCount = 0;
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Enter description");
+            
             while (true) {
+                System.out.print("Enter description: ");
                 descriptions[expenseCount] = scanner.nextLine().trim();
                 if (!descriptions[expenseCount].isEmpty()) {
                     break;
                 }
                 System.out.println("Description cannot be empty. Try again.");
+                System.out.println("-------------------");
             }
 
             while (true) {
