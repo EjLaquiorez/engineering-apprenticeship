@@ -3,10 +3,18 @@ public class Lesson01Exercise {
 
         String[] names = new String[5];
         int[] ages = new int[5];
-		double[] grades = new double[5];
+        double[] grades = new double[5];
 
-		int studentCount = 0;
+        int studentCount = 2;
 
-		System.out.println("Student Management System");
+        names[0] = "John";
+        ages[0] = 20;
+        grades[0] = 85.0;
+
+        names[1] = "Maria";
+        ages[1] = 21;
+        grades[1] = 92.5;
+
+        System.out.println("Student Count: " + studentCount);
 	}
 }
