@@ -1,7 +1,8 @@
 import java.util.Scanner;
+
 public class ExpenseTrackerPractice {
 
-    static void displayMenu(){
+    static void displayMenu() {
         // Display menu
         System.out.println("=== Expense Tracker ===");
         System.out.println("1. Add Expense");
@@ -11,7 +12,7 @@ public class ExpenseTrackerPractice {
         System.out.println("5. Exit");
     }
 
-    static int addExpense(Scanner scanner, String[] descriptions, double[] amounts, int expenseCount){
+    static int addExpense(Scanner scanner, String[] descriptions, double[] amounts, int expenseCount) {
 
         if (expenseCount == descriptions.length) {
             System.out.println("Expense list is full.\n");
@@ -66,13 +67,13 @@ public class ExpenseTrackerPractice {
         return totalExpenses;
     }
 
-    static void searchExpenses(Scanner scanner, String[] descriptions, double[] amounts, int expenseCount){
+    static void searchExpenses(Scanner scanner, String[] descriptions, double[] amounts, int expenseCount) {
         System.out.print("Enter a search term: ");
         String search = scanner.nextLine().trim();
         boolean foundSearch = false;
 
         for (int i = 0; i < expenseCount; i++) {
-            if (descriptions[i].contains(search)) {
+            if (descriptions[i].toLowerCase().contains(search.toLowerCase())) {
                 System.out.println(descriptions[i] + " - " + amounts[i]);
                 foundSearch = true;
             }
@@ -82,7 +83,7 @@ public class ExpenseTrackerPractice {
             System.out.println("No matching expenses found.");
         }
     }
-    
+
     public static void main(String[] args) {
         String[] descriptions = new String[3];
         double[] amounts = new double[3];
@@ -95,7 +96,7 @@ public class ExpenseTrackerPractice {
                 displayMenu();
 
                 System.out.print("Choose an option: ");
-                if(!scanner.hasNextLine()){
+                if (!scanner.hasNextLine()){
                     break;
                 }
                 option = scanner.nextLine().trim();
@@ -131,7 +132,8 @@ public class ExpenseTrackerPractice {
                 }
             } while (!option.equals("5"));
         }
+        System.out.println();
         System.out.println("Goodbye!");
     }
-    
+
 }
