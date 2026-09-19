@@ -9,10 +9,32 @@ public class StudentManagementSystem {
         }
         System.out.println("Enter student name: ");
         names[studentCount] = scanner.nextLine();
-        System.out.println("Enter student age: ");
-        ages[studentCount] = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter student grade: ");
-        grades[studentCount] = Double.parseDouble(scanner.nextLine());
+
+        while (true) {
+            try {
+                System.out.println("Enter student age: ");
+                ages[studentCount] = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid age. Please enter a valid number.");
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.println("Enter student grade: ");
+                double grade = Double.parseDouble(scanner.nextLine());
+            
+                if (grade >= 0 && grade <= 100) {
+                    grades[studentCount] = grade;
+                    break;
+                }
+                System.out.println("Invalid grade. Please enter a grade between 0 and 100.");
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid grade. Please enter a valid number.");
+            }
+        }
+
         return studentCount + 1;
     }
 
@@ -46,13 +68,13 @@ public class StudentManagementSystem {
 
     }
 
-    static double calculateAverageGrade(double[] grades, int studentCount){
+    static double calculateAverageGrade(double[] grades, int studentCount) {
         if (studentCount == 0) {
             return 0.0;
         }
         double sum = 0;
-        for(int i = 0; i < studentCount; i++){
-            sum+= grades[i];
+        for (int i = 0; i < studentCount; i++) {
+            sum += grades[i];
         }
         return sum / studentCount;
     }
@@ -75,33 +97,37 @@ public class StudentManagementSystem {
         int studentCount = 0;
 
         try (Scanner scanner = new Scanner(System.in)) {
-            int choice;
+            int choice = 0;
             do {
                 displayMenu();
-                choice = Integer.parseInt(scanner.nextLine());
+                try {
+                    choice = Integer.parseInt(scanner.nextLine());
 
-                switch (choice) {
-                    case 1:
-                        studentCount = addStudent(scanner, names, ages, grades, studentCount);
-                        break;
-                    case 2:
-                        displayStudents(names, ages, grades, studentCount);
-                        break;
-                    case 3:
-                        searchStudent(scanner, names, ages, grades, studentCount);
-                        break;
-                    case 4:
-                        double averageGrade = calculateAverageGrade(grades, studentCount);
-                        System.out.println("Average grade: " + averageGrade);
-                        break;
-                    case 5:
-                        System.out.println("Exiting...");
-                        break;
-                    default:
-                        System.out.println("Invalid option.");
+                    switch (choice) {
+                        case 1:
+                            studentCount = addStudent(scanner, names, ages, grades, studentCount);
+                            break;
+                        case 2:
+                            displayStudents(names, ages, grades, studentCount);
+                            break;
+                        case 3:
+                            searchStudent(scanner, names, ages, grades, studentCount);
+                            break;
+                        case 4:
+                            double averageGrade = calculateAverageGrade(grades, studentCount);
+                            System.out.println("Average grade: " + averageGrade);
+                            break;
+                        case 5:
+                            System.out.println("Exiting...");
+                            break;
+                        default:
+                            System.out.println("Invalid option.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                    choice = 0;
                 }
             } while (choice != 5);
         }
-
     }
 }
