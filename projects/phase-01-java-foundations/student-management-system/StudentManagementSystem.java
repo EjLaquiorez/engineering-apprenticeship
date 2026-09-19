@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class StudentManagementSystem {
 
+    
+
     static int addStudent(Scanner scanner, String[] names, int[] ages,
             double[] grades, int studentCount) {
         if (studentCount >= names.length) {
@@ -13,8 +15,12 @@ public class StudentManagementSystem {
         while (true) {
             try {
                 System.out.println("Enter student age: ");
-                ages[studentCount] = Integer.parseInt(scanner.nextLine());
-                break;
+                int age = Integer.parseInt(scanner.nextLine());
+                if(age > 0 && age <= 120 ){
+                    ages[studentCount] = age;
+                    break;
+                }
+                System.out.println("Invalid age. Please enter an age between 1 and 120.");
             } catch (NumberFormatException e) {
                 System.out.println("Invalid age. Please enter a valid number.");
             }
@@ -88,6 +94,33 @@ public class StudentManagementSystem {
         System.out.println("Choose an option: ");
     }
 
+    static int handleChoice(int choice, Scanner scanner, String[] names, int[] ages,
+            double[] grades, int studentCount) {
+            
+            switch (choice) {
+                case 1:
+                    studentCount = addStudent(scanner, names, ages, grades, studentCount);
+                    break;
+                case 2:
+                    displayStudents(names, ages, grades, studentCount);
+                    break;
+                case 3:
+                    searchStudent(scanner, names, ages, grades, studentCount);
+                    break;
+                case 4:
+                    System.out.println("Average grade: "
+                            + calculateAverageGrade(grades, studentCount));
+                    break;
+                case 5:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        return studentCount;
+    }
+
     public static void main(String[] args) {
 
         String[] names = new String[5];
@@ -102,30 +135,9 @@ public class StudentManagementSystem {
                 displayMenu();
                 try {
                     choice = Integer.parseInt(scanner.nextLine());
-
-                    switch (choice) {
-                        case 1:
-                            studentCount = addStudent(scanner, names, ages, grades, studentCount);
-                            break;
-                        case 2:
-                            displayStudents(names, ages, grades, studentCount);
-                            break;
-                        case 3:
-                            searchStudent(scanner, names, ages, grades, studentCount);
-                            break;
-                        case 4:
-                            double averageGrade = calculateAverageGrade(grades, studentCount);
-                            System.out.println("Average grade: " + averageGrade);
-                            break;
-                        case 5:
-                            System.out.println("Exiting...");
-                            break;
-                        default:
-                            System.out.println("Invalid option.");
-                    }
+                    studentCount = handleChoice(choice, scanner, names, ages, grades, studentCount);
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input. Please enter a valid number.");
-                    choice = 0;
                 }
             } while (choice != 5);
         }
