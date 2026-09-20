@@ -18,6 +18,19 @@ public class Exercise03C {
         dog3.color = "White";
         dog3.breed = "Poodle";
 
+        System.out.println("Dog 1:");
+        System.out.println("Color: " + dog1.color);
+        System.out.println("Breed: " + dog1.breed);
+
+        System.out.println("Dog 2:");
+        System.out.println("Color: " + dog2.color);
+        System.out.println("Breed: " + dog2.breed);
+
+        System.out.println("Dog 3:");
+        System.out.println("Color: " + dog3.color);
+        System.out.println("Breed: " + dog3.breed);
+        
+        
         
     }
 }
