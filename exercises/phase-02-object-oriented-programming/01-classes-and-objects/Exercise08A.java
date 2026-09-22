@@ -12,12 +12,14 @@ public class Exercise08A{
             
         }
         Book(){
-            this("Unknown", 1);
+            this("Unknown", 0);
         }
 
         public static void main(String[] args) {
             Book book = new Book();
+            Book secondBook = new Book("Java Basics", 300);
             System.out.println(book.title + " " + book.pages);
+            System.out.println(secondBook.title + " " + secondBook.pages);
         }
     }
 }
