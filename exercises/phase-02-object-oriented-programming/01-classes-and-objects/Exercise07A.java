@@ -1,11 +1,11 @@
 public class Exercise07A {
     static class Book{
         String title;
-        String pages;
+        int pages;
 
         Book(){
             title = "Unknown";
-            pages = "1";
+            pages = 0;
         }
     }
 
