@@ -12,8 +12,8 @@ public class Exercise07A {
     public static void main(String[] args) {
         Book book = new Book();
 
-        System.out.println(book.title);
-        System.out.println(book.pages);
+        System.out.println("Title: " + book.title);
+        System.out.println("Pages: " + book.pages);
 
 
     }
