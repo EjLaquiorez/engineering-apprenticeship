@@ -4,6 +4,10 @@ public class ExerciseT1 {
 		int pageCount;
 		String author;
 
+		Book(String title, String author) {
+			this(title, 0, author);
+		}
+
 		Book(String title, int pageCount, String author) {
 			this.title = title;
 			this.pageCount = pageCount;
@@ -110,7 +114,7 @@ public class ExerciseT1 {
 
 	public static void main(String[] args) {
 		Book book1 = new Book("The Hobbit", 310, "J. R. R. Tolkien");
-		Book book2 = new Book("Java Basics", 220, "John Doe");
+		Book book2 = new Book("Java Basics", "John Doe");
 		Member member1 = new Member("M001", "Alex Smith", "1 Main Street", "alex@example.com", "555-0100");
 		Member member2 = new Member("M002", "Sam Lee", "2 Oak Road", "sam@example.com", "555-0200");
 		Library library = new Library("Central Library", 10, 10);
@@ -120,6 +124,15 @@ public class ExerciseT1 {
 		library.addBook(book2);
 		library.addMember(member1);
 		library.addMember(member2);
+
+		book1.displayBookInfo();
+		System.out.println("Is book1 a long book? " + book1.isLongBook());
+		book2.displayBookInfo();
+		System.out.println("Is book2 a long book? " + book2.isLongBook());
+
+		member1.displayMemberInfo();
+		member1.updatePhoneNumber("555-0199");
+		member1.displayMemberInfo();
 
 		library.displayLibraryInfo();
 		library.displayBooks();
