@@ -15,16 +15,32 @@ public class LibraryManagementSystem {
 
         //Create addBook,addMember,displayBooks,displayMembers,displayLibrary,welcomeMember
 
-        void addBook(){
+		// Instance method: add a book to this specific library instance.
+		void addBook(Book book) {
+			if (bookCount < books.length) {	
+				books[bookCount] = book;
+				bookCount++;
+			} else {
+				System.out.println("This library is full.");
+			}
+		}
 
-        }
-
-        void addMember(){
-
-        }
+		// Instance method: add a member to this specific library instance.
+		void addMember(Member member) {
+			if (memberCount < members.length) {
+				members[memberCount] = member;
+				memberCount++;
+			} else {
+				System.out.println("This library cannot accept more members.");
+			}
+		}
 
         void displayBooks(){
-
+    System.out.println("Books in " + name + ":");
+			for (int i = 0; i < booksCount; i++) {
+				System.out.print((i + 1) + ". ");
+				members[i].displayBookInfo();
+			}
         }
 
         void displayMembers(Member member){
