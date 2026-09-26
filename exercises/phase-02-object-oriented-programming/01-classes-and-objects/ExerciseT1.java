@@ -89,7 +89,8 @@ public class ExerciseT1 {
 		void displayBooks() {
 			System.out.println("Books in " + name + ":");
 			for (int i = 0; i < bookCount; i++) {
-				System.out.println((i + 1) + ". " + books[i].title + " by " + books[i].author);
+				System.out.print((i + 1) + ". ");
+				books[i].displayBookInfo();
 			}
 		}
 
@@ -97,7 +98,8 @@ public class ExerciseT1 {
 		void displayMembers() {
 			System.out.println("Members in " + name + ":");
 			for (int i = 0; i < memberCount; i++) {
-				System.out.println((i + 1) + ". " + members[i].name + " (" + members[i].memberId + ")");
+				System.out.print((i + 1) + ". ");
+				members[i].displayMemberInfo();
 			}
 		}
 
