@@ -67,7 +67,7 @@ public class ExerciseT1 {
 
 		// Instance method: add a book to this specific library instance.
 		void addBook(Book book) {
-			if (bookCount < books.length) {
+			if (bookCount < books.length) {	
 				books[bookCount] = book;
 				bookCount++;
 			} else {
@@ -107,7 +107,7 @@ public class ExerciseT1 {
 		void displayLibraryInfo() {
 			System.out.println("Library: " + name);
 		}
-
+ 
 		// Instance method: greets a specific member from this library instance.
 		void welcomeMember(Member member) {
 			System.out.println("Welcome to " + name + ", " + member.name + "!");
