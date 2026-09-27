@@ -125,5 +125,14 @@ public class LibraryManagementSystem {
 		library.addBook(book2);
 		library.addMember(member1);
 		library.addMember(member2);
+
+        book1.displayBookInfo();
+		System.out.println("Is book1 a long book? " + book1.isLongBook());
+		book2.displayBookInfo();
+		System.out.println("Is book2 a long book? " + book2.isLongBook());
+
+		member1.displayMemberInfo();
+		member1.updatePhoneNumber("555-0199");
+		member1.displayMemberInfo();
     }
 }
