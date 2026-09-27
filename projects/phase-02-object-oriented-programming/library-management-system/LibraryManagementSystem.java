@@ -92,9 +92,33 @@ public class LibraryManagementSystem {
         String email;
         int phoneNumber;
 
-    }
+    	Member(String memberId, String name, String address, String email, String phoneNumber) {
+			this.memberId = memberId;
+			this.name = name;
+			this.address = address;
+			this.email = email;
+			this.phoneNumber = phoneNumber;
+		}
+
+		// Instance method: uses this member's own contact information.
+		void displayMemberInfo() {
+			System.out.println("Member: " + memberId + " - " + name + " | " + email + " | " + phoneNumber);
+		}
+
+		// Instance method: updates the data for this one member object.
+		void updatePhoneNumber(String newPhoneNumber) {
+			this.phoneNumber = newPhoneNumber;
+		}
+	}
+
+    
 
     public static void main(String[] args) {
+		Book book1 = new Book("The Hobbit", 310, "J. R. R. Tolkien");
+		Book book2 = new Book("Java Basics", "John Doe");
+		Member member1 = new Member("M001", "Alex Smith", "1 Main Street", "alex@example.com", "555-0100");
+		Member member2 = new Member("M002", "Sam Lee", "2 Oak Road", "sam@example.com", "555-0200");
+		Library library = new Library("Central Library", 10, 10);
 
     }
 }
