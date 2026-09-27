@@ -120,5 +120,10 @@ public class LibraryManagementSystem {
 		Member member2 = new Member("M002", "Sam Lee", "2 Oak Road", "sam@example.com", "555-0200");
 		Library library = new Library("Central Library", 10, 10);
 
+        // These methods are instance methods because they act on the library instance's own state.
+		library.addBook(book1);
+		library.addBook(book2);
+		library.addMember(member1);
+		library.addMember(member2);
     }
 }
