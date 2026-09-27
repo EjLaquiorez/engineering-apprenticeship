@@ -74,6 +74,15 @@ public class LibraryManagementSystem {
             this.author = author;
         }
 
+        void displayBookInfo() {
+			System.out.println("Book: " + title + " by " + author + " (" + pageCount + " pages)");
+		}
+
+		// Instance method: checks the specific book instance's page count.
+		boolean isLongBook() {
+			return pageCount > 300;
+		}
+
     }
 
     static class Member {
