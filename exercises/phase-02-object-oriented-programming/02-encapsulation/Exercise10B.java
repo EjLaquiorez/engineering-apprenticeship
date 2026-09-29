@@ -1,4 +1,4 @@
-public class Exercise10A {
+public class Exercise10B {
 
     static class BankAccount {
         private double balance;
