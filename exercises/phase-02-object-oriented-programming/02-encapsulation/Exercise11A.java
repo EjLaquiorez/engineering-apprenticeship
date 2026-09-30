@@ -13,5 +13,11 @@ public class Exercise11A {
         TestClass test = new TestClass();
 
         // Test each field here
+        System.out.println(test.publicValue);
+        System.out.println(test.protectedValue);
+        System.out.println(test.packageValue);
+        // privateValue is accessible here because main is inside the enclosing class.
+        // "private" restricts access to this class, not to public methods only.
+        System.out.println(test.privateValue);
     }
 }
