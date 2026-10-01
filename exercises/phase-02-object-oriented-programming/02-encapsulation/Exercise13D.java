@@ -8,7 +8,7 @@ public class Exercise13D {
         }
 
         void setAge(int newAge) {
-            if (newAge > 0 && newAge < 120) {
+            if (newAge > 0 && newAge <= 120) {
                 age = newAge;
             }
         }
