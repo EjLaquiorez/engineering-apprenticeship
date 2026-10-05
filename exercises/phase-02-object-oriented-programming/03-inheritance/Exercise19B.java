@@ -54,7 +54,7 @@ public class Exercise19B{
         dog1.bark();
         dog1.eat();
         dog1.sleep();
-        dog1.eatDog();
+        dog1.eat();
         dog1.displayInfo();
     }
 }
