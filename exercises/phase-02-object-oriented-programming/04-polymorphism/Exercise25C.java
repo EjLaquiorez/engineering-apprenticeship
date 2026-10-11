@@ -22,8 +22,8 @@ public class Exercise25C {
     public static void main(String[] args) {
         Animal[] animals = {new Dog(), new Cat(), new Dog()};
 
-        for (int i = 0; i < animals.length; i++) {
-            animals[i].makeSound();
+        for (Animal animal : animals) {
+            animal.makeSound();
         }
     }
 }
