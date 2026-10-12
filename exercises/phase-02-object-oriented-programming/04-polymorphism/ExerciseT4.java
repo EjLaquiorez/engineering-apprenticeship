@@ -27,10 +27,10 @@ public class ExerciseT4 {
     }
 
     public static void main(String[] args) {
-        Notification notification = new EmailNotification();
-        notification.send();
+        Notification[] notifications = { new EmailNotification(), new PushNotification(), new SMSNotification()};
 
-        EmailNotification email = new EmailNotification();
-        email.send();
+        for(Notification notification : notifications) {
+            notification.send();
+        }
     }
 }
