@@ -6,15 +6,24 @@ public class ExerciseT4 {
     }
 
     static class EmailNotification extends Notification {
-
+        @Override
+        public void send() {
+            System.out.println("Sending an email.");
+        }
     }
 
     static class SMSNotification extends Notification {
-
+        @Override
+        public void send() {
+            System.out.println("Sending an SMS.");
+        }
     }
 
-    static class PushNotification extends Notificatxion {
-
+    static class PushNotification extends Notification {
+        @Override
+        public void send() {
+            System.out.println("Sending a push notification.");
+        }
     }
 
     public static void main(String[] args) {
