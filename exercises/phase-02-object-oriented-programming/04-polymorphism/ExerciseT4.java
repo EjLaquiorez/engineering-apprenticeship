@@ -1,6 +1,8 @@
 public class ExerciseT4 {
     static class Notification {
-
+        public void send() {
+            System.out.println("Sending notification.");
+        }
     }
 
     static class EmailNotification extends Notification {
@@ -11,11 +13,15 @@ public class ExerciseT4 {
 
     }
 
-    static class PushNotification extends Notification {
+    static class PushNotification extends Notificatxion {
 
     }
 
     public static void main(String[] args) {
-        System.out.println("ExerciseT4 is running.");
+        Notification notification = new EmailNotification();
+        notification.send();
+
+        EmailNotification email = new EmailNotification();
+        email.send();
     }
 }
