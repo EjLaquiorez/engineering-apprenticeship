@@ -1,11 +1,11 @@
 public class Exercise28A {
-    abstract class LibraryItem {
+    static abstract class LibraryItem {
         public void displayType() {
         System.out.println("Library item");
         }
     }
 
-    class Book extends LibraryItem {
+    static class Book extends LibraryItem {
 
     }
 
