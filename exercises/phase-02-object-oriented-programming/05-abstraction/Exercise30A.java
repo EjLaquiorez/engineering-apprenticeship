@@ -1,7 +1,7 @@
 public class Exercise30A {
     public static void main(String[] args) {
         Book book1 = new Book("Clean Code.");
-        Book book2 = new Magazine("National Geographic");
+        Magazine book2 = new Magazine("National Geographic");
 
         book1.displayTitle();
         book2.displayTitle();
@@ -15,7 +15,7 @@ public class Exercise30A {
         }
 
         public void displayTitle() {
-
+            System.out.println("Book Title: " + title);
         }
 
 
