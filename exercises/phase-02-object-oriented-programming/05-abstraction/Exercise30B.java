@@ -18,6 +18,8 @@ public class Exercise30B {
             System.out.println("Book Title: " + title);
         }
 
+        abstract double calculateLateFee(int overdueDays);
+
 
     }
 
@@ -26,12 +28,22 @@ public class Exercise30B {
         Book(String title) {
             super(title);
         }
+
+        @Override
+        public double calculateLateFee(int overdueDays) {
+            return overdueDays * 5.0;
+        }
     }
 
     static class Magazine extends  LibraryItem {
 
         Magazine(String title) {
             super(title);
+        }
+
+        @Override
+        public double calculateLateFee(int overdueDays) {
+            return overdueDays * 2.0;
         }
     }
 
