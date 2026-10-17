@@ -1,10 +1,16 @@
 public class Exercise30B {
     public static void main(String[] args) {
-        Book book1 = new Book("Clean Code.");
-        Magazine book2 = new Magazine("National Geographic");
+        LibraryItem book1 = new Book("Clean Code");
+        LibraryItem magazine1 = new Magazine("National Geographic");
+
+        double fee1 = book1.calculateLateFee(4);
+        System.out.printf("Book late fee: ₱%.2f%n", fee1);
+
+        double fee2 = magazine1.calculateLateFee(5);
+        System.out.printf("Magazine late fee: ₱%.2f%n", fee2);
 
         book1.displayTitle();
-        book2.displayTitle();
+        magazine1.displayTitle();
     }
 
     static abstract class LibraryItem {
@@ -15,11 +21,10 @@ public class Exercise30B {
         }
 
         public void displayTitle() {
-            System.out.println("Book Title: " + title);
+            System.out.println("Title: " + title);
         }
 
         abstract double calculateLateFee(int overdueDays);
-
 
     }
 
@@ -35,7 +40,7 @@ public class Exercise30B {
         }
     }
 
-    static class Magazine extends  LibraryItem {
+    static class Magazine extends LibraryItem {
 
         Magazine(String title) {
             super(title);
@@ -46,6 +51,5 @@ public class Exercise30B {
             return overdueDays * 2.0;
         }
     }
-
 
 }
