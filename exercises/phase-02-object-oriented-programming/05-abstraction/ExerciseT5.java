@@ -3,43 +3,39 @@ public class ExerciseT5 {
         abstract void processPayment();
 
         public void printReceipt() {
-
+            System.out.println("Printing receipt");
         }
     }
 
     static class CashPayment extends Payment {
         @Override
         public void processPayment() {
-
+            System.out.println("Processing cash payment");
         }
     }
 
     static class CardPayment extends Payment {
         @Override
         public void processPayment() {
-            
+            System.out.println("Processing card payment");
         }
     }
 
     static class OnlinePayment extends Payment {
         @Override
         public void processPayment() {
-            
+            System.out.println("Processing online payment");
         }
     }
 
     
 	public static void main(String[] args) {
-        Payment cash = new CashPayment();
-        Payment card = new CardPayment();
-        Payment online = new OnlinePayment();
-        
+        Payment[] payments = {new CashPayment(), new CardPayment(), new OnlinePayment()};
 
-        cash.processPayment();
-        cash.printReceipt();
-        card.processPayment();
-        card.printReceipt();
-        online.processPayment();
-        online.printReceipt();
+        for(Payment payment : payments) {
+            payment.printReceipt();
+            payment.processPayment();
+        }
+
 	}
 }
