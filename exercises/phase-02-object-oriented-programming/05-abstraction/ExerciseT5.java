@@ -33,8 +33,8 @@ public class ExerciseT5 {
         Payment[] payments = {new CashPayment(), new CardPayment(), new OnlinePayment()};
 
         for(Payment payment : payments) {
-            payment.printReceipt();
             payment.processPayment();
+            payment.printReceipt();
         }
 
 	}
