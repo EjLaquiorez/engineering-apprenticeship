@@ -5,7 +5,6 @@ public class Exercise32A {
     }
 
     static class Book implements Describable {
-        // TODO: Implement describe()
         @Override
         public void describe() {
             System.out.println("This is a book.");
@@ -13,7 +12,6 @@ public class Exercise32A {
     }
 
     static class Magazine implements Describable {
-        // TODO: Implement describe()
         @Override
         public void describe() {
             System.out.println("This is a magazine.");
