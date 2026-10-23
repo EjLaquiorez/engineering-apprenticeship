@@ -25,10 +25,10 @@ public class ExerciseT6 {
 
     public static void main(String[] args) {
         // TODO: Create one Report and one Invoice
-        Printable report = new Report();
-        Printable invoice = new Invoice();
+        Printable[] items = {new Report(), new Invoice()};
 
-        report.print();
-        invoice.print();
+        for(Printable item : items) {
+            item.print();
+        }
     }
 }
