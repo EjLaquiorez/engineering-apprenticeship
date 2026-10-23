@@ -23,9 +23,16 @@ public class ExerciseT6 {
         }
     }
 
+    static class Receipt implements Printable {
+        @Override 
+        public void print() {
+            System.out.println("Printing receipt.");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: Create one Report and one Invoice
-        Printable[] items = {new Report(), new Invoice()};
+        Printable[] items = {new Report(), new Invoice(), new Receipt()};
 
         for(Printable item : items) {
             item.print();
