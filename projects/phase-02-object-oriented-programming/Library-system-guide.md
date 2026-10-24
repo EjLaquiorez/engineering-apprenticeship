@@ -162,3 +162,44 @@ For example, if a book is due on October 20 but is still with a member on Octobe
 Your next design decision: Should both books and magazines be borrowable under the same 14-day period and ₱5 daily late-fee rule, or should magazines have different borrowing rules?
 
 I'd recommend using the same rules for both in the first version to keep the design manageable. We will remain in Exercise 01 until the requirements are settled and documented.
+
+Good. We'll apply the same borrowing rules to books and magazines in the initial version. That keeps the business rules consistent while still letting us practice inheritance and polymorphism later.
+
+## Exercise 01 — Part D: Item and borrowing rules
+
+The following decisions are now confirmed:
+
+| Rule                   | Decision                                                                               |
+| ---------------------- | -------------------------------------------------------------------------------------- |
+| Borrowable items       | Books and magazines                                                                    |
+| Loan period            | 14 calendar days                                                                       |
+| Late fee               | ₱5 per overdue calendar day                                                            |
+| Renewals               | Not allowed                                                                            |
+| Simultaneous borrowing | One active transaction per physical item                                               |
+| Re-borrowing           | Allowed after the item is returned                                                     |
+| Overdue items          | Remain borrowed until actually returned                                                |
+| Fee calculation        | Based on the transaction's due date and return date, or today's date if still borrowed |
+
+Important distinction: “Overdue” is not the same as “returned late.” An item can be overdue while still borrowed. Once returned, its transaction retains the dates needed to calculate the final late fee.
+
+## Part E — Define borrowing limits
+
+We have one rule about each item: it can have only one active borrowing transaction at a time. But we haven't decided how many different items one member can borrow simultaneously.
+
+Consider this example: a member borrows one book on Monday and wants to borrow two magazines on Tuesday. Should the system allow it?
+
+My recommendation is to allow members to borrow multiple items, with no maximum borrowing limit in the initial version. This avoids introducing extra rules before we need them.
+
+Which borrowing policy should we use?
+
+No maximum per member in the initial version (recommended)
+
+Maximum of 3 active items per member
+
+Maximum of 5 active items per member
+
+I'll define another limit
+
+Confirm borrowing limit
+
+After this, we'll review member registration and record management, item search and availability, overdue tracking, and what staff and members are allowed to view. Then we'll consolidate the decisions into the problem-definition document for your review and Git commit—without moving to Exercise 02 yet.
