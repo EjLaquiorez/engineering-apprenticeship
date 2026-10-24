@@ -602,3 +602,77 @@ Before we finalize this document, please check these three details in particular
 3. Storage limitation: All records are lost when the application closes; persistent storage is outside the initial scope.
 
 If the draft looks correct, tell me that you approve it, or point out anything you'd like to change. After approval, we'll inspect `commit-guide.md` for your exact commit conventions, then prepare the Exercise 01 Git commit. We will not begin Exercise 02 yet.
+
+Great. We'll treat the `problem-definition.md` draft as approved, with the agreed borrowing period, late-fee policy, item rules, record-preservation requirements, and technical constraints.
+
+Our next step is to finalize the deliverable in your repository and prepare its commit. I'll keep us on Stage 01 — Exercise 01; we won't begin Use Cases yet.
+
+## Finalization checklist
+
+- Define the problem and project objectives.
+- Identify staff and member responsibilities.
+- Agree on the 14-day borrowing period and ₱5 daily late fee.
+- Define availability, overdue status, and transaction history.
+- Agree on deactivation and retirement rules.
+- Confirm console interface, in-memory storage, and no login initially.
+- Review and approve the problem-definition draft.
+- Save the approved document in the repository.
+- Review the changes and commit them.
+- Verify Git status and commit history.
+
+## Git workflow — Save and commit Exercise 01
+
+From your repository root:
+
+`C:\Users\ejlqr\Desktop\engineering-apprenticeship`
+
+### 1. Create the file
+
+Create the directory and open the new Markdown file in Git Bash:
+
+```
+cd ~/Desktop/engineering-apprenticeship
+
+mkdir -p projects/phase-02-object-oriented-programming/library-management-system/docs/requirements
+
+code projects/phase-02-object-oriented-programming/library-management-system/docs/requirements/problem-definition.md
+```
+
+Paste the approved draft into the file and save it with `Ctrl + S`.
+
+### 2. Review your changes
+
+```
+git status
+git diff --check
+git diff -- projects/phase-02-object-oriented-programming/library-management-system/docs/requirements/problem-definition.md
+```
+
+Because this is a new, untracked file, `git diff` won't show its contents until you stage it. That's normal.
+
+### 3. Stage and commit
+
+Once you've reviewed the saved file, use this commit message, following your documentation commit convention:
+
+```
+git add projects/phase-02-object-oriented-programming/library-management-system/docs/requirements/problem-definition.md
+
+git diff --cached --check
+
+git diff --cached
+
+git commit -m "docs(02-library-management-system): add problem definition"
+```
+
+### 4. Verify the commit
+
+```
+git status
+git log -1 --oneline
+```
+
+Ideally, `git status` should show a clean working tree, and the latest commit should display your problem-definition commit.
+
+I haven't executed these commands or modified your local repository. Once you've completed the steps, share the terminal output if you'd like me to review it.
+
+Stage 01 progress: Exercise 01's requirements are approved. We'll mark it complete once the document is saved and the commit is verified. We will not start Exercise 02 until that is done.
