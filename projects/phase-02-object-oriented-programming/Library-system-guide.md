@@ -121,3 +121,44 @@ Yes, allow renewals
 Confirm borrowing rules
 
 We'll use your decisions to finalize the requirements, then review the complete `problem-definition.md` and its commit before beginning Exercise 02 — Use Cases.
+
+## Stage 01 — Exercise 01: Requirements review
+
+Your borrowing rules are now agreed upon. We'll keep the first version intentionally simple, so you can focus on applying the Phase 02 OOP concepts rather than managing complicated library policies.
+
+### Decisions confirmed so far
+
+Borrowing period
+
+14 calendar days per borrowing transaction.
+
+Renewals
+
+Not allowed in the initial version.
+
+Late fee
+
+₱5 per overdue calendar day, starting the day after the due date. No grace period or fee cap.
+
+Transaction history
+
+Preserve the member, item, borrowing date, due date, and actual return date. Returning an item must not erase its borrowing record.
+
+One detail we'll document explicitly: a borrowing transaction's due date is fixed when the item is borrowed. Because renewals are not allowed, the initial version won't change that date through a renewal operation.
+
+## Part C — Decide what can be borrowed
+
+Next, we need to define which library items members can borrow. This affects how we design `Book`, `Magazine`, and eventually the borrowing transaction.
+
+My recommendation for the initial version is:
+
+- Books and magazines can both be borrowed.
+- Each physical library item can have only one active borrowing transaction at a time.
+- An item can be borrowed again after it has been returned.
+- An overdue item remains borrowed until it is actually returned. Overdue is a condition of the borrowing transaction, not a separate physical-item status.
+
+For example, if a book is due on October 20 but is still with a member on October 23, the book is borrowed and overdue, not available. Its late fee is ₱15 as of October 23.
+
+Your next design decision: Should both books and magazines be borrowable under the same 14-day period and ₱5 daily late-fee rule, or should magazines have different borrowing rules?
+
+I'd recommend using the same rules for both in the first version to keep the design manageable. We will remain in Exercise 01 until the requirements are settled and documented.
