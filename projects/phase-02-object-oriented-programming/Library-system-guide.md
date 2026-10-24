@@ -203,3 +203,39 @@ I'll define another limit
 Confirm borrowing limit
 
 After this, we'll review member registration and record management, item search and availability, overdue tracking, and what staff and members are allowed to view. Then we'll consolidate the decisions into the problem-definition document for your review and Git commit—without moving to Exercise 02 yet.
+
+## Stage 01 — Exercise 01: Requirements review continues
+
+Confirmed. Members can borrow multiple items, with no maximum number of active borrowings per member in the initial version. Each individual physical item can still have only one active borrowing transaction at a time.
+
+Let's keep reviewing the requirements before drafting the final problem definition.
+
+### Part F — Registration and record management
+
+My recommendation is to keep registration and record management straightforward.
+
+- Members: Staff can register members and update their basic information.
+- Library items: Staff can add books and magazines and update their catalog information.
+- Unique identification: Each member and each physical library item needs a unique identifier so records cannot be confused when titles or names are similar.
+- Historical records: Staff can review past borrowing transactions, including returned items and their final late fees.
+- Current records: Staff can see which items are available, borrowed, or overdue, without confusing an item's current status with its borrowing history.
+
+A key design point: two physical copies of the same book title should be treated as two separately identifiable items if the library owns both. That lets the system track each copy's availability and borrowing history accurately.
+
+### Part G — What happens when a record is no longer active?
+
+We need one more rule to protect record accuracy.
+
+Suppose a member leaves the library, or a book is damaged and removed from circulation. If we permanently delete the record, we could lose information needed to understand historical borrowing transactions.
+
+I recommend the following approach:
+
+- Staff can mark a member as inactive instead of permanently deleting the member's record.
+- Staff can mark a library item as retired when it is no longer available for borrowing.
+- Inactive members cannot start new borrowing transactions.
+- Retired items cannot be borrowed again.
+- Existing and historical transactions remain available for review.
+
+This introduces a useful distinction between a record's existence and whether it can participate in new transactions.
+
+Your decision: Should we use this deactivate/retire approach to preserve historical records, rather than allowing staff to permanently delete members and items that have borrowing history?
