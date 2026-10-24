@@ -278,3 +278,65 @@ For due-date information, let's use these rules:
 - After the item is returned, show its return date and final late fee instead of treating it as a current borrowing.
 
 Design question: Do you agree with these visibility and due-date rules? If so, we'll review the remaining scope and constraints, then consolidate everything into the proposed `problem-definition.md` for your review. We will stay in Exercise 01 until you approve the document and its commit.
+
+Excellent. The visibility rules and due-date behavior are now confirmed for the initial version.
+
+## Exercise 01 — Part H decision
+
+Members can see their own borrowing information and late fees, while staff can review borrowing records across the library. Members cannot modify catalog records or transactions.
+
+Due-date information will be presented according to the transaction's current state:
+
+- Not yet due: Display calendar days remaining.
+- Due today: Display “Due today.”
+- Overdue: Display calendar days overdue and the current late fee.
+- Returned: Display the actual return date and final late fee.
+
+We'll calculate the number of days using calendar dates, not elapsed hours. This makes the policy consistent even if an item is borrowed or returned at different times of day.
+
+## Part I — Final scope and constraints
+
+Before I assemble the problem-definition document, let's settle the last few project boundaries.
+
+My recommendations for the initial version are:
+
+| Area             | Proposed scope                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------------- |
+| User interaction | Console-based Java application                                                                    |
+| Storage          | In-memory records while the application runs; no database or file persistence yet                 |
+| Authentication   | No login system in the initial version; staff and member actions will be separated conceptually   |
+| Search           | Search catalog items by title; display item type and availability                                 |
+| Item types       | Books and magazines                                                                               |
+| Borrowing        | Record borrowing and return dates; 14-calendar-day loan period; no renewals                       |
+| Late fees        | ₱5 per overdue calendar day, no grace period or cap                                               |
+| Exclusions       | Online reservations, payments, notifications, multiple library branches, and database integration |
+
+Using in-memory records means data will be lost when the application closes. That's acceptable for a first learning project, but we'll explicitly document it as a limitation rather than implying that records are permanently stored.
+
+### Confirm the final scope
+
+1\. Application interface
+
+Console-based Java application (recommended)
+
+Desktop graphical interface
+
+Web application
+
+2\. Data storage
+
+In-memory only; data resets when the application closes (recommended)
+
+Save records to files so they survive restarts
+
+Use a database
+
+3\. User authentication
+
+No login system yet; keep staff and member permissions distinct in the design (recommended)
+
+Implement login and separate access permissions
+
+Confirm scope and prepare draft
+
+Once you've confirmed these choices, I'll consolidate our agreed decisions into the complete `problem-definition.md` draft for your review. We'll check it against the requirements we've established, revise anything necessary, and then prepare the Git commit using your `commit-guide.md` conventions. We will not begin Exercise 02 until this deliverable is approved and committed.
