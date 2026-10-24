@@ -676,3 +676,75 @@ Ideally, `git status` should show a clean working tree, and the latest commit sh
 I haven't executed these commands or modified your local repository. Once you've completed the steps, share the terminal output if you'd like me to review it.
 
 Stage 01 progress: Exercise 01's requirements are approved. We'll mark it complete once the document is saved and the commit is verified. We will not start Exercise 02 until that is done.
+
+# Stage 01 — Requirements
+
+## Exercise 02: Use Cases
+
+We'll continue the Library Management System project using the requirements we already established in Exercise 01.
+
+Our goal: identify what each type of user needs to do with the system, without designing Java classes or writing code yet.
+
+### Roadmap preview
+
+Exercise 01 — Problem Definition
+
+Approved and pushed to `origin/main`
+
+Exercise 02 — Use Cases
+
+Current exercise: identify actors and their goals
+
+Next: Domain Modeling
+
+We'll move forward only after Exercise 02 is reviewed and completed.
+
+## Lesson 1: What is a use case?
+
+A use case describes a goal a user wants to accomplish by interacting with a system.
+
+For example:
+
+- Actor: Staff member
+- Goal: Register a new library member
+- Use case: Register Member
+
+An actor is a person or external role interacting with the system. A use case describes the goal, not the internal code that implements it.
+
+## Your first task: Identify the actors and use cases
+
+From our approved problem definition, we have two actors:
+
+- Staff — manages library records and borrowing transactions.
+- Member — searches the catalog and checks their own borrowing information.
+
+Here are two examples to help you distinguish goals from implementation details:
+
+| Actor  | Goal / use case               |
+| ------ | ----------------------------- |
+| Staff  | Register a new member         |
+| Member | View currently borrowed items |
+
+Notice that “create a `Member` object” is not a use case. That's an implementation detail we'll consider later when we design the Java classes.
+
+### Exercise 02A — Your turn
+
+Without worrying about perfect wording, identify three additional use cases for Staff and three for Members.
+
+Use this template in your reply:
+
+Staff
+
+1. ...
+2. ...
+3. ...
+
+Member
+
+1. ...
+2. ...
+3. ...
+
+Use only features included in Exercise 01. I'll review your six answers, explain any corrections, and help you build the complete use-case list before we create `docs/requirements/use-cases.md`.
+
+Remember: you're designing the system, not coding it yet.
