@@ -239,3 +239,42 @@ I recommend the following approach:
 This introduces a useful distinction between a record's existence and whether it can participate in new transactions.
 
 Your decision: Should we use this deactivate/retire approach to preserve historical records, rather than allowing staff to permanently delete members and items that have borrowing history?
+
+Confirmed. We'll use the deactivate/retire approach to protect historical borrowing records.
+
+## Exercise 01 — Part G decision
+
+- Members: Staff can mark a member inactive. Inactive members cannot borrow new items, but their records and borrowing history remain available.
+- Library items: Staff can retire an item. Retired items cannot be borrowed again, but their records and transaction history remain available.
+- Record integrity: Deactivating a member or retiring an item does not erase past borrowing transactions.
+
+One important boundary for the initial version: we should prevent a member from becoming inactive or an item from being retired while it still has an active borrowing transaction. Staff must resolve the outstanding borrowing first. This keeps the system's records consistent and avoids creating transactions that cannot be properly completed.
+
+## Part H — Search, visibility, and overdue information
+
+Let's establish what staff and members can see. My recommendation is to keep their permissions separate.
+
+### Library staff
+
+- Search the catalog by title and identify each item's type.
+- View current item availability and overdue borrowings.
+- Register and manage members and catalog items.
+- Record borrowing and return transactions.
+- Review transaction history and late fees.
+
+### Library members
+
+- Search by title and identify whether an item is a book or magazine.
+- Check whether an item is available.
+- View their own borrowed items, due dates, and days remaining.
+- View their own applicable late fees.
+- They cannot change catalog records or borrowing transactions.
+
+For due-date information, let's use these rules:
+
+- Before the due date, show how many calendar days remain.
+- On the due date, show that the item is due today.
+- After the due date, show how many days overdue it is.
+- After the item is returned, show its return date and final late fee instead of treating it as a current borrowing.
+
+Design question: Do you agree with these visibility and due-date rules? If so, we'll review the remaining scope and constraints, then consolidate everything into the proposed `problem-definition.md` for your review. We will stay in Exercise 01 until you approve the document and its commit.
