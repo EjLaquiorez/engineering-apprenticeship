@@ -75,3 +75,49 @@ One important design distinction: the late fee belongs to the borrowing transact
 Do you want to adopt the proposed ₱5 per calendar day, starting the day after the due date, with no grace period or cap, or would you prefer a different policy?
 
 Once we settle this rule, we'll review the remaining requirements together, finalize `problem-definition.md`, and prepare its Git commit using your existing `commit-guide.md` conventions. We won't move to Exercise 02 until Exercise 01 is reviewed and complete.
+
+Great. We'll adopt the simple fixed daily late-fee rule for the first version of the Library Management System.
+
+## Decision recorded — Late-fee policy
+
+Approved business rule
+
+# ₱5 per overdue calendar day
+
+- Start: The calendar day after the due date.
+- End: The actual return date for returned items; today for items still borrowed.
+- Grace period: None.
+- Fee cap: None.
+- Borrowing fee: None; only late fees apply.
+
+For example, an item due on October 20 and returned on October 23 incurs a ₱15 late fee. An item returned on its due date incurs ₱0.
+
+This gives us a simple rule to implement and test later. We'll also preserve the original due date and actual return date in each borrowing transaction so the historical fee can be reviewed.
+
+## Exercise 01 — Part C: Confirm the borrowing rules
+
+The late-fee rule is settled. Next, we need to decide how borrowing works so the problem definition describes a consistent system.
+
+Design question 2: How long should a member be allowed to borrow an item?
+
+I suggest 14 calendar days for the initial version. For example, an item borrowed on October 1 would be due on October 15.
+
+1\. Standard borrowing period
+
+7 calendar days
+
+14 calendar days (recommended for our first version)
+
+30 calendar days
+
+Another period — I'll specify it
+
+2\. Should members be allowed to renew borrowed items?
+
+No renewals for now — keep the rules simple
+
+Yes, allow renewals
+
+Confirm borrowing rules
+
+We'll use your decisions to finalize the requirements, then review the complete `problem-definition.md` and its commit before beginning Exercise 02 — Use Cases.
