@@ -747,4 +747,63 @@ Member
 
 Use only features included in Exercise 01. I'll review your six answers, explain any corrections, and help you build the complete use-case list before we create `docs/requirements/use-cases.md`.
 
-Remember: you're designing the system, not coding it yet.
+Remember: you're designing the system, not coding it yet.\
+
+Good start! You're thinking about what each user needs to accomplish. Let's review your answers as your mentor, then refine them using the requirements we approved in Exercise 01.
+
+## Exercise 02A — Review
+
+### Staff
+
+1\. Create new item in the library
+
+Correct. Let's make it more specific: Add Library Item. Staff can add books and magazines.
+
+2\. Manage items
+
+This is valid but too broad for a clear use-case list. Based on our requirements, it could mean:
+
+- Update item details
+- Search the catalog and check availability
+- Retire a library item
+
+3\. Manage schedules/fee
+
+We haven't defined a scheduling feature. Fees are in scope, though. Consider two separate goals:
+
+- Record a borrowing or return
+- Review overdue borrowings and late fees
+
+### Member
+
+1\. Borrow book
+
+Borrowing is a valid goal, but in our current design, staff record borrowing and returns. Members can search the catalog and view their borrowing information. We haven't given members permission to borrow items directly through the system.
+
+2\. Create user
+
+Member registration is a staff responsibility. Members cannot create their own accounts, and the initial system has no login or authentication.
+
+3\. Pay fees
+
+Payment processing is explicitly excluded from the initial project. Members can view their late fees, but they cannot pay through the system.
+
+## Lesson: A use case must match the system's scope
+
+The important distinction is between what a person might do in a real library and what this particular software will support.
+
+For example, a member may physically borrow a book from the library, but in our current requirements, the software records that transaction through the staff workflow. We should not add a member-facing borrowing feature unless we deliberately revise the requirements.
+
+## Exercise 02B — Refine your member use cases
+
+Let's practice making the member goals specific. Choose three use cases that belong to the Member actor and fit our approved requirements.
+
+Member use case 1Choose a use case
+
+Member use case 2Choose a use case
+
+Member use case 3Choose a use case
+
+Submit answers
+
+Choose the three that best match the approved requirements. After reviewing those, we'll do the same for Staff and build the use-case document together.
