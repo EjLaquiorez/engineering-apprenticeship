@@ -843,3 +843,41 @@ This is a valid member goal because members should be able to see:
 One important distinction: calculating and displaying a fee is not the same as processing a payment.
 
 Exercise 02B status: 2 of 3 confirmed. Once you confirm the replacement, we'll move on to the Staff use cases.
+
+Excellent! All three Member use cases are now correct and match our approved requirements.
+
+## Exercise 02B — Passed
+
+Member use cases · 3 of 3 confirmed
+
+UC-M01: Search Library Catalog
+
+Search by title and see item type and availability.
+
+UC-M02: View Currently Borrowed Items
+
+See the member's active borrowings and their details.
+
+UC-M03: Check Due Dates and Overdue Fees
+
+See days remaining, overdue days, and applicable late fees.
+
+## Exercise 02C — Staff use cases
+
+Now let's refine the Staff side. Staff have broader responsibilities because they manage library records and borrowing transactions.
+
+Select five use cases that fit our approved requirements.
+
+Staff use case 1Choose a use case
+
+Staff use case 2Choose a use case
+
+Staff use case 3Choose a use case
+
+Staff use case 4Choose a use case
+
+Staff use case 5Choose a use case
+
+Submit Staff use cases
+
+Mentor tip: Choose goals that the system supports, not features that sound useful but were excluded from the initial scope. I'll review your choices and explain any mistakes before we draft `use-cases.md`.
