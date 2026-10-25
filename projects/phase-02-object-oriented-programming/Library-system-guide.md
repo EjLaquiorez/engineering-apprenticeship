@@ -807,3 +807,39 @@ Member use case 3Choose a use case
 Submit answers
 
 Choose the three that best match the approved requirements. After reviewing those, we'll do the same for Staff and build the use-case document together.
+
+Good work on Exercise 02B! You correctly identified two member use cases. Let's review the third against our approved project scope.
+
+## Exercise 02B — Review
+
+1\. Search the library catalog
+
+Correct
+
+Members can search by title and see the item type and availability.
+
+2\. View currently borrowed items
+
+Correct
+
+Members can view their borrowed items and relevant due-date information.
+
+3\. Process a fee payment
+
+Out of scope
+
+Payment processing is excluded from the initial version. Members can view their late fees, but the system won't accept or process payments.
+
+### Your next step
+
+Replace use case 3 with Check due dates and overdue fees.
+
+This is a valid member goal because members should be able to see:
+
+- Days remaining until an item's due date.
+- Whether an item is overdue and how many days late it is.
+- The current late fee, or the final fee after the item is returned.
+
+One important distinction: calculating and displaying a fee is not the same as processing a payment.
+
+Exercise 02B status: 2 of 3 confirmed. Once you confirm the replacement, we'll move on to the Staff use cases.
