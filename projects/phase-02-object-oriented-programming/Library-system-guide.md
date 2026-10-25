@@ -881,3 +881,51 @@ Staff use case 5Choose a use case
 Submit Staff use cases
 
 Mentor tip: Choose goals that the system supports, not features that sound useful but were excluded from the initial scope. I'll review your choices and explain any mistakes before we draft `use-cases.md`.
+
+Good effort! You selected three valid Staff use cases, and two that we need to correct based on the approved requirements. Let's review them.
+
+## Exercise 02C — Staff use cases review
+
+1\. Add library items
+
+Correct
+
+Staff can add books and magazines to the catalog.
+
+2\. Update library item details
+
+Correct
+
+Staff can update existing item records.
+
+3\. Register and update members
+
+Correct
+
+Staff can register members and update their records.
+
+4\. Process online fee payments
+
+Out of scope
+
+Our initial system calculates and displays late fees, but payment processing is excluded.
+
+5\. Create member login accounts
+
+Out of scope
+
+Login and authentication are excluded from this version.
+
+You have 3 of 5 correct. The two incorrect choices are useful examples of why we must follow the requirements rather than add features just because a real library might use them.
+
+## Exercise 02C — Revision
+
+Replace use cases 4 and 5 with two supported Staff goals.
+
+Replacement for use case 4Retire library items
+
+Replacement for use case 5Mark members inactive
+
+Submit revisions
+
+After these are confirmed, we'll consolidate the complete use-case list, review any remaining Staff responsibilities, and prepare the requirements document together. We won't move to domain modeling until this exercise is complete.
