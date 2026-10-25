@@ -929,3 +929,56 @@ Replacement for use case 5Mark members inactive
 Submit revisions
 
 After these are confirmed, we'll consolidate the complete use-case list, review any remaining Staff responsibilities, and prepare the requirements document together. We won't move to domain modeling until this exercise is complete.
+
+Good revision! All five use cases are valid and within the approved project scope. ✅
+
+However, we still need to account for two important Staff responsibilities: recording borrowing and returns, and reviewing overdue borrowings and late fees. We'll include those in the full list rather than leave them out.
+
+## Exercise 02C — Passed
+
+## Staff use cases confirmed
+
+Add library items
+
+Update library item details
+
+Register and update members
+
+Retire library items
+
+Mark members inactive
+
+## Exercise 02D — Consolidate the use-case list
+
+Before creating `docs/requirements/use-cases.md`, let's make sure our list covers the entire system.
+
+Here is the proposed consolidated list based on Exercise 01 and your approved answers.
+
+### Staff
+
+| ID     | Use case                                |
+| ------ | --------------------------------------- |
+| UC-S01 | Add library items                       |
+| UC-S02 | Update library item details             |
+| UC-S03 | Register and update members             |
+| UC-S04 | Retire library items                    |
+| UC-S05 | Mark members inactive                   |
+| UC-S06 | Record borrowing and returns            |
+| UC-S07 | Review overdue borrowings and late fees |
+| UC-S08 | Search catalog and check availability   |
+
+### Member
+
+| ID     | Use case                         |
+| ------ | -------------------------------- |
+| UC-M01 | Search library catalog           |
+| UC-M02 | View currently borrowed items    |
+| UC-M03 | Check due dates and overdue fees |
+
+### Your design-review task
+
+One important detail: our requirements say that staff cannot mark a member inactive or retire an item while it has an active borrowing transaction. The transaction must be resolved first.
+
+Do you agree that this consolidated list covers the main goals for both actors, or do you think any use case is missing or needs changing?
+
+Once you confirm, we'll draft the use-case document and review it before you commit it to Git.
