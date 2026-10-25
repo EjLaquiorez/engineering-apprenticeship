@@ -982,3 +982,49 @@ One important detail: our requirements say that staff cannot mark a member inact
 Do you agree that this consolidated list covers the main goals for both actors, or do you think any use case is missing or needs changing?
 
 Once you confirm, we'll draft the use-case document and review it before you commit it to Git.
+
+My recommendation is: let members borrow books and magazines in real life, but have staff record and manage the borrowing transactions in the initial version of our software. We can add member-initiated borrowing later if the project needs it.
+
+Here's why I recommend that approach for your Java apprenticeship project.
+
+## Option comparison
+
+### Option A — Staff-managed borrowing
+
+Recommended
+
+Staff records when a member borrows or returns an item. Members search the catalog and view their own borrowing information.
+
+Advantages: simpler initial scope, clear responsibilities, and a good way to practice encapsulation, interfaces, polymorphism, and class relationships.
+
+### Option B — Members initiate borrowing in the software
+
+Members can request or complete a borrowing action through the system themselves.
+
+Trade-offs: we'd need to define member identification, borrowing eligibility, item availability checks, and how to prevent two members from borrowing the same physical copy. Login and authentication are currently excluded, so we'd need another carefully defined way to identify members—or revise the scope.
+
+## Recommended design for version 1
+
+Let's distinguish the real-world activity from the software use case:
+
+- Member: borrows and returns physical library items through the library's normal process; can search the catalog and view their own borrowing records and fees in the software.
+- Staff: records borrowing and returns, manages member and item records, and reviews overdue transactions and fees.
+- System: tracks item availability, calculates due dates and late fees, and preserves transaction history.
+
+This keeps the first version achievable without preventing us from extending it later.
+
+## How this affects our use-case list
+
+For the current version, keep these use cases:
+
+| Actor  | Use case                                |
+| ------ | --------------------------------------- |
+| Staff  | Record borrowing and returns            |
+| Staff  | Review overdue borrowings and late fees |
+| Member | Search the library catalog              |
+| Member | View currently borrowed items           |
+| Member | Check due dates and overdue fees        |
+
+We should not add “Borrow Item” as a member software use case yet, because it would contradict our current scope.
+
+One question before we finalize Exercise 02: Are you happy to keep staff-managed borrowing for version 1, with the possibility of adding member-initiated borrowing in a future version?
