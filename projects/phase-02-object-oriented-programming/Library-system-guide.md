@@ -1106,3 +1106,69 @@ Please check these three points:
 3. Data retention: Records are held in memory and lost when the application closes.
 
 If these are accurate, reply “Approve Step 1”. Then we'll add the remaining sections for use-case constraints, shared business rules, and future enhancements before you commit the complete document.
+
+Step 1 approved! ✅ The purpose, scope, actors, and 11 use cases are accepted as our baseline.
+
+## Exercise 02E — Step 2: Constraints and business rules
+
+Next, we'll document the rules that apply across those use cases. These rules matter because they will guide our later domain model and Java class design.
+
+Append the following section to the bottom of `use-cases.md`, after the use-case tables.
+
+## 5. Use-Case Constraints and Business Rules
+
+### 5.1 Library Item Rules
+
+- Each physical library item must have a unique identifier.
+- Books and magazines follow the same borrowing rules.
+- An item can have only one active borrowing transaction at a time.
+- An item is unavailable while it has an active borrowing transaction, including when that transaction is overdue.
+- A retired item cannot be borrowed.
+- Staff must resolve any active borrowing transaction before retiring its item.
+- Retiring an item preserves its historical records; it does not erase transaction history.
+
+### 5.2 Member Rules
+
+- Each member must have a unique identifier.
+- An inactive member cannot borrow items.
+- Staff must resolve a member's active borrowing transactions before marking that member inactive.
+- Member records and historical transactions must be preserved when a member becomes inactive.
+
+### 5.3 Borrowing and Return Rules
+
+- Staff record borrowing and return transactions.
+- The standard borrowing period is 14 calendar days from the borrowing date.
+- The due date is the borrowing date plus 14 calendar days.
+- Renewals are not supported in Version 1.
+- Members may borrow multiple items; no maximum borrowing limit is enforced in Version 1.
+- A returned item may be borrowed again if it has not been retired.
+- Each transaction must retain its member, item, borrowing date, due date, and actual return date when returned.
+
+### 5.4 Due Dates and Late Fees
+
+- The late fee is ₱5 per overdue calendar day, per item.
+- There is no grace period and no fee cap.
+- An item becomes overdue on the day after its due date.
+- Before the due date, the system shows the number of days remaining.
+- On the due date, the system shows "Due today."
+- After the due date, the system shows the number of overdue days and the current late fee.
+- For a returned item, the final late fee is calculated through the actual return date.
+- For an item that has not been returned, the current late fee is calculated through the current calendar date.
+- The system calculates and displays late fees but does not process payments.
+
+### 5.5 Record Integrity
+
+- Historical borrowing and return transactions must be preserved.
+- Retiring an item or marking a member inactive must not delete their historical transactions.
+- Item status and transaction status are distinct: an item can be currently borrowed even when its transaction is overdue.
+- Version 1 stores records in memory only. All records are lost when the application closes.
+
+### Your review task
+
+Before approving Step 2, consider this rule:
+
+A member has an item due on October 20 and returns it on October 23. The system charges for October 21, 22, and 23: 3 overdue days × ₱5 = ₱15.
+
+Does the rule set correctly represent the behavior we agreed on, including charging through the actual return date and preserving transaction history?
+
+Reply “Approve Step 2” if everything is correct, or point out any rule you'd like to revise. We won't move to the final section until you've reviewed it.
