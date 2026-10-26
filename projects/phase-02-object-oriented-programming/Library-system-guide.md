@@ -1216,3 +1216,71 @@ Please confirm these three things:
 3. No additional use cases or business rules need to be added.
 
 Reply “Approve Step 3” if you're satisfied. After that, we'll consolidate the sections into one complete document, save it, review the Git diff, and commit it before advancing to Stage 02 — Domain Modeling.
+
+Step 3 approved! ✅ That completes the content review for Exercise 02 — Use Cases.
+
+Before moving on, we need to consolidate the three approved sections into one complete file and commit it to Git, just as we did for Exercise 01.
+
+## Step 4 — Consolidate and save `use-cases.md`
+
+Your destination file is:
+
+`projects/phase-02-object-oriented-programming/library-management-system/docs/requirements/use-cases.md`
+
+Make sure the file contains all three approved sections:
+
+- Step 1: Purpose, scope, actors, and 11 use cases.
+- Step 2: Constraints, business rules, and record integrity.
+- Step 3: Future enhancements and completion criteria.
+
+You can keep the three sections in the same Markdown file, in that order. Don't create separate files for each step.
+
+## Step 5 — Review and commit
+
+From Git Bash, run these commands from your repository root:
+
+```
+cd ~/Desktop/engineering-apprenticeship
+
+git status
+git diff --check
+```
+
+If the file is new and untracked, stage it before reviewing the complete diff:
+
+```
+git add projects/phase-02-object-oriented-programming/library-management-system/docs/requirements/use-cases.md
+
+git diff --cached --check
+git diff --cached
+```
+
+Read the staged diff and confirm that all approved sections are present. Then commit:
+
+```
+git commit -m "docs(02-library-management-system): define use cases"
+git push origin main
+```
+
+Finally, verify:
+
+```
+git status
+git log -1 --oneline
+```
+
+## Current project progress
+
+Exercise 01 — Problem Definition
+
+Approved and pushed · Commit `a1161a7`
+
+Exercise 02 — Use Cases
+
+Content approved · Save and Git verification pending
+
+Stage 02 — Domain Modeling
+
+Not started; we'll begin after Exercise 02 is committed and verified.
+
+Your next action: save the complete file, then share the output of `git status` and `git log -1 --oneline`. I'll verify the result before we proceed.
