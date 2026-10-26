@@ -1284,3 +1284,43 @@ Stage 02 — Domain Modeling
 Not started; we'll begin after Exercise 02 is committed and verified.
 
 Your next action: save the complete file, then share the output of `git status` and `git log -1 --oneline`. I'll verify the result before we proceed.
+
+Excellent! ✅ Your latest commit confirms that Exercise 02 has been committed and pushed to `origin/main`.
+
+## Exercise 02 — Use Cases
+
+Commit and push verified
+
+Commit: `be5de5e`
+
+`docs(02-library-management-system): define use cases`
+
+Completed
+
+- Purpose, scope, and actors documented.
+- All 11 use cases defined.
+- Business rules and constraints documented.
+- Future enhancements identified.
+- Commit exists on both `main` and `origin/main`.
+
+One detail: your output verifies the commit and remote tracking, but doesn't confirm whether your working tree is clean. You can check that with `git status` when convenient.
+
+## Project roadmap progress
+
+Stage 01 — Requirements
+
+Exercises 01 and 02 completed
+
+### 2/2
+
+Stage 02 — Domain Modeling
+
+Next: identify the important domain concepts and their relationships.
+
+## Next: Stage 02 — Domain Modeling
+
+We'll begin by identifying the real-world concepts our library system needs to represent, such as library items, members, and borrowing transactions.
+
+We'll start with concepts, not Java classes. I'll guide you through the reasoning, and we'll review your answers before creating `docs/design/domain-model.md`.
+
+Ready to begin Stage 02, Exercise 03 — Identify Domain Concepts?
