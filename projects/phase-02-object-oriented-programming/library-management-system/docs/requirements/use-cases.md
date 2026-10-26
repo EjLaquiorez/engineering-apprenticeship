@@ -99,3 +99,29 @@ The following use cases define the main interactions supported in Version 1.
 - Retiring an item or marking a member inactive must not delete their historical transactions.
 - Item status and transaction status are distinct: an item can be currently borrowed even when its transaction is overdue.
 - Version 1 stores records in memory only. All records are lost when the application closes.
+
+## 6. Future Enhancements
+
+The following features are excluded from Version 1 but may be considered in future versions:
+
+- Member-initiated borrowing through the system.
+- Login and authentication.
+- Database or file-based persistence.
+- Online reservations.
+- Fee payment processing.
+- Maximum borrowing limits and renewal rules.
+- Notifications for upcoming due dates and overdue items.
+- Support for multiple library branches.
+
+These enhancements are not part of the current implementation requirements. Adding them would require reviewing and updating the requirements and design before implementation.
+
+## 7. Completion Criteria
+
+The use-case requirements document is complete when:
+
+- The Staff and Member actors and their responsibilities are clearly defined.
+- All 11 use cases have unique identifiers and concise descriptions.
+- The use cases match the approved Version 1 scope.
+- The business rules and constraints are documented.
+- Excluded features and possible future enhancements are identified.
+- The document is reviewed, saved, and committed to the project repository.
