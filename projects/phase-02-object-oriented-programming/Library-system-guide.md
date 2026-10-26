@@ -1172,3 +1172,47 @@ A member has an item due on October 20 and returns it on October 23. The system 
 Does the rule set correctly represent the behavior we agreed on, including charging through the actual return date and preserving transaction history?
 
 Reply “Approve Step 2” if everything is correct, or point out any rule you'd like to revise. We won't move to the final section until you've reviewed it.
+
+Step 2 approved! ✅ The business rules and constraints are now confirmed.
+
+We've documented item availability, member eligibility, borrowing periods, late fees, and historical record preservation. These rules will guide our later class design and testing.
+
+## Exercise 02E — Step 3: Final notes and future enhancements
+
+Append this final section to the bottom of `use-cases.md`.
+
+## 6. Future Enhancements
+
+The following features are excluded from Version 1 but may be considered in future versions:
+
+- Member-initiated borrowing through the system.
+- Login and authentication.
+- Database or file-based persistence.
+- Online reservations.
+- Fee payment processing.
+- Maximum borrowing limits and renewal rules.
+- Notifications for upcoming due dates and overdue items.
+- Support for multiple library branches.
+
+These enhancements are not part of the current implementation requirements. Adding them would require reviewing and updating the requirements and design before implementation.
+
+## 7. Completion Criteria
+
+The use-case requirements document is complete when:
+
+- The Staff and Member actors and their responsibilities are clearly defined.
+- All 11 use cases have unique identifiers and concise descriptions.
+- The use cases match the approved Version 1 scope.
+- The business rules and constraints are documented.
+- Excluded features and possible future enhancements are identified.
+- The document is reviewed, saved, and committed to the project repository.
+
+### Final review
+
+Please confirm these three things:
+
+1. The future enhancements are clearly marked as excluded from Version 1.
+2. The completion criteria reflect what we need before moving to the next project stage.
+3. No additional use cases or business rules need to be added.
+
+Reply “Approve Step 3” if you're satisfied. After that, we'll consolidate the sections into one complete document, save it, review the Git diff, and commit it before advancing to Stage 02 — Domain Modeling.
