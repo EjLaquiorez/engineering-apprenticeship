@@ -1836,3 +1836,94 @@ Consider this requirement from our project:
 Question: Based on this requirement, do we need a separate `Staff` domain concept just because staff members perform these actions, or can we represent the staff role without creating a `Staff` concept in our initial domain model?
 
 Think about the distinction between an actor (who interacts with the system) and a domain concept (what the system needs to represent and track). You don't have to guess; explain your reasoning.
+
+That's a good question. Let's pause the exercise for a moment because understanding domain will make the rest of our Library Management System project much easier.
+
+## 1. What is a domain in software engineering?
+
+A domain is the real-world area or problem that your software is designed to handle.
+
+Think of it as the subject matter of your application.
+
+For example:
+
+[CERN Library's Renovation Works will start in September | SCE](https://images.openai.com/static-rsc-4/4rskGvbPgs-jU1__AwQR0hLwwcSRGswg22JCE7KClx0VfH5JzzvyGINxLFH2RFFcQ_ThqEjlm2CARrcXmrW-x-au1onL_RRMz_QTBt9XDa3FD4bg5fHdyy0TlR_USIWCiJR1GigJqoy1FOXfKA-w6Vjv2PiP4b-SDRESMJIjvhc?purpose=inline)
+
+Library Management System
+
+Domain: Library management
+
+The system deals with members, books, borrowing, returns, and late fees.
+
+[Young kitcheners are taking order from waiter](https://images.openai.com/static-rsc-4/WEpVcun9x1Fmz5v68pmPCJqocLDeqQnBDTZg2ENTxw4ZQmB2_LkvPIR80giRe9UvzUVf0ulgC8Xod_aD3vhcLOVqSuwgP1ULigyHl6wop5H3CVNGKLmfYZesGQfnu7vDopyYuJiF7sl17Gy1AhHvJeiIblVbpcb8yKc2kqehdw5pmUk0QNTcYj84oeyPc5TN?purpose=inline)
+
+Restaurant Ordering System
+
+Domain: Restaurant operations
+
+The system deals with customers, menus, orders, and payments.
+
+[Doctor talking with a senior patient at the hospital reception](https://images.openai.com/static-rsc-4/8XvdRZ4ofnkvURc6UuHlUgi-DB9tz6cHNXWGTNCazOkz08wQYSJowVO57O2xisVlLQjJzEO7LoBIq6yjkImBjNai4LMxFzvvfh1jClZdiKeBJtFAtrMu1Y0Y_VePoYbreedNjxPozH_bez21c3dW1KP0kl4qoT__Sbr8ijmEpiGL9uuwShFJmgYy4GUwT6aW?purpose=inline)
+
+Hospital Management System
+
+Domain: Healthcare operations
+
+The system deals with patients, appointments, healthcare providers, and medical records.
+
+The domain tells us what problem we're solving and what real-world rules we need to understand.
+
+## 2. How does a domain connect to concepts?
+
+Let's narrow this down using our library project.
+
+## Domain
+
+Library Management
+
+Important things the system must represent
+
+Member
+
+Library Item
+
+Borrowing Transaction
+
+Attributes and rules
+
+Member ID · Item status · Due date · 14-day borrowing period · ₱5 per overdue day
+
+Here's the relationship:
+
+- Domain: The area we're working in — library management.
+- Domain concept: An important person, thing, or event in that area — `Member`, `Library Item`, `Borrowing Transaction`.
+- Attribute: Information describing a concept — a member's name or a transaction's due date.
+- Business rule: A rule the system must follow — borrowing lasts 14 calendar days.
+
+These are different levels of thinking, and it's normal for them to feel confusing at first.
+
+## 3. Why do we need domain modeling before writing Java?
+
+Imagine we immediately started coding and created a `Book` class with a borrow date and return date.
+
+Later, we discover that the same physical book can be borrowed 20 different times. Where would we preserve all 20 borrowing histories?
+
+That question reveals a design problem. We need to represent the book itself separately from each borrowing transaction.
+
+Domain modeling helps us understand the real-world problem first, so our Java classes reflect the problem instead of being invented randomly.
+
+## Let's check your understanding
+
+No coding needed. Just choose the best answer.
+
+Our Library Management System has a domain of library management. Which option is a domain concept?
+
+A. The entire library management problem
+
+B. `Member`, which represents a person registered with the library
+
+C. The member's name, such as Maria Santos
+
+Submit answer
+
+Once this distinction is clear, we'll return to our question about `Staff`. We'll keep building your understanding one small step at a time.
