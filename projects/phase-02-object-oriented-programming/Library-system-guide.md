@@ -1385,3 +1385,74 @@ Use this format:
 3. Continue with your ideas.
 
 Don't worry about getting everything right on your first attempt. I'll review your choices and help you distinguish essential domain concepts from attributes, statuses, and implementation details.
+
+Absolutely. Let's slow down and work through the reasoning together. You don't need to guess the right answers — I want you to learn how to discover domain concepts from requirements so you can do it independently in future projects.
+
+## 1. The technique: Find the important nouns
+
+A useful starting point is to read a requirement and ask:
+
+- Who is involved?
+- What thing is being managed?
+- What event or activity must be recorded?
+- What information must the system remember?
+
+Let's use a requirement from your library project.
+
+Example requirement
+
+"A library member borrows a book. The system records the borrowing date, due date, and return date."
+
+Step 1: Find the nouns
+
+Member · Book · Borrowing date · Due date · Return date
+
+Step 2: Ask what each noun represents
+
+- Member: a person the library keeps a record of.
+- Book: an item the library manages.
+- Borrowing date, due date, return date: information about a borrowing event.
+
+Step 3: Identify the concepts
+
+- Member — the system needs to identify who borrowed an item.
+- Library Item — the system needs to identify which physical item was borrowed.
+- Borrowing Transaction — the system needs to record the borrowing event and its dates.
+
+Notice something important: the dates are attributes of a borrowing transaction, not necessarily separate domain concepts. Finding nouns is a starting point, not a rule that every noun must become a concept.
+
+## 2. Use these four questions for your project
+
+A. Who does the system keep records about?
+
+Think about the people involved in the library. What information does the system need to remember about them?
+
+B. What does the library manage?
+
+Think about the things in the catalog. What must the system identify and track availability for?
+
+C. What activities must the system remember?
+
+If an item is borrowed and returned, what record would let staff know who borrowed it, which item was involved, and when it was due?
+
+D. What must the system calculate or track?
+
+Think about what happens when an item is returned late. What information must be tracked, and what value must be calculated?
+
+## 3. Your turn — one concept at a time
+
+Let's start with question A only. We won't tackle all four at once.
+
+Imagine a new person joins the library. Staff registers that person, and later the system must show the person's borrowing history.
+
+## Exercise 03A — Question 1
+
+What would you call the concept representing that person, and why does the system need it?
+
+Concept name
+
+Purpose
+
+Submit answer
+
+Tip: Your concept name should describe what the thing is, while its purpose explains why the system needs to represent it. Don't worry about technical terms or perfect wording yet.
