@@ -1733,3 +1733,39 @@ C. Three use cases that the member can perform
 Submit answer
 
 Take your time. The goal is to learn how to recognize the difference between the thing the system represents and the information that describes that thing.
+
+Correct! B. Attributes that describe the `Member` concept.
+
+You're applying the distinction correctly.
+
+- Domain concept: `Member` — the person represented in the system.
+- Attributes: `memberId`, `name`, and `status` — information that describes that member.
+- Use cases: Actions such as `Register Member` or `Update Member Details`.
+
+For example, imagine this member record:
+
+| Attribute  | Example value |
+| ---------- | ------------- |
+| `memberId` | M001          |
+| `name`     | Maria Santos  |
+| `status`   | Active        |
+
+These values describe one `Member`. They don't need to become three separate domain concepts.
+
+## Exercise 03C — Identify another concept or attribute
+
+Let's use a situation from your actual project.
+
+A member borrows a book. The system records the borrowing date, due date, and actual return date. The system must also preserve this information after the book is returned.
+
+Which is the best way to model this information at the domain-concept level?
+
+A. Create separate domain concepts for borrow date, due date, and return date.
+
+B. Treat `Borrowing Transaction` as a domain concept and its dates as attributes.
+
+C. Store all dates as attributes of `Library Item`, because the book is being borrowed.
+
+Submit answer
+
+Hint: Ask yourself, what event must the system remember, and which information describes that event?
