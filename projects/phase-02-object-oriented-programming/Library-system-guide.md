@@ -1960,3 +1960,29 @@ C. Restaurant operations and ordering
 Submit answer
 
 Take your time. We're building the foundation before continuing with the project.
+
+Correct! C. Restaurant operations and ordering is the domain. ✅
+
+You're getting the distinction now.
+
+- Domain: Restaurant operations and ordering — the overall problem area.
+- Domain concept: `Customer` — an important entity within that area.
+- Attribute: Customer's name — information describing that entity.
+
+## Let's return to our Library Management System
+
+So far, we've identified three core domain concepts:
+
+- `Member`
+- `Library Item`
+- `Borrowing Transaction`
+
+Now let's revisit the question we paused earlier.
+
+Staff members can register library members, update their information, and record borrowing and returns. Remember, our Version 1 does not include login or authentication, and staff actions are represented as use cases.
+
+Do we need a separate `Staff` domain concept in our initial domain model?
+
+My hint: just because someone interacts with the software doesn't automatically mean the software needs to store information about that person as a domain concept.
+
+What do you think, and why?
