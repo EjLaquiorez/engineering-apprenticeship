@@ -1986,3 +1986,94 @@ Do we need a separate `Staff` domain concept in our initial domain model?
 My hint: just because someone interacts with the software doesn't automatically mean the software needs to store information about that person as a domain concept.
 
 What do you think, and why?
+
+Absolutely. Let's slow down and approach this differently. You don't need to figure everything out from intuition. There is a repeatable process you can follow to decide whether something should be a domain concept.
+
+The confusion is understandable because `Staff` really is part of library management. The question isn't whether staff exists in the domain. The question is whether our software needs to represent staff as a concept.
+
+## 1. Use this three-question method
+
+Whenever you encounter a possible domain concept, ask these questions in order.
+
+## 1
+
+Does the system need to remember information about it?
+
+For example, does it need to store a staff member's ID, name, or employment status?
+
+## 2
+
+Does it have its own identity or lifecycle?
+
+For example, can a member be registered, updated, and marked inactive independently of other members?
+
+## 3
+
+Do the requirements need us to track or manage it?
+
+For example, our requirements explicitly say that the system registers members and preserves borrowing history.
+
+These are guiding questions, not rigid rules. A concept doesn't have to satisfy all three in every design. The important thing is whether representing it helps us meet the requirements.
+
+## 2. Apply the method to our actual project
+
+Let's compare two candidates.
+
+## Candidate A: Member
+
+Strong candidate
+
+- The system stores member information.
+- Each member has a unique ID.
+- Members can be active or inactive.
+- Borrowing transactions must be associated with the member who borrowed the item.
+
+Conclusion: We clearly need a `Member` concept.
+
+## Candidate B: Staff
+
+Needs further justification
+
+- Staff perform actions such as registering members.
+- Version 1 does not require staff accounts or login.
+- The requirements do not currently require storing staff IDs or names.
+- Borrowing transactions do not currently need to record which staff member processed them.
+
+Conclusion: For Version 1, we have no clear requirement that needs a `Staff` concept in the domain model.
+
+See the difference? We aren't saying staff is unimportant. We're checking what the software actually needs to represent.
+
+If a future requirement says, "Record which staff member processed each transaction," we would reconsider `Staff` because the system would now need to identify the staff member associated with that transaction.
+
+## 3. A useful distinction: actor vs. domain concept
+
+These terms answer different questions.
+
+| Term           | Question it answers                      | Our example       |
+| -------------- | ---------------------------------------- | ----------------- |
+| Actor          | Who interacts with the system?           | Staff             |
+| Domain concept | What must the system represent or track? | Member            |
+| Attribute      | What information describes a concept?    | Member name       |
+| Use case       | What does an actor do with the system?   | Register a member |
+
+An actor can also be a domain concept. For example, if we add staff accounts and audit records, `Staff` may serve both roles. They simply aren't automatically the same thing.
+
+## 4. Let's practice together
+
+I'll give you a situation, and we'll reason through it one step at a time. Don't worry about making a final decision yet.
+
+Our requirements say:
+
+> Every physical book or magazine has a unique item ID. The system tracks its details, availability, and whether it has been retired. A retired item cannot be borrowed again, but its borrowing history must remain available.
+
+Question 1: Does the system need to remember information about each physical library item?
+
+Yes, it needs to track each item.
+
+No, it only needs to know how many items exist.
+
+I'm not sure yet.
+
+Submit answer
+
+We'll use your answer to work through Question 2 together. The goal is for you to understand why a concept belongs in the model, not just memorize a list of classes.
