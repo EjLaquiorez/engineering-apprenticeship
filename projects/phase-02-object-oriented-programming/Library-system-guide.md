@@ -1632,3 +1632,104 @@ Check my answer
 We'll build your confidence through this sequence: worked examples → guided reasoning → partially independent practice → independent practice. We won't rush you to the last step before you're ready.
 
 And we'll continue using the actual requirements of your Library Management System as our reference, so you always have a concrete basis for your decisions.&#x20;
+
+Correct! ✅ B is the strongest answer.
+
+You chose to understand what the system needs to represent before deciding how to implement it. That's an important software-engineering habit.
+
+## Why B is correct
+
+> What information and behavior must the system represent to manage this magazine throughout its lifecycle?
+
+Let's apply that question to our library project.
+
+Scenario: A magazine is added
+
+The system needs to identify the physical magazine, record its title and type, and track whether it's available, borrowed, or retired.
+
+Our reasoning
+
+These requirements point toward the existing domain concept Library Item. We don't need to invent a separate concept just because this particular item is a magazine.
+
+What comes later
+
+When we design Java classes, we'll decide how `LibraryItem`, `Book`, and `Magazine` should be represented. We don't need to settle that implementation question during this exercise.
+
+## Next: Learn how to recognize a missing concept
+
+Here's a useful clue: sometimes the business rules reveal concepts that a list of nouns doesn't make obvious.
+
+Consider this rule from our requirements:
+
+> The system charges ₱5 for each overdue calendar day, per item.
+
+Rather than guessing a concept name, let's reason through what the system must do.
+
+Imagine two members return their items late. The system needs to calculate each item's fee, and staff needs to review overdue transactions.
+
+Which piece of information is most important for calculating the fee correctly?
+
+The member's name only
+
+The number of overdue days for each borrowing transaction
+
+The total number of books in the library
+
+Check my answer
+
+Don't worry about finding a new domain concept yet. First, identify the information the system needs. We'll use that answer to decide what belongs in the domain model.
+
+Exactly right. Your reasoning is correct: the `Borrowing Transaction` already contains the information needed to calculate the late fee.
+
+You identified an important domain-modeling principle: don't create a separate concept when an existing concept can already represent the information and responsibility.
+
+## Why your reasoning works
+
+### Borrowing Transaction
+
+Stores:
+
+- Borrow date
+- Due date
+- Actual return date, if returned
+
+### Calculated information
+
+- Overdue days
+- Late fee
+
+For example, if the due date is October 20 and the item is returned on October 23, the transaction provides the dates needed to calculate a late fee of ₱15.
+
+One important distinction: we might eventually create a `LateFeeCalculator` class or method, but that doesn't automatically mean `Late Fee` must be a separate domain concept. We'll make those design decisions later, when we reach class design.
+
+## Exercise 03A — Review
+
+You've now identified three core domain concepts:
+
+| Concept                 | Purpose                                                                                            |
+| ----------------------- | -------------------------------------------------------------------------------------------------- |
+| `Member`                | Identifies a library member and connects them to their borrowing history.                          |
+| `Library Item`          | Represents each physical book or magazine and its current status.                                  |
+| `Borrowing Transaction` | Records a borrowing event, its dates, and information needed to determine overdue status and fees. |
+
+These are good initial concepts for our system. We haven't finalized the entire domain model yet.
+
+## Exercise 03B — Distinguish concepts from attributes
+
+Let's practice one more skill before moving forward.
+
+The system needs to identify each member. Each member has a unique ID, a name, and a status such as active or inactive.
+
+Which option best describes `member ID`, `name`, and `status`?
+
+Choose one answer.
+
+A. Three separate domain concepts
+
+B. Attributes that describe the `Member` concept
+
+C. Three use cases that the member can perform
+
+Submit answer
+
+Take your time. The goal is to learn how to recognize the difference between the thing the system represents and the information that describes that thing.
