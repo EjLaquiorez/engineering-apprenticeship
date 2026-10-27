@@ -1927,3 +1927,36 @@ C. The member's name, such as Maria Santos
 Submit answer
 
 Once this distinction is clear, we'll return to our question about `Staff`. We'll keep building your understanding one small step at a time.
+
+Not quite, but this is a useful mistake to learn from. Let's distinguish the two ideas.
+
+A. The entire library management problem describes the domain, not a domain concept.
+
+B. `Member` is the correct answer because it represents a specific person or entity the system needs to keep track of.
+
+Think of it this way:
+
+| Level          | Library example                  |
+| -------------- | -------------------------------- |
+| Domain         | Library management               |
+| Domain concept | `Member`                         |
+| Attribute      | Member's name                    |
+| Business rule  | Borrowing lasts 14 calendar days |
+
+Here's a simple analogy: if the domain is a whole library, a member is one of the important things within that domain, and the member's name describes that member.
+
+The key distinction: The domain is the whole problem area; a domain concept is one important thing within that area.
+
+Let's check the distinction once more with a different example.
+
+A restaurant ordering system manages customers, food orders, and payments. Which one is the domain?
+
+A. Customer
+
+B. Customer's name
+
+C. Restaurant operations and ordering
+
+Submit answer
+
+Take your time. We're building the foundation before continuing with the project.
