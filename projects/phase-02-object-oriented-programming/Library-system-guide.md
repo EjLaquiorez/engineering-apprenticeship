@@ -1456,3 +1456,45 @@ Purpose
 Submit answer
 
 Tip: Your concept name should describe what the thing is, while its purpose explains why the system needs to represent it. Don't worry about technical terms or perfect wording yet.
+
+Correct! ✅ You've identified the right concept and its purpose.
+
+## Exercise 03A — Question 2 Review
+
+### Library Item
+
+Correct
+
+Your purpose: “The system needs to identify the items inside the library and their status.”
+
+Exactly! `Library Item` is a good general concept because it can represent both books and magazines.
+
+A stronger explanation:
+
+The system needs to uniquely identify each physical library item, track its details and availability, and determine whether it can be borrowed.
+
+### Mentor insight
+
+Remember our example of two copies of Clean Code? Each physical copy needs its own unique ID. Even if both copies share the same title and author, their availability can differ.
+
+Also, availability is information about the item, not necessarily a separate domain concept. We'll examine attributes and statuses in a later exercise.
+
+## Question 3 — What records the borrowing event?
+
+Imagine this sequence:
+
+1. Member `M001` borrows library item `I015`.
+2. The borrowing date is October 10.
+3. The due date is October 24.
+4. The item is returned on October 27.
+
+Later, staff need to know who borrowed the item, which item was borrowed, and whether it was returned late.
+
+Your turn: What domain concept should represent this event, and why does the system need it?
+
+Use this format:
+
+- Concept name: ...
+- Purpose: The system needs this concept because ...
+
+Hint: The member and library item already exist as concepts. We need something that connects them and records the dates of the event.
