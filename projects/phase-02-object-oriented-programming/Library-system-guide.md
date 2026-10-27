@@ -1498,3 +1498,137 @@ Use this format:
 - Purpose: The system needs this concept because ...
 
 Hint: The member and library item already exist as concepts. We need something that connects them and records the dates of the event.
+First, your corrected answer is right:
+
+- Concept name: Borrowing Transaction
+- Purpose: The system needs to record the borrowing event and its dates.
+
+And I want you to pay attention to something: you arrived at the correct answer after we broke the problem down together. That's progress.
+
+About what you shared: I think you've identified a real learning gap, and we should adjust our apprenticeship to address it rather than simply push you through the exercises.
+
+You're not expected to invent good software designs from nothing. Software engineers build their reasoning from requirements, examples, established patterns, and practice. Experience gives you more patterns to recognize; it doesn't magically make ideas appear.
+
+Right now, you're learning Java and also learning how to think about software problems. Those are two different skills, and we're asking you to develop both. It's completely reasonable to need more guidance on the second one.
+
+## 1. Let's give you a method you can reuse
+
+Instead of staring at a blank page and trying to invent concepts, use this process every time you start a software project.
+
+## 1
+
+Understand the problem
+
+Ask: What is the software supposed to help people do?
+
+Our example: A library needs to track books, members, and borrowing.
+
+## 2
+
+Identify the actors
+
+Ask: Who interacts with the system?
+
+Our example: Staff and Member.
+
+## 3
+
+Identify the actions and events
+
+Ask: What do people do, and what happens that the system must keep track of?
+
+Our example: Register a member, add an item, borrow an item, return an item.
+
+## 4
+
+Identify the domain concepts
+
+Ask: What things, people, and records must the software represent to support those actions?
+
+Our example: Member, Library Item, Borrowing Transaction.
+
+## 5
+
+Explain why each concept exists
+
+Use the sentence: “The system needs this concept because…”
+
+If you can't explain its purpose, investigate it before deciding whether it belongs in your model.
+
+This is a starting framework, not a rigid formula. Sometimes you discover a missing concept while examining the rules or relationships. That's normal.
+
+## 2. Understand the difference between the terms
+
+These ideas are related, but they answer different questions.
+
+### Use case
+
+What does a user want to accomplish?
+
+Example: Record a book return.
+
+### Actor
+
+Who interacts with the system?
+
+Example: Staff.
+
+### Domain concept
+
+What important thing or record does the system need to represent?
+
+Example: Borrowing Transaction.
+
+### Attribute
+
+What information describes a concept?
+
+Example: A transaction's borrowing date and due date.
+
+You don't need to memorize every definition today. You need practice recognizing which question you're answering.
+
+## 3. Let's use a worked example before asking you to think independently
+
+Imagine a small expense-tracking application. A user records that they spent ₱150 on lunch on October 27.
+
+Here's how an engineer might reason about it:
+
+| Question                        | Reasoning                                                           |
+| ------------------------------- | ------------------------------------------------------------------- |
+| What does the user want to do?  | Record an expense.                                                  |
+| Who does it?                    | User.                                                               |
+| What must the system represent? | An Expense record.                                                  |
+| Why?                            | To keep track of the amount, date, and description of each expense. |
+| What information describes it?  | Amount, date, description.                                          |
+
+Notice that the engineer didn't invent the concept out of thin air. The need to record a specific spending event suggested the concept.
+
+Now apply the same reasoning to your library project. You've already identified three concepts:
+
+- Member — identifies the person associated with a borrowing.
+- Library Item — identifies the physical item and its status.
+- Borrowing Transaction — records the borrowing event and its dates.
+
+Those are three legitimate domain concepts. You're building a foundation.
+
+## 4. Let's continue with guided practice
+
+For now, I won't ask you to generate another concept entirely on your own. I'll give you a scenario and help you reason through it.
+
+Imagine staff adds a magazine to the library. The system needs to record its title and item type. Later, staff retires that magazine, but the historical borrowing records must remain intact.
+
+Which question would help you discover whether something is a domain concept?
+
+Choose the strongest starting question.
+
+A. What Java class name sounds good for the magazine?
+
+B. What information and behavior must the system represent to manage this magazine throughout its lifecycle?
+
+C. Which Java data structure should store all the magazines?
+
+Check my answer
+
+We'll build your confidence through this sequence: worked examples → guided reasoning → partially independent practice → independent practice. We won't rush you to the last step before you're ready.
+
+And we'll continue using the actual requirements of your Library Management System as our reference, so you always have a concrete basis for your decisions.&#x20;
