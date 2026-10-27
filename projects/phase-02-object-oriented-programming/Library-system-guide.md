@@ -2077,3 +2077,147 @@ I'm not sure yet.
 Submit answer
 
 We'll use your answer to work through Question 2 together. The goal is for you to understand why a concept belongs in the model, not just memorize a list of classes.
+
+Correct! The system needs to track each physical library item individually. Let's look at why your answer is correct.
+
+Our requirements say each item has a unique ID, its own availability, and a retired status. That means the system needs to distinguish one physical item from another.
+
+For example, the library might own two physical copies of Clean Code:
+
+| Information | Copy 1     | Copy 2     |
+| ----------- | ---------- | ---------- |
+| Item ID     | I001       | I002       |
+| Title       | Clean Code | Clean Code |
+| Status      | Available  | Borrowed   |
+
+Even though the title is the same, the copies have different IDs and statuses.
+
+Our conclusion: `Library Item` is a strong domain concept because the system must identify and manage each physical item separately.
+
+## Question 2: Does it have its own identity or lifecycle?
+
+Think about Copy 1. Over time, it might be:
+
+Available → Borrowed → Available → Retired
+
+It has its own identity (I001), and its status changes over time.
+
+Does that give us a good reason to model `Library Item` as a domain concept?
+
+Yes, because each item has its own ID and its status changes over time.
+
+No, because all physical copies with the same title should be treated as one item.
+
+I'm still unsure; I need another example.
+
+Submit answer
+
+Take your time. We're building the reasoning step by step.
+
+Correct! Yes — `Library Item` should be a domain concept.
+
+You gave the two important reasons:
+
+- Each physical item has its own identity through its unique ID.
+- Each item has a lifecycle: it can be available, borrowed, returned to availability, and eventually retired.
+
+You're not just guessing anymore; you're using the requirements to justify a design decision.
+
+## Question 3: Does the requirement need us to track or manage it?
+
+Let's compare two examples from our project.
+
+Example A — Library Item
+
+The system must store each item's ID, title, type, and status. It must prevent retired items from being borrowed.
+
+The system clearly needs to track and manage this.
+
+Example B — Staff
+
+Staff use the application to register members and record returns. But Version 1 doesn't need staff accounts, staff IDs, or staff details.
+
+The system currently needs staff to perform actions, but doesn't need to track staff as data.
+
+Now connect this to your earlier question about `Staff`.
+
+Which candidate does the system clearly need to represent and manage as a domain concept under our current requirements?
+
+A. `Library Item`, because the system must identify, track, and manage each physical item.
+
+B. `Staff`, because staff members perform actions in the system.
+
+C. Both are automatically required because both exist in the library domain.
+
+Submit answer
+
+After this, we'll apply the same reasoning to the remaining concepts and decide whether our initial domain model is complete enough to document.
+
+Correct! A. `Library Item` is clearly a domain concept we need.
+
+Your reasoning is now following a useful pattern:
+
+1. The requirements say the system must track each physical item.
+2. Each item has a unique ID and its own status.
+3. The system must manage its lifecycle, including retirement.
+4. Therefore, `Library Item` belongs in our domain model.
+
+Notice that you justified your answer using the requirements, not just because books exist in a library. That's the habit we're building.
+
+## Let's apply the same reasoning to `Staff`
+
+Here is our current Version 1 requirement:
+
+- Staff can register members and record borrowing and returns.
+- The system does not have staff login or accounts.
+- The system does not need to store staff names or IDs.
+- The system does not need to record which staff member processed each transaction.
+
+So, compare these statements:
+
+- Statement 1: Staff interact with the system.
+- Statement 2: The system must store and manage staff information.
+
+In our current requirements, Statement 1 is true, but Statement 2 is not required.
+
+My question for you: Based on that difference, would you include `Staff` as a domain concept in Version 1, or leave it out for now? Explain your answer in one sentence using the requirements as your reason.
+
+Good reasoning! You've made the right decision for Version 1: we don't need `Staff` as a domain concept in our initial model.
+
+Your explanation correctly identifies why `Library Item` belongs in the model. Let's sharpen the reasoning slightly so you can apply it to other concepts.
+
+Your conclusion about `Staff` is based on these requirements:
+
+- Staff can perform actions in the system.
+- The system does not currently need to store staff information or identify which staff member performed an action.
+- Therefore, we can treat `Staff` as an actor in our use cases without including it as a domain concept for Version 1.
+
+One small correction: `Library Item` isn't the only domain concept we need. We've already identified `Member` and `Borrowing Transaction` too.
+
+## Exercise 03A — Your initial domain concepts
+
+1\. Member
+
+Identifies a registered library member and connects them to their borrowing history.
+
+2\. Library Item
+
+Identifies and manages each physical book or magazine, including its status and lifecycle.
+
+3\. Borrowing Transaction
+
+Records which member borrowed which item, along with the borrowing, due, and return dates.
+
+These are our three initial core domain concepts, not yet the final model. We'll check whether they cover the requirements before documenting the model.
+
+## Next step — Exercise 03D: Check for missing concepts
+
+We have one more important question to explore.
+
+Our system must preserve borrowing history. A member can borrow multiple items, and the same physical item can be borrowed by different members at different times.
+
+Why can't we simply store a `borrowed` status on `Member` and `Library Item` and rely on those two concepts alone?
+
+Think about what happens when an item is returned and borrowed again. What information might we lose if we don't represent each borrowing event separately?
+
+Take your time. This question will help us confirm why `Borrowing Transaction` is necessary before we finalize the domain model.
