@@ -2221,3 +2221,117 @@ Why can't we simply store a `borrowed` status on `Member` and `Library Item` and
 Think about what happens when an item is returned and borrowed again. What information might we lose if we don't represent each borrowing event separately?
 
 Take your time. This question will help us confirm why `Borrowing Transaction` is necessary before we finalize the domain model.
+
+You're on the right track! Your idea of keeping records clearly and accurately is correct. Let's build on it together. You don't need to know the complete answer immediately.
+
+## Let's walk through an example
+
+Imagine the library has one physical copy of Clean Code, with item ID `I001`.
+
+First borrowing
+
+Member: Maria
+
+- Borrowed: October 1
+- Due date: October 15
+- Returned: October 18
+- Late fee: ₱15
+
+Second borrowing
+
+Member: John
+
+- Borrowed: October 22
+- Due date: November 5
+- Returned: Not yet returned
+
+Notice that the same physical item was borrowed twice, by two different members.
+
+Now, let's think about the information the system needs to keep.
+
+- Library Item tells us which physical book it is and its current status.
+- Member tells us who the registered borrower is and their information.
+- Borrowing Transaction records each separate borrowing event, including its dates and eventual late fee.
+
+If we only updated the book's status from `Borrowed` to `Available` and back to `Borrowed`, what would happen to Maria's borrowing dates and her ₱15 late fee when John borrowed the book?
+
+Choose the answer that makes the most sense to you.
+
+A. The system would automatically preserve every borrowing event in the item's current status.
+
+B. The system could lose or overwrite the earlier borrowing details unless it stored each borrowing event separately.
+
+C. The system would no longer need to remember which member borrowed the book.
+
+Check my reasoning
+
+And don't worry about the phrase “borrowing history will repeat.” You're identifying the important idea: the same item can be borrowed repeatedly, so the system needs a separate record for each borrowing event. That's exactly what we're learning to recognize when identifying domain concepts.
+
+Correct! ✅ Exercise 03D is complete.
+
+Your explanation identifies the main reason we need a `Borrowing Transaction`: each time an item is borrowed, the system must preserve that specific event instead of overwriting an earlier record.
+
+## Review: Our three core domain concepts
+
+1\. Member
+
+Represents a registered library member.
+
+Identifies who is borrowing items and connects that person to their borrowing history.
+
+2\. Library Item
+
+Represents one physical book or magazine.
+
+Tracks its identity, details, and current status, such as available, borrowed, or retired.
+
+3\. Borrowing Transaction
+
+Represents one borrowing event.
+
+Records the member, item, borrow date, due date, return date, and information needed to determine the late fee.
+
+These are our initial core concepts. We haven't finalized the domain model yet.
+
+## Stage 02 roadmap — where we are now
+
+Exercise 03A — Identify core concepts
+
+Exercise 03B — Distinguish concepts from attributes
+
+Exercise 03C — Assign borrowing dates to the correct concept
+
+Exercise 03D — Explain why borrowing history needs separate records
+
+Next: Exercise 04 — Identify concept attributes
+
+Determine what information each concept needs to store.
+
+## Exercise 04A — What information does a Member need?
+
+Let's use a worked example before asking you to design anything independently.
+
+Imagine a new member registers at the library. The system needs to identify that member, know whether they can borrow items, and connect them to their borrowing transactions.
+
+Here are four possible pieces of information:
+
+- A. Member ID
+- B. Member name
+- C. Membership status (active or inactive)
+- D. The title of every book in the library
+
+Which pieces of information should belong to the `Member` concept?
+
+Select all that apply.
+
+Member ID
+
+Member name
+
+Membership status
+
+The title of every book in the library
+
+Check my answer
+
+Hint: Ask yourself, “Does this information describe one particular member, or does it describe something else in the library?”
