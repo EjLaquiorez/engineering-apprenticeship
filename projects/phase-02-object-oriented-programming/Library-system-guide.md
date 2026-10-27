@@ -1324,3 +1324,64 @@ We'll begin by identifying the real-world concepts our library system needs to r
 We'll start with concepts, not Java classes. I'll guide you through the reasoning, and we'll review your answers before creating `docs/design/domain-model.md`.
 
 Ready to begin Stage 02, Exercise 03 — Identify Domain Concepts?
+
+# Stage 02 — Domain Modeling
+
+## Exercise 03: Identify Domain Concepts
+
+Welcome to Stage 02 of your Library Management System project! We've completed the requirements and use cases, so now we'll identify the important concepts our software needs to represent.
+
+Remember our apprenticeship rule: you do the thinking; I'll guide you, review your answers, and explain mistakes before we move forward. No Java code yet.
+
+## 1. Roadmap preview
+
+Stage 01 — Requirements
+
+Completed · Exercises 01–02
+
+Stage 02 — Domain Modeling
+
+Current stage · Exercise 03
+
+1. Identify domain concepts — today's task
+2. Determine the information each concept needs
+3. Identify relationships between concepts
+4. Review and document the domain model
+
+## 2. Lesson: What is a domain concept?
+
+A domain concept is an important thing, person, event, or idea in the real-world problem our software solves.
+
+For example, consider this requirement:
+
+> A library member borrows a book, and the system records the borrowing date and due date.
+
+Possible domain concepts include:
+
+- Member — the person borrowing an item.
+- Book — a type of library item.
+- Borrowing transaction — the record of an item being borrowed.
+
+Notice that a borrowing transaction is not a physical object, but it is still an important concept because the system must track it.
+
+Also, don't confuse a domain concept with a programming detail. A `for` loop or an array is an implementation choice, not a core library domain concept.
+
+## 3. Exercise 03A — Identify the concepts
+
+Based on our approved requirements, think about what the system must keep track of.
+
+Here are three questions to guide you:
+
+1. What things does the library manage in its catalog?
+2. What information must the library keep about people who use the library?
+3. What record must exist to track which person borrowed which item, when it was borrowed, and when it should be returned?
+
+Your task: list the domain concepts you think we need for Version 1. Aim for around 5–8 concepts to start.
+
+Use this format:
+
+1. Concept name — why the system needs it.
+2. Concept name — why the system needs it.
+3. Continue with your ideas.
+
+Don't worry about getting everything right on your first attempt. I'll review your choices and help you distinguish essential domain concepts from attributes, statuses, and implementation details.
