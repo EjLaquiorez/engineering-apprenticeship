@@ -1769,3 +1769,70 @@ C. Store all dates as attributes of `Library Item`, because the book is being bo
 Submit answer
 
 Hint: Ask yourself, what event must the system remember, and which information describes that event?
+
+Correct! B. Treat `Borrowing Transaction` as a domain concept and its dates as attributes.
+
+You're getting the hang of identifying concepts versus attributes. Let's look at why this matters for our Library Management System.
+
+## Why B is the best choice
+
+A `Borrowing Transaction` represents an event that the system must remember, even after the book is returned.
+
+## Borrowing Transaction
+
+Example record
+
+Member
+
+Maria Santos
+
+Library item
+
+Clean Code
+
+Borrow date
+
+October 1
+
+Due date
+
+October 15
+
+Return date
+
+October 18
+
+The transaction preserves the borrowing history and supports a late-fee calculation.
+
+Why not put all those dates in `Library Item`? Because the same physical book can be borrowed many times. If the book itself stored just one borrow date and one return date, a new borrowing could overwrite the previous transaction's history.
+
+That's an important design insight: the item and the borrowing event are different concepts.
+
+## Exercise 03 — Progress review
+
+So far, we've identified these core concepts and their purposes:
+
+| Domain concept          | What it represents                                 |
+| ----------------------- | -------------------------------------------------- |
+| `Member`                | A person registered in the library system          |
+| `Library Item`          | A physical book or magazine managed by the library |
+| `Borrowing Transaction` | A borrowing event and its historical dates         |
+
+We've also learned that:
+
+- IDs, names, and statuses are attributes.
+- Transaction dates are attributes.
+- Overdue days and late fees can be calculated from transaction dates.
+- One physical item can have many borrowing transactions over time.
+
+These are strong foundations. We still need to examine whether any additional concepts are necessary before finalizing the domain model.
+
+## Next: Exercise 03D — Discover a missing concept
+
+Consider this requirement from our project:
+
+> Staff can register new members, update member details, and mark members inactive. The system must preserve borrowing history and must not allow a member to be marked inactive while they still have an active borrowing transaction.
+
+Question: Based on this requirement, do we need a separate `Staff` domain concept just because staff members perform these actions, or can we represent the staff role without creating a `Staff` concept in our initial domain model?
+
+Think about the distinction between an actor (who interacts with the system) and a domain concept (what the system needs to represent and track). You don't have to guess; explain your reasoning.
