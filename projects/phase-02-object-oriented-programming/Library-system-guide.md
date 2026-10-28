@@ -2334,4 +2334,74 @@ The title of every book in the library
 
 Check my answer
 
-Hint: Ask yourself, “Does this information describe one particular member, or does it describe something else in the library?”
+Hint: Ask yourself, “Does this information describe one particular member, or does it describe something else in the library?” 
+
+Excellent! Exercise 04A is correct — A, B, and C. You're applying the distinction between a concept and its attributes correctly.
+
+## Why each choice is correct or incorrect
+
+A. Member ID
+
+Identifies a specific member. Two members might share the same name, but each member needs a unique ID.
+
+Example: `M001`
+
+B. Member name
+
+Stores the member's name so staff can identify them easily.
+
+Example: `Maria Santos`
+
+C. Membership status
+
+Records whether the member is active or inactive. This matters because inactive members cannot start new borrowing transactions under our requirements.
+
+Example: `Active`
+
+D. The title of every book in the library
+
+This describes the library's items, not one particular member. The titles belong with the `Library Item` concept.
+
+## The important distinction
+
+A domain concept represents something important in the library system. An attribute describes that particular thing.
+
+For example:
+
+Concept
+
+## Member
+
+Attributes
+
+memberId
+
+name
+
+status
+
+One useful question to keep asking is: “Does this information describe one instance of this concept?”
+
+For instance, `M001`, `Maria Santos`, and `Active` describe one member. They are not three separate domain concepts.
+
+## Exercise 04B — Library Item attributes
+
+Let's apply the same reasoning to our second concept.
+
+Suppose the library has two physical copies of Clean Code. We need to distinguish them, know what kind of item each is, and track whether each copy can be borrowed.
+
+Which pieces of information should belong to `Library Item`? Select all that apply.
+
+Unique item ID (e.g., I001)
+
+Title (e.g., Clean Code)
+
+Item type (Book or Magazine)
+
+Current item status (Available, Borrowed, or Retired)
+
+Member's membership status (Active or Inactive)
+
+Check my answer
+
+Hint: Imagine looking at one physical copy of a book on a shelf. Which information tells you what that copy is and what its current condition is within the library system?
