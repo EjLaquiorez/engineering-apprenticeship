@@ -2405,3 +2405,64 @@ Member's membership status (Active or Inactive)
 Check my answer
 
 Hint: Imagine looking at one physical copy of a book on a shelf. Which information tells you what that copy is and what its current condition is within the library system?
+
+Correct! Exercise 04B: A, B, C, and D. You're consistently identifying which information belongs to each concept. Let's review why.
+
+## Why your choices are correct
+
+A. Unique item ID
+
+Identifies each physical copy separately.
+
+Example: `I001` and `I002` can represent two copies of Clean Code.
+
+B. Title
+
+Identifies the item's title, such as Clean Code or National Geographic.
+
+C. Item type
+
+Distinguishes books from magazines. Both can be represented by the broader `Library Item` concept.
+
+D. Current item status
+
+Tracks whether a physical item is `Available`, `Borrowed`, or `Retired`.
+
+E. Member's membership status
+
+This belongs to `Member`, not `Library Item`. It describes the member, not the physical item.
+
+## A useful design insight
+
+Notice that current status and borrowing history are different things.
+
+- `Library Item` tells us the item's current status.
+- `Borrowing Transaction` preserves the details of each borrowing event.
+
+For example, item `I001` might currently be available, but it could have been borrowed ten times in the past. Its current status alone cannot tell us that history.
+
+## Exercise 04C — Borrowing Transaction attributes
+
+Now let's look at our third concept.
+
+A borrowing transaction must preserve history and help the system calculate late fees. Remember our rule: the borrowing period is 14 calendar days, and the late fee is ₱5 per overdue calendar day.
+
+Which pieces of information should belong to `Borrowing Transaction`? Select all that apply.
+
+Member involved in the borrowing
+
+Library item involved in the borrowing
+
+Borrow date and due date
+
+Actual return date
+
+The member's home address
+
+The item's current status
+
+Check my answer
+
+Hint: Ask yourself, “What must this specific borrowing record remember so that we can identify who borrowed what, when it was due, and whether it was returned late?”
+
+Take your time. We're still doing domain modeling—no Java code yet.
