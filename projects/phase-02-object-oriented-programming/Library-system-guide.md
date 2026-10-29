@@ -2554,3 +2554,70 @@ C. Store the fee only on `Library Item`, because the item was returned late.
 Check my answer
 
 Hint: Think back to your earlier insight: the system already knows the due date, the return date (or today's date), and the fee per overdue day. Does it need another concept to represent the fee, or does it already have enough information to calculate it?
+
+Correct! Exercise 04D: B. You're applying an important software-design principle: don't introduce a separate concept unless the requirements give you a good reason to represent it.
+
+## Why B is correct
+
+Our library system already has the information needed to calculate a late fee:
+
+- Due date: October 15
+- Actual return date: October 18
+- Late fee: ₱5 per overdue calendar day
+
+The calculation is:
+
+\\[ \text{Late Fee} = \text{Overdue Days} \times ₱5 \\]
+
+\\[ 3 \times ₱5 = ₱15 \\]
+
+We can calculate that fee from the `Borrowing Transaction` and our business rule. We don't need a separate `Late Fee` domain concept just to perform this calculation.
+
+One important distinction: we could later create a `LateFeeCalculator` class to organize the calculation. That would be a design decision, not proof that `Late Fee` must be a separate domain concept.
+
+## Stage 02 — Exercise 04 review
+
+Member
+
+`memberId`, `name`, `status`
+
+Library Item
+
+`itemId`, `title`, `itemType`, `status`
+
+Borrowing Transaction
+
+`member`, `libraryItem`, `borrowDate`, `dueDate`, `returnDate`
+
+Late fee
+
+Calculated using the transaction dates and the ₱5-per-day rule. It doesn't need to be a separate domain concept in Version 1.
+
+These are our provisional concepts and information, not yet the final class design. In particular, `member` and `libraryItem` represent relationships, not simple attributes.
+
+## Next: Exercise 05 — Identify relationships
+
+Before we document the domain model, we need to understand how our concepts connect.
+
+Our roadmap for this next step:
+
+1. Identify how `Member` connects to `Borrowing Transaction`.
+2. Identify how `Library Item` connects to `Borrowing Transaction`.
+3. Determine whether each concept can be associated with one or many instances of another concept.
+4. Review the relationships against our business rules.
+
+Let's begin with a concrete example.
+
+A member named Maria borrows three items during the same week. The system creates a separate borrowing record for each item.
+
+Exercise 05A: How many `Borrowing Transaction` records should be associated with Maria's borrowing activity?
+
+A. One transaction, because Maria is one member.
+
+B. Three transactions, one for each item borrowed.
+
+C. One transaction for the entire library, regardless of how many members borrow items.
+
+Check my answer
+
+Remember the rule we established earlier: each borrowing event needs its own record so that dates, returns, and late fees remain accurate.
