@@ -2674,3 +2674,52 @@ C. No transactions, because the item already has its own status.
 Check my answer
 
 Hint: Remember that a unique item ID identifies the physical copy, not a single borrowing event. What happens to that same copy after it is returned and borrowed again?
+
+Correct! Exercise 05B: B — one `Library Item` can be associated with many `Borrowing Transaction` records over time. ✅
+
+You're now seeing both sides of the relationship.
+
+## Why this is a one-to-many relationship
+
+Consider physical item `I001`, a copy of Clean Code.
+
+## Library Item: I001
+
+Clean Code · One physical copy
+
+Borrowing history over its lifetime
+
+Transaction 1
+
+Maria · Borrowed and returned
+
+Transaction 2
+
+John · Borrowed later
+
+The item ID stays `I001` throughout. Each time the item is borrowed, the system creates a new transaction rather than overwriting the previous one.
+
+So we have two one-to-many relationships:
+
+- Member → Borrowing Transaction: one member can have many transactions.
+- Library Item → Borrowing Transaction: one item can have many transactions over its lifetime.
+
+An important restriction applies: the same physical item can have only one active borrowing transaction at a time. It cannot be borrowed again until the current transaction is returned and closed.
+
+## Exercise 05C — Can a transaction involve multiple items?
+
+Let's test one more important design decision.
+
+Maria borrows three items at once. Our requirements say that each borrowing event needs its own dates and late-fee calculation.
+
+Should we create:
+
+A. One transaction containing all three items, with one shared due date and return date.
+
+B. Three separate transactions, one per item, so each item has its own due date, return date, and late-fee calculation.
+
+Check my answer
+
+Hint: What if Maria returns two books on time but returns the magazine late? Which design lets the system track that accurately?
+
+Once we finish this, we'll review the complete set of relationships before documenting the domain model.
