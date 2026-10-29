@@ -2466,3 +2466,91 @@ Check my answer
 Hint: Ask yourself, “What must this specific borrowing record remember so that we can identify who borrowed what, when it was due, and whether it was returned late?”
 
 Take your time. We're still doing domain modeling—no Java code yet.
+
+Excellent! Exercise 04C is correct — A, B, C, and D. You're now identifying the attributes of all three core domain concepts. Let's review why each choice belongs there.
+
+## Why your choices are correct
+
+A. Member involved in the borrowing
+
+The transaction must identify who borrowed the item. For example, Maria is the member associated with this transaction.
+
+B. Library item involved in the borrowing
+
+The transaction must identify the exact physical copy borrowed, not just the title.
+
+C. Borrow date and due date
+
+These dates tell us when the borrowing began and when the item should be returned. Our rule sets the due date to 14 calendar days after the borrow date.
+
+D. Actual return date
+
+This records when the item was actually returned. If it hasn't been returned yet, the return date remains unset.
+
+E. Member's home address
+
+This is information about a member, not a borrowing event. Our current requirements don't require storing a home address.
+
+F. Item's current status
+
+This belongs to `Library Item`. The transaction records what happened during one borrowing event; the item records its current status.
+
+## One important distinction: attributes versus relationships
+
+You chose the right information, but there's a subtle modeling detail worth learning now.
+
+A transaction's member and library item are not ordinary text attributes like a name or date. They are relationships to other domain concepts.
+
+### Borrowing Transaction
+
+Information describing the event
+
+- Borrow date
+- Due date
+- Actual return date
+
+Connected to
+
+Member
+
+Who borrowed it
+
+Library Item
+
+What was borrowed
+
+We can describe the member and item as information associated with a transaction, but later, when we draw our domain model, we'll show these as relationships rather than treating them as plain attributes.
+
+Also, we don't necessarily need to store a separate late-fee attribute. We can calculate the fee from the due date and the actual return date—or today's date for an active overdue transaction—using our ₱5-per-day rule.
+
+## Stage 02 progress
+
+Exercise 03 — Identify core concepts
+
+Exercise 04A — Member attributes
+
+Exercise 04B — Library Item attributes
+
+Exercise 04C — Borrowing Transaction attributes
+
+Next: Exercise 04D — Review our model
+
+Check whether our three concepts and their information cover the requirements before documenting them.
+
+## Exercise 04D — Are we missing anything?
+
+Imagine a member borrows a book, returns it late, and owes ₱15. Staff needs to review the transaction and determine the fee.
+
+We already have `Member`, `Library Item`, and `Borrowing Transaction`.
+
+Question: Based on our current requirements, do we need to introduce a separate `Late Fee` domain concept, or can the system calculate the fee using information already associated with the borrowing transaction?
+
+A. Create a separate `Late Fee` concept because every calculated value must be its own concept.
+
+B. Calculate the fee using the transaction's dates and the late-fee rule; a separate domain concept isn't necessary for Version 1.
+
+C. Store the fee only on `Library Item`, because the item was returned late.
+
+Check my answer
+
+Hint: Think back to your earlier insight: the system already knows the due date, the return date (or today's date), and the fee per overdue day. Does it need another concept to represent the fee, or does it already have enough information to calculate it?
