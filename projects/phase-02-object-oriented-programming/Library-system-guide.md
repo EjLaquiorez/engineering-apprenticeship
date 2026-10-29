@@ -2782,3 +2782,58 @@ C. No. Every member must borrow at least one item immediately after registration
 Check my answer
 
 Hint: Our requirements let staff register a member before that member borrows anything. Think about what this means for the minimum number of transactions a member can have.
+
+Correct! Exercise 05D: B — a member can exist without any borrowing transactions. ✅
+
+Your answer matches our requirements: staff can register a member before that person borrows anything.
+
+## What this means for the domain model
+
+A relationship does not always mean that both sides must have an associated record immediately.
+
+For our library system:
+
+- A `Member` can have zero or many borrowing transactions.
+- Every `Borrowing Transaction` must belong to exactly one member.
+- Every `Borrowing Transaction` must involve exactly one library item.
+- A `Library Item` can have zero or many borrowing transactions over its lifetime.
+
+For example, a newly registered member might look like this:
+
+Member: M003
+
+Status: Active
+
+Borrowing Transactions
+
+None yet — and that's perfectly valid.
+
+We describe the relationship from `Member` to `Borrowing Transaction` as one-to-zero-or-many. This is often written as `1` to `0..*` in a domain model.
+
+The reverse relationship is different: every borrowing transaction must have a member. A transaction without a member would leave the system unable to identify who borrowed the item.
+
+## Stage 02 roadmap update
+
+Exercise 03 — Identify domain concepts
+
+Completed: Member, Library Item, Borrowing Transaction.
+
+Exercise 04 — Identify concept attributes
+
+Completed: identified the key information for all three concepts and distinguished attributes from relationships and calculated values.
+
+Exercise 05 — Identify relationships
+
+Completed: established the relationships, borrowing-history rules, and optional borrowing for members.
+
+Next: Exercise 06 — Document the domain model
+
+We'll put our decisions into `docs/design/domain-model.md`, review it against the requirements, and only then mark Stage 02 complete.
+
+## Before we document it
+
+You've already done the important reasoning. We have three concepts, their main attributes, and their relationships. Next, we'll turn those decisions into a clear document—not Java classes yet.
+
+One final check: Can a `Library Item` have zero borrowing transactions?
+
+For example, a brand-new book has just been added to the catalog and has never been borrowed. Would it still be a valid library item?
