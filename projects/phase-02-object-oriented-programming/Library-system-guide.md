@@ -2621,3 +2621,56 @@ C. One transaction for the entire library, regardless of how many members borrow
 Check my answer
 
 Remember the rule we established earlier: each borrowing event needs its own record so that dates, returns, and late fees remain accurate.
+
+Correct! Exercise 05A: B — three borrowing transactions, one for each item borrowed. ✅
+
+You're applying the rule we established earlier: every borrowing event needs its own record.
+
+## Why this relationship works
+
+Imagine Maria borrows three items:
+
+## Member: Maria
+
+One registered member
+
+Has borrowing history recorded through
+
+Transaction 1
+
+Clean Code
+
+Transaction 2
+
+Java Basics
+
+Transaction 3
+
+Magazine
+
+Maria is represented by one `Member` concept, but her borrowing history can contain many `Borrowing Transaction` records.
+
+In domain modeling, we describe this as a one-to-many relationship:
+
+- One member can have many borrowing transactions.
+- Each borrowing transaction belongs to one member.
+
+This relationship preserves each item's dates, return information, and late-fee calculation independently.
+
+## Exercise 05B — What about Library Item?
+
+Now let's reverse the perspective.
+
+Suppose the physical copy `I001` of Clean Code is borrowed by Maria, returned, and then borrowed by John a week later.
+
+Should the `Library Item` be associated with one or many `Borrowing Transaction` records over its lifetime?
+
+A. One transaction only, because the physical item has one unique ID.
+
+B. Many transactions over time, because the same physical item can be borrowed repeatedly.
+
+C. No transactions, because the item already has its own status.
+
+Check my answer
+
+Hint: Remember that a unique item ID identifies the physical copy, not a single borrowing event. What happens to that same copy after it is returned and borrowed again?
