@@ -2723,3 +2723,62 @@ Check my answer
 Hint: What if Maria returns two books on time but returns the magazine late? Which design lets the system track that accurately?
 
 Once we finish this, we'll review the complete set of relationships before documenting the domain model.
+
+Correct! Exercise 05C: B — create three separate borrowing transactions, one for each item. ✅
+
+This matches our library system requirements, especially the rules for borrowing history, due dates, returns, and late fees.
+
+## Why separate transactions are better
+
+Suppose Maria borrows two books and one magazine on the same day.
+
+Transaction 1 — Clean Code
+
+Returned on time
+
+Late fee: ₱0
+
+Transaction 2 — Java Basics
+
+Returned on time
+
+Late fee: ₱0
+
+Transaction 3 — Magazine
+
+Returned 3 days late
+
+Late fee: 3 × ₱5 = ₱15
+
+If we used one transaction for all three items, a single return date would not accurately describe when each item was returned. We'd need extra complexity to handle the different dates and fees.
+
+With separate transactions, each item has its own borrowing history. That's simpler and aligns with the requirements we've already established.
+
+## Stage 02 — Exercise 05 review
+
+We have identified these relationships:
+
+| Relationship                         | Rule                                                                                       |
+| ------------------------------------ | ------------------------------------------------------------------------------------------ |
+| Member → Borrowing Transaction       | One member can have many transactions. Each transaction belongs to one member.             |
+| Library Item → Borrowing Transaction | One item can have many transactions over its lifetime. Each transaction involves one item. |
+| Borrowing Transaction → Library Item | Each transaction concerns exactly one physical item.                                       |
+| Active borrowing                     | A physical item can have only one active borrowing transaction at a time.                  |
+
+These rules describe the relationships between our three core concepts without introducing unnecessary concepts.
+
+## Exercise 05D — Check your understanding
+
+One final question before we document the domain model.
+
+Suppose a member has never borrowed anything yet. Should the system still allow that member to exist in the system?
+
+A. No. A member must have at least one borrowing transaction to be registered.
+
+B. Yes. A member can exist without any borrowing transactions; borrowing is optional for that member.
+
+C. No. Every member must borrow at least one item immediately after registration.
+
+Check my answer
+
+Hint: Our requirements let staff register a member before that member borrows anything. Think about what this means for the minimum number of transactions a member can have.
