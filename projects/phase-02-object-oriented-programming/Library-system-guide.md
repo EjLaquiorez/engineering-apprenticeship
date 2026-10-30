@@ -2881,3 +2881,47 @@ We'll draft it together, review each section, and you'll save and commit it when
 Let's begin with Section 1: Domain Overview.
 
 I'll provide a draft based on the requirements we've already agreed on, and you can review it before we move forward.
+
+Let's proceed with Stage 02 — Domain Modeling, Exercise 06: Document the Domain Model.
+
+We'll build `docs/design/domain-model.md` section by section. I'll prepare each draft using the decisions we've already made, explain why it belongs in the document, and let you review it before we continue.
+
+No Java code yet. We're documenting the real-world concepts and rules our software needs to represent.
+
+## Section 1 — Domain Overview
+
+The domain overview explains what real-world problem our software represents and identifies its main concepts.
+
+Here is the proposed draft:
+
+# Domain Model
+
+## 1. Domain Overview
+
+The Library Management System is designed to help library staff manage library items, registered members, and borrowing transactions.
+
+The system focuses on maintaining accurate records of physical library items, including books and magazines, tracking their availability, and recording borrowing and return activities.
+
+The domain consists of three core concepts:
+
+- **Member** — Represents a registered person who can borrow library items.
+- **Library Item** — Represents an individual physical book or magazine managed by the library.
+- **Borrowing Transaction** — Represents one borrowing event involving a member and a specific library item.
+
+These concepts work together to support catalog management, member management, borrowing records, return tracking, and overdue fee calculations.
+
+## Why this section is important
+
+Notice three decisions reflected in the draft:
+
+1. Physical items: We manage individual copies, not just book titles. Two copies of the same book have separate identities.
+2. Separate borrowing records: Every borrowing event is recorded independently to preserve history.
+3. Three core concepts: We focus on the concepts required by our current Version 1 requirements rather than introducing unnecessary concepts.
+
+## Your review
+
+Before we move to Section 2, read the draft and tell me:
+
+Does this accurately describe the purpose and scope of our Library Management System?
+
+You can approve it or point out anything you think should be changed.
