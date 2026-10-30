@@ -2837,3 +2837,47 @@ You've already done the important reasoning. We have three concepts, their main 
 One final check: Can a `Library Item` have zero borrowing transactions?
 
 For example, a brand-new book has just been added to the catalog and has never been borrowed. Would it still be a valid library item?
+
+Exactly right! ✅ A newly added book can exist in the library without ever having been borrowed.
+
+This means:
+
+- One `Library Item` can have zero or many borrowing transactions (`0..*`).
+- Every borrowing transaction must involve exactly one library item.
+
+For example, a newly registered book:
+
+- Item ID: `I005`
+- Title: `Clean Code`
+- Type: `Book`
+- Status: `Available`
+- Borrowing transactions: `0`
+
+It is a perfectly valid library item.
+
+## Stage 02 — Domain Modeling
+
+Exercises 03–05 completed
+
+We've established our three core concepts, their attributes, and their relationships.
+
+Our next step is Exercise 06 — Document the Domain Model.
+
+We'll create:
+
+`docs/design/domain-model.md`
+
+The document will contain:
+
+1. Domain overview
+2. Core concepts and their purposes
+3. Attributes of each concept
+4. Relationships and cardinalities
+5. Important business rules
+6. Design decisions and exclusions
+
+We'll draft it together, review each section, and you'll save and commit it when you're satisfied.
+
+Let's begin with Section 1: Domain Overview.
+
+I'll provide a draft based on the requirements we've already agreed on, and you can review it before we move forward.
