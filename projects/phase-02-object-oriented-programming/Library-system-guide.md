@@ -2925,3 +2925,67 @@ Before we move to Section 2, read the draft and tell me:
 Does this accurately describe the purpose and scope of our Library Management System?
 
 You can approve it or point out anything you think should be changed.
+
+Approved! ✅ Section 1 — Domain Overview is accepted.
+
+Next, we'll document the three core concepts and their attributes.
+
+## Section 2 — Core Domain Concepts
+
+Here is the proposed draft based on our completed exercises.
+
+## 2. Core Domain Concepts
+
+### 2.1 Member
+
+Represents a person registered in the library system who is eligible to borrow library items.
+
+**Attributes:**
+
+- `memberId` — Unique identifier assigned to each member.
+- `name` — Full name of the registered member.
+- `status` — Indicates whether the member is active or inactive.
+
+A member can exist in the system without having any borrowing transactions. An inactive member cannot start new borrowing transactions.
+
+### 2.2 Library Item
+
+Represents an individual physical book or magazine managed by the library.
+
+**Attributes:**
+
+- `itemId` — Unique identifier assigned to each physical library item.
+- `title` — Title of the book or magazine.
+- `itemType` — Identifies whether the item is a book or magazine.
+- `status` — Indicates whether the item is available, borrowed, or retired.
+
+Each physical copy has its own unique identifier, even when multiple copies share the same title.
+
+### 2.3 Borrowing Transaction
+
+Represents one borrowing event involving exactly one member and one physical library item.
+
+**Information associated with the transaction:**
+
+- `borrowDate` — Date the item was borrowed.
+- `dueDate` — Date the item must be returned.
+- `returnDate` — Actual date the item was returned; remains unset while the item is still borrowed.
+
+Each borrowing transaction preserves its own history. A member borrowing multiple items creates a separate transaction for each item.
+
+Late fees are calculated using the transaction's due date, return date (or current date for an active borrowing), and the applicable late-fee rule. A separate Late Fee domain concept is not required for Version 1.
+
+## Important modeling distinction
+
+Notice that I used "Information associated with the transaction" rather than simply "Attributes" for its member and library item.
+
+That's intentional:
+
+- `borrowDate`, `dueDate`, and `returnDate` describe the transaction itself.
+- `Member` and `Library Item` are connected concepts.
+
+We'll document those connections in the next section.
+
+Your review: Does Section 2 accurately represent the three concepts and the information our system needs to maintain?
+
+Take your time. We won't proceed to Section 3 until you approve this one.
