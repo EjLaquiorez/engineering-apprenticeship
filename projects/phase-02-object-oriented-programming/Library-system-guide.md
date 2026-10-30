@@ -2989,3 +2989,75 @@ We'll document those connections in the next section.
 Your review: Does Section 2 accurately represent the three concepts and the information our system needs to maintain?
 
 Take your time. We won't proceed to Section 3 until you approve this one.
+
+Approved! ✅ Section 2 — Core Domain Concepts is accepted.
+
+You've now documented all three core concepts and their important information.
+
+## Section 3 — Relationships and Cardinalities
+
+This section explains how our three concepts connect and how many records can be associated with one another.
+
+Based on Exercises 05A–05D, here's the proposed draft.
+
+## 3. Relationships and Cardinalities
+
+### 3.1 Member and Borrowing Transaction
+
+- One member can have zero or many borrowing transactions.
+- Each borrowing transaction must belong to exactly one member.
+
+**Cardinality:** Member `1` → Borrowing Transaction `0..*`
+
+### 3.2 Library Item and Borrowing Transaction
+
+- One library item can have zero or many borrowing transactions throughout its lifetime.
+- Each borrowing transaction must involve exactly one library item.
+
+**Cardinality:** Library Item `1` → Borrowing Transaction `0..*`
+
+### 3.3 Borrowing Transaction Rules
+
+- Each transaction represents the borrowing of exactly one physical library item.
+- A member borrowing multiple items must have a separate transaction for each item.
+- A physical library item can have only one active borrowing transaction at a time.
+- A new borrowing transaction for an item can only be created after its previous active transaction has been returned and closed.
+
+These relationships preserve borrowing history and allow each item to have its own due date, return date, and late-fee calculation.
+
+## Understanding the relationships visually
+
+Member
+
+One member
+
+1
+
+0..\*
+
+Borrowing Transaction
+
+Each transaction belongs to one member and one item
+
+0..\*
+
+1
+
+Library Item
+
+One physical item
+
+A quick way to remember:
+
+- `1` means exactly one.
+- `0..*` means zero or many.
+
+For example, a newly registered member can have zero transactions. But a transaction cannot exist without a member.
+
+## Your review
+
+Before approving Section 3, consider this question:
+
+Why do we say that a Library Item can have zero or many transactions, instead of exactly one transaction?
+
+You can explain it in your own words. This is a review of your understanding, not another coding exercise.
