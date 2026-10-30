@@ -51,3 +51,28 @@ Represents one borrowing event involving exactly one member and one physical lib
 Each borrowing transaction preserves its own history. A member borrowing multiple items creates a separate transaction for each item.
 
 Late fees are calculated using the transaction's due date, return date (or current date for an active borrowing), and the applicable late-fee rule. A separate Late Fee domain concept is not required for Version 1.
+
+## 3. Relationships and Cardinalities
+
+### 3.1 Member and Borrowing Transaction
+
+- One member can have zero or many borrowing transactions.
+- Each borrowing transaction must belong to exactly one member.
+
+**Cardinality:** Member `1` → Borrowing Transaction `0..*`
+
+### 3.2 Library Item and Borrowing Transaction
+
+- One library item can have zero or many borrowing transactions throughout its lifetime.
+- Each borrowing transaction must involve exactly one library item.
+
+**Cardinality:** Library Item `1` → Borrowing Transaction `0..*`
+
+### 3.3 Borrowing Transaction Rules
+
+- Each transaction represents the borrowing of exactly one physical library item.
+- A member borrowing multiple items must have a separate transaction for each item.
+- A physical library item can have only one active borrowing transaction at a time.
+- A new borrowing transaction for an item can only be created after its previous active transaction has been returned and closed.
+
+These relationships preserve borrowing history and allow each item to have its own due date, return date, and late-fee calculation.
