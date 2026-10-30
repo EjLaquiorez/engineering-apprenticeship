@@ -3061,3 +3061,39 @@ Before approving Section 3, consider this question:
 Why do we say that a Library Item can have zero or many transactions, instead of exactly one transaction?
 
 You can explain it in your own words. This is a review of your understanding, not another coding exercise.
+
+Exactly! ✅ That's one important reason.
+
+A newly registered library item has never been borrowed, so it starts with zero borrowing transactions.
+
+There's another reason: the same physical item can be borrowed repeatedly throughout its lifetime.
+
+For example:
+
+1. Item `I001` is added — zero transactions.
+2. Maria borrows it — transaction 1.
+3. Maria returns it.
+4. John borrows it — transaction 2.
+5. John returns it.
+
+The item now has two historical transactions, but it is still the same physical item with ID `I001`.
+
+That's why the relationship is `0..*` — zero or many.
+
+Section 3 approved
+
+## Next: Section 4 — Business Rules
+
+We'll document the rules that govern how our concepts behave together.
+
+These include:
+
+- 14-calendar-day borrowing period.
+- ₱5 late fee per overdue calendar day per item.
+- No renewals in Version 1.
+- Only active members can borrow.
+- Only available, non-retired items can be borrowed.
+- An item cannot have multiple active borrowing transactions.
+- Borrowing history must be preserved.
+
+I'll draft this section using our previously agreed requirements, then we'll review it together.
