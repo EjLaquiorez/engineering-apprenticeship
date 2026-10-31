@@ -3806,3 +3806,54 @@ B. `BorrowingTransaction`
 C. `LateFeeCalculator`
 
 Choose one and explain why. We'll use your reasoning to write the first class-responsibility section.
+
+Correct! A. `Member`.
+
+Your reasoning is right: `Member` owns its member information, including its ID, name, and status. Therefore, managing its own status belongs to that class.
+
+One important distinction: library staff may initiate the action to deactivate a member, but the `Member` object is responsible for maintaining its status.
+
+This is an example of encapsulation: an object manages its own data rather than allowing unrelated classes to change it freely.
+
+## Section 3.1 — Member
+
+Here's our proposed documentation.
+
+### 3.1 Member
+
+**Purpose:**
+
+Represents a registered person in the library system.
+
+**Data owned:**
+
+- `memberId`
+- `name`
+- `status`
+
+**Responsibilities:**
+
+- Maintain its unique member ID.
+- Store and manage the member's name.
+- Maintain the member's active or inactive status.
+- Support status changes when permitted by the system's business rules.
+
+**Responsibility boundaries:**
+
+- Does not manage borrowing transactions.
+- Does not calculate late fees.
+- Does not manage library item information.
+
+### Next: `LibraryItem`
+
+Imagine staff wants to retire a physical book because it is damaged.
+
+Which class should own the responsibility of maintaining that item's status?
+
+A. `Member`
+
+B. `LibraryItem`
+
+C. `BorrowingTransaction`
+
+Explain your choice.
