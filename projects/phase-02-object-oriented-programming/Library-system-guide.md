@@ -3491,3 +3491,29 @@ Consider the following three responsibilities:
 Question: Which of these responsibilities do you think should belong to an existing class, and which might need a separate supporting class?
 
 Don't worry about getting it perfect. Explain your reasoning, and we'll review your design together before moving forward.&#x20;
+
+You're thinking in the right direction by connecting `Member` with borrowing transactions. Remember, however, that association and responsibility are different things.
+
+A `Member` is associated with a `BorrowingTransaction` because each transaction records which member borrowed an item.
+
+But that doesn't necessarily mean the `Member` class should be responsible for recording and managing the entire transaction.
+
+Let's examine the three responsibilities one at a time.
+
+### 1. Store and manage library item information
+
+Which existing domain concept represents an individual physical book or magazine?
+
+### 2. Record borrowing and return transactions
+
+We know a borrowing transaction involves one member and one library item.
+
+Should the `Member` class manage the transaction itself, or should `BorrowingTransaction` represent that event?
+
+### 3. Calculate late fees
+
+The calculation uses the transaction's due date, return date (or current date), and the ₱5 daily fee rule.
+
+Should this calculation belong to `BorrowingTransaction`, or should we consider a separate supporting class?
+
+Let's focus on responsibility 2 first: Who should own the borrowing transaction—the `Member` class or the `BorrowingTransaction` class? Why?
