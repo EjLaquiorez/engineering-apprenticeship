@@ -3612,3 +3612,32 @@ Suppose we change the late-fee rule from ₱5 to ₱10 per overdue day.
 Why might having a separate `LateFeeCalculator` make this change easier to maintain?
 
 Explain in your own words.
+
+Excellent! That's the main idea. Your reasoning is correct.
+
+A separate `LateFeeCalculator` makes the system easier to maintain because changes to the late-fee calculation can be handled in one place without unnecessarily modifying the responsibilities of `Member`, `LibraryItem`, or `BorrowingTransaction`.
+
+This is an example of separation of concerns: each class focuses on a specific responsibility.
+
+One small clarification: changing the fee rule might still affect other parts of the system if they depend on the calculation, but keeping the calculation centralized reduces unnecessary changes.
+
+Concept check passed
+
+## Exercise 07 — Final class identification
+
+Our proposed class list is:
+
+| Class                  | Classification    |
+| ---------------------- | ----------------- |
+| `Member`               | Core domain class |
+| `LibraryItem`          | Core domain class |
+| `BorrowingTransaction` | Core domain class |
+| `LateFeeCalculator`    | Supporting class  |
+
+Before we finalize this exercise, one more design question:
+
+Should `Book` and `Magazine` be separate classes that inherit from `LibraryItem`, or should we keep one `LibraryItem` class with an `itemType` attribute?
+
+Remember, our current requirements say books and magazines follow exactly the same borrowing rules.
+
+What would you choose, and why?
