@@ -3097,3 +3097,86 @@ These include:
 - Borrowing history must be preserved.
 
 I'll draft this section using our previously agreed requirements, then we'll review it together.
+
+Let's continue! We're now working on Section 4 — Business Rules of `docs/design/domain-model.md`.
+
+These rules are important because they define the conditions that our domain concepts must follow. They will later guide our Java class design and application logic.
+
+## Section 4 — Business Rules
+
+Here is the proposed draft based on the requirements we previously approved.
+
+## 4. Business Rules
+
+### 4.1 Member Rules
+
+- Every registered member must have a unique member ID.
+- A member can have either an active or inactive status.
+- Only active members can start new borrowing transactions.
+- A member can borrow multiple library items.
+- A member cannot be marked inactive while they have active borrowing transactions.
+
+### 4.2 Library Item Rules
+
+- Every physical library item must have a unique item ID.
+- Each item must be identified as either a book or a magazine.
+- An item can have one of the following statuses:
+  - Available
+  - Borrowed
+  - Retired
+- Only available items can be borrowed.
+- An item cannot be retired while it has an active borrowing transaction.
+- A retired item cannot be borrowed again.
+- Multiple physical copies of the same title must have separate item IDs.
+
+### 4.3 Borrowing Transaction Rules
+
+- Each borrowing transaction must involve exactly one member and one physical library item.
+- Each borrowing event must have its own transaction record.
+- Each item can have only one active borrowing transaction at a time.
+- A new transaction for an item can only be created after its previous active transaction has been returned.
+- Renewals are not allowed in Version 1.
+- Borrowing transactions must preserve historical records, even after an item is returned.
+
+### 4.4 Borrowing Period and Late Fee Rules
+
+- The standard borrowing period is 14 calendar days.
+- The due date is calculated by adding 14 calendar days to the borrow date.
+- An item becomes overdue starting the calendar day after its due date.
+- The late fee is ₱5 per overdue calendar day, per item.
+- There is no grace period and no maximum late-fee limit.
+- For an active overdue transaction, the fee is calculated through the current calendar date.
+- For a returned item, the final fee is calculated through its actual return date.
+- No borrowing fee is charged; only late fees apply.
+
+### 4.5 Record Integrity Rules
+
+- Borrowing history must remain available after an item is returned.
+- A returned transaction must retain its borrow date, due date, and actual return date.
+- An item's current status must be maintained separately from its borrowing history.
+- Members and library items must not be permanently deleted when doing so would compromise existing borrowing records.
+
+## Let's review an important rule
+
+I want to check one detail before we approve the entire section.
+
+Imagine:
+
+- A member borrowed a book.
+- The book is now overdue.
+- The member has not returned it yet.
+- Staff wants to mark that member as inactive.
+
+Should the system allow staff to mark the member inactive immediately?
+
+A. Yes. The member can become inactive even with an unreturned item.
+
+B. No. The active borrowing transaction must be resolved first.
+
+C. Yes, but the system should delete the borrowing transaction.
+
+Check my reasoning
+
+Hint: Remember our earlier requirement: members cannot be deactivated while they have active borrowing transactions. An overdue transaction is still active until the item is actually returned.
+
+After this check, we'll review the remaining details and approve Section 4.
