@@ -3572,3 +3572,43 @@ A. Put the late-fee calculation inside `BorrowingTransaction`, because it alread
 B. Create a separate supporting class, such as `LateFeeCalculator`, to handle the calculation.
 
 There isn't necessarily one universally correct answer. Think about which design would make responsibilities clearer and easier to maintain.
+
+Good choice! Option B — `LateFeeCalculator` is a reasonable design.
+
+Let's understand why.
+
+`BorrowingTransaction` is responsible for maintaining borrowing records, while `LateFeeCalculator` is responsible for calculating the fee.
+
+This separates two responsibilities:
+
+| Class                  | Responsibility                                                      |
+| ---------------------- | ------------------------------------------------------------------- |
+| `BorrowingTransaction` | Maintains borrowing dates and transaction records                   |
+| `LateFeeCalculator`    | Calculates late fees using transaction dates and the daily fee rule |
+
+For example:
+
+- `BorrowingTransaction` knows the due date is October 20.
+- `LateFeeCalculator` determines that the item was returned October 23.
+- It calculates 3 overdue days × ₱5 = ₱15.
+
+One important distinction: `LateFeeCalculator` is a supporting class, not a new core domain concept. We are introducing it to organize the system's responsibilities.
+
+## Exercise 07 — First design draft
+
+Our current proposed classes are:
+
+| Class                  | Type       | Main responsibility                     |
+| ---------------------- | ---------- | --------------------------------------- |
+| `Member`               | Core       | Represents registered members           |
+| `LibraryItem`          | Core       | Represents physical books and magazines |
+| `BorrowingTransaction` | Core       | Represents individual borrowing events  |
+| `LateFeeCalculator`    | Supporting | Calculates overdue fees                 |
+
+### Concept check
+
+Suppose we change the late-fee rule from ₱5 to ₱10 per overdue day.
+
+Why might having a separate `LateFeeCalculator` make this change easier to maintain?
+
+Explain in your own words.
