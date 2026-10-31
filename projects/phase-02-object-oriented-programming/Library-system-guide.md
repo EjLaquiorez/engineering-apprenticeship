@@ -3396,3 +3396,98 @@ git push origin main
 ```
 
 Once you've pushed it, share your latest commit output. Then we'll officially close Stage 02 and preview Stage 03 — Class Design, where we'll begin translating our domain concepts into Java class responsibilities—still without rushing into implementation.&#x20;
+
+Congratulations! Stage 02 — Domain Modeling is complete. Now let's begin the next stage of your Library Management System project.
+
+# Stage 03 — Class Design
+
+
+
+Ready to begin
+
+Design only — no Java code yet
+
+
+
+## 1. Stage objective
+
+Our goal is to translate the three domain concepts from `domain-model.md` into a clear Java class design.
+
+By the end of this stage, you'll understand:
+
+- Which Java classes the system needs.
+- What responsibility belongs to each class.
+- What data each class should own.
+- What methods each class should provide.
+- How classes should collaborate without taking on responsibilities that don't belong to them.
+
+## 2. Stage roadmap
+
+We'll work through four exercises:
+
+1. Exercise 07 — Identify Classes
+
+   Determine which domain concepts should become Java classes and whether additional supporting classes are necessary.
+2. Exercise 08 — Define Class Responsibilities
+
+   Decide what each class is responsible for. We'll document this in `docs/design/class-responsibilities.md`.
+3. Exercise 09 — Define Class Data and Methods
+
+   Identify fields, methods, and appropriate ownership. We'll document this in `docs/design/class-design.md`.
+4. Exercise 10 — Review the Class Design
+
+   Check responsibilities, encapsulation, relationships, and whether any class is doing too much.
+
+Expected deliverables
+
+```
+docs/
+└── design/
+    ├── domain-model.md
+    ├── class-responsibilities.md
+    └── class-design.md
+```
+
+We will not write Java implementation code until the design is reviewed and Stage 03 is complete.
+
+## 3. Exercise 07 — Identify Classes
+
+Let's start with what we already know.
+
+Our domain model contains three concepts:
+
+| Domain concept        | What it represents          |
+| --------------------- | --------------------------- |
+| Member                | A registered library member |
+| Library Item          | A physical book or magazine |
+| Borrowing Transaction | One borrowing event         |
+
+A common beginner mistake is assuming that every domain concept automatically becomes exactly one Java class, or that every feature needs its own class.
+
+Instead, we'll examine what responsibilities the system needs.
+
+### Worked example
+
+Suppose we have a `Member` class.
+
+It represents a registered member and owns information such as:
+
+- Member ID
+- Name
+- Status
+
+It makes sense for this concept to become a Java class because the system needs to create, identify, and manage individual member objects.
+
+Now let's apply that reasoning.
+
+### Your first exercise
+
+Consider the following three responsibilities:
+
+1. Store and manage library item information.
+2. Record borrowing and return transactions.
+3. Calculate late fees using borrowing dates and the late-fee rule.
+
+Question: Which of these responsibilities do you think should belong to an existing class, and which might need a separate supporting class?
+
+Don't worry about getting it perfect. Explain your reasoning, and we'll review your design together before moving forward.&#x20;
