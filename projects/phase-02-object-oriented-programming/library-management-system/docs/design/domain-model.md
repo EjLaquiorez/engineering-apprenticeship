@@ -76,3 +76,53 @@ Late fees are calculated using the transaction's due date, return date (or curre
 - A new borrowing transaction for an item can only be created after its previous active transaction has been returned and closed.
 
 These relationships preserve borrowing history and allow each item to have its own due date, return date, and late-fee calculation.
+
+## 4. Business Rules
+
+### 4.1 Member Rules
+
+- Every registered member must have a unique member ID.
+- A member can have either an active or inactive status.
+- Only active members can start new borrowing transactions.
+- A member can borrow multiple library items.
+- A member cannot be marked inactive while they have active borrowing transactions.
+
+### 4.2 Library Item Rules
+
+- Every physical library item must have a unique item ID.
+- Each item must be identified as either a book or a magazine.
+- An item can have one of the following statuses:
+  - Available
+  - Borrowed
+  - Retired
+- Only available items can be borrowed.
+- An item cannot be retired while it has an active borrowing transaction.
+- A retired item cannot be borrowed again.
+- Multiple physical copies of the same title must have separate item IDs.
+
+### 4.3 Borrowing Transaction Rules
+
+- Each borrowing transaction must involve exactly one member and one physical library item.
+- Each borrowing event must have its own transaction record.
+- Each item can have only one active borrowing transaction at a time.
+- A new transaction for an item can only be created after its previous active transaction has been returned.
+- Renewals are not allowed in Version 1.
+- Borrowing transactions must preserve historical records, even after an item is returned.
+
+### 4.4 Borrowing Period and Late Fee Rules
+
+- The standard borrowing period is 14 calendar days.
+- The due date is calculated by adding 14 calendar days to the borrow date.
+- An item becomes overdue starting the calendar day after its due date.
+- The late fee is ₱5 per overdue calendar day, per item.
+- There is no grace period and no maximum late-fee limit.
+- For an active overdue transaction, the fee is calculated through the current calendar date.
+- For a returned item, the final fee is calculated through its actual return date.
+- No borrowing fee is charged; only late fees apply.
+
+### 4.5 Record Integrity Rules
+
+- Borrowing history must remain available after an item is returned.
+- A returned transaction must retain its borrow date, due date, and actual return date.
+- An item's current status must be maintained separately from its borrowing history.
+- Members and library items must not be permanently deleted when doing so would compromise existing borrowing records.
