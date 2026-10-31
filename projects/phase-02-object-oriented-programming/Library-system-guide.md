@@ -3915,3 +3915,69 @@ B. `LibraryItem`
 C. `BorrowingTransaction`
 
 Why?
+
+Exactly! C. `BorrowingTransaction`.
+
+The transaction represents one specific borrowing event, so it owns the dates and preserves the history of that event.
+
+For our example:
+
+- `borrowDate` — October 1
+- `dueDate` — October 15
+- `returnDate` — October 18
+
+If the same member borrows the same book again, a new transaction is created with its own dates.
+
+## Section 3.3 — BorrowingTransaction
+
+Add this section:
+
+### 3.3 BorrowingTransaction
+
+**Purpose:**
+
+Represents one borrowing event involving exactly one member and one physical library item.
+
+**Data owned:**
+
+- `transactionId`
+- `borrowDate`
+- `dueDate`
+- `returnDate`
+- Associated `Member`
+- Associated `LibraryItem`
+
+**Responsibilities:**
+
+- Maintain its unique transaction ID.
+- Record the member and library item involved.
+- Maintain the borrowing date and due date.
+- Record the actual return date when the item is returned.
+- Preserve borrowing history after an item is returned.
+- Identify whether the transaction is still active or has been completed.
+
+**Responsibility boundaries:**
+
+- Does not manage member information.
+- Does not manage library item details.
+- Does not independently manage the library's late-fee policy.
+
+## Next: `LateFeeCalculator`
+
+Now consider this scenario:
+
+A book is three days overdue. The daily late fee is ₱5.
+
+The system needs to calculate:
+
+\\[ 3 \times ₱5 = ₱15 \\]
+
+Which class should own the calculation?
+
+A. `BorrowingTransaction`
+
+B. `LateFeeCalculator`
+
+C. `LibraryItem`
+
+Explain why you chose it.
