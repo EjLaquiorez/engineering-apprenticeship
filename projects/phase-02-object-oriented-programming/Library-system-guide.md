@@ -3310,3 +3310,52 @@ Before we mark Stage 02 complete, we'll perform a final review to ensure:
 We'll also check for contradictions, especially around member access without authentication.
 
 Your next task: Review the complete `docs/design/domain-model.md` after adding Section 5. Tell me when you've finished, and we'll do the final review together.
+
+Let's perform the final review of Stage 02 — Domain Modeling.
+
+The goal isn't to add more features. It's to verify that our domain model accurately represents the requirements we've already agreed on.
+
+## Final review checklist
+
+| Review area      | What we need to verify                                               |
+| ---------------- | -------------------------------------------------------------------- |
+| Domain concepts  | Member, Library Item, Borrowing Transaction                          |
+| Attributes       | IDs, names, statuses, titles, item types, and transaction dates      |
+| Relationships    | Each transaction belongs to one member and one physical item         |
+| Cardinalities    | One member/item can have zero or many transactions                   |
+| Borrowing rules  | One active transaction per item; 14-day period                       |
+| Late fees        | ₱5 per overdue calendar day, per item                                |
+| Record integrity | Returned transactions remain in history                              |
+| Scope boundaries | Console-based, in-memory, staff-managed borrowing, no authentication |
+
+## Review result
+
+Most of our model is consistent with the requirements. However, I found one improvement before we declare it complete.
+
+### Missing attribute: `transactionId`
+
+Our `Borrowing Transaction` currently records:
+
+- `borrowDate`
+- `dueDate`
+- `returnDate`
+- Associated `Member`
+- Associated `Library Item`
+
+But it doesn't have its own unique identifier.
+
+Consider this scenario:
+
+1. Maria borrows Book A.
+2. Maria returns Book A.
+3. Maria borrows Book A again.
+
+Those are two separate transactions involving the same member and item. Giving each transaction a unique ID makes it easier to identify, retrieve, and maintain each historical record.
+
+Recommended addition to Section 2.3:
+
+\- `transactionId` — Unique identifier assigned to each borrowing transaction.
+
+This doesn't change our relationships or business rules. It simply gives every borrowing event its own identity.
+
+Do you approve adding `transactionId` to the Borrowing Transaction concept?
