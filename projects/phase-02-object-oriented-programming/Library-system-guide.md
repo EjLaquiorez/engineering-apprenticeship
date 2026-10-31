@@ -3242,3 +3242,53 @@ We'll document why we made certain choices and what we intentionally excluded fr
 This prevents future developers (including you) from confusing planned features with requirements that the current system must implement.
 
 I'll prepare the next draft for your review.
+
+Let's continue with Stage 02 — Domain Modeling, Exercise 06: Document the Domain Model.
+
+We've approved Sections 1–4. Now we'll document the decisions behind our model and clearly define what Version 1 will and won't include.
+
+## Section 5 — Design Decisions and Scope Boundaries
+
+## 5. Design Decisions and Scope Boundaries
+
+### 5.1 Design Decisions
+
+The following decisions guide the design of Version 1:
+
+- **Console-based application:** The system will run in a Java console environment.
+- **In-memory storage:** Records will be stored in memory. Data will not persist after the application closes.
+- **Staff-managed borrowing:** Library staff will record borrowing and return transactions. Members will not initiate borrowing transactions through the system.
+- **Separate user responsibilities:** Staff and members have different intended responsibilities. However, Version 1 will not implement login or authentication.
+- **Shared borrowing rules:** Books and magazines will follow the same borrowing period and late-fee rules.
+- **One transaction per physical item:** Each borrowed physical item will have its own borrowing transaction, even when a member borrows multiple items in one visit.
+- **Calculated late fees:** Late fees will be calculated from transaction dates and the applicable fee rule rather than stored as a separate domain concept.
+- **No staff domain concept:** Staff will be treated as an actor rather than a domain concept because Version 1 does not require staff accounts or records identifying which staff member processed a transaction.
+
+### 5.2 Excluded from Version 1
+
+The following features are outside the initial project scope and may be considered for future versions:
+
+- Database integration and permanent file storage.
+- Login, authentication, and role-based access enforcement.
+- Member-initiated borrowing and online reservations.
+- Payment processing.
+- Notifications and reminders.
+- Borrowing renewals.
+- Multiple library branches.
+- Different borrowing rules for books and magazines.
+- Maximum borrowing limits.
+- Tracking which staff member processed each transaction.
+
+These boundaries keep Version 1 focused on the core library operations: managing members and physical items, recording borrowing and returns, preserving transaction history, and calculating late fees.
+
+### One important design clarification
+
+There's one detail I want you to review carefully:
+
+We have member use cases such as viewing currently borrowed items and checking overdue fees, but we also decided not to implement login or authentication.
+
+That means Version 1 can describe these as intended member capabilities, but it cannot securely verify that someone viewing the information is the actual member.
+
+This is acceptable as a scope limitation, provided we document it clearly.
+
+Do you agree with this clarification and the rest of Section 5? We won't move to the final review until you've approved it.&#x20;
