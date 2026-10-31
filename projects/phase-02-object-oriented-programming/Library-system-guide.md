@@ -3359,3 +3359,40 @@ Recommended addition to Section 2.3:
 This doesn't change our relationships or business rules. It simply gives every borrowing event its own identity.
 
 Do you approve adding `transactionId` to the Borrowing Transaction concept?
+
+Approved
+
+Good decision. Add this attribute to Section 2.3 — Borrowing Transaction:
+
+```
+- `transactionId` — Unique identifier assigned to each borrowing transaction.
+```
+
+### Final review result
+
+With that addition, our domain model now accounts for:
+
+- Three clearly defined domain concepts.
+- Their attributes and unique identifiers.
+- Member-to-transaction and item-to-transaction relationships.
+- Correct cardinalities and borrowing constraints.
+- Transaction history and late-fee calculations.
+- Version 1 design decisions and scope boundaries.
+
+Stage 02 — Domain Modeling complete
+
+## Before committing
+
+Update `docs/design/domain-model.md`, then save it.
+
+Suggested commit:
+
+```
+git add projects/phase-02-object-oriented-programming/library-management-system/docs/design/domain-model.md
+
+git commit -m "docs(library-domain): document domain model"
+
+git push origin main
+```
+
+Once you've pushed it, share your latest commit output. Then we'll officially close Stage 02 and preview Stage 03 — Class Design, where we'll begin translating our domain concepts into Java class responsibilities—still without rushing into implementation.&#x20;
