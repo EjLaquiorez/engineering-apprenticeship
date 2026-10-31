@@ -3857,3 +3857,61 @@ B. `LibraryItem`
 C. `BorrowingTransaction`
 
 Explain your choice.
+
+Correct! B. `LibraryItem`.
+
+The `LibraryItem` class owns its information and status, so it should be responsible for maintaining whether an item is:
+
+- Available
+- Borrowed
+- Retired
+
+Staff may request that an item be retired, but the item's status belongs to the `LibraryItem` object.
+
+There's also an important business rule: an item cannot be retired while it has an active borrowing transaction.
+
+## Section 3.2 — LibraryItem
+
+Add this section to your document:
+
+### 3.2 LibraryItem
+
+**Purpose:**
+
+Represents an individual physical book or magazine managed by the library.
+
+**Data owned:**
+
+- `itemId`
+- `title`
+- `itemType`
+- `status`
+
+**Responsibilities:**
+
+- Maintain its unique item ID.
+- Store and manage the item's title and type.
+- Maintain the item's current status.
+- Support status changes when permitted by the system's business rules.
+
+**Responsibility boundaries:**
+
+- Does not manage member information.
+- Does not record borrowing transaction history.
+- Does not calculate late fees.
+
+## Next: `BorrowingTransaction`
+
+Consider this scenario:
+
+A member borrows a book on October 1. The due date is October 15, and the book is returned on October 18.
+
+Which class should own and maintain these dates?
+
+A. `Member`
+
+B. `LibraryItem`
+
+C. `BorrowingTransaction`
+
+Why?
