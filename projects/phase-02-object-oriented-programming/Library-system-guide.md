@@ -3180,3 +3180,65 @@ Check my reasoning
 Hint: Remember our earlier requirement: members cannot be deactivated while they have active borrowing transactions. An overdue transaction is still active until the item is actually returned.
 
 After this check, we'll review the remaining details and approve Section 4.
+
+Correct! B — the active borrowing transaction must be resolved first. ✅
+
+Your answer matches our previously approved requirements.
+
+## Why B is correct
+
+An overdue item is still considered borrowed until staff records its actual return.
+
+For example:
+
+1. Maria borrows Clean Code.
+2. Its due date passes.
+3. The item becomes overdue, and late fees accumulate.
+4. Maria still hasn't returned it.
+5. Staff attempts to mark Maria inactive.
+
+The system must reject that action because Maria still has an active borrowing transaction.
+
+Member: Maria
+
+Active
+
+Borrowing transaction
+
+Overdue
+
+Can member be deactivated?
+
+No
+
+The item must be returned and the transaction closed first.
+
+Notice the important distinction:
+
+- Overdue describes the transaction's condition.
+- Active means the borrowing transaction has not been closed by a recorded return.
+
+An overdue transaction is still active.
+
+## Section 4 review
+
+Business rule review passed
+
+The proposed Section 4 accurately reflects our agreed rules, including:
+
+- Member eligibility and deactivation restrictions.
+- Item availability and retirement restrictions.
+- Separate borrowing transactions.
+- 14-day borrowing period.
+- ₱5 late fee per overdue day.
+- Preservation of historical records.
+
+Section 4 is approved. You can add the proposed draft to your `domain-model.md`.
+
+## Next: Section 5 — Design Decisions and Scope Boundaries
+
+We'll document why we made certain choices and what we intentionally excluded from Version 1.
+
+This prevents future developers (including you) from confusing planned features with requirements that the current system must implement.
+
+I'll prepare the next draft for your review.
