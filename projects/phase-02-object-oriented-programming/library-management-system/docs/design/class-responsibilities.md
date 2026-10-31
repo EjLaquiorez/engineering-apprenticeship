@@ -63,3 +63,30 @@ Represents an individual physical book or magazine managed by the library.
 - Does not manage member information.
 - Does not record borrowing transaction history.
 - Does not calculate late fees.
+
+### 3.3 BorrowingTransaction
+
+**Purpose:**
+
+Represents one borrowing event involving exactly one member and one physical library item.
+
+**Data owned:**
+- `transactionId`
+- `borrowDate`
+- `dueDate`
+- `returnDate`
+- Associated `Member`
+- Associated `LibraryItem`
+
+**Responsibilities:**
+- Maintain its unique transaction ID.
+- Record the member and library item involved.
+- Maintain the borrowing date and due date.
+- Record the actual return date when the item is returned.
+- Preserve borrowing history after an item is returned.
+- Identify whether the transaction is still active or has been completed.
+
+**Responsibility boundaries:**
+- Does not manage member information.
+- Does not manage library item details.
+- Does not independently manage the library's late-fee policy.
