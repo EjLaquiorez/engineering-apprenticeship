@@ -3743,3 +3743,66 @@ We'll examine each class individually and decide:
 We'll create `docs/design/class-responsibilities.md`.
 
 Before we start: Save and commit Exercise 07, then share your latest commit output. We'll review it before moving forward.&#x20;
+
+Great! Let's begin Exercise 08 — Define Class Responsibilities.
+
+Our goal is to create:
+
+`docs/design/class-responsibilities.md`
+
+We'll document each class's responsibilities and boundaries. We'll work through them one at a time so you understand why each responsibility belongs to a particular class.
+
+## 1. Document introduction
+
+Let's start with this section.
+
+# Class Responsibilities
+
+## 1. Purpose
+
+This document defines the responsibilities of each class in the Library Management System.
+
+Each class should have a clear purpose and should manage only the information and behavior related to that purpose.
+
+The goal is to establish clear separation of responsibilities, reduce unnecessary dependencies, and make the system easier to maintain and extend.
+
+## 2. Identified Classes
+
+The system will initially contain the following classes:
+
+| Class                  | Classification    |
+| ---------------------- | ----------------- |
+| `Member`               | Core domain class |
+| `LibraryItem`          | Core domain class |
+| `BorrowingTransaction` | Core domain class |
+| `LateFeeCalculator`    | Supporting class  |
+
+## 2. First class — `Member`
+
+Let's use the same reasoning process for every class.
+
+From our domain model, `Member` owns:
+
+- `memberId`
+- `name`
+- `status`
+
+It represents a registered person in the library system.
+
+Its responsibilities should include managing its own member information and maintaining its active/inactive status.
+
+However, it should not calculate late fees or manage the borrowing and return process.
+
+### Your turn
+
+Imagine staff wants to mark a member as inactive.
+
+Which class should be responsible for managing that member's status?
+
+A. `Member`
+
+B. `BorrowingTransaction`
+
+C. `LateFeeCalculator`
+
+Choose one and explain why. We'll use your reasoning to write the first class-responsibility section.
