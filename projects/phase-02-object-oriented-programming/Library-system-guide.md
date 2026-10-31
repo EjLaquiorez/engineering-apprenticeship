@@ -3517,3 +3517,27 @@ The calculation uses the transaction's due date, return date (or current date), 
 Should this calculation belong to `BorrowingTransaction`, or should we consider a separate supporting class?
 
 Let's focus on responsibility 2 first: Who should own the borrowing transaction—the `Member` class or the `BorrowingTransaction` class? Why?
+
+Exactly! Your reasoning is correct. Let's make it a little more precise:
+
+The `BorrowingTransaction` class should own the borrowing and return records because it represents one specific borrowing event and is responsible for maintaining the information associated with that event.
+
+For example, Maria can borrow the same book twice, but each borrowing event must have its own transaction record.
+
+That is why we don't make `Member` responsible for managing the transaction details.
+
+Responsibility 2 understood
+
+### Now let's examine responsibility 1
+
+Store and manage library item information.
+
+Which class should own this responsibility?
+
+A. `Member`
+
+B. `LibraryItem`
+
+C. `BorrowingTransaction`
+
+Choose one and explain why.
