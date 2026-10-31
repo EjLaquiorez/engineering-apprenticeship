@@ -3292,3 +3292,21 @@ That means Version 1 can describe these as intended member capabilities, but it 
 This is acceptable as a scope limitation, provided we document it clearly.
 
 Do you agree with this clarification and the rest of Section 5? We won't move to the final review until you've approved it.&#x20;
+
+Section 5 approved
+
+Great! That completes the five main sections of our domain model document.
+
+## Next: Section 6 — Domain Model Completion Review
+
+Before we mark Stage 02 complete, we'll perform a final review to ensure:
+
+1. All three domain concepts are documented.
+2. Their attributes and relationships are correct.
+3. Cardinalities match the borrowing rules.
+4. Business rules are consistent with the requirements.
+5. Design decisions and Version 1 boundaries are clear.
+
+We'll also check for contradictions, especially around member access without authentication.
+
+Your next task: Review the complete `docs/design/domain-model.md` after adding Section 5. Tell me when you've finished, and we'll do the final review together.
