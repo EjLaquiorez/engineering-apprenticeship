@@ -18,3 +18,25 @@ The system will initially contain the following classes:
 | `LibraryItem` | Core domain class |
 | `BorrowingTransaction` | Core domain class |
 | `LateFeeCalculator` | Supporting class |
+
+### 3.1 Member
+
+**Purpose:**
+
+Represents a registered person in the library system.
+
+**Data owned:**
+- `memberId`
+- `name`
+- `status`
+
+**Responsibilities:**
+- Maintain its unique member ID.
+- Store and manage the member's name.
+- Maintain the member's active or inactive status.
+- Support status changes when permitted by the system's business rules.
+
+**Responsibility boundaries:**
+- Does not manage borrowing transactions.
+- Does not calculate late fees.
+- Does not manage library item information.
