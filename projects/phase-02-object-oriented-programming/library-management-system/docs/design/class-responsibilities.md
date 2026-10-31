@@ -40,3 +40,26 @@ Represents a registered person in the library system.
 - Does not manage borrowing transactions.
 - Does not calculate late fees.
 - Does not manage library item information.
+
+### 3.2 LibraryItem
+
+**Purpose:**
+
+Represents an individual physical book or magazine managed by the library.
+
+**Data owned:**
+- `itemId`
+- `title`
+- `itemType`
+- `status`
+
+**Responsibilities:**
+- Maintain its unique item ID.
+- Store and manage the item's title and type.
+- Maintain the item's current status.
+- Support status changes when permitted by the system's business rules.
+
+**Responsibility boundaries:**
+- Does not manage member information.
+- Does not record borrowing transaction history.
+- Does not calculate late fees.
