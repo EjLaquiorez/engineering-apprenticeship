@@ -3696,3 +3696,50 @@ Future possibility: Introduce `Book` and `Magazine` subclasses if their attribut
 Why are we choosing one `LibraryItem` class for Version 1 instead of creating `Book` and `Magazine` subclasses immediately?
 
 Explain using the idea of avoiding unnecessary complexity. After that, we'll finalize Exercise 07 and document our class identification.
+
+Exactly! That's the correct reasoning.
+
+We don't need separate `Book` and `Magazine` subclasses yet because both currently share the same attributes, borrowing behavior, and business rules.
+
+Creating subclasses without meaningful differences would introduce unnecessary complexity.
+
+This reflects an important software-design principle:
+
+Don't add complexity until the requirements justify it.
+
+Exercise 07 — Complete
+
+## Exercise 07 — Finalized class list
+
+| Class                  | Classification | Responsibility                          |
+| ---------------------- | -------------- | --------------------------------------- |
+| `Member`               | Core           | Represents registered members           |
+| `LibraryItem`          | Core           | Represents physical books and magazines |
+| `BorrowingTransaction` | Core           | Maintains borrowing and return records  |
+| `LateFeeCalculator`    | Supporting     | Calculates late fees                    |
+
+Future subclasses `Book` and `Magazine` remain possible if their requirements become meaningfully different.
+
+## Commit guide
+
+After documenting this decision in your project notes, use:
+
+```
+git add projects/phase-02-object-oriented-programming/library-management-system/
+
+git commit -m "docs(library-design): identify core and supporting classes"
+
+git push origin main
+```
+
+## Next: Exercise 08 — Define Class Responsibilities
+
+We'll examine each class individually and decide:
+
+- What information it owns.
+- What actions it performs.
+- What responsibilities it must not take over from other classes.
+
+We'll create `docs/design/class-responsibilities.md`.
+
+Before we start: Save and commit Exercise 07, then share your latest commit output. We'll review it before moving forward.&#x20;
