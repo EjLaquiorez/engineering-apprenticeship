@@ -3641,3 +3641,58 @@ Should `Book` and `Magazine` be separate classes that inherit from `LibraryItem`
 Remember, our current requirements say books and magazines follow exactly the same borrowing rules.
 
 What would you choose, and why?
+
+Good thinking. You're considering how the system might evolve, which is an important part of software design.
+
+I agree with your conclusion: we don't need `Book` and `Magazine` subclasses yet based on the current requirements.
+
+Let's clarify two points in your reasoning.
+
+1. Late fees: Since books and magazines follow the same late-fee rules, inheritance isn't currently necessary for calculating fees.
+2. Description or item-specific information: This could justify subclasses later if books and magazines eventually need different attributes or behavior.
+
+For example:
+
+| Book-specific information | Magazine-specific information |
+| ------------------------- | ----------------------------- |
+| Author                    | Issue number                  |
+| ISBN                      | Publication date              |
+| Publisher                 | Volume number                 |
+
+These differences could eventually make separate subclasses useful.
+
+## Exercise 07 — Proposed final design
+
+## Core and supporting classes
+
+Core domain class
+
+Member
+
+Represents registered library members.
+
+Core domain class
+
+LibraryItem
+
+Represents physical books and magazines, distinguished by `itemType`.
+
+Core domain class
+
+BorrowingTransaction
+
+Maintains individual borrowing and return records.
+
+Supporting class
+
+LateFeeCalculator
+
+Calculates overdue fees.
+
+Future possibility: Introduce `Book` and `Magazine` subclasses if their attributes or behaviors become meaningfully different.
+
+### Final concept check
+
+Why are we choosing one `LibraryItem` class for Version 1 instead of creating `Book` and `Magazine` subclasses immediately?
+
+Explain using the idea of avoiding unnecessary complexity. After that, we'll finalize Exercise 07 and document our class identification.
