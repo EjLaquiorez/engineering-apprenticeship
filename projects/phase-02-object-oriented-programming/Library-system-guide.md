@@ -3541,3 +3541,34 @@ B. `LibraryItem`
 C. `BorrowingTransaction`
 
 Choose one and explain why.
+
+Correct! B. `LibraryItem`.
+
+Why? Because `LibraryItem` represents an individual physical book or magazine. It should own information that describes and identifies that item, such as:
+
+- `itemId`
+- `title`
+- `itemType`
+- `status`
+
+For example, when staff updates a book's title or retires a physical copy, that responsibility belongs to `LibraryItem`, not `Member` or `BorrowingTransaction`.
+
+Responsibility 1 understood
+
+### Responsibility 3 — Calculate late fees
+
+Now let's consider the final responsibility.
+
+The late-fee calculation needs:
+
+- Transaction's `dueDate`
+- Transaction's `returnDate` (or current date if not returned)
+- Daily fee of ₱5
+
+Which design do you prefer?
+
+A. Put the late-fee calculation inside `BorrowingTransaction`, because it already owns the dates needed for the calculation.
+
+B. Create a separate supporting class, such as `LateFeeCalculator`, to handle the calculation.
+
+There isn't necessarily one universally correct answer. Think about which design would make responsibilities clearer and easier to maintain.
