@@ -3981,3 +3981,65 @@ B. `LateFeeCalculator`
 C. `LibraryItem`
 
 Explain why you chose it.
+
+Correct! B. `LateFeeCalculator`.
+
+The `LateFeeCalculator` is responsible for calculating late fees. It uses the transaction's dates and the applicable late-fee rule.
+
+This keeps the calculation separate from the classes that maintain member, item, and transaction information.
+
+## Section 3.4 — LateFeeCalculator
+
+Add this section:
+
+### 3.4 LateFeeCalculator
+
+**Purpose:**
+
+Calculates late fees for overdue borrowing transactions.
+
+**Data used:**
+
+- Borrowing transaction's `dueDate`.
+- Borrowing transaction's `returnDate`, or the current date if the transaction is still active.
+- Daily late-fee rate of ₱5.
+
+**Responsibilities:**
+
+- Determine the number of overdue calendar days.
+- Calculate the applicable late fee.
+- Apply the ₱5 daily late-fee rule per item.
+- Calculate fees through the current date for active overdue transactions.
+- Calculate final fees through the actual return date for completed transactions.
+
+**Responsibility boundaries:**
+
+- Does not own borrowing transaction records.
+- Does not manage member information.
+- Does not manage library item information.
+- Does not change transaction dates or item statuses.
+
+## Exercise 08 — Responsibility review
+
+We've now documented all four classes.
+
+| Class                  | Main responsibility           |
+| ---------------------- | ----------------------------- |
+| `Member`               | Member information and status |
+| `LibraryItem`          | Item information and status   |
+| `BorrowingTransaction` | Borrowing and return records  |
+| `LateFeeCalculator`    | Late-fee calculations         |
+
+Before we finalize Exercise 08, let's test an important design principle.
+
+### Concept check
+
+Suppose `LateFeeCalculator` needs a member's name to calculate a late fee.
+
+Should it directly manage or modify the `Member` object?
+
+A. Yes, because the member is involved in the transaction.
+
+B. No, because calculating late fees does not require managing member information.
+
+Explain your answer.
