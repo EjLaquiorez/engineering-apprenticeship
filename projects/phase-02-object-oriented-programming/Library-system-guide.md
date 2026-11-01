@@ -4141,3 +4141,54 @@ C. Two transactions because the member may borrow items on different dates.
 Explain why you chose your answer.
 
 Take your time. I want you to understand the relationship before we finalize the domain model.
+
+Correct! B. Five separate `BorrowingTransaction` records.
+
+Good job! Let's understand why.
+
+Each borrowing transaction represents one specific borrowing event involving one library item.
+
+For example, suppose Member `M001` borrows these items:
+
+| Transaction ID | Member | Library Item        |
+| -------------- | ------ | ------------------- |
+| T001           | M001   | Clean Code          |
+| T002           | M001   | Java Fundamentals   |
+| T003           | M001   | National Geographic |
+| T004           | M001   | Effective Java      |
+| T005           | M001   | Software Design     |
+
+Even though all five transactions belong to the same member, each item has its own:
+
+- Borrowing date
+- Due date
+- Return date
+- Transaction status
+- Late fee (if applicable)
+
+This is why we keep separate transaction records.
+
+### Mentor insight
+
+This design also makes it easier to:
+
+- Track the borrowing history of each item.
+- Calculate late fees independently.
+- Identify which items are overdue.
+- Preserve historical borrowing records.
+
+## Exercise 09 — Part 3: Relationship understanding
+
+One more question before we finalize the domain model.
+
+Suppose a newly registered library item, `Clean Code`, has never been borrowed.
+
+How many `BorrowingTransaction` records should it have?
+
+A. Exactly one, because every library item must have a transaction.
+
+B. Zero, because no borrowing has happened yet.
+
+C. One empty transaction that will be completed later.
+
+Explain your reasoning.
