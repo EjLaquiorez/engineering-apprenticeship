@@ -4192,3 +4192,61 @@ B. Zero, because no borrowing has happened yet.
 C. One empty transaction that will be completed later.
 
 Explain your reasoning.
+
+Correct! B — Zero transactions.
+
+Exactly! A library item does not need a borrowing transaction just because it exists in the system.
+
+A transaction is created only when an actual borrowing event happens.
+
+### Why this matters
+
+Consider these two situations:
+
+Situation 1: Newly registered item
+
+- Item: `Clean Code`
+- Status: Available
+- Borrowing transactions: 0
+
+Situation 2: Previously borrowed item
+
+- Item: `Clean Code`
+- Status: Available
+- Borrowing transactions: 2
+
+The second item has two historical borrowing records, even though it is currently available.
+
+This is why we preserve transaction history instead of deleting completed transactions.
+
+### Important design concept
+
+This relationship is called one-to-many:
+
+- One `LibraryItem` can have zero or many `BorrowingTransaction` records.
+- One `BorrowingTransaction` belongs to exactly one `LibraryItem`.
+
+The same principle applies to `Member`: one member can have zero or many borrowing transactions.
+
+## Exercise 09 — Completed
+
+Ready for final review
+
+You've demonstrated an understanding of:
+
+1. Why each borrowed item gets its own transaction.
+2. Why a library item can exist without a transaction.
+3. Why historical transactions should be preserved.
+4. How one-to-many relationships work.
+
+### Next step: Exercise 10 — Domain Model Approval
+
+Before we move to Stage 03 class creation, we'll consolidate the domain model into a final design.
+
+Your next task: Open your `domain-model.md` and check whether it documents these relationships:
+
+- `Member` → `BorrowingTransaction` (one-to-many)
+- `LibraryItem` → `BorrowingTransaction` (one-to-many)
+- `LateFeeCalculator` → uses `BorrowingTransaction` information for calculations
+
+Have you already documented these three relationships?
