@@ -90,3 +90,27 @@ Represents one borrowing event involving exactly one member and one physical lib
 - Does not manage member information.
 - Does not manage library item details.
 - Does not independently manage the library's late-fee policy.
+
+### 3.4 LateFeeCalculator
+
+**Purpose:**
+
+Calculates late fees for overdue borrowing transactions.
+
+**Data used:**
+- Borrowing transaction's `dueDate`.
+- Borrowing transaction's `returnDate`, or the current date if the transaction is still active.
+- Daily late-fee rate of ₱5.
+
+**Responsibilities:**
+- Determine the number of overdue calendar days.
+- Calculate the applicable late fee.
+- Apply the ₱5 daily late-fee rule per item.
+- Calculate fees through the current date for active overdue transactions.
+- Calculate final fees through the actual return date for completed transactions.
+
+**Responsibility boundaries:**
+- Does not own borrowing transaction records.
+- Does not manage member information.
+- Does not manage library item information.
+- Does not change transaction dates or item statuses.
