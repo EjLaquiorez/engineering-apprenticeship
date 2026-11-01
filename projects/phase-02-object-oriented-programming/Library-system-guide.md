@@ -4043,3 +4043,101 @@ A. Yes, because the member is involved in the transaction.
 B. No, because calculating late fees does not require managing member information.
 
 Explain your answer.
+
+Correct! B
+
+`LateFeeCalculator` should calculate the final fee, using the member's discount as additional input.
+
+Here's why:
+
+1. `Member` provides information about the member's membership category.
+2. `BorrowingTransaction` provides the borrowing and return dates.
+3. `LateFeeCalculator` uses those inputs to calculate the final fee.
+
+For example:
+
+- Original late fee: ₱100
+- Member discount: 50%
+- Final late fee: ₱50
+
+Notice that neither `Member` nor `BorrowingTransaction` needs to perform the calculation.
+
+### Important design lesson
+
+A class can use information from other classes without owning or modifying those classes.
+
+This is an important part of designing maintainable software.
+
+## Exercise 08 — Completed
+
+Ready for approval
+
+We've established these four class responsibilities:
+
+| Class                  | Responsibility                |
+| ---------------------- | ----------------------------- |
+| `Member`               | Member information and status |
+| `LibraryItem`          | Item information and status   |
+| `BorrowingTransaction` | Borrowing and return records  |
+| `LateFeeCalculator`    | Late-fee calculations         |
+
+Next step: Exercise 09 — Review the domain model.
+
+Before moving forward, have you documented Sections 3.1–3.4 in your `domain-model.md` file?
+
+Excellent! Let's proceed.
+
+# Stage 03 — Domain Modeling
+
+## Exercise 09 — Review the Domain Model
+
+We've documented the four main classes and their responsibilities. Now we need to verify that their relationships make sense before moving into actual Java class creation.
+
+### Part 1 — Understanding relationships
+
+Let's review the relationships in our Library Management System.
+
+Proposed domain model
+
+Member
+
+Member information and status
+
+Participates in
+
+BorrowingTransaction
+
+Borrowing and return records
+
+Records the borrowing of
+
+LibraryItem
+
+Item information and status
+
+LateFeeCalculator
+
+Uses transaction information to calculate fees
+
+Remember:
+
+- One member can have multiple borrowing transactions.
+- One library item can have multiple borrowing transactions over its lifetime.
+- Each borrowing transaction belongs to one member and concerns one library item.
+- The calculator uses transaction information but does not own transaction records.
+
+### Part 2 — Concept check
+
+Suppose a member borrows five different library items over several months.
+
+How many `BorrowingTransaction` records should the system create?
+
+A. One transaction because all five items belong to the same member.
+
+B. Five transactions because each borrowed item should have its own borrowing record.
+
+C. Two transactions because the member may borrow items on different dates.
+
+Explain why you chose your answer.
+
+Take your time. I want you to understand the relationship before we finalize the domain model.
