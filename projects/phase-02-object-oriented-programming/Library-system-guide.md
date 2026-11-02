@@ -4522,3 +4522,31 @@ A member borrows three books. Each book has a different borrowing date, due date
 Explain how creating a separate BorrowingTransaction object helps us manage that situation.
 
 Don't write Java code yet. Explain it in your own words, and I'll review your reasoning before we proceed.
+
+Good! Your answer is correct, and you've identified an important OOP principle: a class should have a clear responsibility.
+
+`Member` should hold information about the person, such as:
+
+- `memberId`
+- `name`
+- `status`
+
+Borrowing dates, however, describe a borrowing event, not the member themselves.
+
+Let's take your reasoning one step further.
+
+### Consider this scenario
+
+A member named John borrows three books:
+
+| Book   | Borrow date | Due date    |
+| ------ | ----------- | ----------- |
+| Book A | November 1  | November 15 |
+| Book B | November 3  | November 17 |
+| Book C | November 5  | November 19 |
+
+If we put all these dates directly inside `Member`, what problem might we encounter when John borrows more books?
+
+Follow-up question: How does creating a separate `BorrowingTransaction` object for each book solve that problem?
+
+Try explaining it in your own words.
