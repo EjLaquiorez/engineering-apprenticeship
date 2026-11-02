@@ -4659,3 +4659,42 @@ You can choose more than one if necessary.
 Think about what actually happened: John returned a book. Which objects represent the person, the physical item, and the borrowing event?
 
 Take your time. I'll guide you through your reasoning.
+
+Good attempt! B is partially correct, but there's one more important object to consider.
+
+Let's examine what happens when John returns Book A.
+
+- `Member`: John is still the same member. His name, ID, and status haven't changed.
+- `LibraryItem`: Book A's status changes from `Borrowed` to `Available`.
+- `BorrowingTransaction`: Book A's transaction needs its `returnDate` recorded.
+
+So the correct answer is B and C.
+
+## Why both?
+
+Think of them as two different records describing the same event:
+
+| Object                 | What it records                             |
+| ---------------------- | ------------------------------------------- |
+| `LibraryItem`          | The book is now available.                  |
+| `BorrowingTransaction` | The book was returned on a particular date. |
+
+Here's the important distinction:
+
+The LibraryItem tells us the item's current condition. The BorrowingTransaction tells us what happened to it.
+
+This is why we separated these classes in our domain model.
+
+## Your next reasoning exercise
+
+Suppose John borrows Book A again next month.
+
+Should the system:
+
+A. Reuse the old `BorrowingTransaction` and overwrite its dates.
+
+B. Create a new `BorrowingTransaction` while preserving the old one.
+
+C. Add new borrowing dates directly to `Member`.
+
+Which would you choose, and why?
