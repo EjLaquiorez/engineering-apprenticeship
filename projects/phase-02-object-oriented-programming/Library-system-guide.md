@@ -4550,3 +4550,112 @@ If we put all these dates directly inside `Member`, what problem might we encoun
 Follow-up question: How does creating a separate `BorrowingTransaction` object for each book solve that problem?
 
 Try explaining it in your own words.
+
+That's completely fine. This is actually an important skill we're trying to develop: learning how to reason about software design instead of guessing which class to create.
+
+Let's slow down. I'll teach you a repeatable way to approach these questions.
+
+## 1. Start with the responsibility of the class
+
+Whenever you're deciding where information belongs, ask:
+
+"What does this information describe?"
+
+Let's apply that to our project.
+
+| Information | What does it describe?  | Belongs to             |
+| ----------- | ----------------------- | ---------------------- |
+| Member ID   | A person                | `Member`               |
+| Member name | A person                | `Member`               |
+| Item title  | A physical library item | `LibraryItem`          |
+| Borrow date | A borrowing event       | `BorrowingTransaction` |
+| Due date    | A borrowing event       | `BorrowingTransaction` |
+| Return date | A borrowing event       | `BorrowingTransaction` |
+
+Notice something?
+
+The dates don't describe John as a person. They describe what happened when John borrowed a particular book.
+
+That's our first clue.
+
+## 2. Think about what happens when the system grows
+
+Imagine we store borrowing dates directly inside `Member`.
+
+Initially, John borrows one book:
+
+```
+Member
+├── memberId
+├── name
+├── borrowDate
+├── dueDate
+└── returnDate
+```
+
+Now John borrows another book.
+
+We need another set of dates.
+
+Then he borrows a third book.
+
+We need another set.
+
+The problem is that `Member` would need to keep adding borrowing-related information every time another borrowing event occurs.
+
+This makes the `Member` class responsible for two different things:
+
+1. Maintaining information about a person.
+2. Maintaining the history of borrowing events.
+
+We want to avoid mixing those responsibilities.
+
+## 3. Introduce a separate object for each event
+
+Instead, think of the relationship this way:
+
+Member: John
+
+One person, one member record.
+
+Borrowing transactions
+
+Transaction 001
+
+Book A · November 1 · Due November 15
+
+Transaction 002
+
+Book B · November 3 · Due November 17
+
+Transaction 003
+
+Book C · November 5 · Due November 19
+
+Each transaction is a separate record associated with John.
+
+Now John can borrow 3, 10, or 100 books. We don't need to keep adding date fields to `Member`.
+
+Each borrowing event gets its own `BorrowingTransaction` object.
+
+## 4. Let's practice the reasoning together
+
+I don't want you to memorize my explanation. I want you to learn how to arrive at the answer yourself.
+
+Consider this question:
+
+John returns Book A, but Books B and C are still borrowed.
+
+Which information should change?
+
+A. John's `Member` information.
+
+B. Book A's `LibraryItem` information.
+
+C. Book A's `BorrowingTransaction` information.
+
+You can choose more than one if necessary.
+
+Think about what actually happened: John returned a book. Which objects represent the person, the physical item, and the borrowing event?
+
+Take your time. I'll guide you through your reasoning.
