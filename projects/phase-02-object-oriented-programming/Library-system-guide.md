@@ -4758,3 +4758,55 @@ Based on our discussion, we have four proposed classes:
 Do you agree that these four classes are sufficient for Version 1, without creating separate `Book` and `Magazine` classes? Why?
 
 Use our earlier discussion about their shared borrowing rules to guide your answer.
+
+Excellent! Your reasoning is correct.&#x20;
+
+Step 1 approved
+
+
+
+You identified the key reason: Books and magazines currently share the same requirements and behavior.
+
+Both:
+
+- Have borrowing transactions.
+- Follow the same 14-day borrowing period.
+- Follow the same ₱5-per-day late-fee calculation.
+- Follow the same availability and return rules.
+
+Creating separate `Book` and `Magazine` classes right now would add complexity without giving us additional functionality.
+
+We can revisit inheritance if future requirements introduce different behaviors.
+
+## Step 1 completed — Initial class identification
+
+Our approved class list is:
+
+| Class                  | Main responsibility                                    |
+| ---------------------- | ------------------------------------------------------ |
+| `Member`               | Maintain member information.                           |
+| `LibraryItem`          | Maintain physical library-item information and status. |
+| `BorrowingTransaction` | Record individual borrowing events.                    |
+| `LateFeeCalculator`    | Calculate overdue fees.                                |
+
+## Step 2 — Define class responsibilities
+
+Now we'll examine each class individually.
+
+Let's start with `Member`.
+
+Consider this scenario:
+
+A staff member registers a new library member. Later, that member borrows a book, returns it, and eventually becomes inactive.
+
+Which of these responsibilities should belong to the `Member` class?
+
+1. Store the member's ID and name.
+2. Determine whether the member is active or inactive.
+3. Calculate the late fee for borrowed books.
+4. Record the borrowing and return dates.
+5. Determine whether the member is eligible to start a new borrowing transaction.
+
+Your task: Identify which responsibilities belong to `Member` and explain why.
+
+Hint: Ask yourself whether each responsibility concerns the member's own information or belongs to another object we've already identified.
