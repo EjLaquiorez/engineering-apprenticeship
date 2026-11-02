@@ -4463,3 +4463,62 @@ We'll take this gradually:
 Our first task will be identifying the classes—not writing code yet. I'll guide you through the reasoning so you can learn how to translate a domain model into an object-oriented design.
 
 Your Stage 03 domain model is approved. We can now proceed to class design.
+
+Let's begin Stage 03 — Class Design and Creation.
+
+We'll work in small steps. I won't give you the complete implementation; you'll make the design decisions, and I'll review your reasoning before we move forward.
+Stage 03 roadmap
+Step	Task	Status
+1	Identify the required Java classes	Current
+2	Define each class's responsibilities	Pending
+3	Identify attributes and data types	Pending
+4	Define relationships between classes	Pending
+5	Create the Java classes	Pending
+6	Review the initial class design	Pending
+
+Step 1 — Identify the required Java classes
+Let's start with something familiar: your domain model already identifies the important concepts. We now need to translate those concepts into Java classes.
+
+Here are our initial candidates:
+Candidate class	Purpose
+Member	Represents a registered library member.
+LibraryItem	Represents an individual physical book or magazine.
+BorrowingTransaction	Represents one borrowing event.
+LateFeeCalculator	Calculates overdue fees using transaction dates.
+
+Important design decision: Book and Magazine
+You might be thinking:
+
+"Shouldn't we create separate Book and Magazine classes?"
+
+Remember inheritance from Topic 3.
+
+We could design this:
+          LibraryItem
+           /      \
+        Book    Magazine
+
+
+However, let's look at our requirements:
+- Books and magazines have the same borrowing period.
+- They have the same late-fee rules.
+- They follow the same availability rules.
+- We haven't identified any unique attributes or behaviors for either type.
+Creating separate subclasses right now might add complexity without providing a meaningful benefit.
+
+Instead, we can represent both using LibraryItem and its itemType attribute.
+
+For Version 1, that's our proposed design.
+
+Your first design exercise
+Before approving our initial class list, let's check your understanding.
+
+Question 1: Why do you think BorrowingTransaction should be its own class instead of simply adding borrowDate, dueDate, and returnDate directly to Member?
+
+Think about this scenario:
+
+A member borrows three books. Each book has a different borrowing date, due date, and return date.
+
+Explain how creating a separate BorrowingTransaction object helps us manage that situation.
+
+Don't write Java code yet. Explain it in your own words, and I'll review your reasoning before we proceed.
