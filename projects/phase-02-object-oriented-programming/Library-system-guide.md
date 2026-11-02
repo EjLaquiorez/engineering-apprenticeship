@@ -4250,3 +4250,27 @@ Your next task: Open your `domain-model.md` and check whether it documents these
 - `LateFeeCalculator` → uses `BorrowingTransaction` information for calculations
 
 Have you already documented these three relationships?
+
+Great! That means we've completed the main relationship decisions for our Library Management System.
+
+Exercise 09 completed
+
+## Exercise 10 — Final Domain Model Review
+
+Before we begin creating Java classes, I want to review your actual domain model documentation.
+
+Please paste the contents of your:
+
+`docs/requirements/domain-model.md`
+
+I'll review it against our decisions:
+
+1. Four main classes and their responsibilities.
+2. One-to-many relationships between `Member` and `BorrowingTransaction`.
+3. One-to-many relationships between `LibraryItem` and `BorrowingTransaction`.
+4. `LateFeeCalculator` as a separate supporting class.
+5. Correct responsibility boundaries and preservation of transaction history.
+
+I'll identify any design issues and explain the reasoning before approving the domain model.
+
+We won't rush into coding. The goal is to make sure our design is solid before implementation.
