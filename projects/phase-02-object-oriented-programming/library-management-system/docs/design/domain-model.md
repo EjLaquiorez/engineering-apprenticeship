@@ -43,14 +43,17 @@ Each physical copy has its own unique identifier, even when multiple copies shar
 
 Represents one borrowing event involving exactly one member and one physical library item.
 
-**Information associated with the transaction:**
+**Attributes:**
+- `transactionId` — Unique identifier assigned to each borrowing transaction.
 - `borrowDate` — Date the item was borrowed.
 - `dueDate` — Date the item must be returned.
 - `returnDate` — Actual date the item was returned; remains unset while the item is still borrowed.
 
 Each borrowing transaction preserves its own history. A member borrowing multiple items creates a separate transaction for each item.
 
-Late fees are calculated using the transaction's due date, return date (or current date for an active borrowing), and the applicable late-fee rule. A separate Late Fee domain concept is not required for Version 1.
+Late fees are calculated using the transaction's due date, return date (or current date for an active borrowing), and the applicable late-fee rule. A separate Late Fee domain entity is not required for Version 1.
+
+Why we added `transactionId`: Each borrowing event now has its own unique identifier, making it easier to retrieve and manage individual transactions.
 
 ## 3. Relationships and Cardinalities
 
@@ -77,6 +80,35 @@ Late fees are calculated using the transaction's due date, return date (or curre
 
 These relationships preserve borrowing history and allow each item to have its own due date, return date, and late-fee calculation.
 
+### 3.4 LateFeeCalculator (Supporting Class)
+
+**Purpose:**
+
+Calculates late fees for overdue borrowing transactions.
+
+**Data used:**
+
+- Borrowing transaction's `dueDate`.
+- Borrowing transaction's `returnDate`, or the current date if the transaction is still active.
+- Daily late-fee rate of ₱5.
+
+**Responsibilities:**
+
+- Determine the number of overdue calendar days.
+- Calculate the applicable late fee.
+- Apply the ₱5 daily late-fee rule per item.
+- Calculate fees through the current date for active overdue transactions.
+- Calculate final fees through the actual return date for completed transactions.
+
+**Responsibility boundaries:**
+
+- Does not own borrowing transaction records.
+- Does not manage member information.
+- Does not manage library item information.
+- Does not change transaction dates or item statuses.
+
+Important distinction: `LateFeeCalculator` is a supporting class, not a separate domain entity. It performs calculations without owning the information it uses.
+
 ## 4. Business Rules
 
 ### 4.1 Member Rules
@@ -99,6 +131,9 @@ These relationships preserve borrowing history and allow each item to have its o
 - An item cannot be retired while it has an active borrowing transaction.
 - A retired item cannot be borrowed again.
 - Multiple physical copies of the same title must have separate item IDs.
+- When a borrowing transaction is created, the library item's status must change from `Available` to `Borrowed`.
+- When an item is returned, its status must change from `Borrowed` to `Available`, unless the item has been retired.
+- The item's current status must remain consistent with its active borrowing transactions.
 
 ### 4.3 Borrowing Transaction Rules
 
