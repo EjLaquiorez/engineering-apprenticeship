@@ -4810,3 +4810,28 @@ Which of these responsibilities should belong to the `Member` class?
 Your task: Identify which responsibilities belong to `Member` and explain why.
 
 Hint: Ask yourself whether each responsibility concerns the member's own information or belongs to another object we've already identified.
+Correct! You selected 1, 2, and 5. All three belong to the Member class.
+
+Let's review each one:
+#	Responsibility	Evaluation
+1	Store member ID and name	Member
+2	Maintain active/inactive status	Member
+3	Calculate late fees	Not Member
+4	Record borrowing and return dates	Not Member
+5	Determine borrowing eligibility	Member
+
+Why are 3 and 4 excluded?
+- 3 — Calculate late fees: This belongs to LateFeeCalculator.
+- 4 — Record borrowing and return dates: This belongs to BorrowingTransaction.
+Notice how you're separating responsibilities instead of putting everything into one class. That's an important OOP design skill.
+Next: LibraryItem
+Consider these possible responsibilities:
+1. Store the item's ID and title.
+2. Identify whether it is a book or magazine.
+3. Maintain its availability status.
+4. Calculate the member's overdue fee.
+5. Determine whether the item can currently be borrowed.
+6. Record the member's borrowing history.
+Which numbers belong to LibraryItem?
+
+Try answering using the same reasoning method.
