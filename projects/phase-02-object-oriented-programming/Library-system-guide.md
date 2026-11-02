@@ -4274,3 +4274,137 @@ I'll review it against our decisions:
 I'll identify any design issues and explain the reasoning before approving the domain model.
 
 We won't rush into coding. The goal is to make sure our design is solid before implementation.
+
+Stage 03 — Domain Model Review
+I've reviewed your complete domain-model.md.
+
+First, excellent work. This is a substantial domain model, and you've gone beyond simply listing classes. You've documented business rules, relationships, constraints, and design decisions.
+
+My assessment: Your domain model is very close to approval. I found a few things worth discussing before we finalize it.
+1. Core domain concepts — Approved
+Your three core domain concepts are appropriate:
+Concept	Assessment
+Member	Approved
+LibraryItem	Approved
+BorrowingTransaction	Approved
+
+I also agree with your decision not to make Staff a domain concept in Version 1.
+
+Staff is an actor interacting with the system. Since we're not maintaining staff accounts or staff records, a separate Staff class isn't currently necessary.
+2. Relationships — Approved
+Your cardinalities are correct.
+- One Member can have zero or many borrowing transactions.
+- One LibraryItem can have zero or many borrowing transactions.
+- Each BorrowingTransaction belongs to exactly one member and one library item.
+Your rule that each physical item can have only one active borrowing transaction is particularly important.
+
+It prevents a library item from accidentally being borrowed by two members simultaneously.
+3. Business rules — Approved
+Your rules are consistent with our earlier decisions:
+- 14-calendar-day borrowing period.
+- ₱5 per overdue calendar day.
+- No grace period.
+- No maximum late fee.
+- No renewals.
+- Separate transaction records for each physical item.
+- Preserve completed borrowing history.
+I especially like this distinction:
+An item's current status must be maintained separately from its borrowing history.
+
+This is an important domain modeling decision.
+
+For example, an item can currently be AVAILABLE while still having several historical borrowing transactions.
+
+4. Three improvements before approval
+These aren't major design failures. They're refinements that will make the model more complete.
+Improvement A — Add transactionId
+Your BorrowingTransaction currently has:
+- borrowDate
+- dueDate
+- returnDate
+However, it doesn't have a unique identifier.
+
+I recommend adding:
+
+- transactionId — Unique identifier assigned to each borrowing transaction.
+
+Why?
+
+Imagine a member has borrowed five items. Each transaction needs to be identifiable independently.
+
+For example:
+transactionId	memberId	itemId
+T001	M001	I001
+T002	M001	I002
+T003	M001	I003
+
+This will make it easier to retrieve, update, and manage individual transaction records.
+Improvement B — Clarify LateFeeCalculator
+There's one inconsistency between our design discussion and your documentation.
+
+Earlier, we agreed to introduce LateFeeCalculator as a supporting class.
+
+However, your current document says:
+A separate Late Fee domain concept is not required for Version 1.
+
+These statements aren't necessarily contradictory.
+
+Here's the distinction:
+- LateFee as a domain entity would represent a separately maintained record.
+- LateFeeCalculator as a supporting class performs calculations using existing transaction information.
+I recommend keeping LateFeeCalculator as a supporting class without introducing a separate LateFee entity.
+
+Add this section after your existing Section 3.3:
+
+3.4 LateFeeCalculator (Supporting Class)
+- Calculates late fees using borrowing transaction dates.
+- Applies the ₱5 daily late-fee rule.
+- Calculates active overdue fees through the current date.
+- Calculates completed transaction fees through the actual return date.
+- Does not own or modify member, item, or transaction records.
+This preserves our original design decision.
+Improvement C — Maintain consistency between item status and transaction records
+You already wrote:
+An item's current status must be maintained separately from its borrowing history.
+
+Good decision.
+
+However, we should establish one additional rule:
+- When a borrowing transaction is created, the item's status becomes BORROWED.
+- When the item is returned, its status becomes AVAILABLE, unless it has been retired.
+This ensures the item's current status remains consistent with its borrowing transactions.
+
+5. One design decision worth keeping
+I noticed you didn't include a status attribute in BorrowingTransaction.
+
+That's perfectly reasonable.
+
+We can determine whether a transaction is active or completed by checking returnDate:
+if (returnDate == null) {
+    // Transaction is active
+} else {
+    // Transaction is completed
+}
+
+
+This avoids maintaining two pieces of information that could contradict each other.
+
+For example, a transaction shouldn't say COMPLETED while its returnDate is still empty.
+
+I recommend keeping your current approach.
+
+6. Your revision task
+Before I approve the domain model, please make these three changes:
+Domain model revision checklist
+[ ] Add transactionId to BorrowingTransaction attributes.
+[ ] Add Section 3.4 for LateFeeCalculator as a supporting class.
+[ ] Add the item-status consistency rules to the business rules.
+0 of 3 completed
+
+
+
+Once you've updated the document, tell me "Revisions completed."
+
+I'll perform the final review and, if everything is consistent, approve Stage 03's domain model.
+
+Then we'll move toward creating our actual Java classes, where we'll apply the OOP concepts you've learned throughout Phase 02.
