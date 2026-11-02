@@ -4698,3 +4698,63 @@ B. Create a new `BorrowingTransaction` while preserving the old one.
 C. Add new borrowing dates directly to `Member`.
 
 Which would you choose, and why?
+
+
+
+Correct!
+
+&#x20;B is the right choice.
+
+
+
+And your answer demonstrates an important design principle: preserve historical records instead of overwriting them.
+
+Let's understand why.
+
+### Imagine John's borrowing history
+
+John borrows Book A twice, on different occasions.
+
+BorrowingTransaction 001
+
+- Item: Book A
+- Borrow date: November 1
+- Due date: November 15
+- Return date: November 12
+
+  Completed
+
+  BorrowingTransaction 002
+- Item: Book A
+- Borrow date: December 1
+- Due date: December 15
+- Return date: Not yet returned
+
+  Active
+
+If we reused the first transaction, we would overwrite its original dates and lose the history of John's first borrowing event.
+
+By creating a new transaction, we preserve both events independently.
+
+### What you've learned so far
+
+You've reasoned through three important design principles:
+
+1. Single responsibility: `Member` stores member information, not borrowing-event details.
+2. Separate objects: Each borrowing event has its own `BorrowingTransaction`.
+3. Historical preservation: Previous transactions should not be overwritten when an item is borrowed again.
+
+These are exactly the kinds of decisions we want you to understand before writing Java code.
+
+## One final question for Step 1
+
+Based on our discussion, we have four proposed classes:
+
+- `Member`
+- `LibraryItem`
+- `BorrowingTransaction`
+- `LateFeeCalculator`
+
+Do you agree that these four classes are sufficient for Version 1, without creating separate `Book` and `Magazine` classes? Why?
+
+Use our earlier discussion about their shared borrowing rules to guide your answer.
