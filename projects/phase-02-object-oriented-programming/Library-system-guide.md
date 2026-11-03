@@ -4995,3 +4995,42 @@ status =
 
 
 Don't worry about getting everything right immediately. We'll reason through each choice together.
+
+Good! Your choices are mostly correct. Let's review them individually.
+Attribute	Your answer	Evaluation
+memberId	int	Acceptable
+name	String	Correct
+status	boolean	Let's reconsider
+
+1. memberId — int
+An integer works if we use numeric IDs, such as 1001, 1002, and 1003.
+
+However, IDs are identifiers, not quantities. We might eventually want IDs like MEM-001.
+
+For Version 1, int is acceptable.
+2. name — String
+Correct. Names contain text, so String is appropriate.
+3. status — boolean
+This is a reasonable choice because there are only two possible states:
+- true = Active
+- false = Inactive
+However, consider this:
+
+When another developer reads member.isActive(), the meaning is clear. But if they see member.status, a boolean might be less descriptive.
+
+Java also provides an enum type, which can explicitly represent named states.
+
+For example:
+enum MemberStatus {
+    ACTIVE,
+    INACTIVE
+}
+
+
+We can discuss whether to use this when implementing the class.
+One question before we finalize
+If we use boolean, what does false mean?
+
+Would you be comfortable understanding false as inactive every time you read the code, or would you prefer the explicit ACTIVE and INACTIVE values?
+
+Explain your preference.
