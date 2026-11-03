@@ -5312,3 +5312,139 @@ B. The `Member` class stores a collection of `BorrowingTransaction` objects.
 C. Each `BorrowingTransaction` stores a collection of members.
 
 Think about which option represents one member having multiple borrowing transactions.
+
+Exactly right!&#x20;
+
+Correct
+
+
+
+B is the correct design because one member can have multiple borrowing transactions.
+
+## Why use a collection?
+
+Imagine John borrows three books. His `Member` object needs to be associated with all three transactions.
+
+Conceptually:
+
+```
+Member (John)
+    |
+    | 1
+    |
+    | 0..*
+    |
+BorrowingTransaction
+    ├── Transaction 001
+    ├── Transaction 002
+    └── Transaction 003
+```
+
+In Java, we can represent this using `List`.
+
+For example:
+
+```
+private List<BorrowingTransaction> borrowingTransactions;
+```
+
+`List` allows us to store multiple transaction objects.
+
+### An important design distinction
+
+Our relationship works in both directions conceptually:
+
+- `BorrowingTransaction` references one `Member`.
+- `Member` can have many `BorrowingTransaction` objects.
+
+However, we don't necessarily need to store both references in our implementation. Maintaining duplicate relationships can introduce synchronization problems.
+
+We'll decide whether `Member` needs its own transaction list when we design the application services.
+
+## Step 3 progress
+
+Approved so far
+
+We've identified:
+
+- `Member` attributes and types.
+- `LibraryItem` attributes and types.
+- `BorrowingTransaction` attributes and types.
+- References from `BorrowingTransaction` to `Member` and `LibraryItem`.
+- One-to-many member-to-transaction relationship.
+
+## Next question: LibraryItem relationship
+
+Our domain model also says:
+
+- One `LibraryItem` can have zero or many borrowing transactions throughout its lifetime.
+- Each transaction involves exactly one `LibraryItem`.
+
+If we wanted to retrieve the complete borrowing history of a particular book, what would be a suitable Java collection type to hold its transactions?
+
+A. `String`
+
+B. `List<BorrowingTransaction>`
+
+C. `LocalDate`
+
+Explain briefly why you chose your answer.
+
+Correct! B — `List<BorrowingTransaction>` is the appropriate choice.&#x20;
+
+Correct
+
+
+
+Your reasoning is developing well. A single physical book can be borrowed many times throughout its lifetime, and each borrowing event must have its own transaction record.
+
+For example:
+
+```
+LibraryItem: Book A
+    |
+    ├── Transaction 001
+    ├── Transaction 002
+    └── Transaction 003
+```
+
+In Java, this could be represented as:
+
+```
+private List<BorrowingTransaction> borrowingHistory;
+```
+
+### One important design consideration
+
+Although this relationship makes sense, we don't necessarily need to store transaction lists in both `Member` and `LibraryItem`.
+
+Our `BorrowingTransaction` already references both objects. We can retrieve borrowing history by searching the transaction collection maintained by the application.
+
+We'll make that decision when we design the application structure.
+
+## Step 3 — Progress
+
+We've established the following:
+
+| Class                  | Attributes / relationships                                                      |
+| ---------------------- | ------------------------------------------------------------------------------- |
+| `Member`               | `memberId`, `name`, `status`                                                    |
+| `LibraryItem`          | `itemId`, `title`, `itemType`, `status`                                         |
+| `BorrowingTransaction` | `transactionId`, `member`, `libraryItem`, `borrowDate`, `dueDate`, `returnDate` |
+| `LateFeeCalculator`    | Uses transaction dates and the daily fee rate                                   |
+
+## Next: LateFeeCalculator
+
+One final data-design question.
+
+Our late-fee rule is ₱5 per overdue calendar day.
+
+Where should we define this daily rate?
+
+A. Inside every `BorrowingTransaction` object.
+
+B. Inside `LateFeeCalculator` as a shared constant.
+
+C. Inside every `Member` object.
+
+Which would you choose, and why?
