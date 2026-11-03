@@ -4897,3 +4897,45 @@ Which responsibilities should belong to `BorrowingTransaction`?
 Choose the numbers that belong to `BorrowingTransaction`.
 
 Hint: Remember our distinction between recording what happened and calculating something based on that record.
+
+Good work! You selected 1, 2, 3, 4, 6, 7, and 8.
+
+You're almost entirely correct. Let's review one important distinction.
+#	Responsibility	Evaluation
+1	Store transaction ID	Correct
+2	Store borrow date	Correct
+3	Store due date	Correct
+4	Store return date	Correct
+5	Calculate late fee	Not this class
+6	Identify the member involved	Correct
+7	Identify the library item involved	Correct
+8	Change the library item's availability status	Not its responsibility in our current design
+
+Why is number 8 different?
+BorrowingTransaction records the borrowing event. LibraryItem maintains its own current availability status.
+
+For example:
+
+When Book A is borrowed:
+- BorrowingTransaction records the borrow date and due date.
+- LibraryItem changes its status to BORROWED.
+When Book A is returned:
+- BorrowingTransaction records the return date.
+- LibraryItem changes its status to AVAILABLE.
+These changes happen as part of the same operation, but that doesn't mean one class should own both responsibilities.
+
+We'll eventually decide which class or service coordinates those operations.
+Step 2 — Final class: LateFeeCalculator
+Let's test your understanding of this class.
+
+Which responsibilities belong to LateFeeCalculator?
+1. Store the member's name.
+2. Determine the number of overdue calendar days.
+3. Calculate the late fee using the ₱5 daily rate.
+4. Store borrowing transaction records.
+5. Use the due date and return date (or current date) for calculations.
+6. Change the library item's status.
+7. Return the calculated late-fee amount.
+Choose the appropriate numbers and explain one of your choices.
+
+Remember: LateFeeCalculator uses transaction information; it doesn't own that information.
