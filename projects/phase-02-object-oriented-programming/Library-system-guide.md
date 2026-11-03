@@ -4835,3 +4835,65 @@ Consider these possible responsibilities:
 Which numbers belong to LibraryItem?
 
 Try answering using the same reasoning method.
+
+Excellent! All four of your selected responsibilities are correct.&#x20;
+
+4/4 correct
+
+
+
+Let's review your answers:
+
+| # | Responsibility                             | Belongs to             |
+| - | ------------------------------------------ | ---------------------- |
+| 1 | Store item ID and title                    | `LibraryItem`          |
+| 2 | Identify book or magazine                  | `LibraryItem`          |
+| 3 | Maintain availability status               | `LibraryItem`          |
+| 4 | Calculate overdue fee                      | `LateFeeCalculator`    |
+| 5 | Determine whether the item can be borrowed | `LibraryItem`          |
+| 6 | Record borrowing history                   | `BorrowingTransaction` |
+
+### Important distinction
+
+You correctly selected number 5.
+
+Why does checking borrowing eligibility belong to `LibraryItem`?
+
+Because the item itself has a status:
+
+- `Available` — can be borrowed.
+- `Borrowed` — cannot be borrowed again.
+- `Retired` — cannot be borrowed.
+
+The `LibraryItem` can provide a method that checks whether its current status allows borrowing.
+
+For example, later we might implement:
+
+```
+public boolean isAvailable() {
+    return status == ItemStatus.AVAILABLE;
+}
+```
+
+This is just an illustration, not an implementation task yet.
+
+## Step 2 — Next class: `BorrowingTransaction`
+
+Let's examine its responsibilities.
+
+A borrowing transaction represents one borrowing event involving one member and one physical library item.
+
+Which responsibilities should belong to `BorrowingTransaction`?
+
+1. Store the transaction ID.
+2. Store the borrow date.
+3. Store the due date.
+4. Store the return date.
+5. Calculate the late fee.
+6. Identify which member is involved.
+7. Identify which library item is involved.
+8. Change the library item's availability status.
+
+Choose the numbers that belong to `BorrowingTransaction`.
+
+Hint: Remember our distinction between recording what happened and calculating something based on that record.
