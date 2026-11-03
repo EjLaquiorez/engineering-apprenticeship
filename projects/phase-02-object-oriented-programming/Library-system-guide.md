@@ -5111,3 +5111,86 @@ status =
 ```
 
 Remember: We can create separate enums for `itemType` and `status`, just as we did for `MemberStatus`.
+
+Excellent! All four choices are correct. 
+4/4 correct
+
+You've also made a good design decision by choosing String for itemId.
+
+Let's review why.
+1. Review your choices
+Attribute	Your answer	Evaluation
+itemId	String	Correct
+title	String	Correct
+itemType	enum	Correct
+status	enum	Correct
+
+Why use String for itemId?
+Consider these possible identifiers:
+BK-001
+BK-002
+MG-001
+MG-002
+
+
+These are identifiers, not values we need to perform mathematical calculations on.
+
+Using String gives us flexibility.
+2. Define our enums
+For item type:
+enum ItemType {
+    BOOK,
+    MAGAZINE
+}
+
+
+For item status:
+enum ItemStatus {
+    AVAILABLE,
+    BORROWED,
+    RETIRED
+}
+
+
+Notice that we're using uppercase enum constants, which follows Java naming conventions.
+Approved LibraryItem attributes
+Attribute	Java type
+itemId	String
+title	String
+itemType	ItemType
+status	ItemStatus
+
+LibraryItem attributes approved
+
+3. Next: BorrowingTransaction attributes
+Our domain model identifies these attributes:
+Attribute	Meaning
+transactionId	Unique transaction identifier
+borrowDate	Date the item was borrowed
+dueDate	Date the item must be returned
+returnDate	Actual return date; unset while active
+
+For this exercise, let's introduce one useful Java type: LocalDate.
+
+LocalDate represents a calendar date without a time component.
+
+For example:
+LocalDate borrowDate = LocalDate.of(2026, 11, 3);
+
+
+This is appropriate because our library rules use calendar days.
+Your exercise
+Choose the Java type for each attribute.
+
+Available choices:
+- String
+- int
+- LocalDate
+Use this format:
+transactionId =
+borrowDate =
+dueDate =
+returnDate =
+
+
+Hint: Think about which attributes identify a transaction and which represent actual calendar dates. Also consider how we can represent a return date that hasn't happened yet.
