@@ -5034,3 +5034,80 @@ If we use boolean, what does false mean?
 Would you be comfortable understanding false as inactive every time you read the code, or would you prefer the explicit ACTIVE and INACTIVE values?
 
 Explain your preference.
+
+That's the right learning attitude. I'll guide you toward good design decisions, explain why we choose them, and gradually help you make those decisions independently.
+
+For our project, we'll use Java `enum` for `Member.status`, rather than `boolean`.
+
+## Why `enum` is better here
+
+Compare these two approaches:
+
+Option A — Boolean
+
+```
+boolean active = true;
+```
+
+What does `true` mean? We need to remember that it means active.
+
+Option B — Enum
+
+```
+MemberStatus status = MemberStatus.ACTIVE;
+```
+
+The meaning is explicit. Anyone reading the code can immediately understand the member's status.
+
+We'll define:
+
+```
+enum MemberStatus {
+    ACTIVE,
+    INACTIVE
+}
+```
+
+This also helps prevent accidentally assigning arbitrary text such as `"actve"` or `"disabled"`.
+
+### Our approved Member attributes
+
+| Attribute  | Java type      | Reason                                  |
+| ---------- | -------------- | --------------------------------------- |
+| `memberId` | `int`          | Numeric identifier for Version 1        |
+| `name`     | `String`       | Stores the member's name                |
+| `status`   | `MemberStatus` | Explicitly represents membership states |
+
+Member attributes approved
+
+## Next: LibraryItem attributes
+
+Our domain model identifies four attributes:
+
+| Attribute  | Meaning                         |
+| ---------- | ------------------------------- |
+| `itemId`   | Unique physical item identifier |
+| `title`    | Book or magazine title          |
+| `itemType` | Book or magazine                |
+| `status`   | Available, borrowed, or retired |
+
+Let's apply the same reasoning.
+
+Your exercise: Choose the Java type for each attribute.
+
+Available choices:
+
+- `int`
+- `String`
+- `enum`
+
+Use this format:
+
+```
+itemId =
+title =
+itemType =
+status =
+```
+
+Remember: We can create separate enums for `itemType` and `status`, just as we did for `MemberStatus`.
