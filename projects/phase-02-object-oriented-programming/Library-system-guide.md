@@ -5245,3 +5245,70 @@ A. Store the member's individual attributes again.
 B. Hold a reference to the existing Member object.
 
 Think about avoiding duplicated information. Why might one choice be better?
+
+Correct! B is the better design.&#x20;
+
+Correct
+
+
+
+You've identified an important OOP principle: reuse existing objects instead of duplicating their information.
+
+## Why should we hold a `Member` reference?
+
+Imagine John is registered in our system:
+
+```
+Member
+├── memberId: "MEM-001"
+├── name: "John"
+└── status: ACTIVE
+```
+
+John borrows Book A. Instead of copying John's information into the transaction, we keep a reference to his existing `Member` object.
+
+Conceptually:
+
+```
+BorrowingTransaction
+├── transactionId
+├── member ────────────> Member object (John)
+├── libraryItem ──────> LibraryItem object (Book A)
+├── borrowDate
+├── dueDate
+└── returnDate
+```
+
+Later, if John's name changes, we don't need to update every transaction containing a copied version of his name.
+
+The transactions refer to the same member object.
+
+## Approved relationship
+
+Our `BorrowingTransaction` will have:
+
+```
+private Member member;
+private LibraryItem libraryItem;
+```
+
+These are object references, not copies of the member or item information.
+
+## Next exercise — Understanding cardinality in Java
+
+Remember our domain model:
+
+- One member can have zero or many borrowing transactions.
+- Each borrowing transaction belongs to exactly one member.
+
+Imagine John borrows three books.
+
+Which design better represents this relationship?
+
+A. The `Member` class stores only one `BorrowingTransaction` reference.
+
+B. The `Member` class stores a collection of `BorrowingTransaction` objects.
+
+C. Each `BorrowingTransaction` stores a collection of members.
+
+Think about which option represents one member having multiple borrowing transactions.
