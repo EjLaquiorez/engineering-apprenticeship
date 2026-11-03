@@ -4939,3 +4939,59 @@ Which responsibilities belong to LateFeeCalculator?
 Choose the appropriate numbers and explain one of your choices.
 
 Remember: LateFeeCalculator uses transaction information; it doesn't own that information.
+
+Perfect! All four of your selected responsibilities are correct. 
+4/4 correct
+
+Let's review:
+#	Responsibility	Belongs to
+1	Store member's name	Not LateFeeCalculator
+2	Determine overdue calendar days	Correct
+3	Calculate late fee using ₱5 daily rate	Correct
+4	Store transaction records	Not LateFeeCalculator
+5	Use due date and return date/current date	Correct
+6	Change item status	Not LateFeeCalculator
+7	Return calculated late-fee amount	Correct
+
+Your explanation should reflect this distinction:
+
+LateFeeCalculator uses information from BorrowingTransaction to calculate a fee, but it doesn't own or modify the transaction.
+Step 2 completed — Class responsibilities
+Approved
+Here's our agreed responsibility summary:
+Class	Main responsibilities
+Member	Member information, membership status, borrowing eligibility
+LibraryItem	Item information, item type, availability, borrowing eligibility
+BorrowingTransaction	Transaction ID, member, item, borrow date, due date, return date
+LateFeeCalculator	Determine overdue days and calculate late fees
+
+One important design decision remains for later: coordinating a borrowing or return operation so that the transaction and item status stay consistent. We won't assign that responsibility prematurely.
+
+Step 3 — Identify attributes and Java data types
+Now we move closer to writing Java code.
+
+Let's start with Member.
+
+Our domain model identifies three attributes:
+Attribute	Meaning
+memberId	Unique member identifier
+name	Member's full name
+status	Active or inactive
+
+Your exercise
+What Java data type would you choose for each attribute?
+
+Choose from these familiar types:
+- String
+- int
+- boolean
+- double
+For example, think about whether an ID is always used for mathematical calculations or simply for identification.
+
+Give your answer in this format:
+memberId =
+name =
+status =
+
+
+Don't worry about getting everything right immediately. We'll reason through each choice together.
