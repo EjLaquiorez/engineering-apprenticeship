@@ -5448,3 +5448,88 @@ B. Inside `LateFeeCalculator` as a shared constant.
 C. Inside every `Member` object.
 
 Which would you choose, and why?
+
+Correct! B — Define the daily rate inside `LateFeeCalculator` as a shared constant.&#x20;
+
+Correct
+
+
+
+Let's understand why this is a good design decision.
+
+## Why use a shared constant?
+
+Our library currently has one late-fee rule: ₱5 per overdue calendar day.
+
+If we put that value inside every `BorrowingTransaction`, we would duplicate the same rule across multiple objects.
+
+Instead, we can define it once:
+
+```
+private static final double DAILY_RATE = 5.0;
+```
+
+Here's what the keywords mean:
+
+| Keyword   | Purpose                                              |
+| --------- | ---------------------------------------------------- |
+| `private` | Only `LateFeeCalculator` can access it directly.     |
+| `static`  | Belongs to the class rather than individual objects. |
+| `final`   | Cannot be reassigned after initialization.           |
+
+One note: `double` is acceptable for our introductory exercise, but when we implement real money calculations, we'll consider `BigDecimal` to avoid floating-point precision issues.
+
+## Step 3 — Attribute and relationship design
+
+Approved
+
+Here's our current design:
+
+| Class                  | Attributes / relationships                                                                                                              |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `Member`               | `int memberId`, `String name`, `MemberStatus status`                                                                                    |
+| `LibraryItem`          | `String itemId`, `String title`, `ItemType itemType`, `ItemStatus status`                                                               |
+| `BorrowingTransaction` | `String transactionId`, `Member member`, `LibraryItem libraryItem`, `LocalDate borrowDate`, `LocalDate dueDate`, `LocalDate returnDate` |
+| `LateFeeCalculator`    | Shared daily rate and fee-calculation responsibilities                                                                                  |
+
+Our enums:
+
+```
+enum MemberStatus {
+    ACTIVE,
+    INACTIVE
+}
+
+enum ItemType {
+    BOOK,
+    MAGAZINE
+}
+
+enum ItemStatus {
+    AVAILABLE,
+    BORROWED,
+    RETIRED
+}
+```
+
+## Next: Step 4 — Class relationships and application structure
+
+Before creating Java files, we need to decide where borrowing transactions will be stored.
+
+Remember our earlier discussion:
+
+- A `BorrowingTransaction` references one `Member`.
+- A `BorrowingTransaction` references one `LibraryItem`.
+- Members and library items can have multiple transactions throughout their lifetime.
+
+Here's our next design question:
+
+If we don't store a transaction list inside every `Member` and every `LibraryItem`, where should we keep all borrowing transaction records?
+
+A. Inside `Member`.
+
+B. Inside `LibraryItem`.
+
+C. In a separate collection managed by the application.
+
+Think about this: borrowing transactions are records used by the entire library system, not just one member or one item.
