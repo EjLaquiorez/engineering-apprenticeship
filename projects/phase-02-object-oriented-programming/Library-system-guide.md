@@ -5194,3 +5194,54 @@ returnDate =
 
 
 Hint: Think about which attributes identify a transaction and which represent actual calendar dates. Also consider how we can represent a return date that hasn't happened yet.
+
+Good work! Your first three answers are correct. For returnDate, choose LocalDate, not int.
+
+Let's review each one.
+Attribute	Java type	Evaluation
+transactionId	String	Correct
+borrowDate	LocalDate	Correct
+dueDate	LocalDate	Correct
+returnDate	LocalDate	Correct
+
+Why is returnDate also LocalDate?
+Because it represents a calendar date, just like borrowDate and dueDate.
+
+But there's an additional consideration: what happens if the item hasn't been returned yet?
+
+Java allows an object reference to have the value null.
+
+For example:
+LocalDate returnDate = null;
+
+
+This means no return date has been recorded yet.
+
+Our design will use this rule:
+- returnDate == null → Transaction is still active.
+- returnDate != null → Transaction has been completed.
+This is why we don't need another transaction status enum.
+Approved BorrowingTransaction attributes
+Attribute	Java type
+transactionId	String
+borrowDate	LocalDate
+dueDate	LocalDate
+returnDate	LocalDate (nullable)
+
+BorrowingTransaction attributes approved
+
+Next: Relationships between classes
+Before we write Java code, we need to decide how our objects will reference one another.
+
+For example, a borrowing transaction must know:
+- Which member borrowed the item.
+- Which physical library item was borrowed.
+Your next question:
+
+Should BorrowingTransaction store the member's entire information (member ID, name, status), or should it hold a reference to a Member object?
+
+A. Store the member's individual attributes again.
+
+B. Hold a reference to the existing Member object.
+
+Think about avoiding duplicated information. Why might one choice be better?
