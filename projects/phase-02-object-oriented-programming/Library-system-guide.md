@@ -5533,3 +5533,66 @@ B. Inside `LibraryItem`.
 C. In a separate collection managed by the application.
 
 Think about this: borrowing transactions are records used by the entire library system, not just one member or one item.
+
+Good attempt! But the better answer is C — a separate collection managed by the application.
+
+Let's understand why. This is an important architectural decision.
+
+## Why not B (`LibraryItem`)?
+
+Imagine our library has 500 physical items and 1,000 borrowing transactions.
+
+If we store all transactions inside `LibraryItem`, we are making each item responsible for maintaining its borrowing history.
+
+But the system needs to do more than retrieve an item's history. It also needs to:
+
+- Find all transactions belonging to a particular member.
+- Find currently active borrowing transactions.
+- Find overdue transactions.
+- Retrieve the complete borrowing history.
+
+These are system-wide operations.
+
+## Why C is better
+
+We can have a separate collection managed by the application:
+
+```
+List<BorrowingTransaction> transactions;
+```
+
+Conceptually:
+
+Library Management Application
+
+Members
+
+List of Member objects
+
+Library Items
+
+List of LibraryItem objects
+
+Borrowing Transactions
+
+List of BorrowingTransaction objects
+
+Each transaction references its member and library item, so we can search the transaction collection whenever we need a particular history.
+
+This also keeps our domain classes focused on their own responsibilities.
+
+## Let's check your understanding
+
+Suppose a staff member asks:
+
+"Show me every book currently borrowed by member `MEM-001`."
+
+If all borrowing transactions are stored in one application-managed collection, what would the application need to do?
+
+A. Search the collection for transactions belonging to `MEM-001`, then check which ones are still active.
+
+B. Search only the `Member` object's name.
+
+C. Search the `LibraryItem` titles.
+
+Which would you choose, and why?
