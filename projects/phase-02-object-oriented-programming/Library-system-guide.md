@@ -5752,3 +5752,115 @@ A. Yes, because it already works with borrowing transactions.
 B. No, because calculating late fees and coordinating borrowing/returning are separate responsibilities.
 
 Think about the Single Responsibility Principle from our OOP lessons.
+
+Correct!&#x20;
+
+Correct
+
+
+
+B — Calculating late fees and coordinating borrowing/returning are separate responsibilities.
+
+You're applying the Single Responsibility Principle correctly.
+
+### Why keep them separate?
+
+Imagine `LateFeeCalculator` also handles borrowing and returning.
+
+It would need to:
+
+- Check member eligibility.
+- Check item availability.
+- Create transactions.
+- Update item status.
+- Calculate overdue fees.
+
+That's too much responsibility for one class.
+
+Instead, each class has a focused purpose:
+
+| Class               | What it should focus on            |
+| ------------------- | ---------------------------------- |
+| `LateFeeCalculator` | Calculate overdue fees             |
+| `BorrowingService`  | Coordinate borrowing and returning |
+
+This separation makes the application easier to maintain and extend.
+
+## Stage 4 — Class design approved
+
+Design approved
+
+Our initial Version 1 class structure now contains five classes:
+
+Domain classes
+
+Member
+
+Member ID, name, status, borrowing eligibility
+
+LibraryItem
+
+Item ID, title, type, status, availability
+
+BorrowingTransaction
+
+Transaction ID, member, item, borrowing dates
+
+LateFeeCalculator
+
+Overdue days and late-fee calculation
+
+Application/service class
+
+BorrowingService
+
+Coordinates borrowing and returning operations
+
+We also need three enums:
+
+- `MemberStatus`
+- `ItemType`
+- `ItemStatus`
+
+And three central collections:
+
+```
+List<Member> members;
+List<LibraryItem> libraryItems;
+List<BorrowingTransaction> transactions;
+```
+
+## Next: Prepare the Java project structure
+
+Before writing code, let's decide where these classes should live.
+
+My proposed beginner-friendly structure is:
+
+```
+library-management-system/
+└── src/
+    └── main/
+        └── java/
+            └── library/
+                ├── Main.java
+                ├── model/
+                │   ├── Member.java
+                │   ├── LibraryItem.java
+                │   ├── BorrowingTransaction.java
+                │   ├── MemberStatus.java
+                │   ├── ItemType.java
+                │   └── ItemStatus.java
+                ├── service/
+                │   ├── BorrowingService.java
+                │   └── LateFeeCalculator.java
+                └── data/
+                    └── LibraryData.java
+```
+
+`LibraryData` will manage our in-memory collections.
+
+Before we create these files, one question:
+
+Are you currently using a Gradle-based Java project for the Library Management System, or is it still a simple folder containing your README and documentation?
+
+I want to align the source structure with your actual project rather than assume.
