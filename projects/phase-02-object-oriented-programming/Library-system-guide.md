@@ -5596,3 +5596,80 @@ B. Search only the `Member` object's name.
 C. Search the `LibraryItem` titles.
 
 Which would you choose, and why?
+
+Exactly right!&#x20;
+
+Correct
+
+
+
+A is the correct approach.
+
+Let's break down what the application would do:
+
+1. Access the collection of `BorrowingTransaction` objects.
+2. Find transactions whose member has the ID `MEM-001`.
+3. Check whether each transaction is still active.
+4. Display the corresponding library items.
+
+Remember our rule:
+
+```
+returnDate == null
+```
+
+means the transaction is still active.
+
+For example:
+
+| Transaction | Member  | Item   | Return date | Result    |
+| ----------- | ------- | ------ | ----------- | --------- |
+| T001        | MEM-001 | Book A | `null`      | Active    |
+| T002        | MEM-001 | Book B | Nov 2       | Completed |
+| T003        | MEM-002 | Book C | `null`      | Active    |
+
+The application would display only Book A for MEM-001.
+
+## Step 4 — Important design decision
+
+Approved
+
+Our application will maintain three central collections:
+
+```
+List<Member> members;
+List<LibraryItem> libraryItems;
+List<BorrowingTransaction> transactions;
+```
+
+These collections will be managed by the application rather than duplicated inside every domain object.
+
+This is a good starting point for our in-memory application.
+
+## Next: Who coordinates borrowing and returning?
+
+We have identified an important responsibility that we haven't assigned yet.
+
+When staff borrow an item on behalf of a member, two things must happen:
+
+1. Create a `BorrowingTransaction`.
+2. Change the `LibraryItem` status from `AVAILABLE` to `BORROWED`.
+
+When staff process a return:
+
+1. Record the transaction's `returnDate`.
+2. Change the item's status back to `AVAILABLE`.
+
+Which class should coordinate these operations?
+
+We haven't identified this class yet, so consider these options:
+
+A. `Member`
+
+B. `LibraryItem`
+
+C. `BorrowingTransaction`
+
+D. A separate application/service class responsible for managing borrowing and returning.
+
+Think about which class should coordinate an operation involving multiple objects without making one domain class responsible for everything.
