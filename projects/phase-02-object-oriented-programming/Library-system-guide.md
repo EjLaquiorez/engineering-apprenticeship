@@ -5673,3 +5673,82 @@ C. `BorrowingTransaction`
 D. A separate application/service class responsible for managing borrowing and returning.
 
 Think about which class should coordinate an operation involving multiple objects without making one domain class responsible for everything.
+
+Excellent! D — A separate application/service class is the best choice.&#x20;
+
+Correct
+
+
+
+You've just made an important object-oriented design decision.
+
+## Why introduce a service class?
+
+Remember what happens during borrowing:
+
+1. Check whether the member is active.
+2. Check whether the library item is available.
+3. Create a borrowing transaction.
+4. Update the library item's status.
+5. Store the transaction in the application's collection.
+
+This operation involves several objects.
+
+If we put all these responsibilities inside `Member`, `LibraryItem`, or `BorrowingTransaction`, those classes would become responsible for too many things.
+
+Instead, we can introduce:
+
+`BorrowingService`
+
+Its responsibility will be to coordinate borrowing and returning operations.
+
+### Updated class structure
+
+| Class                  | Responsibility                      |
+| ---------------------- | ----------------------------------- |
+| `Member`               | Member information and eligibility  |
+| `LibraryItem`          | Item information and availability   |
+| `BorrowingTransaction` | Borrowing event records             |
+| `LateFeeCalculator`    | Late-fee calculations               |
+| `BorrowingService`     | Coordinates borrowing and returning |
+
+The service will work with our three central collections.
+
+```
+class BorrowingService {
+    // Coordinates borrowing and returning operations
+}
+```
+
+This is only a structural illustration; we aren't implementing it yet.
+
+## Step 4 progress
+
+Approved
+
+We've established:
+
+- Central collections for members, items, and transactions.
+- Transactions reference one member and one library item.
+- We won't duplicate transaction lists inside domain objects.
+- `BorrowingService` coordinates borrowing and returning.
+
+## Step 5 — One more design decision
+
+Before we create Java files, let's consider the overall structure.
+
+We now have five classes:
+
+1. `Member`
+2. `LibraryItem`
+3. `BorrowingTransaction`
+4. `LateFeeCalculator`
+5. `BorrowingService`
+
+Question: Should `LateFeeCalculator` be responsible for coordinating the borrowing process too?
+
+A. Yes, because it already works with borrowing transactions.
+
+B. No, because calculating late fees and coordinating borrowing/returning are separate responsibilities.
+
+Think about the Single Responsibility Principle from our OOP lessons.
