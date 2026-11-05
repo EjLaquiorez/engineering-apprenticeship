@@ -5919,3 +5919,48 @@ This tells Gradle the name of our project.
 That's all for this step.
 
 Don't create `build.gradle` yet. I want to check your first file before we continue, so you understand the purpose of each configuration file rather than just copying a setup.
+
+Excellent. We've created the first Gradle configuration file.
+
+Now let's create the second one: `build.gradle`.
+
+## Step 2 — Create `build.gradle`
+
+In the root `library-management-system` folder:
+
+1. Right-click the folder.
+2. Select New File.
+3. Name it `build.gradle`.
+4. Add this code:
+
+```
+plugins {
+    id 'java'
+}
+
+group = 'library'
+version = '1.0-SNAPSHOT'
+```
+
+### Let's understand what we just added
+
+| Code                       | Purpose                                                                        |
+| -------------------------- | ------------------------------------------------------------------------------ |
+| `plugins { id 'java' }`    | Enables Gradle's Java project capabilities, including compilation and testing. |
+| `group = 'library'`        | Identifies the project's group.                                                |
+| `version = '1.0-SNAPSHOT'` | Sets the project's current development version.                                |
+
+A useful concept: Gradle already knows where to find Java source files by default:
+
+- Main source: `src/main/java`
+- Test source: `src/test/java`
+
+That means your existing `src/main/java/library` structure is already in the right place.
+
+One adjustment we'll make later: your current `test/` folder should eventually become `src/test/java/` to follow Gradle conventions.
+
+## Your task
+
+Create `build.gradle` with the code above.
+
+Then tell me when you're done. We'll verify the Gradle setup before writing any application logic.
