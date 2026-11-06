@@ -6055,3 +6055,64 @@ This time, Gradle should find the `settings.gradle` and `build.gradle` files.
 Your checkpoint: Send me the new terminal output.
 
 One important lesson: Gradle commands should generally be executed from the project's root directory—the directory containing its `settings.gradle` file.
+
+Gradle build recognized successfully
+
+Excellent! This is exactly the result we wanted.
+
+Your output confirms:
+
+```
+Tasks runnable from root project 'library-management-system'
+...
+BUILD SUCCESSFUL
+```
+
+That means:
+
+1. Gradle is installed and working.
+2. Gradle recognizes `library-management-system` as a project.
+3. Your `settings.gradle` and `build.gradle` files are being read correctly.
+4. We can now build our Java application using Gradle.
+
+The Java CDS warnings at the beginning are not what caused the earlier failure. They did not prevent this build from succeeding.
+
+## Step 4 — Configure the application plugin
+
+Before creating our application logic, let's configure Gradle to recognize `Main.java` as the program's entry point. This will let us run the application using Gradle instead of manually compiling it.
+
+Open `build.gradle` and update it to:
+
+```
+
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'library'
+version = '1.0-SNAPSHOT'
+
+application {
+    mainClass = 'library.Main'
+}
+
+```
+
+### What changed?
+
+- `id 'application'` enables Gradle's application plugin.
+- `mainClass = 'library.Main'` tells Gradle where the program starts.
+- `library.Main` means the `Main` class inside the `library` package.
+
+With this configuration, we'll eventually be able to run:
+
+```
+gradle run
+```
+
+Your task: Update `build.gradle` and save it.
+
+Don't run `gradle run` just yet. We first need to make sure your `Main.java` has the correct package declaration and entry-point method.
+
+Tell me when you've updated the file, and we'll inspect `Main.java` together.
