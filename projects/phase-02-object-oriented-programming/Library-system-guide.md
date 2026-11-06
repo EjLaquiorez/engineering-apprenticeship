@@ -6159,3 +6159,63 @@ Application started successfully!
 Hint: You already know how to use `System.out.println()` from your earlier Java lessons.
 
 Don't worry about getting everything perfect. Send me your implementation, and I'll review it with you before we proceed.
+
+Excellent work! Your `Main.java` implementation is correct.&#x20;
+
+Approved
+
+
+
+Let's review it so you understand why each part is there.
+
+## Code review
+
+```
+package library;
+
+public class Main {
+    public static void main(String[] args) {
+
+        System.out.println("Library Management System\r\n" +
+                        "Application started successfully!");
+    }
+}
+```
+
+| Code                                     | Explanation                                 |
+| ---------------------------------------- | ------------------------------------------- |
+| `package library;`                       | Places `Main` inside the `library` package. |
+| `public class Main`                      | Declares the application entry-point class. |
+| `public static void main(String[] args)` | Java's standard application entry point.    |
+| `System.out.println()`                   | Prints the startup message.                 |
+
+A small observation: You used `\r\n` to create a new line. That works on Windows. You could also use `\n`, or simply use two separate `println()` statements. Your current implementation is valid.
+
+## Step 6 — Run your application
+
+Now let's verify that Gradle can compile and execute your Java program.
+
+In the terminal, make sure you're inside the `library-management-system` root folder, then run:
+
+```
+gradle run
+```
+
+### Expected output
+
+```
+> Task :run
+
+Library Management System
+Application started successfully!
+
+BUILD SUCCESSFUL
+```
+
+If successful, we've confirmed that:
+
+- Gradle can compile your Java code.
+- Gradle can locate `library.Main`.
+- Your application starts correctly.
+
+Your checkpoint: Run `gradle run` and share the output. We'll verify it together before moving on to the model classes.
