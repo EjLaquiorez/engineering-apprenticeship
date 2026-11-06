@@ -6116,3 +6116,46 @@ Your task: Update `build.gradle` and save it.
 Don't run `gradle run` just yet. We first need to make sure your `Main.java` has the correct package declaration and entry-point method.
 
 Tell me when you've updated the file, and we'll inspect `Main.java` together.
+
+Great! Your Gradle configuration now includes the Java and Application plugins.
+
+Gradle configuration updated
+
+## Step 5 — Create our application entry point
+
+Now let's work on `Main.java`.
+
+Location:
+
+```
+src/
+└── main/
+    └── java/
+        └── library/
+            └── Main.java
+```
+
+Open `Main.java`.
+
+Before writing code, let's understand two important parts of a Java application:
+
+- `package library;` identifies which package the class belongs to.
+- `public static void main(String[] args)` is the method Java uses as the application's entry point.
+
+### Your first task
+
+Try writing the following yourself:
+
+1. Declare the package.
+2. Create a public class named `Main`.
+3. Add the `main` method.
+4. Inside it, print:
+
+```
+Library Management System
+Application started successfully!
+```
+
+Hint: You already know how to use `System.out.println()` from your earlier Java lessons.
+
+Don't worry about getting everything perfect. Send me your implementation, and I'll review it with you before we proceed.
