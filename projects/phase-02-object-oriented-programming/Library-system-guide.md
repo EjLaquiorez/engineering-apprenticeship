@@ -6376,3 +6376,45 @@ A. Yes. A member's name should never change.
 B. No. A member's name might need to be updated.
 
 Think about how a real library would manage member records.
+
+Correct! B — the member's name should be changeable.&#x20;
+
+Correct
+
+
+
+For example, a member might:
+
+- Correct a spelling mistake.
+- Update their name after a legal name change.
+- Correct an incorrectly entered record.
+
+So our initial field design becomes:
+
+```
+private final int memberId;
+private String name;
+private MemberStatus status;
+```
+
+### Why these modifiers?
+
+| Field      | Modifier        | Reason                                     |
+| ---------- | --------------- | ------------------------------------------ |
+| `memberId` | `private final` | Cannot be reassigned after construction.   |
+| `name`     | `private`       | Can be updated through controlled methods. |
+| `status`   | `private`       | Changes must follow library rules.         |
+
+## Next question — Member status
+
+Remember our business rule:
+
+> An inactive member cannot borrow new library items.
+
+Should we allow another class to directly change `status`?
+
+A. Yes, because other classes need to activate or deactivate members.
+
+B. No, because we should control status changes through a method that can enforce our business rules.
+
+Which would you choose, and why?
