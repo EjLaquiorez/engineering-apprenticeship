@@ -6281,3 +6281,59 @@ First question:
 Why did we decide to make the `Member` class attributes `private` instead of `public`?
 
 Explain it in your own words. We'll use your answer to begin implementing `Member.java` step by step.
+
+You're on the right track! Your answer captures part of the purpose of `private`.
+
+However, let's make one important distinction.
+
+`private` means a field can only be directly accessed within the class where it is declared.
+
+It doesn't simply mean classes outside the package cannot access it. Even another class in the same package cannot directly access a private field.
+
+### Example
+
+```
+public class Member {
+    private String name;
+}
+```
+
+Another class cannot do this:
+
+```
+Member member = new Member();
+member.name = "Justine"; // ERROR: name has private access
+```
+
+Instead, we can provide controlled access through methods such as getters and setters.
+
+### Why is this useful?
+
+Imagine someone changes a member's status:
+
+```
+member.setStatus(MemberStatus.INACTIVE);
+```
+
+We can put rules inside `setStatus()` to prevent invalid changes.
+
+This is the purpose of encapsulation: protecting an object's internal data and controlling how other classes interact with it.
+
+### Quick concept check
+
+Suppose we have:
+
+```
+public class Member {
+    private int memberId;
+    private String name;
+}
+```
+
+Should another class be allowed to change `memberId` after the `Member` object has been created?
+
+A. Yes, anytime.
+
+B. No, because a member's ID should remain unchanged after creation.
+
+What do you think, and why?
