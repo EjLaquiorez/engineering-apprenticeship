@@ -5964,3 +5964,35 @@ One adjustment we'll make later: your current `test/` folder should eventually b
 Create `build.gradle` with the code above.
 
 Then tell me when you're done. We'll verify the Gradle setup before writing any application logic.
+
+Great! We now have both Gradle configuration files:
+
+- `settings.gradle` — gives our project its name.
+- `build.gradle` — configures Gradle's Java support.
+
+Next, let's verify that Gradle recognizes the project before we write any application code.
+
+## Step 3 — Verify the Gradle setup
+
+Open the VS Code terminal:
+
+1. Select Terminal → New Terminal.
+2. Make sure the terminal is inside your `library-management-system` root folder.
+3. Run:
+
+```
+gradle tasks
+```
+
+This asks Gradle to display the tasks available in your project.
+
+You should see tasks such as:
+
+- `build` — builds the project.
+- `classes` — compiles the main Java classes.
+- `test` — runs tests.
+- `run` — may not appear yet; we'll configure the application plugin later if needed.
+
+Your checkpoint: Run `gradle tasks` and send me the terminal output (or a screenshot).
+
+If you get an error, don't try to fix it yourself yet. We'll troubleshoot it together.
