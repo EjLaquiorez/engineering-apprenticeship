@@ -6337,3 +6337,42 @@ A. Yes, anytime.
 B. No, because a member's ID should remain unchanged after creation.
 
 What do you think, and why?
+
+Correct! B is the better design.&#x20;
+
+Correct
+
+
+
+A member's ID should remain unchanged after creation because it identifies that particular member.
+
+This introduces an important Java concept: `final` fields.
+
+For example:
+
+```
+private final int memberId;
+```
+
+- `private` prevents direct access from other classes.
+- `final` prevents reassignment after initialization.
+
+We can initialize it through the constructor:
+
+```
+public Member(int memberId) {
+    this.memberId = memberId;
+}
+```
+
+Notice that we're combining two concepts you've already studied: constructors and encapsulation.
+
+## Next question
+
+Should a member's `name` also be `final`?
+
+A. Yes. A member's name should never change.
+
+B. No. A member's name might need to be updated.
+
+Think about how a real library would manage member records.
