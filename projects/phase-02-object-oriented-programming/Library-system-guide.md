@@ -5996,3 +5996,62 @@ You should see tasks such as:
 Your checkpoint: Run `gradle tasks` and send me the terminal output (or a screenshot).
 
 If you get an error, don't try to fix it yourself yet. We'll troubleshoot it together.
+
+Good! This error actually tells us exactly what went wrong. Don't worry—your Gradle installation is working.
+
+The important part is:
+
+```
+Directory 'C:\Users\ejlqr\Desktop\engineering-apprenticeship'
+does not contain a Gradle build.
+```
+
+## 1. What happened?
+
+You ran `gradle tasks` from your main apprenticeship repository, but our Gradle files belong inside the Library Management System project.
+
+Your terminal currently shows:
+
+```
+C:\Users\ejlqr\Desktop\engineering-apprenticeship>
+```
+
+We need to navigate into:
+
+```
+projects\phase-02-object-oriented-programming\library-management-system
+```
+
+## 2. Try this
+
+In your terminal, execute:
+
+```
+cd projects/phase-02-object-oriented-programming/library-management-system
+```
+
+Then verify your current location:
+
+```
+pwd
+```
+
+You should see a path ending in:
+
+```
+engineering-apprenticeship/projects/phase-02-object-oriented-programming/library-management-system
+```
+
+## 3. Run Gradle again
+
+Now execute:
+
+```
+gradle tasks
+```
+
+This time, Gradle should find the `settings.gradle` and `build.gradle` files.
+
+Your checkpoint: Send me the new terminal output.
+
+One important lesson: Gradle commands should generally be executed from the project's root directory—the directory containing its `settings.gradle` file.
