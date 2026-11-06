@@ -6219,3 +6219,65 @@ If successful, we've confirmed that:
 - Your application starts correctly.
 
 Your checkpoint: Run `gradle run` and share the output. We'll verify it together before moving on to the model classes.
+
+Application runs successfully!
+
+Excellent! Your first Library Management System application is now running through Gradle.
+
+Your output confirms:
+
+```
+> Task :run
+
+Library Management System
+Application started successfully!
+
+BUILD SUCCESSFUL
+```
+
+You have successfully completed these setup tasks:
+
+- Created `settings.gradle`.
+- Created `build.gradle`.
+- Configured the Java plugin.
+- Configured the Application plugin.
+- Created `Main.java`.
+- Successfully executed `gradle tasks`.
+- Successfully executed `gradle run`.
+
+The Java CDS warnings are not preventing execution. We can investigate them separately if they become disruptive.
+
+## Where we are in the project
+
+GRADLE AND APPLICATION SETUP COMPLETE
+
+Our next stage is to begin implementing the actual library domain model.
+
+## Step 7 — Start with `Member.java`
+
+Before writing the class, let's review its approved design.
+
+| Attribute  | Java type      | Purpose                                         |
+| ---------- | -------------- | ----------------------------------------------- |
+| `memberId` | `int`          | Identifies a member                             |
+| `name`     | `String`       | Stores the member's name                        |
+| `status`   | `MemberStatus` | Tracks whether the member is active or inactive |
+
+We'll also need an enum:
+
+```
+public enum MemberStatus {
+    ACTIVE,
+    INACTIVE
+}
+```
+
+But don't write the class yet.
+
+I want you to apply what you learned about encapsulation.
+
+First question:
+
+Why did we decide to make the `Member` class attributes `private` instead of `public`?
+
+Explain it in your own words. We'll use your answer to begin implementing `Member.java` step by step.
