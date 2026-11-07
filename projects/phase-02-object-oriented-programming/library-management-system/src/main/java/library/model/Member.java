@@ -1,7 +1,8 @@
 package library.model;
 
 public class Member {
-
-    // Declare the three fields here
+    private final int memberId;
+    private String name;
+    private MemberStatus status;
 
 }
