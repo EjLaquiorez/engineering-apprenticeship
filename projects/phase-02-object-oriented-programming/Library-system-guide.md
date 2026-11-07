@@ -6653,3 +6653,53 @@ B. Because Java automatically makes every enum field `ACTIVE`.
 C. Because constructors cannot accept enum parameters.
 
 What's your answer?
+
+Correct! A — Every newly registered member should initially be active.&#x20;
+
+Correct
+
+
+
+This is an example of enforcing a business rule through a constructor.
+
+We don't want whoever creates a member to accidentally register someone with an inappropriate initial status.
+
+Our constructor guarantees that every newly created member starts as `ACTIVE`.
+
+## Step 11 — Add getters
+
+Now let's think about how other classes can access the member's information.
+
+Remember, our fields are `private`.
+
+For example, another class might need to display:
+
+```
+Member ID: 101
+Name: Alex
+Status: ACTIVE
+```
+
+We need methods that allow controlled reading of these fields.
+
+These methods are called getters.
+
+### Your task
+
+Add three public getter methods to `Member.java`:
+
+| Field      | Getter name     | Return type    |
+| ---------- | --------------- | -------------- |
+| `memberId` | `getMemberId()` | `int`          |
+| `name`     | `getName()`     | `String`       |
+| `status`   | `getStatus()`   | `MemberStatus` |
+
+Hints:
+
+- A getter returns a value.
+- Use `return`.
+- Getters don't need parameters.
+
+Don't add setters yet.
+
+Try implementing the three methods yourself and send me your updated `Member.java`.
