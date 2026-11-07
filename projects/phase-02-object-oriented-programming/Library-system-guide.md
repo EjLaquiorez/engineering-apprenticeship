@@ -6595,3 +6595,61 @@ Hints:
 Don't add getters or setters yet.
 
 Send me your constructor when you're finished, and I'll review your implementation.
+
+Very good! Your constructor logic is correct. You've successfully initialized all three fields.&#x20;
+
+Logic approved
+
+
+
+Let's review one small but important detail.
+
+## 1. Your constructor
+
+```
+Member(int memberId, String name) {
+    this.memberId = memberId;
+    this.name = name;
+    this.status = MemberStatus.ACTIVE;
+}
+```
+
+You correctly used:
+
+- `this.memberId` to assign the constructor parameter to the object's field.
+- `this.name` to assign the member's name.
+- `this.status` to establish `ACTIVE` as the default status.
+
+## 2. One improvement: `public`
+
+Your constructor currently has no access modifier:
+
+```
+Member(int memberId, String name)
+```
+
+That means it has package-private access. Classes outside `library.model` cannot use it.
+
+Since our `Main` and service classes will need to create members, change it to:
+
+```
+public Member(int memberId, String name) {
+    this.memberId = memberId;
+    this.name = name;
+    this.status = MemberStatus.ACTIVE;
+}
+```
+
+This allows other packages to create a `Member` object.
+
+## 3. Concept check
+
+Why did we initialize the status inside the constructor instead of requiring the caller to pass it?
+
+A. Because every newly registered member should initially be active.
+
+B. Because Java automatically makes every enum field `ACTIVE`.
+
+C. Because constructors cannot accept enum parameters.
+
+What's your answer?
