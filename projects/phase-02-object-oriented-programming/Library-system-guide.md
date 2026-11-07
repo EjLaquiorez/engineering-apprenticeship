@@ -6418,3 +6418,69 @@ A. Yes, because other classes need to activate or deactivate members.
 B. No, because we should control status changes through a method that can enforce our business rules.
 
 Which would you choose, and why?
+
+Exactly! B — control status changes through a method.&#x20;
+
+Correct
+
+
+
+You're applying encapsulation to protect not just data, but also the rules of our application.
+
+For example, instead of allowing this:
+
+```
+member.status = MemberStatus.INACTIVE;
+```
+
+We can provide a method:
+
+```
+public void deactivate() {
+    // Business rules will be checked here.
+}
+```
+
+Later, we'll add a rule that prevents deactivation while the member has active borrowing transactions.
+
+## Step 8 — Create `MemberStatus.java`
+
+Let's implement our first enum.
+
+Location:
+
+```
+src/main/java/library/model/MemberStatus.java
+```
+
+Create the file and write:
+
+```
+package library.model;
+
+public enum MemberStatus {
+    ACTIVE,
+    INACTIVE
+}
+```
+
+### Why an enum?
+
+We only want two valid member statuses.
+
+Using an enum prevents arbitrary values such as:
+
+- `"active"`
+- `"not active"`
+- `"disabled"`
+- `"maybe"`
+
+Instead, our application uses two clearly defined values: `ACTIVE` and `INACTIVE`.
+
+## Your task
+
+1. Create `MemberStatus.java` inside `model/`.
+2. Write the enum above.
+3. Save it.
+
+Send me a confirmation when finished. Then we'll build `Member.java` using the decisions we just discussed.
