@@ -6538,3 +6538,60 @@ Hints:
 Don't add constructors, getters, or setters yet. We'll build those one at a time and discuss why each is needed.
 
 Send me your `Member.java` implementation for review.
+
+Perfect! Your `Member.java` field declarations are correct.&#x20;
+
+Approved
+
+
+
+```
+package library.model;
+
+public class Member {
+    private final int memberId;
+    private String name;
+    private MemberStatus status;
+}
+```
+
+You correctly applied all three decisions:
+
+- `private final int memberId` — protects the ID and prevents reassignment.
+- `private String name` — allows controlled name updates.
+- `private MemberStatus status` — protects status changes.
+
+## Step 10 — Create the constructor
+
+Now we need a way to initialize these fields when creating a `Member` object.
+
+For example, eventually we want to create members like this:
+
+```
+Member member = new Member(101, "Alex");
+```
+
+Notice that we're passing only two arguments.
+
+Why not pass the status too?
+
+Because every newly registered member should initially have `ACTIVE` status. We can establish that rule inside the constructor.
+
+### Your task
+
+Write a constructor inside `Member` that:
+
+1. Accepts an `int memberId`.
+2. Accepts a `String name`.
+3. Assigns both values to their corresponding fields.
+4. Initializes `status` to `MemberStatus.ACTIVE`.
+
+Hints:
+
+- Use `this.memberId`.
+- Use `this.name`.
+- Use `this.status`.
+
+Don't add getters or setters yet.
+
+Send me your constructor when you're finished, and I'll review your implementation.
