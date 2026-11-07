@@ -6484,3 +6484,57 @@ Instead, our application uses two clearly defined values: `ACTIVE` and `INACTIVE
 3. Save it.
 
 Send me a confirmation when finished. Then we'll build `Member.java` using the decisions we just discussed.
+
+Excellent! Your first domain enum is now created: `MemberStatus.java`.
+
+Step 8 complete
+
+Before moving on, let's confirm what we've established:
+
+- A member can be `ACTIVE`.
+- A member can be `INACTIVE`.
+- No other status values are allowed by this enum.
+
+## Step 9 — Create `Member.java`
+
+Now we'll create the actual `Member` class.
+
+Our approved design is:
+
+| Field      | Type           | Modifier        |
+| ---------- | -------------- | --------------- |
+| `memberId` | `int`          | `private final` |
+| `name`     | `String`       | `private`       |
+| `status`   | `MemberStatus` | `private`       |
+
+Location:
+
+```
+src/main/java/library/model/Member.java
+```
+
+### Your first task: Declare the class and fields
+
+Start with the following structure:
+
+```
+package library.model;
+
+public class Member {
+
+    // Declare the three fields here
+
+}
+```
+
+Using our design table, add the three fields yourself.
+
+Hints:
+
+- The ID must not be reassigned.
+- The name can be updated.
+- The status must be protected from direct external changes.
+
+Don't add constructors, getters, or setters yet. We'll build those one at a time and discuss why each is needed.
+
+Send me your `Member.java` implementation for review.
