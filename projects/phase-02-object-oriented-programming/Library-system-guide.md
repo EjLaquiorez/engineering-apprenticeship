@@ -6810,3 +6810,51 @@ Revise `Member.java`:
 Once updated, paste your complete `Member.java` here.
 
 Then we'll design the `activate()` and `deactivate()` methods together, including how they should enforce our library rules.
+
+Excellent! Your revised Member.java is now correct. 
+Approved
+
+You've successfully applied encapsulation to the class.
+Current Member.java review
+Component	Status	Reason
+memberId	Correct	Private and final
+name	Correct	Private and changeable
+status	Correct	Private, with no unrestricted setter
+Constructor	Correct	Public and initializes status
+Getters	Correct	Provides controlled reading
+setName()	Correct	Allows name updates
+
+Step 12 — Design the deactivate() method
+Now let's implement our business rule.
+
+Remember:
+An inactive member cannot borrow new library items, and a member cannot be deactivated while they have active borrowing transactions.
+
+We have a design question here.
+
+Our Member class currently knows its own:
+- ID
+- Name
+- Status
+But it doesn't yet know about the member's borrowing transactions.
+
+We shouldn't pretend it can check something it doesn't have access to.
+Consider these two designs
+Design A — Member handles everything
+member.deactivate();
+
+
+The Member class checks whether the member has active borrowing transactions.
+
+Design B — BorrowingService handles the coordination
+borrowingService.deactivateMember(member);
+
+
+The service checks for active transactions, then changes the member's status through a controlled method.
+
+Design B separates responsibilities:
+- BorrowingService checks borrowing records.
+- Member controls its own status.
+Which design would you choose, A or B? And why?
+
+Take your time. This is an important object-oriented design decision.
