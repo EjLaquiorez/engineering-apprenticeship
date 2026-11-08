@@ -27,8 +27,5 @@ public class Member {
         return status;
     }
 
-    public void setStatus(MemberStatus status) {
-        this.status = status;
-    }
 }
 
