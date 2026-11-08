@@ -11,5 +11,24 @@ public class Member {
         this.status = MemberStatus.ACTIVE;
     }
 
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public MemberStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(MemberStatus status) {
+        this.status = status;
+    }
 }
 
