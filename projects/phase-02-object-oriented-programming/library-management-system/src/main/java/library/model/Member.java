@@ -5,7 +5,7 @@ public class Member {
     private String name;
     private MemberStatus status;
 
-    Member(int memberId, String name) {
+    public Member(int memberId, String name) {
         this.memberId = memberId;
         this.name = name;
         this.status = MemberStatus.ACTIVE;
@@ -26,6 +26,5 @@ public class Member {
     public MemberStatus getStatus() {
         return status;
     }
-
 }
 
