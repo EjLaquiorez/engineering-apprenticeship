@@ -6858,3 +6858,57 @@ Design B separates responsibilities:
 Which design would you choose, A or B? And why?
 
 Take your time. This is an important object-oriented design decision.
+
+Correct! Design B is the better choice for our Library Management System.&#x20;
+
+Correct
+
+
+
+Your reasoning should be:
+
+- `BorrowingService` is responsible for coordinating borrowing-related operations.
+- It has access to borrowing transactions and can check whether the member still has unreturned items.
+- `Member` is responsible for maintaining its own data, including its status.
+
+This is an example of separation of responsibilities.
+
+## Let's visualize the process
+
+Suppose staff wants to deactivate member 101.
+
+BorrowingService
+
+1\. Receives the request to deactivate the member.
+
+2\. Checks active borrowing transactions.
+
+Does member 101 have any unreturned items?
+
+YES
+
+Reject deactivation.
+
+NO
+
+Proceed with deactivation.
+
+Member
+
+Changes its own status to `INACTIVE` through a controlled method.
+
+One important design detail: the service must be the intended entry point for this operation. We must avoid exposing another unrestricted way to deactivate a member that bypasses the transaction check.
+
+## Step 13 — Design before coding
+
+Let's test your understanding.
+
+If `BorrowingService` discovers that member 101 still has an unreturned book, what should happen?
+
+A. Deactivate the member anyway.
+
+B. Reject the deactivation and keep the member's status as `ACTIVE`.
+
+C. Automatically return the book and deactivate the member.
+
+Which would you choose, and why?
