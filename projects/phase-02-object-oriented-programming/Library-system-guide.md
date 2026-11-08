@@ -6784,3 +6784,29 @@ For now:
 Why is `setStatus()` potentially dangerous, while `setName()` is acceptable?
 
 Explain it in your own words. I want you to understand the design reasoning, not just follow instructions.
+
+Correct! You're identifying the problem. But let's make your explanation more precise.
+
+Both `setStatus()` and `setName()` allow changes. The difference is what rules those changes must follow.
+
+- `setName()` can reasonably update a member's name without affecting borrowing rules.
+- `setStatus()` can affect whether a member is allowed to borrow items. It must follow additional business rules.
+
+For example, we must prevent deactivating a member who still has an unreturned book.
+
+That's why we don't want unrestricted status modification.
+
+## Your next task
+
+Revise `Member.java`:
+
+- Keep `getMemberId()`.
+- Keep `getName()`.
+- Keep `getStatus()`.
+- Keep `setName()`.
+- Remove `setStatus()`.
+- Make the constructor `public`.
+
+Once updated, paste your complete `Member.java` here.
+
+Then we'll design the `activate()` and `deactivate()` methods together, including how they should enforce our library rules.
