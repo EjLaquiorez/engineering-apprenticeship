@@ -6703,3 +6703,84 @@ Hints:
 Don't add setters yet.
 
 Try implementing the three methods yourself and send me your updated `Member.java`.
+
+Good work! Your three getter methods are all correctly implemented. You're also beginning to understand how methods provide controlled access to private fields.
+
+However, I noticed two things we should correct before approving the class.
+
+## 1. Your getters are correct
+
+These three methods are exactly what we need:
+
+```
+public int getMemberId() {
+    return memberId;
+}
+
+public String getName() {
+    return name;
+}
+
+public MemberStatus getStatus() {
+    return status;
+}
+```
+
+Each returns the correct field type.
+
+## 2. Let's review your setters
+
+You added:
+
+```
+public void setName(String name) {
+    this.name = name;
+}
+
+public void setStatus(MemberStatus status) {
+    this.status = status;
+}
+```
+
+`setName()` is reasonable because a member's name can change.
+
+However, `setStatus()` creates a design problem.
+
+Remember our business rule:
+
+> A member cannot become inactive while they still have active borrowing transactions.
+
+If we allow unrestricted `setStatus()`, another class could simply execute:
+
+```
+member.setStatus(MemberStatus.INACTIVE);
+```
+
+That would bypass our business rule.
+
+Instead, we'll eventually create controlled operations such as `deactivate()` and `activate()`.
+
+## 3. One more correction
+
+Make your constructor public:
+
+```
+public Member(int memberId, String name)
+```
+
+This allows classes outside `library.model` to create members.
+
+## Your revision
+
+For now:
+
+1. Keep all three getters.
+2. Keep `setName()`.
+3. Remove `setStatus()`.
+4. Make the constructor `public`.
+
+### Concept check
+
+Why is `setStatus()` potentially dangerous, while `setName()` is acceptable?
+
+Explain it in your own words. I want you to understand the design reasoning, not just follow instructions.
