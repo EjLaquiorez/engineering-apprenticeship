@@ -7187,3 +7187,37 @@ B. `BORROWED`
 C. Let the staff member choose the initial status.
 
 What's your choice, and why?
+
+Correct! A — `AVAILABLE`.&#x20;
+
+Approved
+
+
+
+A newly registered item should automatically start as `AVAILABLE` because it has not been borrowed or retired.
+
+This is a good example of encapsulation: the class controls its initial state instead of requiring staff to provide a status that should be determined by the system.
+
+### Step 17B — Create the fields and constructor
+
+In `LibraryItem.java`, write only the following for now:
+
+1. Declare the four fields:
+   - `itemId`
+   - `title`
+   - `itemType`
+   - `status`
+2. Create a constructor that accepts:
+   - `String itemId`
+   - `String title`
+   - `ItemType itemType`
+3. Assign the three constructor parameters to their corresponding fields.
+4. Initialize `status` to `ItemStatus.AVAILABLE`.
+
+Hints:
+
+- Use `private final` for `itemId` and `itemType`.
+- Use `private` (without `final`) for `title` and `status`.
+- Don't create getters or other methods yet.
+
+Write the code yourself and send it here. I'll review it before we continue.
