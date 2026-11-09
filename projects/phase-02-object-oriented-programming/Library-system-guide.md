@@ -6912,3 +6912,51 @@ B. Reject the deactivation and keep the member's status as `ACTIVE`.
 C. Automatically return the book and deactivate the member.
 
 Which would you choose, and why?
+
+Yes! B is correct, and your reasoning is good. You're thinking about what should happen in an actual library, not just what the Java code should do.
+
+Let's clarify why.
+
+Suppose member 101 still has an unreturned book.
+
+If we deactivate the member anyway, we could create problems:
+
+- The member becomes ineligible to borrow.
+- But the library still expects the book to be returned.
+- Staff may have difficulty managing that outstanding transaction.
+
+Instead, we reject the deactivation and let staff follow up with the member.
+
+Important distinction: The application doesn't need to automatically contact the member. It simply prevents deactivation and informs staff why the request was rejected.
+
+## Step 14 — Define our Member method
+
+Now we can design the method that changes the member's status.
+
+Since `BorrowingService` performs the transaction check, `Member` only needs to perform the status change.
+
+For example:
+
+```
+public void deactivate() {
+    this.status = MemberStatus.INACTIVE;
+}
+```
+
+And for reactivation:
+
+```
+public void activate() {
+    this.status = MemberStatus.ACTIVE;
+}
+```
+
+These methods are more meaningful than a generic `setStatus()` because they describe the actual operation.
+
+### Your concept check
+
+Why are `activate()` and `deactivate()` better method names than `setStatus()` in our design?
+
+Think about the difference between describing an action and directly assigning a value.
+
+Once you answer, we'll add these methods to `Member.java`.
