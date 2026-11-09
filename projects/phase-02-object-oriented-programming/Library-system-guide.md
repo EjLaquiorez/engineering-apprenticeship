@@ -7088,3 +7088,60 @@ Complete
 LibraryItem.java
 
 Not started
+
+BUILD SUCCESSFUL
+Excellent! Your Member.java compiles successfully, and Gradle confirms that the project builds without errors.
+
+You've completed your first domain class.
+
+A small observation: your Gradle version now reports 9.9.0, whereas it previously reported 9.8.2. That's okay; the build succeeded.
+Project progress
+Component	Status
+Gradle configuration	Complete
+Main.java	Complete
+MemberStatus.java	Complete
+Member.java	Complete
+LibraryItem.java	Not started
+
+Step 16 — Begin LibraryItem.java
+Before coding, let's revisit the approved design.
+
+Our LibraryItem represents one physical copy of a book or magazine—not just a title in the catalog.
+
+For example, a library might own three physical copies of the same book. Each copy needs its own unique itemId.
+
+The approved fields are:
+Field	Type	Purpose
+itemId	String	Unique identifier for a physical copy
+title	String	Item title
+itemType	ItemType	Book or magazine
+status	ItemStatus	Availability of the physical copy
+
+Step 16A — Create ItemType.java
+Before creating LibraryItem.java, we need its two enums, just as we did with Member.
+
+First, create:
+src/main/java/library/model/ItemType.java
+
+
+Add:
+package library.model;
+
+public enum ItemType {
+    BOOK,
+    MAGAZINE
+}
+
+
+Why use an enum?
+Our Version 1 library supports only two item types. An enum ensures we use consistent values throughout the application.
+
+For example:
+ItemType.BOOK
+ItemType.MAGAZINE
+
+
+Your task
+Create and save ItemType.java.
+
+Don't create ItemStatus.java yet. We'll handle that separately and then build LibraryItem.java together.
