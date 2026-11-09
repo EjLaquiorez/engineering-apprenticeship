@@ -7010,3 +7010,81 @@ Your `Member` class will now have:
 Your task: Add the two methods and paste your updated `Member.java` here for review.
 
 We'll then examine how `BorrowingService` can safely coordinate deactivation.
+
+Excellent! Your updated `Member.java` is correct.&#x20;
+
+Approved
+
+
+
+You've implemented the methods exactly as intended.
+
+## Code review
+
+Your class now has:
+
+| Component      | Responsibility                           |
+| -------------- | ---------------------------------------- |
+| `memberId`     | Identifies the member                    |
+| `name`         | Stores the member's name                 |
+| `status`       | Tracks active/inactive status            |
+| Constructor    | Creates a member with `ACTIVE` status    |
+| Getters        | Allows other classes to read information |
+| `setName()`    | Updates the member's name                |
+| `activate()`   | Changes status to `ACTIVE`               |
+| `deactivate()` | Changes status to `INACTIVE`             |
+
+## One important design lesson
+
+We deliberately separated two responsibilities:
+
+- `Member` knows how to change its own status.
+- `BorrowingService` will decide whether that change is allowed based on borrowing transactions.
+
+This is a useful application of separation of responsibilities.
+
+One detail to keep in mind: Our current `deactivate()` method can still be called directly by another class. We haven't yet enforced the borrowing restriction at the code level. We'll address that when we implement `BorrowingService`, rather than pretending the rule is already protected.
+
+## Step 15 — Compile and verify
+
+Let's make sure your Java code compiles.
+
+From your project root, run:
+
+```
+gradle build
+```
+
+Expected result:
+
+```
+BUILD SUCCESSFUL
+```
+
+This checks that Gradle can compile your current application and run any configured tests.
+
+Send me the result. After that, we'll proceed to the next model class: `LibraryItem.java`.
+
+Our progress so far:
+
+Library Management System
+
+Gradle setup
+
+Complete
+
+Main.java
+
+Complete
+
+MemberStatus.java
+
+Complete
+
+Member.java
+
+Complete
+
+LibraryItem.java
+
+Not started
