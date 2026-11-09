@@ -7145,3 +7145,45 @@ Your task
 Create and save ItemType.java.
 
 Don't create ItemStatus.java yet. We'll handle that separately and then build LibraryItem.java together.
+
+Excellent. `ItemStatus.java` is correct.&#x20;
+
+Approved
+
+
+
+We now have both enums needed by `LibraryItem`:
+
+- `ItemType`: `BOOK`, `MAGAZINE`
+- `ItemStatus`: `AVAILABLE`, `BORROWED`, `RETIRED`
+
+## Step 17 — Create the `LibraryItem` class
+
+File location:
+
+`src/main/java/library/model/LibraryItem.java`
+
+Before writing the class, let's decide its fields.
+
+| Field      | Data type    | Can it change?                  |
+| ---------- | ------------ | ------------------------------- |
+| `itemId`   | `String`     | No                              |
+| `title`    | `String`     | Yes                             |
+| `itemType` | `ItemType`   | No                              |
+| `status`   | `ItemStatus` | Yes, through controlled methods |
+
+### Step 17A — Think about the constructor
+
+When a staff member registers a new library item, they should provide its ID, title, and type.
+
+But should they also provide its initial status?
+
+Consider this: a newly registered book has never been borrowed or retired. What should its initial status automatically be?
+
+A. `AVAILABLE`
+
+B. `BORROWED`
+
+C. Let the staff member choose the initial status.
+
+What's your choice, and why?
