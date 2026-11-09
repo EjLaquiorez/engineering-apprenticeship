@@ -6960,3 +6960,53 @@ Why are `activate()` and `deactivate()` better method names than `setStatus()` i
 Think about the difference between describing an action and directly assigning a value.
 
 Once you answer, we'll add these methods to `Member.java`.
+
+You're remembering an important rule: every newly registered member starts as `ACTIVE`. That's correct!
+
+But there's another reason why `activate()` and `deactivate()` are better than `setStatus()`.
+
+Think about the difference:
+
+```
+member.setStatus(MemberStatus.INACTIVE);
+```
+
+versus:
+
+```
+member.deactivate();
+```
+
+The first tells the object what value to assign.
+
+The second tells the object what action to perform.
+
+This makes the code easier to understand and gives us room to add rules inside the methods later.
+
+For example, `deactivate()` could eventually prevent deactivation if the member is already inactive.
+
+## Step 14 — Add the methods
+
+Add these two methods to your `Member.java`:
+
+```
+public void activate() {
+    this.status = MemberStatus.ACTIVE;
+}
+
+public void deactivate() {
+    this.status = MemberStatus.INACTIVE;
+}
+```
+
+Your `Member` class will now have:
+
+- Three private fields.
+- One public constructor.
+- Three getters.
+- One name setter.
+- Two status-changing methods.
+
+Your task: Add the two methods and paste your updated `Member.java` here for review.
+
+We'll then examine how `BorrowingService` can safely coordinate deactivation.
