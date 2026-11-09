@@ -26,5 +26,13 @@ public class Member {
     public MemberStatus getStatus() {
         return status;
     }
+
+    public void activate() {
+        this.status = MemberStatus.ACTIVE;
+    }
+
+    public void deactivate() {
+        this.status = MemberStatus.INACTIVE;
+    }
 }
 
