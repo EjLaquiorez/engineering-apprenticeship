@@ -1,7 +1,7 @@
 package library.model;
 
 public class LibraryItem {
-	private final String itemId;
+    private final String itemId;
     private String title;
     private final ItemType itemType;
     private ItemStatus status;
@@ -10,7 +10,7 @@ public class LibraryItem {
         this.itemId = itemId;
         this.title = title;
         this.itemType = itemType;
-        status = ItemStatus.AVAILABLE;
+        this.status = ItemStatus.AVAILABLE;
 
     }
 }
