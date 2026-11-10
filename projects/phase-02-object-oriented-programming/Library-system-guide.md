@@ -7221,3 +7221,59 @@ Hints:
 - Don't create getters or other methods yet.
 
 Write the code yourself and send it here. I'll review it before we continue.
+
+Good work! Your fields and constructor assignments are correct.&#x20;
+
+Logic approved
+
+
+
+There is just one important adjustment before we proceed.
+
+### 1. Make the constructor `public`
+
+You currently have:
+
+```
+LibraryItem(String itemId, String title, ItemType itemType)
+```
+
+Change it to:
+
+```
+public LibraryItem(String itemId, String title, ItemType itemType)
+```
+
+Why?
+
+Your `LibraryItem` class is in the `library.model` package. Later, your `BorrowingService` and `Main` classes may need to create `LibraryItem` objects from other packages.
+
+Without `public`, the constructor is only accessible within the same package.
+
+### 2. Your corrected constructor
+
+```
+public LibraryItem(String itemId, String title, ItemType itemType) {
+    this.itemId = itemId;
+    this.title = title;
+    this.itemType = itemType;
+    this.status = ItemStatus.AVAILABLE;
+}
+```
+
+I also recommend using `this.status` for consistency, although `status` alone is valid here.
+
+### Step 17C — Getters
+
+Next, let's expose the information other classes need without exposing direct access to the fields.
+
+Question: Which of these fields should have getters?
+
+A. All four fields.
+
+B. Only `itemId`, `title`, and `itemType`.
+
+C. Only `itemId` and `title`.
+
+Choose one and explain your reasoning.
+
