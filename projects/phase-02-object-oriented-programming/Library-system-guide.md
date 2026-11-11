@@ -7312,3 +7312,32 @@ public ItemStatus getStatus()
 
 Write the method bodies yourself. Send me your updated class, and I'll review it before we work on the controlled state-changing methods.
 
+Excellent! Your `LibraryItem` class is correct so far.&#x20;
+
+Approved
+
+
+
+You've successfully implemented:
+
+- Four private fields.
+- A public constructor.
+- Automatic initialization to `AVAILABLE`.
+- Four public getters.
+- `final` for fields that should not change (`itemId` and `itemType`).
+
+Your current design also follows encapsulation: other classes can read the item's information but cannot directly modify its fields.
+
+## Step 17D — Updating the title
+
+Let's consider another requirement: staff members must be able to update a library item's title.
+
+We have two possible approaches:
+
+A. Create a public `setTitle(String title)` method.
+
+B. Keep `title` final and prevent changes after registration.
+
+Which approach should we use, considering that our requirements allow staff to update item details?
+
+What is your choice, and why?
