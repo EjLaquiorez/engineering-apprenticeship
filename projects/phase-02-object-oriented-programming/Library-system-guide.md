@@ -7453,3 +7453,49 @@ throw new IllegalStateException("Item is not available for borrowing.");
 ```
 
 Try implementing it yourself. We'll review your logic before moving to `returnItem()`.
+
+Excellent! Your `borrow()` method is correctly implemented.&#x20;
+
+Approved
+
+
+
+Let's review your logic:
+
+```
+public void borrow() {
+    if (status != ItemStatus.AVAILABLE) {
+        throw new IllegalStateException("Item is not available for borrowing.");
+    }
+    status = ItemStatus.BORROWED;
+}
+```
+
+Here's what happens:
+
+1. If the item is not `AVAILABLE`, Java throws an exception and stops the method.
+2. If the item is `AVAILABLE`, execution continues and changes its status to `BORROWED`.
+
+Notice that you used:
+
+```
+status != ItemStatus.AVAILABLE
+```
+
+This is a good choice because it rejects both `BORROWED` and `RETIRED` items without needing two separate conditions.
+
+## Step 17F — Returning an item
+
+Now let's handle the return operation.
+
+Consider these possible situations:
+
+| Current status | Attempt to return | Expected result       |
+| -------------- | ----------------- | --------------------- |
+| `BORROWED`     | Yes               | Change to `AVAILABLE` |
+| `AVAILABLE`    | Yes               | Reject                |
+| `RETIRED`      | Yes               | Reject                |
+
+Question: Why should we reject an attempt to return an item whose status is already `AVAILABLE`?
+
+Explain it in your own words before implementing the method.
