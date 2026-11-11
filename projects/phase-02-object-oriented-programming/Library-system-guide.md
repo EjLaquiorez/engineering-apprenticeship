@@ -7277,3 +7277,38 @@ C. Only `itemId` and `title`.
 
 Choose one and explain your reasoning.
 
+Good choice! B is correct.&#x20;
+
+Approved
+
+
+
+Let's examine the reasoning.
+
+- `getItemId()` — other classes need to identify the physical item.
+- `getTitle()` — other classes need to display or search for its title.
+- `getItemType()` — other classes need to know whether it is a book or magazine.
+- `getStatus()` — we should actually include this one too.
+
+I want to correct the answer slightly: All four fields should have getters.
+
+Why? Other classes, especially `BorrowingService`, need to check whether an item is `AVAILABLE`, `BORROWED`, or `RETIRED` before performing an operation.
+
+A getter does not allow another class to change the field. It only allows it to read the value.
+
+### Step 17C — Your task
+
+Add these four methods to `LibraryItem.java`:
+
+```
+public String getItemId()
+
+public String getTitle()
+
+public ItemType getItemType()
+
+public ItemStatus getStatus()
+```
+
+Write the method bodies yourself. Send me your updated class, and I'll review it before we work on the controlled state-changing methods.
+
