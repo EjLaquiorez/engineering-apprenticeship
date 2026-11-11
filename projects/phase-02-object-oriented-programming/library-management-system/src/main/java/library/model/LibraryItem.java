@@ -11,6 +11,21 @@ public class LibraryItem {
         this.title = title;
         this.itemType = itemType;
         this.status = ItemStatus.AVAILABLE;
+    }
 
+    public String getItemId() {
+        return itemId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public ItemType getItemType() {
+        return itemType;
+    }
+
+    public ItemStatus getStatus() {
+        return status;
     }
 }
