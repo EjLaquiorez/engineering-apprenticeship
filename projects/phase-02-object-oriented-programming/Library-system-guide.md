@@ -7411,3 +7411,45 @@ B. Reject the operation and leave its status unchanged.
 C. Automatically return the item before borrowing it again.
 
 Choose your answer and explain why.
+
+Exactly right! B — Reject the operation and leave its status unchanged.&#x20;
+
+Approved
+
+
+
+Your reasoning is correct: an item must be returned before another borrowing transaction can begin.
+
+This protects an important business rule: one physical library item can have only one active borrowing transaction at a time.
+
+### Step 17E.1 — Understand the `borrow()` method
+
+Let's define its behavior:
+
+| Current status | Attempt to borrow | Result               |
+| -------------- | ----------------- | -------------------- |
+| `AVAILABLE`    | Yes               | Change to `BORROWED` |
+| `BORROWED`     | Yes               | Reject               |
+| `RETIRED`      | Yes               | Reject               |
+
+### Your task
+
+Add this method to `LibraryItem.java`:
+
+```
+public void borrow() {
+    // Your implementation
+}
+```
+
+Hint: Use an `if` statement to check whether the current status is `AVAILABLE`.
+
+If it is available, change the status to `ItemStatus.BORROWED`.
+
+Otherwise, reject the operation. For now, you can use an `IllegalStateException`:
+
+```
+throw new IllegalStateException("Item is not available for borrowing.");
+```
+
+Try implementing it yourself. We'll review your logic before moving to `returnItem()`.
