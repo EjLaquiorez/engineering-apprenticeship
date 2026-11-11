@@ -7363,3 +7363,51 @@ public void setTitle(String title) {
 One design consideration: We are keeping the setter simple for now. Later, we can discuss input validation, such as preventing an empty title.
 
 Add it, then send me your updated class for review.
+
+Correct! Your `setTitle()` method works as intended.&#x20;
+
+Approved
+
+
+
+One small formatting improvement: indent the method body consistently.
+
+```
+public void setTitle(String title) {
+    this.title = title;
+}
+```
+
+## Step 17E — Controlling item status
+
+Now comes an important part of our design.
+
+Remember our business rules:
+
+1. Only an `AVAILABLE` item can be borrowed.
+2. A `BORROWED` item cannot be borrowed again.
+3. A `RETIRED` item cannot be borrowed.
+4. A borrowed item must be returned before it becomes available again.
+5. A borrowed item cannot be retired.
+
+We deliberately did not create `setStatus()` because that would allow other classes to change the status without following these rules.
+
+Instead, we'll create specific methods:
+
+- `borrow()`
+- `returnItem()`
+- `retire()`
+
+### First question
+
+Suppose an item is currently `BORROWED`, and someone attempts to borrow it again.
+
+What should the `borrow()` method do?
+
+A. Change its status to `BORROWED` again.
+
+B. Reject the operation and leave its status unchanged.
+
+C. Automatically return the item before borrowing it again.
+
+Choose your answer and explain why.
