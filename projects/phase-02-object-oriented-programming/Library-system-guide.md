@@ -7499,3 +7499,33 @@ Consider these possible situations:
 Question: Why should we reject an attempt to return an item whose status is already `AVAILABLE`?
 
 Explain it in your own words before implementing the method.
+
+Exactly! Correct.&#x20;
+
+Approved
+
+
+
+An item that is already `AVAILABLE` has no active borrowing to complete. Allowing another return would mean recording an operation that never happened.
+
+This is an example of protecting an object's valid state transitions.
+
+## Step 17F.1 — Implement `returnItem()`
+
+Add this method to `LibraryItem.java`:
+
+```
+public void returnItem() {
+    // Your implementation
+}
+```
+
+Use the same approach as `borrow()`:
+
+1. Check whether the current status is `BORROWED`.
+2. If it isn't, throw an `IllegalStateException`.
+3. Otherwise, change the status to `AVAILABLE`.
+
+Hint: Your condition should reject any status other than `BORROWED`.
+
+Try writing it yourself and send me the updated class.
