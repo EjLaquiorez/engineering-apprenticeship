@@ -32,4 +32,11 @@ public class LibraryItem {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public void borrow() {
+        if (status != ItemStatus.AVAILABLE) {
+            throw new IllegalStateException("Item is not available for borrowing.");
+        }
+        status = ItemStatus.BORROWED;
+    }
 }
