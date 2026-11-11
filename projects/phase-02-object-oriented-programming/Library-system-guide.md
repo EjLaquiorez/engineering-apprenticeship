@@ -7341,3 +7341,25 @@ B. Keep `title` final and prevent changes after registration.
 Which approach should we use, considering that our requirements allow staff to update item details?
 
 What is your choice, and why?
+
+Correct! A — Create a public `setTitle(String title)` method.&#x20;
+
+Approved
+
+
+
+The `title` field is not `final` because staff members are allowed to update item details.
+
+### Step 17D — Your task
+
+Add this method to `LibraryItem.java`:
+
+```
+public void setTitle(String title) {
+    this.title = title;
+}
+```
+
+One design consideration: We are keeping the setter simple for now. Later, we can discuss input validation, such as preventing an empty title.
+
+Add it, then send me your updated class for review.
