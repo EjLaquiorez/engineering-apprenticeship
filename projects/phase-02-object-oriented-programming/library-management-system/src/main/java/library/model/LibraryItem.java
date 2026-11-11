@@ -28,4 +28,8 @@ public class LibraryItem {
     public ItemStatus getStatus() {
         return status;
     }
+
+    public void setTitle(String title) {
+    this.title = title;
+}
 }
