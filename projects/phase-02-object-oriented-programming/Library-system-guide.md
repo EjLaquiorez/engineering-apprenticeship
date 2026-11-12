@@ -7607,3 +7607,63 @@ Follow the same pattern you've already used:
 Hint: Think about how you implemented `borrow()`. The condition will be very similar, but the resulting status will be different.
 
 Write it yourself and send me your updated class for review.
+
+Excellent! Your `retire()` method is logically correct.&#x20;
+
+Approved
+
+
+
+You handled both invalid situations separately:
+
+```
+public void retire() {
+    if (status == ItemStatus.RETIRED) {
+        throw new IllegalStateException("Item is already retired.");
+    }
+    if (status == ItemStatus.BORROWED) {
+        throw new IllegalStateException("Item cannot be retired while borrowed.");
+    }
+    status = ItemStatus.RETIRED;
+}
+```
+
+### A small design observation
+
+Your implementation is perfectly valid. It gives different error messages depending on why retirement is rejected.
+
+There is also a shorter alternative:
+
+```
+if (status != ItemStatus.AVAILABLE) {
+    throw new IllegalStateException("Only available items can be retired.");
+}
+```
+
+Both enforce the same business rule. Your version provides more specific feedback, so I'm happy with your approach.
+
+## Step 17 — LibraryItem complete
+
+Class design approved
+
+You've implemented:
+
+- Fields and constructor
+- Automatic `AVAILABLE` initial status
+- Getters
+- `setTitle()`
+- `borrow()`
+- `returnItem()`
+- `retire()`
+
+### Next: Verify compilation
+
+From your project root:
+
+```
+gradle build
+```
+
+Send me the output.
+
+After that, we'll move to `BorrowingTransaction`, where we'll connect a `Member` and a `LibraryItem` through an actual borrowing record.
