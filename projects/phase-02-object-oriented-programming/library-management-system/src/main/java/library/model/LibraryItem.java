@@ -39,4 +39,11 @@ public class LibraryItem {
         }
         status = ItemStatus.BORROWED;
     }
+
+    public void returnItem() {
+        if (status != ItemStatus.BORROWED) {
+            throw new IllegalStateException("Item is not currently borrowed.");
+        }
+        status = ItemStatus.AVAILABLE;
+    }
 }
