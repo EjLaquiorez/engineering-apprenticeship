@@ -7529,3 +7529,49 @@ Use the same approach as `borrow()`:
 Hint: Your condition should reject any status other than `BORROWED`.
 
 Try writing it yourself and send me the updated class.
+
+Excellent! Your `returnItem()` method is correct.&#x20;
+
+Approved
+
+
+
+You correctly implemented both the condition and the state change:
+
+```
+public void returnItem() {
+    if (status != ItemStatus.BORROWED) {
+        throw new IllegalStateException("Item is not currently borrowed.");
+    }
+    status = ItemStatus.AVAILABLE;
+}
+```
+
+Your `LibraryItem` now protects two important state transitions:
+
+- `AVAILABLE` → `BORROWED`
+- `BORROWED` → `AVAILABLE`
+
+It also rejects invalid transitions.
+
+## Step 17G — Retiring an item
+
+One remaining business rule:
+
+A borrowed item cannot be retired.
+
+For example, staff discover that a book is damaged and want to retire it. However, someone currently has that book borrowed.
+
+We should reject the retirement until the book is returned.
+
+### First question
+
+Which statuses should allow an item to be retired?
+
+A. Only `AVAILABLE`
+
+B. Both `AVAILABLE` and `BORROWED`
+
+C. All statuses, including `RETIRED`
+
+What's your answer, and why?
