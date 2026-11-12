@@ -7575,3 +7575,35 @@ B. Both `AVAILABLE` and `BORROWED`
 C. All statuses, including `RETIRED`
 
 What's your answer, and why?
+
+Correct! A — Only `AVAILABLE`.&#x20;
+
+Approved
+
+
+
+Your reasoning follows our business rules:
+
+- `AVAILABLE` → Can be retired.
+- `BORROWED` → Cannot be retired until returned.
+- `RETIRED` → Cannot be retired again.
+
+## Step 17G.1 — Implement `retire()`
+
+Add this method to `LibraryItem.java`:
+
+```
+public void retire() {
+    // Your implementation
+}
+```
+
+Follow the same pattern you've already used:
+
+1. Check whether the current status is `AVAILABLE`.
+2. If it isn't, throw an `IllegalStateException`.
+3. Otherwise, change the status to `RETIRED`.
+
+Hint: Think about how you implemented `borrow()`. The condition will be very similar, but the resulting status will be different.
+
+Write it yourself and send me your updated class for review.
