@@ -46,4 +46,14 @@ public class LibraryItem {
         }
         status = ItemStatus.AVAILABLE;
     }
+
+    public void retire() {
+        if (status == ItemStatus.RETIRED) {
+            throw new IllegalStateException("Item is already retired.");
+        }
+        if (status == ItemStatus.BORROWED) {
+            throw new IllegalStateException("Item cannot be retired while borrowed.");
+        }
+        status = ItemStatus.RETIRED;
+    }
 }
