@@ -81,10 +81,10 @@ Completed topics:
 Phase 01 projects:
 
 - ✓ Calculator — Complete
-- 🟡 Expense Tracker — In Progress
-- 🔴 Student Management System — Planned
+- ✓ Expense Tracker — Complete
+- ✓ Student Management System — Complete
 
-The next phase advancement will occur after the remaining Phase 01 projects and required evidence are completed.
+The next phase advancement will occur after final validation, reflection, and evidence logging are recorded in [progress/evidence-log.md](progress/evidence-log.md).
 
 ---
 
@@ -93,8 +93,8 @@ The next phase advancement will occur after the remaining Phase 01 projects and 
 | Project | Phase | Status | Location |
 |---------|-------|--------|----------|
 | Calculator | 1 | ✓ Complete | `projects/phase-01-java-foundations/calculator/` |
-| Expense Tracker | 1 | 🟡 In Progress | `projects/phase-01-java-foundations/expense-tracker/` |
-| Student Management System | 1 | 🔴 Planned | `projects/phase-01-java-foundations/student-management-system/` |
+| Expense Tracker | 1 | ✓ Complete | `projects/phase-01-java-foundations/expense-tracker/` |
+| Student Management System | 1 | ✓ Complete | `projects/phase-01-java-foundations/student-management-system/` |
 | Library Management System | 2 | 🔴 Planned | `projects/phase-02-object-oriented-programming/library-management-system/` |
 | Inventory Management System | 3 | 🔴 Planned | `projects/phase-03-professional-java/inventory-management-system/` |
 | Banking Database | 4 | 🔴 Planned | `projects/phase-04-databases/banking-database/` |
