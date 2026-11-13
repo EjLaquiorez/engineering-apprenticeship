@@ -48,8 +48,8 @@ See [docs/program/engineering-cycle.md](docs/program/engineering-cycle.md) for s
 | Phase | Name | Duration | Goal | Status |
 |-------|------|----------|------|--------|
 | 0 | [Engineering Environment](docs/lessons/phase-00-engineering-environment/) | 2–3 weeks | Work like a developer | ✓ Complete |
-| 1 | [Java Foundations](docs/lessons/phase-01-java-foundations/) | 6–8 weeks | Write clean procedural Java | 🟡 In Progress |
-| 2 | [Object-Oriented Programming](docs/lessons/phase-02-object-oriented-programming/) | 4–6 weeks | Think in objects | 🔴 Not started |
+| 1 | [Java Foundations](docs/lessons/phase-01-java-foundations/) | 6–8 weeks | Write clean procedural Java | ✓ Complete |
+| 2 | [Object-Oriented Programming](docs/lessons/phase-02-object-oriented-programming/) | 4–6 weeks | Think in objects | 🟡 In Progress |
 | 3 | [Professional Java](docs/lessons/phase-03-professional-java/) | 4–6 weeks | Write production-quality Java | 🔴 Not started |
 | 4 | [Databases](docs/lessons/phase-04-databases/) | 5–7 weeks | Understand data modeling and persistence | 🔴 Not started |
 | 5 | [Networking](docs/lessons/phase-05-networking/) | 2–3 weeks | Understand backend communication | 🔴 Not started |
@@ -67,7 +67,7 @@ Advancement requires evidence logged in [progress/evidence-log.md](progress/evid
 
 ## Phase 01 Progress
 
-**Java Foundations — 🟡 In Progress**
+**Java Foundations — ✓ Complete**
 
 Completed topics:
 
@@ -80,11 +80,56 @@ Completed topics:
 
 Phase 01 projects:
 
-- ✓ Calculator — Complete
-- ✓ Expense Tracker — Complete
-- ✓ Student Management System — Complete
+- ✓ Calculator
+- ✓ Expense Tracker
+- ✓ Student Management System
 
-The next phase advancement will occur after final validation, reflection, and evidence logging are recorded in [progress/evidence-log.md](progress/evidence-log.md).
+All three Phase 01 projects have been completed.
+
+---
+
+## Phase 02 Progress
+
+**Object-Oriented Programming — 🟡 In Progress**
+
+Completed topics:
+
+- ✓ Topic 1 — Classes and Objects
+- ✓ Topic 2 — Encapsulation
+- ✓ Topic 3 — Inheritance
+- ✓ Topic 4 — Polymorphism
+- ✓ Topic 5 — Abstraction
+
+Currently studying:
+
+- 🟡 Topic 6 — Interfaces
+  - Completed through Lesson 34.
+  - Continuing with interface design and practical application.
+
+### Current Project
+
+**Library Management System — 🟡 In Progress**
+
+Project objectives:
+
+- Apply object-oriented programming principles in a practical application.
+- Model real-world library concepts using classes and objects.
+- Apply encapsulation, inheritance, polymorphism, abstraction, and interfaces.
+- Practice assigning responsibilities to appropriate classes.
+- Build maintainable code through thoughtful design decisions.
+
+Current project scope:
+
+- Console-based Java application.
+- In-memory data storage.
+- Supports books and magazines.
+- Member management.
+- Borrowing and returning transactions.
+- Due-date tracking and overdue fee calculation.
+
+The project is being developed incrementally, with design decisions reviewed before implementation.
+
+See `projects/phase-02-object-oriented-programming/library-management-system/` for project documentation and source code.
 
 ---
 
@@ -95,7 +140,7 @@ The next phase advancement will occur after final validation, reflection, and ev
 | Calculator | 1 | ✓ Complete | `projects/phase-01-java-foundations/calculator/` |
 | Expense Tracker | 1 | ✓ Complete | `projects/phase-01-java-foundations/expense-tracker/` |
 | Student Management System | 1 | ✓ Complete | `projects/phase-01-java-foundations/student-management-system/` |
-| Library Management System | 2 | 🔴 Planned | `projects/phase-02-object-oriented-programming/library-management-system/` |
+| Library Management System | 2 | 🟡 In Progress | `projects/phase-02-object-oriented-programming/library-management-system/` |
 | Inventory Management System | 3 | 🔴 Planned | `projects/phase-03-professional-java/inventory-management-system/` |
 | Banking Database | 4 | 🔴 Planned | `projects/phase-04-databases/banking-database/` |
 | Inventory Database | 4 | 🔴 Planned | `projects/phase-04-databases/inventory-database/` |
@@ -122,7 +167,9 @@ The next phase advancement will occur after final validation, reflection, and ev
 
 ## Progress Requirements
 
-Do not advance phases without evidence. Accepted evidence:
+Do not advance phases without evidence.
+
+Accepted evidence:
 
 - Working code
 - Tests
@@ -130,8 +177,11 @@ Do not advance phases without evidence. Accepted evidence:
 - Deployments
 - Architecture diagrams
 - Debugging explanations
+- Technical reflections and design decisions
 
-"I understand it" is not evidence. Log proof in [progress/evidence-log.md](progress/evidence-log.md).
+"I understand it" is not evidence.
+
+Log proof in [progress/evidence-log.md](progress/evidence-log.md).
 
 ---
 
@@ -158,15 +208,19 @@ At the start of every session, answer these in [progress/daily-log.md](progress/
 ### Documentation
 
 - [Java Documentation](https://docs.oracle.com/en/java/)
-- [Spring Boot Reference](https://docs.spring.io/spring-boot/docs/current/reference/html/)
+- [Spring Boot Reference](https://docs.spring.io/spring-boot/reference/)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 
 ---
 
 ## Getting Started
 
-1. Read [docs/program/mentor-framework.md](docs/program/mentor-framework.md)
-2. Begin Phase 0: [docs/lessons/phase-00-engineering-environment/](docs/lessons/phase-00-engineering-environment/)
-3. Copy `templates/project-scaffold/` when starting a new project
-4. Log daily work and evidence after every session
-5. Follow the Engineering Cycle for every project and learning milestone
+1. Read [docs/program/mentor-framework.md](docs/program/mentor-framework.md).
+2. Review the completed [Phase 00: Engineering Environment](docs/lessons/phase-00-engineering-environment/).
+3. Review [Phase 01: Java Foundations](docs/lessons/phase-01-java-foundations/).
+4. Continue the current learning path in [Phase 02: Object-Oriented Programming](docs/lessons/phase-02-object-oriented-programming/).
+5. Copy `templates/project-scaffold/` when starting a new project.
+6. Log daily work and evidence after every session.
+7. Follow the Engineering Cycle for every project and learning milestone.
+
+**The objective is not to finish phases quickly. The objective is to develop the engineering judgment and practical skills required to build real software independently.**
