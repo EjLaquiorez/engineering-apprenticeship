@@ -7667,3 +7667,44 @@ gradle build
 Send me the output.
 
 After that, we'll move to `BorrowingTransaction`, where we'll connect a `Member` and a `LibraryItem` through an actual borrowing record.
+
+BUILD SUCCESSFUL
+Excellent! Your LibraryItem class compiles successfully, and Gradle completed all 5 tasks.
+
+The message about an incompatible Gradle Daemon is informational; it did not prevent the build. You don't need to fix it right now.
+Step 17 — Officially complete
+You've now implemented and compiled two domain classes:
+Class	Status
+Member	Complete
+LibraryItem	Complete
+
+More importantly, you've practiced an important OOP principle: objects should protect their own valid states.
+
+For example, LibraryItem prevents borrowing a retired item and retiring an item that is currently borrowed.
+Step 18 — Create BorrowingTransaction
+Next, we'll implement the class that records each borrowing event.
+
+Remember our agreed domain model: one borrowing transaction connects exactly one Member and one LibraryItem.
+Step 18A — Define the fields
+Here is our approved design:
+Field	Data type	Purpose
+transactionId	String	Unique transaction identifier
+member	Member	Member who borrowed the item
+libraryItem	LibraryItem	Item being borrowed
+borrowDate	LocalDate	Date the item was borrowed
+dueDate	LocalDate	Expected return date
+returnDate	LocalDate	Actual return date; initially null
+
+Important design decision: We will not store a separate transaction status.
+
+Why? Because we can determine whether a transaction is active by checking returnDate:
+- returnDate == null → Active transaction.
+- returnDate != null → Completed transaction.
+Step 18B — One question before coding
+When a member borrows a book, should the BorrowingTransaction constructor automatically calculate the due date (14 days after borrowing), or should it receive the due date as a constructor parameter?
+
+A. Calculate the due date inside BorrowingTransaction.
+
+B. Receive the due date as a constructor parameter.
+
+Think about which class should be responsible for coordinating the borrowing rules. What is your choice, and why?
