@@ -7769,3 +7769,46 @@ If the library changes its borrowing period from 14 days to 21 days in the futur
 **B.** `BorrowingService`
 
 Take your time.
+
+Correct! **B —&#x20;**`BorrowingService`**.**&#x20;
+
+Approved
+
+
+
+Here's why:
+
+`BorrowingService` coordinates the borrowing rules. If the borrowing period changes from 14 to 21 days, we update the service's rule for calculating the due date.
+
+`BorrowingTransaction` simply records the dates it receives.
+
+This is an important software design principle: **separation of responsibilities.**
+
+## **Step 18C — Create the class**
+
+Create this file:
+
+`src/main/java/library/model/BorrowingTransaction.java`
+
+For now, declare only these fields:
+
+```
+private final String transactionId;
+private final Member member;
+private final LibraryItem libraryItem;
+private final LocalDate borrowDate;
+private final LocalDate dueDate;
+private LocalDate returnDate;
+```
+
+You'll also need this import:
+
+```
+import java.time.LocalDate;
+```
+
+### **Your task**
+
+Create the class with these fields only. Don't write the constructor or methods yet.
+
+Send me your code when finished. We'll build it incrementally, just as we did with `Member` and `LibraryItem`.
