@@ -7708,3 +7708,64 @@ A. Calculate the due date inside BorrowingTransaction.
 B. Receive the due date as a constructor parameter.
 
 Think about which class should be responsible for coordinating the borrowing rules. What is your choice, and why?
+
+That's okay. This is a design question, and it's normal to be unsure. Let's reason through it together rather than guess.
+
+### **First, understand the two responsibilities**
+
+Suppose a member borrows a book on November 14, 2026.
+
+Our requirement says the borrowing period is 14 calendar days.
+
+The due date should therefore be November 28, 2026.
+
+There are two possible designs:
+
+**Design A —&#x20;**`BorrowingTransaction`**&#x20;calculates the due date**
+
+```
+public BorrowingTransaction(...) {
+    this.borrowDate = borrowDate;
+    this.dueDate = borrowDate.plusDays(14);
+}
+```
+
+**Design B —&#x20;**`BorrowingService`**&#x20;calculates the due date**
+
+```
+LocalDate dueDate = borrowDate.plusDays(14);
+
+BorrowingTransaction transaction =
+    new BorrowingTransaction(..., borrowDate, dueDate);
+```
+
+### **Let's examine the responsibility**
+
+Remember what we decided about `BorrowingService`:
+
+It coordinates the borrowing process:
+
+1. Checks whether the member is eligible.
+2. Checks whether the item is available.
+3. Creates the borrowing transaction.
+4. Updates the item's status.
+
+The 14-day borrowing period is also a rule that the service can apply when coordinating a new borrowing operation.
+
+The transaction's responsibility is to **record what happened**, including the dates.
+
+### **My teaching recommendation**
+
+I'd choose **Design B: receive the due date through the constructor.**
+
+This keeps the transaction focused on storing the borrowing record, while the service coordinates the borrowing rules.
+
+One more question to check your understanding:
+
+If the library changes its borrowing period from 14 days to 21 days in the future, which class should we update to apply that new rule?
+
+**A.** `BorrowingTransaction`
+
+**B.** `BorrowingService`
+
+Take your time.
