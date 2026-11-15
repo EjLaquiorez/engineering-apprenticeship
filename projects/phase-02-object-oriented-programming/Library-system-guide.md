@@ -8002,3 +8002,25 @@ No. A return date must not be earlier than the borrowing date.
 Hint: Think of the method that reads like `dateA.is_____ (dateB)`.
 
 Try to recall it before looking it up.
+
+The method is `isBefore()`.
+
+Example:
+
+```
+if (returnDate.isBefore(borrowDate)) {
+    throw new IllegalArgumentException("Return date cannot be before the borrowing date.");
+}
+```
+
+- `isBefore()` returns `true` if the date is earlier.
+- `isAfter()` returns `true` if the date is later.
+- `isEqual()` returns `true` if both dates are the same.
+
+### **Your next task**
+
+Add this validation inside `recordReturn()`.
+
+Make sure it runs **before** assigning the new return date.
+
+Send me your updated method for review.
