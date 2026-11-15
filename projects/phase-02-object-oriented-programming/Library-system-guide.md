@@ -8024,3 +8024,55 @@ Add this validation inside `recordReturn()`.
 Make sure it runs **before** assigning the new return date.
 
 Send me your updated method for review.
+
+Excellent! Your validation is correctly implemented.&#x20;
+
+Approved
+
+
+
+Your `recordReturn()` method now protects two important rules:
+
+```
+public void recordReturn(LocalDate returnDate) {
+    if (this.returnDate != null) {
+        throw new IllegalStateException("This transaction has already been completed.");
+    }
+
+    if (returnDate.isBefore(borrowDate)) {
+        throw new IllegalArgumentException("Return date cannot be before the borrowing date.");
+    }
+
+    this.returnDate = returnDate;
+}
+```
+
+### **Let's review the behavior**
+
+| Situation                      | Expected behavior |
+| ------------------------------ | ----------------- |
+| First valid return             | Accept            |
+| Return date equals borrow date | Accept            |
+| Return date before borrow date | Reject            |
+| Transaction already completed  | Reject            |
+
+One additional improvement we'll make later: reject a `null` return-date argument explicitly, so it cannot accidentally leave the transaction active.
+
+## **Step 18H — Determine transaction activity**
+
+We agreed not to create a separate status field.
+
+Instead, let's give `BorrowingTransaction` a method:
+
+```
+public boolean isActive()
+```
+
+**Your task:** Implement this method using the `returnDate` field.
+
+Hint:
+
+- If `returnDate` is `null`, the transaction is active.
+- Otherwise, it is completed.
+
+Write the method yourself and send me your updated class.
