@@ -7849,3 +7849,48 @@ It should assign each parameter to its corresponding field.
 Write the public constructor yourself.
 
 Don't add getters or other methods yet. Send me your updated class for review.
+
+Excellent! Your constructor is correct.&#x20;
+
+Approved
+
+
+
+You correctly assigned all five parameters to their corresponding fields.
+
+You also made the right decision not to initialize `returnDate`. Java automatically sets it to `null`.
+
+That means every newly created transaction starts as an **active borrowing transaction**.
+
+## **Step 18E — Add getters**
+
+Other classes will need to inspect transaction information, especially `BorrowingService` and `LateFeeCalculator`.
+
+Add these six getters:
+
+```
+public String getTransactionId()
+
+public Member getMember()
+
+public LibraryItem getLibraryItem()
+
+public LocalDate getBorrowDate()
+
+public LocalDate getDueDate()
+
+public LocalDate getReturnDate()
+```
+
+**Why do we need&#x20;**`getReturnDate()`**?**
+
+Remember our decision not to create a separate transaction status:
+
+- `returnDate == null` means active.
+- `returnDate != null` means completed.
+
+The getter allows other classes to check that without directly accessing the field.
+
+### **Your task**
+
+Implement all six getters yourself. Send me your updated class for review.
