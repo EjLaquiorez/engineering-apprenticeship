@@ -7894,3 +7894,35 @@ The getter allows other classes to check that without directly accessing the fie
 ### **Your task**
 
 Implement all six getters yourself. Send me your updated class for review.
+
+Excellent! All six getters are correctly implemented.&#x20;
+
+Approved
+
+
+
+Your class now exposes the transaction information without exposing direct access to its fields.
+
+## **Step 18F — Record an item return**
+
+Now we need a way to update `returnDate` when a member returns an item.
+
+Let's revisit our design:
+
+- `returnDate` is initially `null`.
+- When the item is returned, we assign the actual return date.
+- Once recorded, the transaction is completed.
+
+### **First, consider this situation**
+
+A member returns a book on November 15, 2026. Someone accidentally tries to record another return on November 16.
+
+What should happen?
+
+**A.** Overwrite the original return date with November 16.
+
+**B.** Reject the second return because the transaction is already completed.
+
+**C.** Allow both return dates to be recorded.
+
+What's your choice, and why?
