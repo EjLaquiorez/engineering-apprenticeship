@@ -47,6 +47,9 @@ public class BorrowingTransaction {
 		if (this.returnDate != null) {
 			throw new IllegalStateException("This transaction has already been completed.");
 		}
+		if (returnDate.isBefore(borrowDate)) {
+			throw new IllegalArgumentException("Return date cannot be before the borrowing date.");
+		}
 		this.returnDate = returnDate;
 	}
 }
