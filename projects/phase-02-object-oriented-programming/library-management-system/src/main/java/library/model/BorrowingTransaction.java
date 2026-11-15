@@ -42,4 +42,11 @@ public class BorrowingTransaction {
 	public LocalDate getReturnDate() {
 		return returnDate;
 	}
+
+	public void recordReturn(LocalDate returnDate) {
+		if (this.returnDate != null) {
+			throw new IllegalStateException("This transaction has already been completed.");
+		}
+		this.returnDate = returnDate;
+	}
 }
