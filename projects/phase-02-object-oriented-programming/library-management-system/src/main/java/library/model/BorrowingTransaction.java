@@ -9,4 +9,13 @@ public class BorrowingTransaction {
 	private final LocalDate borrowDate;
 	private final LocalDate dueDate;
 	private LocalDate returnDate;
+
+	public BorrowingTransaction(String transactionId, Member member, LibraryItem libraryItem, LocalDate borrowDate,
+			LocalDate dueDate) {
+		this.transactionId = transactionId;
+		this.member = member;
+		this.libraryItem = libraryItem;
+		this.borrowDate = borrowDate;
+		this.dueDate = dueDate;
+	}
 }
