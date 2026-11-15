@@ -7926,3 +7926,38 @@ What should happen?
 **C.** Allow both return dates to be recorded.
 
 What's your choice, and why?
+
+Correct! **B — Reject the second return.**&#x20;
+
+Approved
+
+
+
+Your reasoning is important: a borrowing transaction represents one real-world event. Once the item has been returned, its return date should not be overwritten.
+
+This protects the accuracy of our borrowing history.
+
+## **Step 18F.1 — Implement&#x20;**`recordReturn()`
+
+We'll add this method to `BorrowingTransaction`:
+
+```
+public void recordReturn(LocalDate returnDate) {
+    // Your implementation
+}
+```
+
+It needs two checks:
+
+1. If `this.returnDate != null`, reject the operation because the transaction is already completed.
+2. Otherwise, assign the supplied date to `this.returnDate`.
+
+Use this exception for the first check:
+
+```
+throw new IllegalStateException("This transaction has already been completed.");
+```
+
+**Your task:** Implement `recordReturn()` yourself and send me the updated class.
+
+One thing to consider for later: we'll also need to validate that the return date isn't earlier than the borrowing date. We'll handle that as a separate improvement after this step.
