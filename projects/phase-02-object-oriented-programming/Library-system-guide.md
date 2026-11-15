@@ -7961,3 +7961,44 @@ throw new IllegalStateException("This transaction has already been completed.");
 **Your task:** Implement `recordReturn()` yourself and send me the updated class.
 
 One thing to consider for later: we'll also need to validate that the return date isn't earlier than the borrowing date. We'll handle that as a separate improvement after this step.
+
+Excellent! Your `recordReturn()` method is correctly implemented.&#x20;
+
+Approved
+
+
+
+You correctly used:
+
+```
+if (this.returnDate != null)
+```
+
+Notice the difference:
+
+- `returnDate` refers to the method parameter.
+- `this.returnDate` refers to the object's field.
+
+This distinction is important because both have the same name.
+
+Your method now prevents a completed transaction from being modified by a second return attempt.
+
+## **Step 18G — Validate the return date**
+
+Let's improve the method with another business rule.
+
+Consider this situation:
+
+- Borrow date: November 14, 2026
+- Due date: November 28, 2026
+- Attempted return date: November 12, 2026
+
+Should the system accept a return date that occurs before the item was borrowed?
+
+No. A return date must not be earlier than the borrowing date.
+
+**Your question:** Which Java `LocalDate` method can compare two dates and tell us whether one date is earlier than another?
+
+Hint: Think of the method that reads like `dateA.is_____ (dateB)`.
+
+Try to recall it before looking it up.
