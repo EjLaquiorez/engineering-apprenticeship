@@ -7812,3 +7812,40 @@ import java.time.LocalDate;
 Create the class with these fields only. Don't write the constructor or methods yet.
 
 Send me your code when finished. We'll build it incrementally, just as we did with `Member` and `LibraryItem`.
+
+Perfect! Your `BorrowingTransaction` fields are correct.&#x20;
+
+Approved
+
+
+
+Let's review the important design decisions:
+
+| Field           | Why this modifier?                                                          |
+| --------------- | --------------------------------------------------------------------------- |
+| `transactionId` | `final` — transaction identity must not change.                             |
+| `member`        | `final` — the member associated with this transaction must remain the same. |
+| `libraryItem`   | `final` — the borrowed item must remain the same.                           |
+| `borrowDate`    | `final` — the original borrowing date must be preserved.                    |
+| `dueDate`       | `final` — the due date recorded for this transaction must remain fixed.     |
+| `returnDate`    | Not `final` — it starts as `null` and changes when the item is returned.    |
+
+## **Step 18D — Constructor design**
+
+The constructor should receive these five values:
+
+1. `String transactionId`
+2. `Member member`
+3. `LibraryItem libraryItem`
+4. `LocalDate borrowDate`
+5. `LocalDate dueDate`
+
+It should assign each parameter to its corresponding field.
+
+**Important:** We don't need to initialize `returnDate` manually. Java automatically initializes object reference fields to `null`.
+
+### **Your task**
+
+Write the public constructor yourself.
+
+Don't add getters or other methods yet. Send me your updated class for review.
