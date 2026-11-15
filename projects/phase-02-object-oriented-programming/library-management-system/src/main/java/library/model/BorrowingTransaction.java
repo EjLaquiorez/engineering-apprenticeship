@@ -18,4 +18,28 @@ public class BorrowingTransaction {
 		this.borrowDate = borrowDate;
 		this.dueDate = dueDate;
 	}
+
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public Member getMember() {
+		return member;
+	}
+
+	public LibraryItem getLibraryItem() {
+		return libraryItem;
+	}
+
+	public LocalDate getBorrowDate() {
+		return borrowDate;
+	}
+
+	public LocalDate getDueDate() {
+		return dueDate;
+	}
+
+	public LocalDate getReturnDate() {
+		return returnDate;
+	}
 }
