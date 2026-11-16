@@ -8214,3 +8214,58 @@ Which date should `LateFeeCalculator` use to calculate the fee?
 **D.** The return date, even though the item hasn't been returned.
 
 Choose your answer and explain your reasoning. We'll build the calculation from there.
+
+Correct! **C — The current date.**&#x20;
+
+Approved
+
+
+
+Because the transaction is still active, the item hasn't been returned. We need to calculate the overdue fee up to today.
+
+For our example:
+
+- Due date: November 14, 2026
+- Current date: November 17, 2026
+- Overdue days: 3
+- Daily rate: ₱5
+- **Late fee: ₱15**
+
+## **Step 19C — Understand the Java date calculation**
+
+Java's `LocalDate` provides a useful method:
+
+```
+ChronoUnit.DAYS.between(startDate, endDate);
+```
+
+For example:
+
+```
+long overdueDays = ChronoUnit.DAYS.between(
+    dueDate,
+    currentDate
+);
+```
+
+You'll need this import:
+
+```
+import java.time.temporal.ChronoUnit;
+```
+
+Notice that `ChronoUnit.DAYS.between()` calculates the number of days between two dates.
+
+## **Step 19D — Next design decision**
+
+Suppose the book is returned on November 17, 2026, but its due date was November 14, 2026.
+
+Should the calculator continue using the current date, or use the actual return date?
+
+**A.** Always use the current date.
+
+**B.** Use the actual return date if the transaction is completed; otherwise, use the current date.
+
+**C.** Always use the borrowing date.
+
+What's your choice, and why?
