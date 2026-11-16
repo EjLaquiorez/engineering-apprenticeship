@@ -8138,3 +8138,31 @@ gradle build
 ```
 
 Send me the result. Then we'll review the complete `BorrowingTransaction` design before moving to the next class.
+
+BUILD SUCCESSFUL
+Great! Gradle successfully compiled your project again. All 5 tasks completed.
+
+One important distinction: this confirms your current code compiles. It doesn't yet verify every business rule at runtime. We'll add tests when we reach the testing stage.
+Step 18 — BorrowingTransaction complete
+Class implementation approved
+Your current project progress:
+Class	Status
+Member	Complete
+LibraryItem	Complete
+BorrowingTransaction	Complete
+
+Your design now has three important responsibilities:
+- Member manages member information and membership status.
+- LibraryItem protects item information and valid item-state transitions.
+- BorrowingTransaction records the borrowing event and its dates.
+Before we move forward: I suggested adding a null check to recordReturn(), but your build output alone doesn't tell me whether you've added it. Please make sure it is included.
+Step 19 — What's next?
+Our next class is LateFeeCalculator.
+
+Its responsibility is to calculate overdue fees using:
+- Transaction due date.
+- Actual return date, or the current date if the transaction is still active.
+- Daily fee of ₱5.
+We'll first reason through its calculation rules, then implement it incrementally.
+
+I can guide you through the first design decision when you're ready.
