@@ -44,6 +44,9 @@ public class BorrowingTransaction {
 	}
 
 	public void recordReturn(LocalDate returnDate) {
+		if (returnDate == null) {
+			throw new IllegalArgumentException("Return date cannot be null.");
+		}
 		if (this.returnDate != null) {
 			throw new IllegalStateException("This transaction has already been completed.");
 		}
