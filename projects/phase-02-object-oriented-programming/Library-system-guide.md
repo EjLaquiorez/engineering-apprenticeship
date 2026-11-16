@@ -8076,3 +8076,65 @@ Hint:
 - Otherwise, it is completed.
 
 Write the method yourself and send me your updated class.
+
+Perfect! Your `isActive()` method is correct.&#x20;
+
+Approved
+
+
+
+```
+public boolean isActive() {
+    return returnDate == null;
+}
+```
+
+This is a clean implementation because we don't need an additional `status` field.
+
+For example:
+
+| `returnDate` | `isActive()` |
+| ------------ | ------------ |
+| `null`       | `true`       |
+| `2026-11-16` | `false`      |
+
+This is an example of deriving an object's state from existing information rather than storing redundant data.
+
+## **Step 18 — BorrowingTransaction review**
+
+Implementation approved
+
+You've implemented:
+
+- Six fields with appropriate access modifiers.
+- Constructor.
+- Six getters.
+- `recordReturn()` with duplicate-return protection.
+- Return-date validation.
+- `isActive()`.
+
+### **One small improvement before we finalize**
+
+We identified one remaining issue: `recordReturn(null)` currently passes your date comparison because calling `isBefore()` on `null` would actually throw a `NullPointerException`.
+
+Let's make the error intentional and understandable.
+
+Add this check at the beginning of `recordReturn()`:
+
+```
+if (returnDate == null) {
+    throw new IllegalArgumentException("Return date cannot be null.");
+}
+```
+
+This makes the method's expected input explicit.
+
+### **After that**
+
+Run:
+
+```
+gradle build
+```
+
+Send me the result. Then we'll review the complete `BorrowingTransaction` design before moving to the next class.
