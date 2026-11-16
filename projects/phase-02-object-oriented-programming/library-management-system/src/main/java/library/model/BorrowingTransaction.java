@@ -52,4 +52,8 @@ public class BorrowingTransaction {
 		}
 		this.returnDate = returnDate;
 	}
+
+	public boolean isActive() {
+		return returnDate == null;
+	}
 }
