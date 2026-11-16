@@ -8166,3 +8166,51 @@ Its responsibility is to calculate overdue fees using:
 We'll first reason through its calculation rules, then implement it incrementally.
 
 I can guide you through the first design decision when you're ready.
+
+Let's proceed! We'll build `LateFeeCalculator` incrementally, following the responsibilities we already agreed on.
+
+# **Step 19 — Create&#x20;**`LateFeeCalculator`
+
+**File location:**
+
+`src/main/java/library/service/LateFeeCalculator.java`
+
+First, let's establish exactly how the calculation should work.
+
+## **Step 19A — Understand the calculation**
+
+Our agreed business rule is:
+
+- Late fee: **₱5 per calendar day**.
+- No fee if the item is returned on or before its due date.
+- Completed transactions use their actual return date.
+- Active transactions use the current date.
+
+For example:
+
+| Due date | Effective date | Overdue days | Fee |
+| -------- | -------------- | ------------ | --- |
+| Nov 14   | Nov 14         | 0            | ₱0  |
+| Nov 14   | Nov 15         | 1            | ₱5  |
+| Nov 14   | Nov 17         | 3            | ₱15 |
+| Nov 14   | Nov 20         | 6            | ₱30 |
+
+## **Step 19B — First design decision**
+
+Suppose a member borrowed a book with a due date of November 14, 2026.
+
+The transaction is still active, meaning the book hasn't been returned.
+
+Today is November 17, 2026.
+
+Which date should `LateFeeCalculator` use to calculate the fee?
+
+**A.** The original borrowing date.
+
+**B.** The due date.
+
+**C.** The current date.
+
+**D.** The return date, even though the item hasn't been returned.
+
+Choose your answer and explain your reasoning. We'll build the calculation from there.
