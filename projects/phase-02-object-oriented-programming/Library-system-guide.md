@@ -8336,3 +8336,47 @@ public class LateFeeCalculator {
 **Your task:** Create the class with this constant and send me your code.
 
 We'll implement the calculation method next. One note for later: because this represents money, we'll eventually discuss why `BigDecimal` is preferable to `double` for financial calculations. For now, we'll keep the lesson focused.
+
+Correct! Your `LateFeeCalculator` class and constant are properly declared.&#x20;
+
+Approved
+
+
+
+```
+private static final double DAILY_RATE = 5.0;
+```
+
+One useful design detail: because `DAILY_RATE` is `static final`, every calculator instance shares the same fixed rate. We don't need to create a separate rate for every transaction.
+
+## **Step 19G — Create the calculation method**
+
+Now let's decide what information the calculator needs.
+
+Our `BorrowingTransaction` already stores:
+
+- `dueDate`
+- `returnDate`
+- Whether the transaction is active
+
+Therefore, we don't need to pass those dates separately.
+
+Instead, the method can receive the entire transaction:
+
+```
+public double calculateLateFee(BorrowingTransaction transaction)
+```
+
+Add the necessary import:
+
+```
+import library.model.BorrowingTransaction;
+```
+
+### **Your task**
+
+Add the method declaration to `LateFeeCalculator.java`, but leave its body empty for now.
+
+Then send me your updated class.
+
+Next, we'll implement the effective-date logic and calculate the overdue days.
