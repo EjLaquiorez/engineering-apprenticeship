@@ -8269,3 +8269,70 @@ Should the calculator continue using the current date, or use the actual return 
 **C.** Always use the borrowing date.
 
 What's your choice, and why?
+
+Correct! **B — Use the actual return date for completed transactions and the current date for active transactions.**&#x20;
+
+Approved
+
+
+
+This ensures that the calculator doesn't continue charging a member after they've returned the item.
+
+Let's translate that into Java logic.
+
+## **Step 19E — Determine the effective date**
+
+Remember our `BorrowingTransaction` class has:
+
+```
+transaction.getReturnDate();
+transaction.isActive();
+```
+
+We can use `isActive()` to determine which date to use.
+
+Conceptually:
+
+```
+if (transaction.isActive()) {
+    // Use today's date
+} else {
+    // Use the actual return date
+}
+```
+
+Java provides:
+
+```
+LocalDate.now()
+```
+
+to retrieve today's date.
+
+## **Step 19F — Create the class**
+
+Create:
+
+`src/main/java/library/service/LateFeeCalculator.java`
+
+For now, write only the class declaration and the daily fee constant.
+
+```
+package library.service;
+
+public class LateFeeCalculator {
+
+    private static final double DAILY_RATE = 5.0;
+
+}
+```
+
+### **Why&#x20;**`static final`**?**
+
+- `private`: Other classes cannot modify the constant directly.
+- `static`: The rate belongs to the class, not individual calculator objects.
+- `final`: The rate cannot be reassigned.
+
+**Your task:** Create the class with this constant and send me your code.
+
+We'll implement the calculation method next. One note for later: because this represents money, we'll eventually discuss why `BigDecimal` is preferable to `double` for financial calculations. For now, we'll keep the lesson focused.
