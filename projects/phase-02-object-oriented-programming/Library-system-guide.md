@@ -8463,3 +8463,47 @@ Before calculating, we must check whether the effective date is actually **after
 Keep your existing `throw new UnsupportedOperationException(...)` for now so the method remains compilable.
 
 Send me your updated method when ready.
+
+Absolutely. We'll continue from where we left off in the **LateFeeCalculator** implementation.
+
+Your current code correctly determines the effective date. Now let's calculate how many days overdue the item is.
+
+### **Step 2: Calculate overdue days**
+
+Add this import:
+
+```
+import java.time.temporal.ChronoUnit;
+```
+
+Then, immediately after your `if/else` block, add:
+
+```
+long overdueDays;
+
+if (effectiveDate.isAfter(transaction.getDueDate())) {
+    overdueDays = ChronoUnit.DAYS.between(
+        transaction.getDueDate(),
+        effectiveDate
+    );
+} else {
+    overdueDays = 0;
+}
+```
+
+**Why do we use&#x20;**`isAfter()`**&#x20;first?**
+
+Suppose the due date is November 20:
+
+| Effective date | Overdue days |
+| -------------- | ------------ |
+| November 18    | 0            |
+| November 20    | 0            |
+| November 21    | 1            |
+| November 25    | 5            |
+
+We only calculate the difference when the effective date is later than the due date.
+
+Keep your existing `throw new UnsupportedOperationException(...)` at the end for now.
+
+**Your task:** Add this code to your method and send me your updated `LateFeeCalculator.java`. I'll review it before we calculate the actual fee.
