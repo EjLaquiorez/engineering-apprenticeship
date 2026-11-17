@@ -8380,3 +8380,52 @@ Add the method declaration to `LateFeeCalculator.java`, but leave its body empty
 Then send me your updated class.
 
 Next, we'll implement the effective-date logic and calculate the overdue days.
+
+Good! Your method signature and import are correct.&#x20;
+
+Approved
+
+
+
+You also used:
+
+```
+throw new UnsupportedOperationException("Not implemented yet.");
+```
+
+That's a valid temporary placeholder. It makes it clear that the method hasn't been implemented yet.
+
+## **Step 19H — Determine the effective date**
+
+Now we'll implement the first part of the calculation.
+
+Remember our rule:
+
+- Active transaction → use today's date.
+- Completed transaction → use its actual return date.
+
+We can express this using a local variable:
+
+```
+LocalDate effectiveDate;
+```
+
+Then use the transaction's `isActive()` method to decide which date to assign.
+
+### **Your task**
+
+Inside `calculateLateFee()`, replace the placeholder with:
+
+1. Declare `LocalDate effectiveDate`.
+2. If the transaction is active, assign `LocalDate.now()`.
+3. Otherwise, assign `transaction.getReturnDate()`.
+
+You'll need:
+
+```
+import java.time.LocalDate;
+```
+
+**Don't calculate the overdue days yet.** Let's get the date-selection logic correct first.
+
+Send me your updated method when finished.
