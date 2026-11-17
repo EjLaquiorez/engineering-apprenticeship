@@ -1,5 +1,7 @@
 package library.service;
 
+import java.time.LocalDate;
+
 import library.model.BorrowingTransaction;
 
 public class LateFeeCalculator {
@@ -7,6 +9,13 @@ public class LateFeeCalculator {
 	private static final double DAILY_RATE = 5.0;
 
 	public double calculateLateFee(BorrowingTransaction transaction) {
+		LocalDate effectiveDate;
+		if (transaction.isActive()) {
+			effectiveDate = LocalDate.now();
+		} else {
+			effectiveDate = transaction.getReturnDate();
+		}
+
 		throw new UnsupportedOperationException("Not implemented yet.");
 	}
 
