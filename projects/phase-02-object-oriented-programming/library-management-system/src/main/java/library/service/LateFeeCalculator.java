@@ -24,7 +24,8 @@ public class LateFeeCalculator {
 			overdueDays = 0;
 		}
 
-		throw new UnsupportedOperationException("Not implemented yet.");
+		double lateFee = overdueDays * DAILY_RATE;
+		return lateFee;
 	}
 
 }
