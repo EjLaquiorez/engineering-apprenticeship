@@ -8507,3 +8507,34 @@ We only calculate the difference when the effective date is later than the due d
 Keep your existing `throw new UnsupportedOperationException(...)` at the end for now.
 
 **Your task:** Add this code to your method and send me your updated `LateFeeCalculator.java`. I'll review it before we calculate the actual fee.
+
+Excellent! Your implementation is **correct so far**. Both steps are working logically:
+
+1. `effectiveDate` selects the correct date depending on whether the transaction is active.
+2. `overdueDays` calculates the difference only when the effective date is after the due date.
+
+Your use of `long` is also correct because `ChronoUnit.DAYS.between()` returns a `long`.
+
+### **Step 3: Calculate the late fee**
+
+Now we have two values:
+
+- `overdueDays` — number of days overdue.
+- `DAILY_RATE` — ₱5.00 per overdue day.
+
+The calculation is:
+
+\\[ \text{Late Fee} = \text{Overdue Days} \times \text{Daily Rate} \\]
+
+For example, if an item is 5 days overdue:
+
+\\[ 5 \times 5.00 = ₱25.00 \\]
+
+**Your task:**
+
+1. Create a `double` variable named `lateFee`.
+2. Multiply `overdueDays` by `DAILY_RATE`.
+3. Return `lateFee`.
+4. Remove the temporary `UnsupportedOperationException`.
+
+You only need two new statements. Send me your updated method for review.
