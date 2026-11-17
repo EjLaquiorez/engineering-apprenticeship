@@ -8538,3 +8538,44 @@ For example, if an item is 5 days overdue:
 4. Remove the temporary `UnsupportedOperationException`.
 
 You only need two new statements. Send me your updated method for review.
+
+Implementation approved
+
+Your `LateFeeCalculator` is now logically complete! Excellent work.
+
+Let's review the flow:
+
+1. Determine the effective date.
+2. Check whether the transaction is overdue.
+3. Calculate the number of overdue days.
+4. Multiply overdue days by ₱5.00.
+5. Return the calculated fee.
+
+### **Quick code improvement**
+
+Your last two statements:
+
+```
+double lateFee = overdueDays * DAILY_RATE;
+return lateFee;
+```
+
+Can also be written as:
+
+```
+return overdueDays * DAILY_RATE;
+```
+
+Both are correct. Your original version is perfectly fine for learning because it makes the calculation easier to follow.
+
+### **Step 4: Build verification**
+
+From your project directory, run:
+
+```
+gradle build
+```
+
+If successful, send me the result.
+
+After that, we'll test the calculator with a few scenarios before moving to `BorrowingService`. We want to verify that it handles active transactions, completed transactions, and transactions returned on time correctly.
