@@ -8429,3 +8429,37 @@ import java.time.LocalDate;
 **Don't calculate the overdue days yet.** Let's get the date-selection logic correct first.
 
 Send me your updated method when finished.
+
+Good work. Your **effective date selection is correct**.
+
+You've handled both cases:
+
+- **Active transaction:** Use today's date because the item hasn't been returned yet.
+- **Completed transaction:** Use the actual return date because the borrowing period has ended.
+
+Let's move to the next small step.
+
+### **Step 2: Calculate overdue days**
+
+We need to compare the effective date with the transaction's due date.
+
+Java provides `ChronoUnit.DAYS.between()` for calculating the number of days between two dates.
+
+For example:
+
+```
+ChronoUnit.DAYS.between(dueDate, effectiveDate);
+```
+
+Before calculating, we must check whether the effective date is actually **after** the due date. Otherwise, the member owes nothing.
+
+**Your task:**
+
+1. Import `java.time.temporal.ChronoUnit`.
+2. Declare a `long overdueDays` variable.
+3. If `effectiveDate.isAfter(transaction.getDueDate())`, calculate the days between those dates.
+4. Otherwise, assign `0`.
+
+Keep your existing `throw new UnsupportedOperationException(...)` for now so the method remains compilable.
+
+Send me your updated method when ready.
