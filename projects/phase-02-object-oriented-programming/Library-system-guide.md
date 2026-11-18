@@ -8579,3 +8579,34 @@ gradle build
 If successful, send me the result.
 
 After that, we'll test the calculator with a few scenarios before moving to `BorrowingService`. We want to verify that it handles active transactions, completed transactions, and transactions returned on time correctly.
+
+BUILD SUCCESSFUL
+
+Great! Your `LateFeeCalculator` compiles successfully with Gradle.
+
+The Gradle Daemon message is informational. It means Gradle started a new daemon because an existing one was incompatible. It is not a build failure.
+
+### **Next: Verify the calculation**
+
+Before moving to `BorrowingService`, let's check whether you understand how the calculator behaves.
+
+Assume:
+
+- Due date: November 10, 2026
+- Daily late fee: ₱5.00
+
+**Scenario 1:** A member returns an item on November 14, 2026.
+
+How much should `calculateLateFee()` return?
+
+₱0.00
+
+₱15.00
+
+₱20.00
+
+₱25.00
+
+Submit answer
+
+Think about whether November 10 itself counts as an overdue day.
