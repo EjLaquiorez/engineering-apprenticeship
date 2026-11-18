@@ -8756,3 +8756,56 @@ Its responsibility will be to coordinate borrowing and returning:
 We'll design and implement it one responsibility at a time, just as we did with `LateFeeCalculator`.
 
 **Before we begin:** Have you already created `BorrowingService.java` inside `src/main/java/library/service/`?
+
+Perfect. We'll build `BorrowingService.java` incrementally.
+
+Before writing code, let's establish its responsibility.
+
+## **Next class: BorrowingService**
+
+**Purpose:** Coordinate the borrowing and returning of library items.
+
+Unlike `LibraryItem`, which manages its own status, or `BorrowingTransaction`, which records borrowing details, `BorrowingService` coordinates the overall operation.
+
+### **Step 1: Create the class structure**
+
+Open:
+
+`src/main/java/library/service/BorrowingService.java`
+
+Add:
+
+```
+package library.service;
+
+public class BorrowingService {
+
+}
+```
+
+That's all for now.
+
+### **Step 2: Understand the borrowing workflow**
+
+Imagine a member wants to borrow a book.
+
+The service needs to perform these operations in order:
+
+1. Check whether the member is active.
+2. Check whether the item is available.
+3. Record the borrowing date.
+4. Calculate the due date (14 days later).
+5. Create a `BorrowingTransaction`.
+6. Change the item's status to `BORROWED`.
+
+Notice that the service coordinates the objects rather than taking over their responsibilities.
+
+**One design question before we proceed:**
+
+Which class should be responsible for checking whether a member is active?
+
+- **A.** `Member` — because it owns the member's status.
+- **B.** `BorrowingService` — because it coordinates the borrowing operation.
+- **C.** `BorrowingTransaction` — because it records the borrowing.
+
+Choose one and explain your reasoning.
