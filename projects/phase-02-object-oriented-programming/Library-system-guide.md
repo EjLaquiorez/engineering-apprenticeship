@@ -8710,3 +8710,49 @@ What should the late fee be?
 ₱10.00
 
 Submit answer
+
+Correct! ₱0.00
+
+Exactly right!
+
+The item was returned on its due date, so there are **zero overdue days**.
+
+Your code handles this correctly:
+
+```
+if (effectiveDate.isAfter(transaction.getDueDate())) {
+    overdueDays = ChronoUnit.DAYS.between(transaction.getDueDate(), effectiveDate);
+} else {
+    overdueDays = 0;
+}
+```
+
+Because both dates are November 15, `isAfter()` returns `false`, so `overdueDays` becomes `0`.
+
+## **LateFeeCalculator — Completed**
+
+3 scenarios passed
+
+You've correctly reasoned through:
+
+1. Completed transaction returned late — ₱20.
+2. Active transaction currently overdue — ₱15.
+3. Completed transaction returned on the due date — ₱0.
+
+One important engineering distinction: these are **manual logic checks**, not automated unit tests yet. We'll introduce automated tests as part of the project.
+
+### **Next: BorrowingService**
+
+We're ready to move to the next service class.
+
+Its responsibility will be to coordinate borrowing and returning:
+
+- Check whether a member is active.
+- Check whether an item is available.
+- Create a borrowing transaction.
+- Set the due date to 14 days after borrowing.
+- Update the item's status.
+
+We'll design and implement it one responsibility at a time, just as we did with `LateFeeCalculator`.
+
+**Before we begin:** Have you already created `BorrowingService.java` inside `src/main/java/library/service/`?
