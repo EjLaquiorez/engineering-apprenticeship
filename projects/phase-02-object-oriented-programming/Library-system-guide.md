@@ -8610,3 +8610,55 @@ How much should `calculateLateFee()` return?
 Submit answer
 
 Think about whether November 10 itself counts as an overdue day.
+
+Correct! ₱20.00
+
+Your answer is correct.
+
+Let's walk through the calculation:
+
+| Date        | Explanation            |
+| ----------- | ---------------------- |
+| November 10 | Due date — no late fee |
+| November 11 | 1 day overdue          |
+| November 12 | 2 days overdue         |
+| November 13 | 3 days overdue         |
+| November 14 | 4 days overdue         |
+
+**Calculation:**
+
+\\[ 4 \times ₱5.00 = ₱20.00 \\]
+
+### **Important concept**
+
+The due date itself does not count as an overdue day. The first overdue day is the calendar day after the due date.
+
+This is exactly why your code uses:
+
+```
+effectiveDate.isAfter(transaction.getDueDate())
+```
+
+rather than checking whether the dates are equal or later.
+
+### **Scenario 2: Test your understanding**
+
+A member has not returned an item yet.
+
+- Due date: November 15, 2026
+- Today: November 18, 2026
+- Daily rate: ₱5.00
+
+What should `calculateLateFee()` return?
+
+₱0.00
+
+₱10.00
+
+₱15.00
+
+₱20.00
+
+Submit answer
+
+Remember: this time, the transaction is still active, so which date should the calculator use?
