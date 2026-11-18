@@ -8662,3 +8662,51 @@ What should `calculateLateFee()` return?
 Submit answer
 
 Remember: this time, the transaction is still active, so which date should the calculator use?
+
+Correct! ₱15.00
+
+Your answer is correct!
+
+Here's the calculation:
+
+| Date        | Explanation            |
+| ----------- | ---------------------- |
+| November 15 | Due date — no late fee |
+| November 16 | 1 day overdue          |
+| November 17 | 2 days overdue         |
+| November 18 | 3 days overdue         |
+
+\\[ 3 \times ₱5.00 = ₱15.00 \\]
+
+### **Why this scenario matters**
+
+This tests an important part of your implementation:
+
+```
+if (transaction.isActive()) {
+    effectiveDate = LocalDate.now();
+}
+```
+
+Because the transaction is still active, the calculator uses today's date rather than a return date.
+
+You've now correctly handled both:
+
+- Completed transactions.
+- Active transactions.
+
+### **Final scenario: Returned on the due date**
+
+- Due date: November 15, 2026
+- Return date: November 15, 2026
+- Daily rate: ₱5.00
+
+What should the late fee be?
+
+₱0.00
+
+₱5.00
+
+₱10.00
+
+Submit answer
