@@ -8809,3 +8809,32 @@ Which class should be responsible for checking whether a member is active?
 - **C.** `BorrowingTransaction` — because it records the borrowing.
 
 Choose one and explain your reasoning.
+
+Good choice! **A —&#x20;**`Member`**&#x20;owns its status.**
+
+Let's clarify an important distinction, though.
+
+- `Member` owns the information about whether the member is `ACTIVE` or `INACTIVE`.
+- `BorrowingService` checks that information before allowing a borrowing operation.
+
+For example:
+
+```
+member.getStatus() == MemberStatus.ACTIVE
+```
+
+The service reads the member's status, but it doesn't own that status.
+
+This is an example of **separation of responsibilities**.
+
+### **Next question**
+
+Suppose the member is inactive.
+
+Who should prevent the borrowing operation from continuing?
+
+- **A.** `Member`
+- **B.** `BorrowingService`
+- **C.** `BorrowingTransaction`
+
+Think about which class coordinates the entire borrowing process.
