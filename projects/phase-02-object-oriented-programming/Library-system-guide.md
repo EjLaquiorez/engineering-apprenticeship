@@ -8838,3 +8838,37 @@ Who should prevent the borrowing operation from continuing?
 - **C.** `BorrowingTransaction`
 
 Think about which class coordinates the entire borrowing process.
+
+Correct! **B —&#x20;**`BorrowingService`**.**
+
+Here's why:
+
+`Member` owns the status, but `BorrowingService` controls the borrowing workflow.
+
+If the member is inactive, the service should stop the operation before creating a transaction or changing the item's status.
+
+The responsibility is divided like this:
+
+| Class                  | Responsibility                               |
+| ---------------------- | -------------------------------------------- |
+| `Member`               | Stores and manages member status             |
+| `BorrowingService`     | Checks eligibility and coordinates borrowing |
+| `BorrowingTransaction` | Records borrowing details                    |
+
+### **Step 3: First implementation task**
+
+Let's begin with the member eligibility check.
+
+Inside `BorrowingService`, we'll eventually create a method:
+
+```
+public void borrowItem(Member member, LibraryItem item)
+```
+
+But don't implement the whole method yet.
+
+First, identify which import statements are needed for `Member` and `LibraryItem`.
+
+**Your task:** Add the two imports to `BorrowingService.java` and send me your updated file.
+
+We'll build the method one piece at a time.
