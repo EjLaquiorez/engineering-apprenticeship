@@ -8936,3 +8936,50 @@ We need to compare the member's current status against `MemberStatus.ACTIVE`.
 Hint: Use `!=` to compare enum values.
 
 Don't implement anything else yet. Send me your updated method for review.
+
+Correct
+
+Your member eligibility check is implemented correctly.
+
+```
+if (member.getStatus() != MemberStatus.ACTIVE) {
+    throw new IllegalStateException("Inactive members cannot borrow items.");
+}
+```
+
+Here's what happens:
+
+- If the member is `ACTIVE`, execution continues.
+- If the member is `INACTIVE`, Java throws an `IllegalStateException` and stops the borrowing operation.
+
+Notice that we're not changing the member's status. We're simply checking it.
+
+## **Step 6: Check item availability**
+
+Now we need to make sure the requested item can actually be borrowed.
+
+Your `LibraryItem` class already has:
+
+```
+item.getStatus()
+```
+
+And your `ItemStatus` enum contains:
+
+- `AVAILABLE`
+- `BORROWED`
+- `RETIRED`
+
+**Your task:**
+
+1. Import `ItemStatus`.
+2. Write an `if` condition that checks whether the item's status is NOT `ItemStatus.AVAILABLE`.
+3. If unavailable, throw an `IllegalStateException` with this message:
+
+```
+"Item is not available for borrowing."
+```
+
+Hint: This is similar to the member eligibility check you just implemented.
+
+Send me your updated code when ready.
