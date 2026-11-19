@@ -8899,3 +8899,40 @@ Because this method coordinates an operation. We'll eventually create a `Borrowi
 **Your task:** Add this method declaration and send me your updated code.
 
 Next, we'll implement the first validation: checking whether the member is active.
+
+Good! Your method declaration is correct.
+
+One small formatting suggestion: add a blank line after the package declaration. This improves readability, but it doesn't affect compilation.
+
+### **Step 5: Check member eligibility**
+
+Before allowing a member to borrow an item, we must verify that their status is `ACTIVE`.
+
+Your `Member` class already provides:
+
+```
+member.getStatus()
+```
+
+And your `MemberStatus` enum contains:
+
+```
+ACTIVE
+INACTIVE
+```
+
+We need to compare the member's current status against `MemberStatus.ACTIVE`.
+
+**Your task:**
+
+1. Import `MemberStatus`.
+2. Inside `borrowItem()`, write an `if` condition that checks whether the member's status is NOT `ACTIVE`.
+3. If the condition is true, throw an `IllegalStateException` with this message:
+
+```
+"Inactive members cannot borrow items."
+```
+
+Hint: Use `!=` to compare enum values.
+
+Don't implement anything else yet. Send me your updated method for review.
