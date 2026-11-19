@@ -8872,3 +8872,30 @@ First, identify which import statements are needed for `Member` and `LibraryItem
 **Your task:** Add the two imports to `BorrowingService.java` and send me your updated file.
 
 We'll build the method one piece at a time.
+
+Perfect! Both imports are correct.
+
+```
+import library.model.LibraryItem;
+import library.model.Member;
+```
+
+Now let's create the borrowing method.
+
+### **Step 4: Declare the method**
+
+Inside `BorrowingService`, add:
+
+```
+public void borrowItem(Member member, LibraryItem item) {
+
+}
+```
+
+Why `void`?
+
+Because this method coordinates an operation. We'll eventually create a `BorrowingTransaction` and store it, but for now, let's focus on the method's responsibilities.
+
+**Your task:** Add this method declaration and send me your updated code.
+
+Next, we'll implement the first validation: checking whether the member is active.
