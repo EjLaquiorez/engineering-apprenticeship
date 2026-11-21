@@ -8983,3 +8983,47 @@ And your `ItemStatus` enum contains:
 Hint: This is similar to the member eligibility check you just implemented.
 
 Send me your updated code when ready.
+
+Correct — both validations approved
+
+Your implementation is correct.
+
+You've now established two important rules:
+
+1. Inactive members cannot borrow items.
+2. Items that are borrowed or retired cannot be borrowed again.
+
+Your service correctly checks both conditions before proceeding.
+
+## **Step 7: Record the borrowing date**
+
+Now we're moving from validation to creating the borrowing record.
+
+Java provides `LocalDate.now()` to get the current date.
+
+For this operation, we need two dates:
+
+- `borrowDate` — today's date.
+- `dueDate` — 14 calendar days after the borrowing date.
+
+Let's handle them separately.
+
+**Your task:**
+
+First, import:
+
+```
+import java.time.LocalDate;
+```
+
+Then, inside `borrowItem()`, immediately after your two validation checks, declare:
+
+```
+LocalDate borrowDate = LocalDate.now();
+```
+
+Why do we use `LocalDate` instead of `String`?
+
+Because dates should be represented as date objects, allowing Java to calculate and compare dates reliably.
+
+Don't calculate the due date yet. Send me your updated code first.
