@@ -4,6 +4,7 @@ import library.model.LibraryItem;
 import library.model.ItemStatus;
 import library.model.Member;
 import library.model.MemberStatus;
+import java.time.LocalDate;
 
 public class BorrowingService {
     public void borrowItem(Member member, LibraryItem item) {
@@ -13,5 +14,6 @@ public class BorrowingService {
         if (item.getStatus() != ItemStatus.AVAILABLE) {
             throw new IllegalStateException("Item is not available for borrowing.");
         }
+        LocalDate borrowDate = LocalDate.now();
     }
 }
