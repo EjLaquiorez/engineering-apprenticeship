@@ -9027,3 +9027,31 @@ Why do we use `LocalDate` instead of `String`?
 Because dates should be represented as date objects, allowing Java to calculate and compare dates reliably.
 
 Don't calculate the due date yet. Send me your updated code first.
+
+Correct! Your `borrowDate` declaration is implemented properly.
+
+```
+LocalDate borrowDate = LocalDate.now();
+```
+
+This captures the date when the borrowing operation takes place.
+
+One small style suggestion: put the `java.time.LocalDate` import before the `library.model` imports. Java convention groups standard library imports before project imports.
+
+## **Step 8: Calculate the due date**
+
+Our agreed borrowing period is **14 calendar days**.
+
+Java's `LocalDate` provides a method called `plusDays()`.
+
+For example:
+
+```
+LocalDate dueDate = borrowDate.plusDays(14);
+```
+
+If the borrowing date is November 21, the due date becomes December 5.
+
+**Your task:** Add the `dueDate` declaration immediately after `borrowDate`.
+
+Don't create the transaction yet. We'll review this step first.
