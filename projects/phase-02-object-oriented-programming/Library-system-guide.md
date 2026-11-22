@@ -9109,3 +9109,85 @@ Which approach would you prefer for generating transaction IDs in this initial i
 - **B.** Use Java's `UUID` to generate unique identifiers (e.g. `"550e8400-e29b-..."`).
 
 I recommend **A** for this beginner project because it is easier to understand and implement. UUIDs are useful, but introduce another concept we don't need yet.
+
+Excellent! You've made several important design decisions independently, and your implementation is on the right track.
+
+Let's review what you've written.
+
+### **Code review**
+
+**1. Transaction ID generation — correct**
+
+```
+private int nextTransactionId = 1;
+```
+
+And:
+
+```
+String transactionId = String.valueOf(nextTransactionId++);
+```
+
+This generates sequential IDs:
+
+| Borrowing | Transaction ID |
+| --------- | -------------- |
+| First     | `"1"`          |
+| Second    | `"2"`          |
+| Third     | `"3"`          |
+
+The `++` increments the counter after using its current value.
+
+**2. Method return type — good decision**
+
+```
+public BorrowingTransaction borrowItem(Member member, LibraryItem item)
+```
+
+Returning the newly created transaction is useful because the caller will eventually need to store that transaction in the application's collection.
+
+**3. Transaction construction — correct**
+
+```
+return new BorrowingTransaction(
+    transactionId, member, item, borrowDate, dueDate
+);
+```
+
+All five constructor arguments are in the correct order.
+
+## **One important responsibility is still missing**
+
+Look at your `LibraryItem` class. It already has this method:
+
+```
+item.borrow();
+```
+
+Remember, `BorrowingService` coordinates the operation, but `LibraryItem` manages its own status.
+
+Currently, your service creates a borrowing transaction without changing the item's status.
+
+That means the item could potentially be borrowed again!
+
+### **Your next task**
+
+Refactor the transaction creation into two steps:
+
+1. Create a `BorrowingTransaction` and store it in a local variable named `transaction`.
+2. Call `item.borrow()` after creating the transaction.
+3. Return `transaction`.
+
+Conceptually:
+
+```
+BorrowingTransaction transaction = /* create transaction */;
+
+// Update item status here
+
+return transaction;
+```
+
+Don't copy the entire implementation from me. Complete those three steps yourself and send me your updated method.
+
+We're getting closer to having a complete borrowing operation.
