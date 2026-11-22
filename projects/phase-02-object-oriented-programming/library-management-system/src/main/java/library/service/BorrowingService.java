@@ -1,10 +1,11 @@
 package library.service;
 
+import java.time.LocalDate;
+
 import library.model.LibraryItem;
 import library.model.ItemStatus;
 import library.model.Member;
 import library.model.MemberStatus;
-import java.time.LocalDate;
 
 public class BorrowingService {
     public void borrowItem(Member member, LibraryItem item) {
@@ -15,5 +16,6 @@ public class BorrowingService {
             throw new IllegalStateException("Item is not available for borrowing.");
         }
         LocalDate borrowDate = LocalDate.now();
+        LocalDate dueDate = borrowDate.plusDays(14);
     }
 }
