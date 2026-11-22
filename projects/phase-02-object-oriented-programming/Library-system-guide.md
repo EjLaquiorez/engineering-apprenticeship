@@ -9055,3 +9055,57 @@ If the borrowing date is November 21, the due date becomes December 5.
 **Your task:** Add the `dueDate` declaration immediately after `borrowDate`.
 
 Don't create the transaction yet. We'll review this step first.
+
+Excellent! Both date declarations are correct.
+
+```
+LocalDate borrowDate = LocalDate.now();
+LocalDate dueDate = borrowDate.plusDays(14);
+```
+
+You've correctly used `plusDays(14)` instead of manually calculating the date. This also handles month and year boundaries automatically.
+
+### **Current borrowing workflow**
+
+Your `borrowItem()` method now performs four things:
+
+1. Checks whether the member is active.
+2. Checks whether the item is available.
+3. Records the borrowing date.
+4. Calculates the due date.
+
+## **Step 9: Create the BorrowingTransaction**
+
+Now we need to create the actual borrowing record.
+
+Recall your `BorrowingTransaction` constructor:
+
+```
+public BorrowingTransaction(
+    String transactionId,
+    Member member,
+    LibraryItem libraryItem,
+    LocalDate borrowDate,
+    LocalDate dueDate
+)
+```
+
+Notice that it requires five arguments.
+
+We already have four of them:
+
+- `member`
+- `item`
+- `borrowDate`
+- `dueDate`
+
+The remaining question is how to generate a unique `transactionId`.
+
+**Let's make one design decision first.**
+
+Which approach would you prefer for generating transaction IDs in this initial in-memory application?
+
+- **A.** Use an incrementing integer converted to a `String` (e.g. `"1"`, `"2"`, `"3"`).
+- **B.** Use Java's `UUID` to generate unique identifiers (e.g. `"550e8400-e29b-..."`).
+
+I recommend **A** for this beginner project because it is easier to understand and implement. UUIDs are useful, but introduce another concept we don't need yet.
