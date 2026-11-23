@@ -9191,3 +9191,129 @@ return transaction;
 Don't copy the entire implementation from me. Complete those three steps yourself and send me your updated method.
 
 We're getting closer to having a complete borrowing operation.
+
+Borrowing operation implemented
+
+Excellent! Your `borrowItem()` method now performs the complete borrowing operation.
+
+Let's review the final sequence:
+
+| Step | Operation               | Result                                   |
+| ---- | ----------------------- | ---------------------------------------- |
+| 1    | Check member status     | Only active members proceed              |
+| 2    | Check item status       | Only available items proceed             |
+| 3    | Record borrowing date   | Captures today's date                    |
+| 4    | Calculate due date      | Adds 14 calendar days                    |
+| 5    | Generate transaction ID | Creates sequential IDs                   |
+| 6    | Create transaction      | Records the borrowing details            |
+| 7    | `item.borrow()`         | Changes item status to `BORROWED`        |
+| 8    | Return transaction      | Makes the record available to the caller |
+
+### **One important design observation**
+
+You correctly delegated the status change to:
+
+```
+item.borrow();
+```
+
+Instead of directly writing:
+
+```
+item.setStatus(ItemStatus.BORROWED);
+```
+
+This is good encapsulation. The `LibraryItem` class controls its own state transitions.
+
+## **Before proceeding: One design issue to understand**
+
+Your current implementation has:
+
+```
+String transactionId = String.valueOf(nextTransactionId++);
+```
+
+The counter belongs to each `BorrowingService` instance.
+
+That means if you create another `BorrowingService`, its counter starts at `"1"` again.
+
+For our current application, we'll eventually create one service instance and keep using it. That's acceptable for this version.
+
+We can revisit ID generation when we discuss persistence.
+
+## **Next step: Build verification**
+
+Run:
+
+```
+gradle build
+```
+
+Send me the result.
+
+Afterward, we'll implement the **return operation** in `BorrowingService`, including recording the return date and updating the item's status.
+
+Your build failed, but don't worry: **this is a Gradle configuration issue, not necessarily a problem with your Java code.**
+
+The important error is:
+
+```
+Cannot resolve external dependency org.junit.jupiter:junit-jupiter:5.10.2
+because no repositories are defined.
+```
+
+### **1. Understand the problem**
+
+Your Gradle configuration requests JUnit 5.10.2, but Gradle doesn't know where to download it.
+
+We need to tell Gradle to use Maven Central, a repository that hosts Java dependencies.
+
+### **2. Update&#x20;**`build.gradle`
+
+Open your project's `build.gradle`.
+
+Add this block at the top level:
+
+```
+repositories {
+    mavenCentral()
+}
+```
+
+For example, your configuration should look similar to this:
+
+```
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'library'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClass = 'library.Main'
+}
+```
+
+Keep your existing dependencies and other configuration. Don't delete anything.
+
+### **3. Verify the build**
+
+Save the file and run:
+
+```
+gradle build
+```
+
+Gradle should now be able to resolve JUnit from Maven Central.
+
+### **Your next task**
+
+Update `build.gradle`, run `gradle build`, and send me the result.
+
+**Engineering lesson:** A Java project can have perfectly valid source code but still fail to build because its external dependencies aren't configured correctly. Learning to distinguish source-code errors from build-system errors is an important debugging skill.
