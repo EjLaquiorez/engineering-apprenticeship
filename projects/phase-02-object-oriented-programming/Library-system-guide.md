@@ -9317,3 +9317,52 @@ Gradle should now be able to resolve JUnit from Maven Central.
 Update `build.gradle`, run `gradle build`, and send me the result.
 
 **Engineering lesson:** A Java project can have perfectly valid source code but still fail to build because its external dependencies aren't configured correctly. Learning to distinguish source-code errors from build-system errors is an important debugging skill.
+
+BUILD SUCCESSFUL
+
+Excellent! Your build now succeeds in just 5 seconds.
+
+The issue was resolved by adding:
+
+```
+repositories {
+    mavenCentral()
+}
+```
+
+Gradle can now locate and download your JUnit dependency.
+
+Your `BorrowingService` also passes the compilation stage.
+
+## **Progress update — BorrowingService**
+
+**Borrow operation**
+
+Implemented
+
+- Validate member status
+- Validate item availability
+- Generate borrowing and due dates
+- Generate transaction ID
+- Create BorrowingTransaction
+- Update item status
+
+## **Next: Implement the return operation**
+
+When a member returns an item, our service must:
+
+1. Verify that the borrowing transaction is still active.
+2. Record the return date.
+3. Change the item's status back to `AVAILABLE`.
+
+We'll implement this separately from `borrowItem()`.
+
+### **First design question**
+
+Which object already has the method responsible for recording a return date?
+
+- **A.** `Member`
+- **B.** `LibraryItem`
+- **C.** `BorrowingTransaction`
+
+Think about which object owns the borrowing record and its `returnDate`.
