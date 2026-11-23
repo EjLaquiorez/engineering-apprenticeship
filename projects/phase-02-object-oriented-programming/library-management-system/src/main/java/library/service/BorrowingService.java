@@ -21,6 +21,8 @@ public class BorrowingService {
         LocalDate borrowDate = LocalDate.now();
         LocalDate dueDate = borrowDate.plusDays(14);
         String transactionId = String.valueOf(nextTransactionId++);
-        return new BorrowingTransaction(transactionId, member, item, borrowDate, dueDate);
+        BorrowingTransaction transaction = new BorrowingTransaction(transactionId, member, item, borrowDate, dueDate);
+        item.borrow();
+        return transaction;
     }
 }
