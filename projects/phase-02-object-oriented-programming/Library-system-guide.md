@@ -9465,3 +9465,46 @@ Inside `returnItem()`:
 Hint: Use the `!` operator to negate the boolean result.
 
 Don't implement the actual return yet. Send me your updated method, and we'll review it before proceeding.
+
+Correct
+
+Your validation is implemented correctly.
+
+```
+if (!transaction.isActive()) {
+    throw new IllegalStateException("This transaction has already been completed.");
+}
+```
+
+Let's understand what happens:
+
+- `transaction.isActive()` returns `true` → the return operation can continue.
+- `transaction.isActive()` returns `false` → Java throws an exception and stops the operation.
+
+This prevents a transaction from being returned twice.
+
+## **Step 4: Record the return date**
+
+Your `BorrowingTransaction` class already provides:
+
+```
+transaction.recordReturn(LocalDate returnDate);
+```
+
+We want to record the actual date when the member returns the item.
+
+**Your task:**
+
+Immediately after your validation check, add:
+
+```
+transaction.recordReturn(LocalDate.now());
+```
+
+Why `LocalDate.now()`?
+
+Because we're recording the date the return operation takes place.
+
+Don't update the item's status yet. We'll handle that separately.
+
+Send me your updated `returnItem()` method for review.
