@@ -9508,3 +9508,42 @@ Because we're recording the date the return operation takes place.
 Don't update the item's status yet. We'll handle that separately.
 
 Send me your updated `returnItem()` method for review.
+
+Excellent! Your return-date recording is correct.
+
+```
+transaction.recordReturn(LocalDate.now());
+```
+
+You've now implemented two important responsibilities in `returnItem()`:
+
+1. Prevent returning an already completed transaction.
+2. Record the actual return date.
+
+Notice that you're calling the method on `BorrowingTransaction` rather than directly modifying `returnDate`. That's good encapsulation.
+
+## **Step 5: Update the library item's status**
+
+There's one more operation to complete.
+
+When an item is returned, its status must change from:
+
+`BORROWED` → `AVAILABLE`
+
+Your `LibraryItem` class already provides a method for this:
+
+```
+item.returnItem();
+```
+
+But how do we obtain the item associated with the transaction?
+
+Remember, your `BorrowingTransaction` class has a getter:
+
+```
+transaction.getLibraryItem()
+```
+
+**Your task:** Immediately after `transaction.recordReturn(...)`, call the appropriate method on the associated `LibraryItem` to make it available again.
+
+Send me your updated method for review.
