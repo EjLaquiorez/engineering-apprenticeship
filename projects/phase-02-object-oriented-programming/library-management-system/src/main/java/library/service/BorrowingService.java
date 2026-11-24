@@ -27,6 +27,8 @@ public class BorrowingService {
     }
 
     public void returnItem(BorrowingTransaction transaction) {
-
+        if (!transaction.isActive()) {
+            throw new IllegalStateException("This transaction has already been completed.");
+        }
     }
 }
