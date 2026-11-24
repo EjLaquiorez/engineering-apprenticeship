@@ -25,4 +25,8 @@ public class BorrowingService {
         item.borrow();
         return transaction;
     }
+
+    public void returnItem(BorrowingTransaction transaction) {
+
+    }
 }
