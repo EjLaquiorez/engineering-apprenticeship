@@ -9424,3 +9424,44 @@ Because we need to know exactly which borrowing record is being completed.
 **Your task:** Add this method below `borrowItem()` and send me your updated code.
 
 We'll implement its validation next.
+
+Perfect! Your `returnItem()` method declaration is correct.
+
+```
+public void returnItem(BorrowingTransaction transaction) {
+
+}
+```
+
+The parameter is also correct: we receive the transaction because it contains the borrowing record and the associated `LibraryItem`.
+
+## **Step 3: Check whether the transaction is active**
+
+Before processing a return, we must make sure the transaction hasn't already been completed.
+
+Remember, your `BorrowingTransaction` class has this method:
+
+```
+transaction.isActive()
+```
+
+It returns:
+
+- `true` if `returnDate == null`.
+- `false` if a return date has already been recorded.
+
+**Your task:**
+
+Inside `returnItem()`:
+
+1. Check whether `transaction.isActive()` is `false`.
+2. If so, throw an `IllegalStateException`.
+3. Use this message:
+
+```
+"This transaction has already been completed."
+```
+
+Hint: Use the `!` operator to negate the boolean result.
+
+Don't implement the actual return yet. Send me your updated method, and we'll review it before proceeding.
