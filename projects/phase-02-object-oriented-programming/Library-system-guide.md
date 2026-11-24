@@ -9366,3 +9366,61 @@ Which object already has the method responsible for recording a return date?
 - **C.** `BorrowingTransaction`
 
 Think about which object owns the borrowing record and its `returnDate`.
+
+Correct! **C —&#x20;**`BorrowingTransaction`**.**
+
+You remembered the responsibility correctly.
+
+Your `BorrowingTransaction` class already contains:
+
+```
+public void recordReturn(LocalDate returnDate) {
+    // validation and recording logic
+}
+```
+
+Why does it belong there?
+
+Because `BorrowingTransaction` owns the borrowing record, including:
+
+- Borrowing date
+- Due date
+- Return date
+
+`LibraryItem`, on the other hand, manages the item's availability.
+
+## **Step 1: Understand the return workflow**
+
+When a member returns an item, `BorrowingService` coordinates two separate operations:
+
+**BorrowingTransaction**
+
+`recordReturn(LocalDate.now())`
+
+Records when the item was returned.
+
+**LibraryItem**
+
+`returnItem()`
+
+Changes the item's status to AVAILABLE.
+
+## **Step 2: Declare the return method**
+
+Inside `BorrowingService`, we need a method that receives the transaction being completed.
+
+Use this signature:
+
+```
+public void returnItem(BorrowingTransaction transaction) {
+
+}
+```
+
+Why accept a `BorrowingTransaction` instead of just a `LibraryItem`?
+
+Because we need to know exactly which borrowing record is being completed.
+
+**Your task:** Add this method below `borrowItem()` and send me your updated code.
+
+We'll implement its validation next.
