@@ -31,5 +31,6 @@ public class BorrowingService {
             throw new IllegalStateException("This transaction has already been completed.");
         }
         transaction.recordReturn(LocalDate.now());
+        transaction.getLibraryItem().returnItem();
     }
 }
