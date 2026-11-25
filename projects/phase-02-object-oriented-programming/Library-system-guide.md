@@ -9547,3 +9547,75 @@ transaction.getLibraryItem()
 **Your task:** Immediately after `transaction.recordReturn(...)`, call the appropriate method on the associated `LibraryItem` to make it available again.
 
 Send me your updated method for review.
+
+Return operation implemented
+
+Excellent! Your `returnItem()` method is now complete.
+
+Let's review your implementation:
+
+```
+public void returnItem(BorrowingTransaction transaction) {
+    if (!transaction.isActive()) {
+        throw new IllegalStateException("This transaction has already been completed.");
+    }
+    transaction.recordReturn(LocalDate.now());
+    transaction.getLibraryItem().returnItem();
+}
+```
+
+### **Why this implementation is correct**
+
+You have delegated responsibilities to the appropriate classes:
+
+| Operation                           | Responsible class      |
+| ----------------------------------- | ---------------------- |
+| Check whether transaction is active | `BorrowingService`     |
+| Record the return date              | `BorrowingTransaction` |
+| Retrieve the associated item        | `BorrowingTransaction` |
+| Change item status to AVAILABLE     | `LibraryItem`          |
+
+This is a good example of **separation of responsibilities**.
+
+### **Your BorrowingService progress**
+
+**Borrowing operation**
+
+Complete
+
+- Validate member eligibility
+- Validate item availability
+- Calculate borrowing and due dates
+- Generate transaction ID
+- Create transaction
+- Update item status
+
+**Return operation**
+
+Implemented
+
+- Prevent duplicate returns
+- Record return date
+- Restore item availability
+
+### **One engineering consideration**
+
+There is a subtle issue worth understanding before we move on.
+
+Your return operation records the return date first, then changes the item status.
+
+What if `transaction.getLibraryItem().returnItem()` throws an exception after the return date has already been recorded?
+
+The transaction would be marked completed even though the item status might remain `BORROWED`.
+
+This is a consistency concern. Our current design should normally prevent that situation, but it is useful to recognize the possibility. We'll revisit it when discussing reliable operations.
+
+### **Next step: Build verification**
+
+Run:
+
+```
+gradle build
+```
+
+Once successful, we'll move toward testing both borrowing and returning together, rather than relying on compilation alone.
