@@ -9657,3 +9657,69 @@ Then we'll test returning the book.
 First question: Have you already created any JUnit test classes inside src/test/java, or is that folder currently empty?
 
 We'll use your answer to choose the next step without disturbing your existing project structure.
+
+Perfect. That means your project already has a working JUnit 5 testing setup, and we don't need to configure another testing framework.
+
+We'll follow the same approach we used when implementing your service classes: **one test scenario at a time.**
+
+## **Next milestone: BorrowingServiceTest**
+
+We'll create:
+
+`src/test/java/library/service/BorrowingServiceTest.java`
+
+Our first test will verify a successful borrowing operation.
+
+### **Test scenario 1: Successful borrowing**
+
+**Given:**
+
+- An active member.
+- An available library item.
+- A new `BorrowingService`.
+
+**When:**
+
+\- The member borrows the item.
+
+**Then:**
+
+- A `BorrowingTransaction` is created.
+- The transaction belongs to the correct member.
+- The transaction references the correct item.
+- The item's status changes to `BORROWED`.
+- The transaction is active.
+
+This is an example of the **Arrange – Act – Assert (AAA)** testing pattern:
+
+| Phase   | Purpose                         |
+| ------- | ------------------------------- |
+| Arrange | Prepare test objects            |
+| Act     | Execute the borrowing operation |
+| Assert  | Verify expected results         |
+
+### **Step 1: Create the test class**
+
+Create `BorrowingServiceTest.java` inside:
+
+`src/test/java/library/service/`
+
+Add the following imports and class declaration:
+
+```
+package library.service;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class BorrowingServiceTest {
+
+}
+```
+
+**Your task:** Create the file and send me your code.
+
+We'll write the first test together, and I'll explain why each assertion matters.
+
+We're now moving beyond checking whether your code compiles to checking whether your software actually behaves correctly.&#x20;
