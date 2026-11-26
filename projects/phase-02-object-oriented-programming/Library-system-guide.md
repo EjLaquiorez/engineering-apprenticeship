@@ -9723,3 +9723,45 @@ class BorrowingServiceTest {
 We'll write the first test together, and I'll explain why each assertion matters.
 
 We're now moving beyond checking whether your code compiles to checking whether your software actually behaves correctly.&#x20;
+
+Perfect! Your `BorrowingServiceTest` class is correctly structured.
+
+Your JUnit 5 setup is ready. Now let's write our first test.
+
+## **Step 2: Prepare the test objects (Arrange)**
+
+Inside `BorrowingServiceTest`, we'll create a test method:
+
+```
+@Test
+void borrowItem_shouldCreateTransactionAndMarkItemAsBorrowed() {
+
+}
+```
+
+Before calling `borrowItem()`, we need to prepare three objects:
+
+1. An active `Member`.
+2. An available `LibraryItem`.
+3. A `BorrowingService`.
+
+You already know the constructors:
+
+```
+Member(int memberId, String name)
+LibraryItem(String itemId, String title, ItemType itemType)
+```
+
+**Your task:** Inside the test method, instantiate those three objects.
+
+Use these sample values:
+
+- Member ID: `1`
+- Member name: `"John"`
+- Item ID: `"B001"`
+- Item title: `"Clean Code"`
+- Item type: `ItemType.BOOK`
+
+Remember to import the required model classes.
+
+Don't call `borrowItem()` yet. We'll do that in the next step after reviewing your Arrange section.
