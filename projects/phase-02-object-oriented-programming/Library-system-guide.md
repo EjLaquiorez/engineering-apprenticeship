@@ -9765,3 +9765,37 @@ Use these sample values:
 Remember to import the required model classes.
 
 Don't call `borrowItem()` yet. We'll do that in the next step after reviewing your Arrange section.
+
+Excellent! Your **Arrange** section is correct.
+
+```
+Member member = new Member(1, "John");
+LibraryItem item = new LibraryItem("B001", "Clean Code", ItemType.BOOK);
+BorrowingService borrowingService = new BorrowingService();
+```
+
+Let's verify the initial states:
+
+- `Member` defaults to `ACTIVE`.
+- `LibraryItem` defaults to `AVAILABLE`.
+- `BorrowingService` starts its transaction ID counter at `1`.
+
+These defaults make the objects suitable for our first test.
+
+## **Step 3: Execute the borrowing operation (Act)**
+
+Now we need to actually perform the operation we're testing.
+
+Our method signature is:
+
+```
+public BorrowingTransaction borrowItem(Member member, LibraryItem item)
+```
+
+Notice that it returns a `BorrowingTransaction`.
+
+**Your task:** Inside the test method, call `borrowItem()` and store its returned value in a variable named `transaction`.
+
+You'll need to import `BorrowingTransaction`.
+
+Don't write the assertions yet. Send me your updated test method, and we'll review the Act section before proceeding to Assert.
