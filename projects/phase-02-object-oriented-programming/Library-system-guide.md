@@ -9837,3 +9837,33 @@ Add this immediately after your borrowing operation.
 **Why does this matter?** If the service fails to return a transaction, the test should detect that problem.
 
 Send me your updated test method. Next, we'll verify that the transaction references the correct member and item.
+
+Good. Your first assertion is correct.
+
+```
+assertNotNull(transaction);
+```
+
+**What does this verify?**
+
+It confirms that `borrowItem()` returned a transaction object instead of `null`. This is our first check that the borrowing operation created a transaction.
+
+However, our test name says:
+
+`borrowItem_shouldCreateTransactionAndMarkItemAsBorrowed`
+
+We still need to verify that the transaction contains the correct objects and that the item's status actually changed.
+
+### **Next step: Verify the member reference**
+
+Add this assertion immediately after `assertNotNull(transaction);`:
+
+```
+assertSame(member, transaction.getMember());
+```
+
+**Why&#x20;**`assertSame()`**&#x20;instead of&#x20;**`assertEquals()`**?**
+
+We want to verify that the transaction stores the exact same `Member` object passed into `borrowItem()`, not merely another object with equivalent values.
+
+Add it, then show me your updated test.
