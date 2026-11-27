@@ -17,6 +17,7 @@ class BorrowingServiceTest {
         LibraryItem item = new LibraryItem("B001", "Clean Code", ItemType.BOOK);
         BorrowingService borrowingService = new BorrowingService();
         BorrowingTransaction transaction = borrowingService.borrowItem(member, item);
+        assertNotNull(transaction);
     }
 
 }
