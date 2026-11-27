@@ -9799,3 +9799,41 @@ Notice that it returns a `BorrowingTransaction`.
 You'll need to import `BorrowingTransaction`.
 
 Don't write the assertions yet. Send me your updated test method, and we'll review the Act section before proceeding to Assert.
+
+Excellent! Your **Act** section is correct.
+
+```
+BorrowingTransaction transaction = borrowingService.borrowItem(member, item);
+```
+
+This executes the actual borrowing operation and captures the transaction returned by `BorrowingService`.
+
+Now we move to the most important part of the test.
+
+## **Step 4: Verify the results (Assert)**
+
+We want to verify five things:
+
+| Expected result       | What we're checking               |
+| --------------------- | --------------------------------- |
+| Transaction exists    | A transaction was returned        |
+| Correct member        | The transaction belongs to John   |
+| Correct item          | The transaction references `B001` |
+| Item is borrowed      | Status changed to `BORROWED`      |
+| Transaction is active | It hasn't been returned yet       |
+
+Let's implement these assertions one at a time.
+
+**Your first task:** Verify that the transaction is not `null`.
+
+JUnit provides:
+
+```
+assertNotNull(transaction);
+```
+
+Add this immediately after your borrowing operation.
+
+**Why does this matter?** If the service fails to return a transaction, the test should detect that problem.
+
+Send me your updated test method. Next, we'll verify that the transaction references the correct member and item.
