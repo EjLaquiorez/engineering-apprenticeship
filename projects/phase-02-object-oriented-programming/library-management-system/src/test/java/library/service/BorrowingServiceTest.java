@@ -19,6 +19,7 @@ class BorrowingServiceTest {
         BorrowingTransaction transaction = borrowingService.borrowItem(member, item);
         assertNotNull(transaction);
         assertSame(member, transaction.getMember());
+        assertSame(item, transaction.getLibraryItem());
     }
 
 }
