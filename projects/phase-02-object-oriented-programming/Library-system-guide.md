@@ -9996,3 +9996,37 @@ assertTrue(transaction.isActive());
 Please add that assertion if you haven't already.
 
 Then we'll review the complete test before moving on to testing invalid borrowing attempts, such as an inactive member trying to borrow a book.
+
+Excellent. Your first `BorrowingService` test is now complete, and all five assertions are appropriate.
+
+### **Review of your test**
+
+| Assertion                                             | What it verifies                                     |
+| ----------------------------------------------------- | ---------------------------------------------------- |
+| `assertNotNull(transaction)`                          | A transaction was created.                           |
+| `assertSame(member, transaction.getMember())`         | The correct member is associated with it.            |
+| `assertSame(item, transaction.getLibraryItem())`      | The correct item is associated with it.              |
+| `assertEquals(ItemStatus.BORROWED, item.getStatus())` | The item's status changed to BORROWED.               |
+| `assertTrue(transaction.isActive())`                  | The transaction is active and has not been returned. |
+
+### **One important testing concept**
+
+Notice that we're testing the *observable behavior* of `BorrowingService`, not how its internal code is written.
+
+That's a good testing habit: verify what the service promises to do.
+
+Test 1 complete
+
+### **Next test: Inactive members cannot borrow**
+
+Let's test the first business rule:
+
+> Only members with `ACTIVE` status can borrow library items.
+
+We'll use JUnit's `assertThrows()` to verify that the service rejects an inactive member.
+
+Before writing the test, consider this question:
+
+**Which method should you call to make the member inactive before attempting to borrow?**
+
+Look at your `Member` class.
