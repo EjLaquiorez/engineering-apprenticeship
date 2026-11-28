@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import library.model.ItemStatus;
 import library.model.ItemType;
 import library.model.LibraryItem;
 import library.model.Member;
@@ -20,6 +21,8 @@ class BorrowingServiceTest {
         assertNotNull(transaction);
         assertSame(member, transaction.getMember());
         assertSame(item, transaction.getLibraryItem());
+        assertEquals(ItemStatus.BORROWED, item.getStatus());
+        assertTrue(transaction.isActive());
     }
 
 }
