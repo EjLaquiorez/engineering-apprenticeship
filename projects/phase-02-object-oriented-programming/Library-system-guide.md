@@ -9884,3 +9884,22 @@ assertSame(member, transaction.getMember());
 In our case, we want to confirm that the `BorrowingTransaction` stores the exact `Member` object passed into `borrowItem()`.
 
 Add the line, then show me your updated test so I can review it before we continue.
+
+Correct! Both assertions are in the right place. Your test now verifies:
+
+1. `assertNotNull(transaction)` — A transaction was successfully created.
+2. `assertSame(member, transaction.getMember())` — The transaction stores the exact same `Member` object passed to the service.
+
+### **Next step: Verify the library item reference**
+
+Add this assertion next:
+
+```
+assertSame(item, transaction.getLibraryItem());
+```
+
+**Why?**
+
+A borrowing transaction must be associated with the exact library item that the member borrowed.
+
+Add it below your existing assertions, then show me the updated test. We'll continue one assertion at a time.
