@@ -10030,3 +10030,50 @@ Before writing the test, consider this question:
 **Which method should you call to make the member inactive before attempting to borrow?**
 
 Look at your `Member` class.
+
+Exactly correct! Your reasoning is sound.
+
+In your `Member` class:
+
+- `new Member(1, "John")` creates a member with `ACTIVE` status.
+- `member.deactivate()` changes the status to `INACTIVE`.
+
+Now let's build the second test.
+
+### **Test 2: Inactive members cannot borrow**
+
+Add this test method inside `BorrowingServiceTest`, below your first test:
+
+```
+@Test
+void borrowItem_shouldRejectInactiveMember() {
+    Member member = new Member(1, "John");
+    member.deactivate();
+
+    LibraryItem item = new LibraryItem("B001", "Clean Code", ItemType.BOOK);
+    BorrowingService borrowingService = new BorrowingService();
+
+    assertThrows(IllegalStateException.class, () -> {
+        borrowingService.borrowItem(member, item);
+    });
+}
+```
+
+### **Understand the important assertion**
+
+```
+assertThrows(IllegalStateException.class, () -> {
+    borrowingService.borrowItem(member, item);
+});
+```
+
+This tells JUnit:
+
+1. Execute `borrowItem()`.
+2. Expect an `IllegalStateException`.
+3. If that exception occurs, the assertion passes.
+4. If no exception occurs, the assertion fails.
+
+The `() -> { ... }` is a lambda expression. Here, it gives JUnit the operation to execute and monitor for an exception.
+
+**Your task:** Add this method and show me your updated `BorrowingServiceTest.java`. We'll review it before running the tests.
