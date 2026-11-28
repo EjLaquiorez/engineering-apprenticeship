@@ -9867,3 +9867,20 @@ assertSame(member, transaction.getMember());
 We want to verify that the transaction stores the exact same `Member` object passed into `borrowItem()`, not merely another object with equivalent values.
 
 Add it, then show me your updated test.
+
+### **Next step: Verify the member reference**
+
+Add this assertion immediately after `assertNotNull(transaction);`:
+
+```
+assertSame(member, transaction.getMember());
+```
+
+**Why&#x20;**`assertSame()`**&#x20;instead of&#x20;**`assertEquals()`**?**
+
+- `assertSame()` checks whether both variables refer to the exact same object in memory.
+- `assertEquals()` checks whether their values are considered equal.
+
+In our case, we want to confirm that the `BorrowingTransaction` stores the exact `Member` object passed into `borrowItem()`.
+
+Add the line, then show me your updated test so I can review it before we continue.
