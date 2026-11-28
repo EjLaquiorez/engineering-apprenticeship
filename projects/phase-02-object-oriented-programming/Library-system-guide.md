@@ -9903,3 +9903,33 @@ assertSame(item, transaction.getLibraryItem());
 A borrowing transaction must be associated with the exact library item that the member borrowed.
 
 Add it below your existing assertions, then show me the updated test. We'll continue one assertion at a time.
+
+Excellent. Your third assertion is correct.
+
+Your test now verifies that the transaction:
+
+- Was created successfully.
+- References the correct member.
+- References the correct library item.
+
+### **Next step: Verify the item's status**
+
+We also need to confirm that `borrowItem()` changes the item's status from `AVAILABLE` to `BORROWED`.
+
+Add this assertion:
+
+```
+assertEquals(ItemStatus.BORROWED, item.getStatus());
+```
+
+You'll need one additional import:
+
+```
+import library.model.ItemStatus;
+```
+
+**Why&#x20;**`assertEquals()`**&#x20;here?**
+
+We're comparing two enum values: the expected status (`BORROWED`) and the item's actual status.
+
+Add both lines and show me your updated test.
