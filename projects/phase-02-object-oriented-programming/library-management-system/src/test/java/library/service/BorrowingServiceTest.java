@@ -23,6 +23,20 @@ class BorrowingServiceTest {
         assertSame(item, transaction.getLibraryItem());
         assertEquals(ItemStatus.BORROWED, item.getStatus());
         assertTrue(transaction.isActive());
+        
+    }
+
+    @Test
+    void borrowItem_shouldRejectInactiveMember() {
+        Member member = new Member(1, "John");
+        member.deactivate();
+
+        LibraryItem item = new LibraryItem("B001", "Clean Code", ItemType.BOOK);
+        BorrowingService borrowingService = new BorrowingService();
+
+        assertThrows(IllegalStateException.class, () -> {
+            borrowingService.borrowItem(member, item);
+        });
     }
 
 }
