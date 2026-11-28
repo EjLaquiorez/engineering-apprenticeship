@@ -10077,3 +10077,49 @@ This tells JUnit:
 The `() -> { ... }` is a lambda expression. Here, it gives JUnit the operation to execute and monitor for an exception.
 
 **Your task:** Add this method and show me your updated `BorrowingServiceTest.java`. We'll review it before running the tests.
+
+Correct! Your second test is properly written. Let's review why.
+
+### **Test 2 review**
+
+```
+Member member = new Member(1, "John");
+member.deactivate();
+```
+
+You correctly change the member's status to `INACTIVE` before attempting to borrow.
+
+```
+LibraryItem item = new LibraryItem("B001", "Clean Code", ItemType.BOOK);
+BorrowingService borrowingService = new BorrowingService();
+```
+
+You prepare an available item and the service.
+
+```
+assertThrows(IllegalStateException.class, () -> {
+    borrowingService.borrowItem(member, item);
+});
+```
+
+You verify that the service rejects the borrowing attempt with the expected exception.
+
+Test structure approved
+
+### **One additional improvement**
+
+Let's also verify that the failed borrowing attempt did not change the item's status.
+
+Add this assertion immediately after `assertThrows()`:
+
+```
+assertEquals(ItemStatus.AVAILABLE, item.getStatus());
+```
+
+**Why?**
+
+Rejecting the borrowing request should leave the item untouched. It should remain available.
+
+This tests not only that the service rejects invalid borrowing, but also that it avoids unintended state changes.
+
+Add that line, then we'll run `gradle test` and examine the result.
