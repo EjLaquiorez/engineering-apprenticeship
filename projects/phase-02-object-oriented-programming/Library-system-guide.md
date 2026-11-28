@@ -9933,3 +9933,32 @@ import library.model.ItemStatus;
 We're comparing two enum values: the expected status (`BORROWED`) and the item's actual status.
 
 Add both lines and show me your updated test.
+
+Correct! Your fourth assertion is also right.
+
+```
+assertEquals(ItemStatus.BORROWED, item.getStatus());
+```
+
+This verifies an important part of `BorrowingService`'s responsibility: after a successful borrowing operation, the item's status must change to `BORROWED`.
+
+Your test now covers four things:
+
+1. A transaction is created.
+2. The transaction references the correct member.
+3. The transaction references the correct item.
+4. The item's status changes to `BORROWED`.
+
+### **Final assertion: Verify the transaction is active**
+
+Add this line:
+
+```
+assertTrue(transaction.isActive());
+```
+
+**Why?**
+
+A newly created borrowing transaction should be active because the item has not yet been returned. Its `returnDate` should still be `null`.
+
+Once you add this, we'll review the complete test and run it with Gradle.
