@@ -9962,3 +9962,37 @@ assertTrue(transaction.isActive());
 A newly created borrowing transaction should be active because the item has not yet been returned. Its `returnDate` should still be `null`.
 
 Once you add this, we'll review the complete test and run it with Gradle.
+
+BUILD SUCCESSFUL
+
+Great! Your Gradle build completed successfully.
+
+The important part is:
+
+```
+> Task :test
+BUILD SUCCESSFUL in 50s
+7 actionable tasks: 7 executed
+```
+
+This means:
+
+- Your Java source code compiled successfully.
+- Gradle executed the test task.
+- No test failures were reported.
+
+The other messages are informational:
+
+- `JAVA_TOOL_OPTIONS` — Java environment configuration.
+- Gradle 9.9.3 release highlights — version information.
+- Configuration cache suggestion — an optional performance improvement.
+
+**One thing to verify:** We haven't yet seen your updated test containing the final assertion:
+
+```
+assertTrue(transaction.isActive());
+```
+
+Please add that assertion if you haven't already.
+
+Then we'll review the complete test before moving on to testing invalid borrowing attempts, such as an inactive member trying to borrow a book.
